@@ -17,3 +17,35 @@
 // Está fuera del alcance de este artículo, como una ligera introducción a JavaScript, presentar los detalles de cómo el lenguaje JavaScript central es diferente de las herramientas enumeradas anteriormente. Puede obtener más información en el área de aprendizaje de JavaScript de MDN, así como en otras partes de MDN.
 
 // La siguiente sección presenta algunos aspectos del lenguaje principal y ofrece la oportunidad de jugar con algunas características de la API del navegador también. ¡Que te diviertas!
+
+// Un ejemplo de Hello world! #008000
+// ¡JavaScript es una de las tecnologías web modernas más populares! A medida que sus habilidades de JavaScript crecen, sus sitios web entrarán en una nueva dimensión de poder y creatividad.
+
+// Sin embargo, sentirse cómodo con JavaScript es más difícil que sentirse cómodo con HTML y CSS. Es posible que tenga que comenzar poco a poco y progresar gradualmente. Para comenzar, examinemos cómo agregar JavaScript a su página para crear un ejemplo de Hello world!. (¡Hola mundo! es el estándar para ejemplos introductorios de programación.)
+
+// Vaya a su sitio de prueba y cree una nueva carpeta llamada scripts. Dentro de la carpeta de scripts, cree un nuevo documento de texto llamado main.js y guárdelo.
+
+// En el archivo index.html, introduzca este código en una nueva línea, justo antes de la etiqueta </body> de cierre:
+
+// <script src="scripts/main.js"></script>
+//
+
+// Esto está haciendo el mismo trabajo que el elemento <link> para CSS. Aplica el JavaScript a la página, por lo que puede tener un efecto en el HTML (junto con el CSS y cualquier otra cosa en la página).
+
+// Agregue este código al archivo main.js:
+// const myHeading = document.querySelector('h1');
+// myHeading.textContent = 'Hello world!';
+
+// Asegúrese de que los archivos HTML y JavaScript estén guardados. A continuaciónindex.html en su navegador. El hello word:
+
+// Nota: La razón por la que las instrucciones (arriba) colocan el elemento <script> cerca de la parte inferior del archivo HTML es que el navegador lee el código en el orden en que aparece en el archivo.
+
+// Si el JavaScript se carga primero y se supone que afecta al HTML que aún no se ha cargado, podría haber problemas. Colocar JavaScript cerca de la parte inferior de una página HTML es una forma de acomodar esta dependencia. Para obtener más información sobre enfoques alternativos, consulte Estrategias de carga de scripts.
+
+const myHeading = document.querySelector("h1");
+myHeading.textContent = "Hello Word!";
+
+// ¿¿Qué pasó??
+// El texto del encabezado cambió a Hello world! usando JavaScript. Para ello, utilice una función denominada querySelector() para obtener una referencia a su encabezado y, a continuación, almacenarla en una variable denominada myHeading. Esto es similar a lo que hicimos usando selectores CSS. Cuando desee hacer algo con un elemento, primero debe seleccionarlo.
+
+// Después de eso, el código establece el valor de la propiedad textContent de la variable myHeading (que representa el contenido del encabezado) en Hello world!.
