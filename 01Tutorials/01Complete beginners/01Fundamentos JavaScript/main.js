@@ -49,3 +49,221 @@ myHeading.textContent = "Hello Word!";
 // El texto del encabezado cambió a Hello world! usando JavaScript. Para ello, utilice una función denominada querySelector() para obtener una referencia a su encabezado y, a continuación, almacenarla en una variable denominada myHeading. Esto es similar a lo que hicimos usando selectores CSS. Cuando desee hacer algo con un elemento, primero debe seleccionarlo.
 
 // Después de eso, el código establece el valor de la propiedad textContent de la variable myHeading (que representa el contenido del encabezado) en Hello world!.
+
+// Curso intensivo de conceptos básicos del lenguaje #008000
+// Para darle una mejor comprensión de cómo funciona JavaScript, vamos a explicar algunas de las características principales del lenguaje. Vale la pena señalar que estas características son comunes a todos los lenguajes de programación. Si dominas estos fundamentos, ¡también tienes una ventaja en la codificación en otros idiomas!
+
+// Variables #00aae4
+
+// Las variables son contenedores que almacenan valores. Comienza declarando una variable con la palabra clave let, seguida del nombre que le das a la variable:
+
+let myVariable;
+
+console.log(myVariable);
+
+// Un punto y coma al final de una línea indica dónde termina una instrucción. Solo se requiere cuando necesita separar las instrucciones en una sola línea. Sin embargo, algunas personas creen que es una buena práctica tener punto y coma al final de cada declaración. Hay otras reglas para cuándo debe y no debe usar punto y coma. Para obtener más información, consulte https://www.codecademy.com/resources/blog/your-guide-to-semicolons-in-javascript/
+
+// Puede nombrar una variable casi cualquier cosa, pero hay algunas restricciones. (Consulte https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables ). Si no está seguro, puede verificar el nombre de la variable para ver si es válido. https://mothereff.in/js-variables
+
+// JavaScript distingue entre mayúsculas y minúsculas. Esto significa que myVariable no es lo mismo myvariable. Si tiene problemas en su código, ¡verifique el caso!
+
+// Después de declarar una variable, puede asignarle un valor:
+
+let myVariable1;
+
+myVariable1 = "Bob";
+
+console.log(myVariable1);
+
+// Además, puede realizar ambas operaciones en la misma línea:
+
+let myVariable2 = "Jhon";
+
+// Para recuperar el valor, llame al nombre de la variable:
+
+console.log(myVariable2);
+
+// Después de asignar un valor a una variable, puede cambiarlo más adelante en el código:
+
+let myVariable3 = "Manuel";
+myVariable3 = "Steve";
+
+console.log(myVariable3);
+
+// Tenga en cuenta que las variables pueden contener valores que tienen diferentes https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+
+// tipos de datos #00aae4
+
+// ver imagen...
+
+// String
+// Esta es una secuencia de texto conocida como cadena. Para indicar que el valor es una cadena, enciérrelo entre comillas simples.
+
+let myString = "Hola, mi nombre es Jhon";
+
+console.log(myString);
+
+// Number
+// Este es un número. Los números no tienen citas a su alrededor.
+let myNumber = 21;
+
+console.log(myNumber);
+
+// Boolean
+// Este es un valor True/False. Las palabras true y false son palabras clave especiales que no necesitan comillas.
+
+let myBoolean = true;
+
+console.log(myBoolean);
+
+// Array
+// Esta es una estructura que le permite almacenar múltiples valores en una sola referencia.
+
+let myArray = [1, "Bob", 10, "Steve"];
+// Consulte a cada miembro de la matriz de la siguiente manera:
+
+console.log(myArray[0]);
+console.log(myArray[1]);
+console.log(myArray[2]);
+console.log(myArray[3]);
+
+// Object
+// Esto puede ser cualquier cosa. Todo en JavaScript es un objeto y se puede almacenar en una variable. Ten esto en cuenta a medida que aprendes.
+
+let myObject = document.querySelector("h1");
+
+// Entonces, ¿por qué necesitamos variables? Las variables son necesarias para hacer cualquier cosa interesante en la programación. Si los valores no pueden cambiar, entonces no puede hacer nada dinámico, como personalizar un mensaje de saludo o cambiar una imagen que se muestra en una galería de imágenes.
+
+// Comentarios #00aae4
+// Los comentarios son fragmentos de texto que se pueden agregar junto con el código. El navegador ignora el texto marcado como comentarios. Puedes escribir comentarios en JavaScript al igual que en CSS:
+
+/*este es
+un comentario */
+
+// Si tu comentario no contiene saltos de línea, es una opción ponerlo detrás de dos barras como esta:
+
+// este tambien es un comentario
+
+// Operadores #00aae4
+// Un operator es un símbolo matemático que produce un resultado basado en dos valores (o variables). En la siguiente tabla, puede ver algunos de los operadores más simples, junto con algunos ejemplos para probar en la consola de JavaScript.
+
+// ver imagen...
+
+// Adición
+// Suma dos números o combina dos cadenas.
+
+console.log(10 + 5);
+console.log("Hello " + "Word");
+
+// Resta, multiplicación, división;
+// Estos hacen lo que esperarías que hicieran en matemáticas básicas.
+
+console.log(20 - 5);
+console.log(20 * 2); // multiplicar en JS es un asterisco
+console.log(20 / 2);
+
+// Asignación
+// Como ya has visto: esto asigna un valor a una variable.
+
+let myVariable4 = 43;
+console.log(myVariable4);
+
+// Igualdad estricta
+// Esto realiza una prueba para ver si dos valores son iguales. Devuelve un resultado true/false (booleano).
+
+let myVariable5 = "33";
+let myvariable6 = 33;
+
+console.log(myVariable5 === myvariable6);
+
+// No, no es igual
+// Esto devuelve el valor lógicamente opuesto de lo que precede. Convierte un true en un false, etc. Cuando se utiliza junto con el operador Igualdad, el operador de negación comprueba si dos valores no son iguales.
+
+// Para "No", la expresión básica es true, pero la comparación devuelve false porque la negamos:
+
+let myvariable7 = 3;
+
+console.log(myvariable7 === 3); // true
+console.log(myvariable7 !== 3); // false
+
+// "No, no es igual" da básicamente el mismo resultado con una sintaxis diferente. Aquí estamos probando "es myVariable7 NO igual a 3". Esto devuelve false porque myVariable ES igual a 3:
+
+// Hay muchos más operadores para explorar, pero esto es suficiente por ahora. Consulte https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators para obtener una lista completa.
+
+// Nota: La mezcla de tipos de datos puede dar lugar a algunos resultados extraños al realizar cálculos. Tenga cuidado de que se refiera a sus variables correctamente y obtenga los resultados que espera. Por ejemplo, ingrese '35' + '25' en su consola. ¿Por qué no obtienes el resultado que esperabas? Debido a que las comillas convierten los números en cadenas, por lo que ha terminado concatenando cadenas en lugar de agregar números. Si 35 + 25 obtendrás el total de los dos números.
+
+// Condicionales #00aae4
+// Los condicionales son estructuras de código que se utilizan para comprobar si una expresión devuelve true o no. Una forma muy común de condicionales es el if...else. Por ejemplo:
+
+let helado = "Chocolate";
+const h2_1 = document.querySelector(".h2_1");
+
+if (helado === "Chocolate") {
+  h2_1.textContent = "Yay, Me encanta el helado de chocolate!";
+} else {
+  h2_1.textContent = "Awwww, pero el chocolate es mi favorito...";
+}
+
+// La expresión dentro del if () es la prueba. Esto utiliza el operador de igualdad estricta (como se describió anteriormente) para comparar la variable iceCream con la cadena chocolate para ver si los dos son iguales. Si esta comparación devuelve true, se ejecuta el primer bloque de código. Si la comparación no es verdadera, el segundo bloque de código, después de la else, se ejecuta en su lugar.
+
+// Funciones #00aae4
+// Las funciones son una forma de funcionalidad de empaquetado que desea reutilizar. Es posible definir un cuerpo de código como una función que se ejecuta cuando se llama al nombre de la función en el código. Esta es una buena alternativa a escribir repetidamente el mismo código. Ya has visto algunos usos de las funciones. Por ejemplo:
+
+let myvariable8 = document.querySelector("h1");
+
+let saludo = "ola";
+
+if (saludo == "Hola") {
+  alert("Hola, como estas?");
+}
+
+// Estas funciones, document.querySelector y alert, están integradas en el navegador.
+
+// Si ves algo que parece un nombre de variable, pero está seguido de paréntesis, () es probable que sea una función. Las funciones a menudo toman argumentos: bits de datos que necesitan para hacer su trabajo. Los argumentos van dentro de los paréntesis, separados por comas si hay más de un argumento.
+
+// Por ejemplo, la función alert() hace que aparezca un cuadro emergente dentro de la ventana del navegador, pero necesitamos darle una cadena como argumento para decirle a la función qué mensaje mostrar.
+
+// También puede definir sus propias funciones. En el siguiente ejemplo, creamos una función simple que toma dos números como argumentos y los multiplica:
+
+function multiplicacion(num1, num2) {
+  let resultado = num1 * num2;
+  return resultado;
+}
+
+// Intente ejecutar esto en la consola; luego pruebe con varios argumentos. Por ejemplo:
+
+let dolar = 1000,
+  colon = 648.16;
+
+console.log(multiplicacion(5, 3));
+console.log(multiplicacion(20, 2));
+console.log(multiplicacion(colon, dolar));
+
+// Nota: La return le dice al navegador que devuelva la variable de result fuera de la función para que esté disponible para su uso. Esto es necesario porque las variables definidas dentro de las funciones solo están disponibles dentro de esas funciones. Esto se denomina alcance variable. (Lea más sobre el alcance de las variables. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variable_scope )
+
+// Eventos #00aae4
+// La interactividad real en un sitio web requiere controladores de eventos. Estas son estructuras de código que escuchan la actividad en el navegador y ejecutan código en respuesta. El ejemplo más obvio es el manejo del evento click, que es activado por el navegador cuando hace clic en algo con el mouse. Para demostrarlo, introduzca lo siguiente en la consola y, a continuación, haga clic en la página web actual:
+
+document.querySelector(".div_1").addEventListener("click", function () {
+  alert("Has hecho click en el cuadro azul");
+});
+
+// Hay muchas maneras de adjuntar un controlador de eventos a un elemento. Aquí seleccionamos el elemento <html>. Luego llamamos a su función addEventListener() pasando el nombre del evento a escuchar ('click') y una función para ejecutar cuando ocurra el evento.
+
+// Tenga en cuenta que el codigo anterior es equivalente a:
+
+let miCuadroRojo = document.querySelector(".div_2");
+
+miCuadroRojo.addEventListener("click", function () {
+  alert("Has hecho click en el cuadro rojo");
+});
+
+// Es simplemente más corto.
+
+// Las funciones que acabamos de pasar a addEventListener() aquí se llaman funciones anónimas, porque no tienen un nombre. Hay una forma alternativa de escribir funciones anónimas, que llamamos función de flecha. Una función de flecha usa () => en lugar de function ():
+
+let miCuadroVerde = document.querySelector(".div_3");
+
+miCuadroVerde.addEventListener("click", () => {
+  alert("has hecho click en el cuadro verde");
+});

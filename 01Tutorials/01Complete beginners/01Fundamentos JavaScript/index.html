@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1 style="text-align: center; font-size: 60px;"></h1>
+    <style>
+      .div_1,
+      .div_2,
+      .div_3 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        cursor: pointer;
+      }
+
+      .div_1 {
+        background-color: blue;
+      }
+
+      .container_2 {
+        display: flex;
+        justify-content: center;
+        column-gap: 50px;
+      }
+
+      .div_3 {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1 style="font-size: 60px"></h1>
+      <h2 class="h2_1" style="font-size: 45px"></h2>
+    </div>
+    <div class="container_2">
+      <div class="div_1"></div>
+      <div class="div_2"></div>
+      <div class="div_3"></div>
+    </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
