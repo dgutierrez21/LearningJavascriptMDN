@@ -267,3 +267,108 @@ let miCuadroVerde = document.querySelector(".div_3");
 miCuadroVerde.addEventListener("click", () => {
   alert("has hecho click en el cuadro verde");
 });
+
+// Sobrealimentación de nuestro sitio web de ejemplo #008000
+// Con esta revisión de los conceptos básicos de JavaScript completada (arriba), agreguemos algunas características nuevas a nuestro sitio de ejemplo.
+
+// Antes de continuar, elimine el contenido actual de su archivo main.js, el bit que agregó anteriormente durante el ejemplo "¡Hola mundo!", y guarde el archivo vacío. Si no lo hace, el código existente chocará con el nuevo código que está a punto de agregar.
+
+// Agregar un cambiador de imagen #00aae4
+// En esta sección, aprenderá a usar las características de JavaScript y DOM API para alternar la visualización de una de las dos imágenes. Este cambio se producirá cuando un usuario haga clic en la imagen mostrada.
+
+// 1. Elija una imagen que desee incluir en su sitio de ejemplo. Idealmente, la imagen tendrá el mismo tamaño que la imagen que agregó anteriormente, o lo más cerca posible.
+
+// 2. Guarde esta imagen en la carpeta images.
+
+// 3. Cambie el nombre de la imagen firefox2.png.
+
+// 4. Agregue el siguiente código JavaScript a su archivo main.js
+
+const myImage = document.querySelector(".container_3 img"),
+  jsLogo =
+    "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+  swiftLogo =
+    "https://upload.wikimedia.org/wikipedia/commons/9/9d/Swift_logo.svg";
+
+myImage.onclick = () => {
+  const mySrc = myImage.getAttribute("src");
+
+  if (mySrc === jsLogo) {
+    myImage.setAttribute("src", swiftLogo);
+  } else {
+    myImage.setAttribute("src", jsLogo);
+  }
+};
+
+// 5. Guarde todos los archivos y cargue index.html en el navegador. Ahora, cuando haga clic en la imagen, debería cambiar a la otra.
+
+// Esto es lo que sucedió. Ha almacenado una referencia al elemento <img> en la variable myImage. A continuación, hizo que la propiedad del controlador de eventos onclick de esta variable fuera igual a una función sin nombre (una función "anónima"). Así que cada vez que se hace clic en este elemento:
+
+// 1. El código recupera el valor del atributo src de la imagen.
+
+// 2. El código utiliza un condicional para comprobar si el valor src es igual a la ruta de acceso de la imagen original:
+
+// 2.1 Si es así, el código cambia el valor src a la ruta de la segunda imagen, lo que obliga a cargar la otra imagen dentro del elemento <img>.
+
+// 2.2 Si no lo es (lo que significa que ya debe haber cambiado), el valor src vuelve a la ruta de la imagen original, al estado original.
+
+// Agregar un mensaje de bienvenida personalizado #00aae4
+// A continuación, cambiemos el título de la página a un mensaje de bienvenida personalizado cuando el usuario visite el sitio por primera vez. Este mensaje de bienvenida persistirá. Si el usuario abandona el sitio y regresa más tarde, guardaremos el mensaje utilizando la API de almacenamiento web. También incluiremos una opción para cambiar el usuario, y por lo tanto, el mensaje de bienvenida.
+
+// 1. En index.html, agregue la línea siguiente justo antes del elemento <script>:
+
+// 2. En main.js, coloque el siguiente código en la parte inferior del archivo, exactamente como está escrito. Esto toma referencias al nuevo botón y al encabezado, almacenando cada una de las variables internas:
+
+let myButton = document.querySelector(".btnCambiarUsuario"),
+  myHeading2 = document.querySelector(".h2_2");
+
+// 3. Agregue la siguiente función para establecer el saludo personalizado. Esto aún no hará nada, pero esto cambiará pronto.
+
+// codigo inicial
+
+// function setNombreUsuario() {
+//   const myName = prompt("Por favor, ingrese su nombre.");
+//   localStorage.setItem("name", myName);
+//   myHeading2.textContent = `Mozilla es cool, ${myName}`;
+// }
+
+// codigo actualizado
+
+function setNombreUsuario() {
+  const myName = prompt("Por favor, ingrese su nombre.");
+
+  if (!myName) {
+    setNombreUsuario();
+  } else {
+    localStorage.setItem("name", myName);
+    myHeading2.textContent = `Mozilla es cool, ${myName}`;
+  }
+}
+
+// En lenguaje humano, esto significa: Si myName no tiene valor, ejecute setUserName() nuevamente desde el principio. Si tiene un valor (si la instrucción anterior no es verdadera), almacene el valor en localStorage y establézcalo como texto del encabezado.
+
+// La función setUserName() contiene una función prompt()), que muestra un cuadro de diálogo, similar a alert(). Esta función prompt() hace más que alert(), pidiendo al usuario que introduzca datos y almacenándolos en una variable después de que el usuario haga clic en Aceptar. En este caso, le pedimos al usuario que introduzca un nombre. A continuación, el código llama a una API localStorage, que nos permite almacenar datos en el navegador y recuperarlos más tarde. Utilizamos la función setItem() de localStorage para crear y almacenar un elemento de datos llamado 'name', estableciendo su valor en la variable myName que contiene la entrada del usuario para el nombre. Finalmente, establecemos el textContent del encabezado en una cadena, más el nombre recién almacenado del usuario.
+
+// 4. Agregue el siguiente bloque de condiciones. Podríamos llamar a este código de inicialización, ya que estructura la aplicación cuando se carga por primera vez.
+
+if (!localStorage.getItem("name")) {
+  setNombreUsuario();
+} else {
+  const storedName = localStorage.getItem("name");
+  myHeading2.textContent = `Mozilla es cool, ${storedName}`;
+}
+
+// Esta primera línea de este bloque utiliza el operador de negación (no lógico, representado por el !) para comprobar si los datos del name existen. De lo contrario, se ejecuta la función setUserName() para crearla. Si existe (es decir, el usuario estableció un nombre de usuario durante una visita anterior), recuperamos el nombre almacenado usando getItem() y establecemos el textContent del encabezado en una cadena, más el nombre del usuario, como hicimos dentro de setUserName().
+
+// 5. Coloque este onclick (abajo) en el botón. Cuando se hace clic, se ejecuta setUserName()). Esto permite al usuario introducir un nombre diferente pulsando el botón.
+
+myButton.onclick = () => {
+  setNombreUsuario();
+};
+
+// ¿Un nombre de usuario de null? #00aae4
+// Cuando ejecute el ejemplo y obtenga el cuadro de diálogo que le pide que escriba su nombre de usuario, intente presionar el botón Cancelar. Deberías terminar con un título que diga Mozilla es genial, nulo. Esto sucede porque, al cancelar el mensaje, el valor se establece como null. Null es un valor especial en JavaScript que se refiere a la ausencia de un valor.
+
+// Además, intente hacer clic en Aceptar sin ingresar un nombre. Deberías terminar con un título que diga Mozilla es genial, por razones bastante obvias.
+
+// Para evitar estos problemas, puede comprobar que el usuario no ha introducido un nombre en blanco. Actualice la función setNombreUsuario() a esto:

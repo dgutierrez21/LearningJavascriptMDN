@@ -19,7 +19,8 @@
         background-color: blue;
       }
 
-      .container_2 {
+      .container_2,
+      .container_3 {
         display: flex;
         justify-content: center;
         column-gap: 50px;
@@ -27,6 +28,27 @@
 
       .div_3 {
         background-color: green;
+      }
+
+      .container_3 {
+        margin: 50px 0;
+        height: 100px;
+      }
+
+      .container_3 img {
+        cursor: pointer;
+      }
+
+      .btn {
+        padding: 15px;
+        border-radius: 15px;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+
+      .container_4 {
+        text-align: center;
       }
     </style>
   </head>
@@ -40,6 +62,18 @@
       <div class="div_2"></div>
       <div class="div_3"></div>
     </div>
+
+    <div class="container_3">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+      />
+    </div>
+
+    <div class="container_4">
+      <button class="btn btnCambiarUsuario">Cambiar Usuario</button>
+    </div>
+    <h2 class="h2_2" style="font-size: 45px; text-align: center"></h2>
+
     <script src="main.js"></script>
   </body>
 </html>
