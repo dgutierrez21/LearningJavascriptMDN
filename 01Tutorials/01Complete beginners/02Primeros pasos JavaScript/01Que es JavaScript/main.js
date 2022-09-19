@@ -114,3 +114,125 @@ function updateName() {
 // La palabra dinámica se usa para describir tanto JavaScript del lado del cliente como los lenguajes del lado del servidor: se refiere a la capacidad de actualizar la visualización de una página web / aplicación para mostrar diferentes cosas en diferentes circunstancias, generando nuevo contenido según sea necesario. El código del lado del servidor genera dinámicamente nuevo contenido en el servidor, por ejemplo, extrayendo datos de una base de datos, mientras que JavaScript del lado del cliente genera dinámicamente nuevo contenido dentro del navegador en el cliente, por ejemplo, creando una nueva tabla HTML, llenándola con datos solicitados desde el servidor y luego mostrando la tabla en una página web que se muestra al usuario. El significado es ligeramente diferente en los dos contextos, pero relacionado, y ambos enfoques (lado del servidor y lado del cliente) generalmente funcionan juntos.
 
 // Una página web sin contenido de actualización dinámica se conoce como estática: solo muestra el mismo contenido todo el tiempo.
+
+// ¿Cómo se añade JavaScript a la página? #008000
+// JavaScript se aplica a su página HTML de manera similar a CSS. Mientras que CSS utiliza elementos <link> para aplicar hojas de estilo externas y <style> para aplicar hojas de estilo internas a HTML, JavaScript solo necesita un amigo en el mundo de HTML: el elemento <script>. Aprendamos cómo funciona esto.
+
+// JavaScript interno #00aae4
+// En primer lugar, haga una copia local de nuestro archivo de ejemplo apply-javascript.html. Guárdelo en un directorio en algún lugar sensato.
+// Abra el archivo en su navegador web y en su editor de texto. Verá que el HTML crea una página web simple que contiene un botón en el que se puede hacer clic.
+// A continuación, vaya a su editor de texto y agregue lo siguiente en su cabeza, justo antes de su etiqueta </head>:
+
+// ver html...
+
+// Guarde su archivo y actualice el navegador: ahora debería ver que cuando hace clic en el botón, se genera un nuevo párrafo y se coloca debajo.
+
+// Nota: Si su ejemplo no parece funcionar, siga los pasos nuevamente y verifique que haya hecho todo bien. ¿Guardó su copia local del código de inicio como un archivo .html? ¿Agregaste tu elemento <script> justo antes de la etiqueta </head>? ¿Ingresó el JavaScript exactamente como se muestra? JavaScript distingue entre mayúsculas y minúsculas y es muy exigente, por lo que debe ingresar la sintaxis exactamente como se muestra, de lo contrario puede que no funcione.
+
+// JavaScript externo #00aae4
+// Esto funciona muy bien, pero ¿y si quisiéramos poner nuestro JavaScript en un archivo externo? Exploremos esto ahora.
+
+// En primer lugar, cree un nuevo archivo en el mismo directorio que el archivo HTML de ejemplo. Llámalo script.js: asegúrate de que tenga esa extensión de nombre de archivo .js, ya que así es como se reconoce como JavaScript.
+
+// Reemplace el elemento <script> actual por el siguiente:
+
+{
+  /* <script src="script.js" defer></script>; */
+}
+
+// Controladores javascript en línea #00aae4
+// Tenga en cuenta que a veces se encontrará con fragmentos de código JavaScript reales que viven dentro de HTML. Podría verse algo como esto:
+
+{
+  /* <button onclick="createParagraph()">Click me!</button>; */
+}
+
+// Sin embargo, por favor, no hagas esto. Es una mala práctica contaminar su HTML con JavaScript, y es ineficiente: tendría que incluir el atributo onclick="createParagraph()" en cada botón al que desea que se aplique JavaScript.
+
+// Uso de addEventListener en su lugar #00aae4
+// En lugar de incluir JavaScript en su HTML, use una construcción de JavaScript pura. La función querySelectorAll() permite seleccionar todos los botones de una página. A continuación, puede recorrer los botones en bucle, asignando un controlador para cada uno mediante addEventListener(). El código para esto se muestra a continuación:
+
+// const buttons = document.querySelectorAll("button");
+
+// for (const button of buttons) {
+//   button.addEventListener("click", createParagraph);
+// }
+
+// Esto puede ser un poco más largo que el atributo onclick, pero funcionará para todos los botones, sin importar cuántos estén en la página, ni cuántos se agreguen o eliminen. No es necesario cambiar el JavaScript.
+
+// Nota: Intente editar su versión de apply-javascript.html y agregue algunos botones más al archivo. Cuando vuelva a cargar, debería encontrar que todos los botones cuando se hace clic crearán un párrafo. Prolijo, ¿eh?
+
+// Estrategias de carga de scripts #00aae4
+// Hay una serie de problemas relacionados con la carga de scripts en el momento adecuado. ¡Nada es tan simple como parece! Un problema común es que todo el HTML de una página se carga en el orden en que aparece. Si está utilizando JavaScript para manipular elementos de la página (o, más exactamente, el modelo de objetos de documento), el código no funcionará si el JavaScript se carga y analiza antes del HTML al que está intentando hacer algo.
+
+// En los ejemplos de código anteriores, en los ejemplos internos y externos, JavaScript se carga y se ejecuta en el encabezado del documento, antes de analizar el cuerpo HTML. Esto podría causar un error, por lo que hemos utilizado algunas construcciones para evitarlo.
+
+// En el ejemplo interno, puede ver esta estructura alrededor del código:
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   // …
+// });
+
+// Este es un detector de eventos, que escucha el evento DOMContentLoaded del navegador, lo que significa que el cuerpo HTML está completamente cargado y analizado. El JavaScript dentro de este bloque no se ejecutará hasta después de que se active ese evento, por lo tanto, se evita el error (aprenderá sobre los eventos más adelante en el curso).
+
+// En el ejemplo externo, utilizamos una característica de JavaScript más moderna para resolver el problema, el atributo defer, que le dice al navegador que continúe descargando el contenido HTML una vez que se haya alcanzado el elemento <script>.
+
+{
+  /* <script src="script.js" defer></script>; */
+}
+
+// En este caso, tanto el script como el HTML se cargarán simultáneamente y el código funcionará.
+
+// Nota: En el caso externo, no necesitábamos usar el evento DOMContentLoaded porque el atributo defer resolvió el problema por nosotros. No usamos la solución defer para el ejemplo interno de JavaScript porque defer solo funciona para scripts externos.
+
+// #FF0000
+// Una solución anticuada a este problema solía ser colocar su elemento de script justo en la parte inferior del cuerpo (por ejemplo, justo antes de la etiqueta </body>), para que se cargara después de que se haya analizado todo el HTML. El problema con esta solución es que la carga / análisis del script está completamente bloqueado hasta que se haya cargado el DOM HTML. En sitios más grandes con mucho JavaScript, esto puede causar un problema de rendimiento importante, ralentizando su sitio.
+
+// asincrónica y aplazar #00aae4
+// En realidad, hay dos características modernas que podemos usar para evitar el problema del script de bloqueo: async y defer (que vimos anteriormente). Veamos la diferencia entre estos dos.
+
+// Los scripts cargados con el atributo async descargarán el script sin bloquear la página mientras se obtiene el script. Sin embargo, una vez que se complete la descarga, se ejecutará el script, lo que bloquea la representación de la página. No obtiene ninguna garantía de que los scripts se ejecutarán en un orden específico. Es mejor usar async cuando los scripts de la página se ejecutan independientemente entre sí y no dependen de ningún otro script en la página.
+
+// Los scripts cargados con el atributo defer se cargarán en el orden en que aparecen en la página. No se ejecutarán hasta que el contenido de la página se haya cargado, lo cual es útil si sus scripts dependen de que el DOM esté en su lugar (por ejemplo, modifican uno o más elementos de la página).
+
+// Aquí hay una representación visual de los diferentes métodos de carga de scripts y lo que eso significa para su página:
+
+// ver Imagen...
+
+// Por ejemplo, si tiene los siguientes elementos de script:
+
+{
+  /* <script async src="js/vendor/jquery.js"></script>
+
+<script async src="js/script2.js"></script>
+
+<script async src="js/script3.js"></script> */
+}
+
+// No puede confiar en el orden en que se cargarán los scripts. jquery.js puede cargarse antes o después script2.js y script3.js y si este es el caso, cualquier función en esos scripts dependiendo de jquery producirá un error porque jquery no se definirá en el momento en que se ejecute el script.
+
+// async debe usarse cuando tiene un montón de scripts en segundo plano para cargar y solo desea ponerlos en su lugar lo antes posible. Por ejemplo, tal vez tenga algunos archivos de datos del juego para cargar, que serán necesarios cuando el juego realmente comience, pero por ahora solo desea continuar mostrando la introducción del juego, los títulos y el lobby, sin que estén bloqueados por la carga del script.
+
+// Los scripts cargados con el atributo defer (ver más abajo) se ejecutarán en el orden en que aparecen en la página y los ejecutarán tan pronto como se descarguen el script y el contenido:
+
+{
+  /* <script defer src="js/vendor/jquery.js"></script>
+
+<script defer src="js/script2.js"></script>
+
+<script defer src="js/script3.js"></script> */
+}
+
+// En el segundo ejemplo, podemos estar seguros de que jquery.js se cargará antes script2.js y script3.js y que script2.js se cargará antes script3.js. No se ejecutarán hasta que el contenido de la página se haya cargado, lo cual es útil si sus scripts dependen de que el DOM esté en su lugar (por ejemplo, modifican uno de los elementos más de la página).
+
+// Para resumir:
+
+// async y defer ambos indican al navegador que descargue los scripts en un hilo separado, mientras que el resto de la página (el DOM, etc.) se está descargando, por lo que la carga de la página no se bloquea durante el proceso de búsqueda.
+
+// los scripts con async se ejecutarán tan pronto como se complete la descarga. Esto bloquea la página y no garantiza ninguna orden de ejecución específica.
+
+// los scripts con un atributo defer se cargarán en el orden en que se encuentran y solo se ejecutarán una vez que todo haya terminado de cargarse.
+
+// Si sus scripts deben ejecutarse inmediatamente y no tienen ninguna dependencia, use async.
+
+// Si sus scripts necesitan esperar para el análisis y dependen de que otros scripts y / o el DOM esté en su lugar, cárguelos usando defer y coloque sus elementos <script> en el orden en que desea que el navegador los ejecute.

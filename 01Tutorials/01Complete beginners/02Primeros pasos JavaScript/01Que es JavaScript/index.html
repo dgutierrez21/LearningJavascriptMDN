@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <style>
-      .container_1 {
+      .container {
         text-align: center;
       }
 
@@ -25,12 +25,43 @@
         display: inline-block;
         cursor: pointer;
       }
+
+      .btn {
+        background-color: red;
+        color: white;
+        padding: 15px;
+        font-size: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+      }
     </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function crearParrafo() {
+          const para = document.createElement("p");
+          para.textContent = "¡Has pulsado el botón!";
+          document.body.appendChild(para);
+        }
+
+        const buttons = document.querySelectorAll(".btn");
+
+        for (const button of buttons) {
+          button.addEventListener("click", crearParrafo);
+        }
+      });
+    </script>
+
+    <script src="main.js" defer></script>
   </head>
   <body>
     <div class="container container_1">
       <p>Player 1: Chris</p>
     </div>
-    <script src="main.js"></script>
+    <div class="container">
+      <button class="btn btn_1">Boton</button>
+      <button class="btn btn_1">Boton</button>
+      <button class="btn btn_1">Boton</button>
+    </div>
   </body>
 </html>
