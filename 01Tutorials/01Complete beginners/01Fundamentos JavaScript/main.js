@@ -332,21 +332,6 @@ let myButton = document.querySelector(".btnCambiarUsuario"),
 //   myHeading2.textContent = `Mozilla es cool, ${myName}`;
 // }
 
-// codigo actualizado
-
-function setNombreUsuario() {
-  const myName = prompt("Por favor, ingrese su nombre.");
-
-  if (!myName) {
-    setNombreUsuario();
-  } else {
-    localStorage.setItem("name", myName);
-    myHeading2.textContent = `Mozilla es cool, ${myName}`;
-  }
-}
-
-// En lenguaje humano, esto significa: Si myName no tiene valor, ejecute setUserName() nuevamente desde el principio. Si tiene un valor (si la instrucción anterior no es verdadera), almacene el valor en localStorage y establézcalo como texto del encabezado.
-
 // La función setUserName() contiene una función prompt()), que muestra un cuadro de diálogo, similar a alert(). Esta función prompt() hace más que alert(), pidiendo al usuario que introduzca datos y almacenándolos en una variable después de que el usuario haga clic en Aceptar. En este caso, le pedimos al usuario que introduzca un nombre. A continuación, el código llama a una API localStorage, que nos permite almacenar datos en el navegador y recuperarlos más tarde. Utilizamos la función setItem() de localStorage para crear y almacenar un elemento de datos llamado 'name', estableciendo su valor en la variable myName que contiene la entrada del usuario para el nombre. Finalmente, establecemos el textContent del encabezado en una cadena, más el nombre recién almacenado del usuario.
 
 // 4. Agregue el siguiente bloque de condiciones. Podríamos llamar a este código de inicialización, ya que estructura la aplicación cuando se carga por primera vez.
@@ -372,3 +357,18 @@ myButton.onclick = () => {
 // Además, intente hacer clic en Aceptar sin ingresar un nombre. Deberías terminar con un título que diga Mozilla es genial, por razones bastante obvias.
 
 // Para evitar estos problemas, puede comprobar que el usuario no ha introducido un nombre en blanco. Actualice la función setNombreUsuario() a esto:
+
+// codigo actualizado
+
+function setNombreUsuario() {
+  const myName = prompt("Por favor, ingrese su nombre.");
+
+  if (!myName) {
+    setNombreUsuario();
+  } else {
+    localStorage.setItem("name", myName);
+    myHeading2.textContent = `Mozilla es cool, ${myName}`;
+  }
+}
+
+// En lenguaje humano, esto significa: Si myName no tiene valor, ejecute setUserName() nuevamente desde el principio. Si tiene un valor (si la instrucción anterior no es verdadera), almacene el valor en localStorage y establézcalo como texto del encabezado.
