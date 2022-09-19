@@ -1,0 +1,2 @@
+// Conceptos básicos de JavaScript #ff0
+// JavaScript es un lenguaje de programación que agrega interactividad a su sitio web. Esto sucede en los juegos, en el comportamiento de las respuestas cuando se presionan botones o con la entrada de datos en los formularios; con estilo dinámico; con animación, etc. Este artículo le ayuda a comenzar con JavaScript y mejora su comprensión de lo que es posible.
