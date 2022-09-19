@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding: 0 20vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+
+.container h1 {
+  font-size: 60px;
+}
+
+.container p {
+  margin: 15px 0;
+  font-size: 30px;
+}
+
+.container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.container form label,
+.container form input,
+.container form button {
+  font-size: 25px;
+}
+
+.container form button {
+  padding: 10px;
+}

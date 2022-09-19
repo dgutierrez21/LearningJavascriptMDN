@@ -5,10 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
   </head>
   <body>
-  
+    <main>
+      <div class="container">
+        <h1>Juego de adivinar números</h1>
+        <p>
+          Hemos seleccionado un número al azar entre el 1 y el 100. A ver si
+          eres capaz de adivinarlo en 10 turnos o menos. Te diremos si tu
+          respuesta es demasiado alta o demasiado baja.
+        </p>
+        <form action="#">
+          <label for="number">Introduce un número:</label>
+          <input type="number" name="number" id="number" />
+          <button type="submit">Enviar adivinanza</button>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

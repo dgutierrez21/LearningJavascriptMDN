@@ -55,3 +55,8 @@
 // 9. Una vez que el juego se reinicie, asegúrate de que la lógica del juego y la interfaz de usuario estén completamente restablecidas, luego vuelve al paso 1.
 
 // Avancemos ahora, viendo cómo podemos convertir estos pasos en código, construyendo el ejemplo y explorando las características de JavaScript a medida que avanzamos.
+
+// Configuración inicial #00aae4
+// Para comenzar este tutorial, nos gustaría que hicieras una copia local del archivo number-guessing-game-start.html (véalo en vivo aquí). Ábrelo tanto en tu editor de texto como en tu navegador web. Por el momento, verá un encabezado simple, un párrafo de instrucciones y un formulario para ingresar una suposición, pero el formulario actualmente no hará nada.
+
+// El lugar donde agregaremos todo nuestro código es dentro del elemento <script> en la parte inferior del HTML:
