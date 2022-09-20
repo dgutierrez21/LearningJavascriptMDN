@@ -89,3 +89,20 @@
 // En ese momento, el juego vuelve a fallar, y se escupe el mismo error que obtuvimos al principio: "TypeError: resetButton.addeventListener no es una función". Sin embargo, esta vez aparece como proveniente de la línea 94.
 
 // Mirando la línea número 94, es fácil ver que hemos cometido el mismo error aquí. De nuevo, solo necesitamos cambiar addeventListener a addEventListener. Haz esto ahora.
+
+// Un error lógico #008000
+// En este punto, el juego debería funcionar bien, sin embargo, después de jugar un par de veces, sin duda notará que el número "aleatorio" que debe adivinar siempre es 1. ¡Definitivamente no es exactamente cómo queremos que se desarrolle el juego!
+
+// Definitivamente hay un problema en la lógica del juego en alguna parte: el juego no devuelve un error; simplemente no está jugando bien.
+
+// Busque la variable randomNumber y las líneas donde se establece por primera vez el número aleatorio. La instancia que almacena el número aleatorio que queremos adivinar al inicio del juego debe estar alrededor de la línea número 45:
+
+// let randomNumber = Math.floor(Math.random()) + 1;
+
+// Y el que genera el número aleatorio antes de cada juego posterior es alrededor de la línea 113:
+
+// randomNumber = Math.floor(Math.random()) + 1;
+
+// Para verificar si estas líneas son realmente el problema, pasemos a nuestra consola de amigosconsole.log() nuevamente: inserte la siguiente línea directamente debajo de cada una de las dos líneas anteriores:
+
+// Guarde y actualice, luego juegue algunos juegos: verá que randomNumber es igual a 1 en cada punto donde se registra en la consola.
