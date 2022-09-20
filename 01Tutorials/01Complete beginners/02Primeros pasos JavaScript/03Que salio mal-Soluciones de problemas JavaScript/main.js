@@ -82,3 +82,10 @@
 // Intente guardar y actualizar de nuevo, y la console.log() debería devolver el elemento <p> que queremos. ¡Ufff! ¡Otro error corregido! Puede eliminar la línea console.log() ahora o mantenerla para que haga referencia más adelante, su elección.
 
 // Nota: Consulte nuestra página de referencia TypeError: "x" es (no) "y" para obtener más detalles sobre este error.
+
+// Errores de sintaxis ronda tres #00aae4
+// Ahora, si intentas jugar el juego de nuevo, deberías tener más éxito: el juego debería funcionar absolutamente bien, hasta que termines el juego, ya sea adivinando el número correcto o quedándote sin conjeturas.
+
+// En ese momento, el juego vuelve a fallar, y se escupe el mismo error que obtuvimos al principio: "TypeError: resetButton.addeventListener no es una función". Sin embargo, esta vez aparece como proveniente de la línea 94.
+
+// Mirando la línea número 94, es fácil ver que hemos cometido el mismo error aquí. De nuevo, solo necesitamos cambiar addeventListener a addEventListener. Haz esto ahora.
