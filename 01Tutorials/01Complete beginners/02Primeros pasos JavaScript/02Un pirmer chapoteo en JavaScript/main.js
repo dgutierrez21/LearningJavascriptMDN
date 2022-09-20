@@ -70,8 +70,8 @@ const adivinanzas = document.querySelector(".adivinanzas"),
   ultimoResultado = document.querySelector(".ultimoResultado"),
   bajoOAlto = document.querySelector(".bajoOAlto");
 
-const enviarAdivinanza = document.querySelector("enviarAdivinanza"),
-  campoAdivinanza = document.querySelector("campoAdivinanza");
+const enviarAdivinanza = document.querySelector(".enviarAdivinanza"),
+  campoAdivinanza = document.querySelector(".campoAdivinanza");
 
 let contadorAdivinanza = 1,
   resetButton;
