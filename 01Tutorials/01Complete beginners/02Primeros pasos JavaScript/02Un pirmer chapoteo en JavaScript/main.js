@@ -203,3 +203,14 @@ function checkAdivinanza() {
 // El bloque final encadenado al final de este código (el else { }) contiene código que solo se ejecuta si ninguna de las otras dos pruebas devuelve true (es decir, el jugador no adivinó bien, pero le quedan más conjeturas). En este caso les decimos que están equivocados, luego realizamos otra prueba condicional para comprobar si la conjetura era mayor o menor que la respuesta, mostrando un mensaje adicional según corresponda para decirles más alto o más bajo.
 
 // Las últimas tres líneas de la función (líneas 26-28 anteriores) nos preparan para la siguiente suposición que se enviará. Agregamos 1 a la variable guessCount para que el jugador use su turno (++ es una operación de incremento, incremento en 1), y vaciamos el valor del campo de texto del formulario y lo enfocamos nuevamente, listo para que se ingrese la siguiente suposición.
+
+// Eventos #00aae4
+// En este punto, tenemos una función checkAdivinanza() bien implementada, pero no hará nada porque aún no la hemos llamado. Idealmente, queremos llamarlo cuando se presiona el botón "Enviar conjetura", y para hacer esto necesitamos usar un evento. Los eventos son cosas que suceden en el navegador (un botón en el que se hace clic, una página que se carga, una reproducción de video, etc.) en respuesta a la cual podemos ejecutar bloques de código. Los detectores de eventos observan eventos específicos y llaman a controladores de eventos, que son bloques de código que se ejecutan en respuesta a un evento que se activa.
+
+// Agregue la siguiente línea debajo de la función checkAdivinanza()):
+
+enviarAdivinanza.addEventListener("click", checkAdivinanza);
+
+// Aquí estamos agregando un detector de eventos al botón guessSubmit. Este es un método que toma dos valores de entrada (llamados argumentos): el tipo de evento que estamos escuchando (en este casoclick) como una cadena y el código que queremos ejecutar cuando ocurra el evento (en este caso, la función checkGuess()). Tenga en cuenta que no es necesario especificar los paréntesis al escribirlo dentro de addEventListener().
+
+// Intente guardar y actualizar su código ahora, y su ejemplo debería funcionar, hasta cierto punto. El único problema ahora es que si adivinas la respuesta correcta o te quedas sin conjeturas, el juego se romperá porque aún no hemos definido la función setGameOver() que se supone que se ejecutará una vez que termine el juego. Agreguemos nuestro código faltante ahora y completemos la funcionalidad de ejemplo.
