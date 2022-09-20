@@ -314,3 +314,24 @@ function reiniciarJuego() {
 // Este código crea una variable que contiene una lista de todos los párrafos dentro <div class="resultParas"> utilizando el método querySelectorAll() luego recorre cada uno de ellos, eliminando el contenido de texto de cada uno.
 
 // Tenga en cuenta que aunque resetParas es una constante, podemos cambiar sus propiedades internas como textContent.
+
+// Una pequeña discusión sobre objetos #008000
+// Agreguemos una mejora final más antes de llegar a esta discusión. Agregue la siguiente línea justo debajo de la línea let resetButton; cerca de la parte superior de su JavaScript, luego guarde su archivo:
+
+campoAdivinanza.focus();
+
+// Esta línea utiliza el método focus() para colocar automáticamente el cursor de texto en el campo <input> tan pronto como se cargue la página, lo que significa que el usuario puede comenzar a escribir su primera suposición de inmediato, sin tener que hacer clic primero en el campo de formulario. Es solo una pequeña adición, pero mejora la usabilidad, dando al usuario una buena pista visual sobre lo que tiene que hacer para jugar el juego.
+
+// Analicemos lo que está sucediendo aquí con un poco más de detalle. En JavaScript, la mayoría de los elementos que manipulará en su código son objetos. Un objeto es una colección de funcionalidad relacionada almacenada en una sola agrupación. Puedes crear tus propios objetos, pero eso es bastante avanzado y no lo cubriremos hasta mucho más adelante en el curso. Por ahora, solo discutiremos brevemente los objetos incorporados que contiene su navegador, que le permiten hacer muchas cosas útiles.
+
+// En este caso particular, primero creamos una constante guessField que almacena una referencia al campo de formulario de entrada de texto en nuestro HTML: la siguiente línea se puede encontrar entre nuestras declaraciones cerca de la parte superior del código:
+
+// campoAdivinanza = document.querySelector(".campoAdivinanza");
+
+// Para obtener esta referencia, utilizamos el método querySelector() del objeto document. querySelector() toma una pieza de información: un selector CSS que selecciona el elemento al que desea una referencia.
+
+// Debido a que guessField ahora contiene una referencia a un elemento <input>, ahora tiene acceso a una serie de propiedades (básicamente variables almacenadas dentro de objetos, algunas de las cuales no pueden cambiar sus valores) y métodos (básicamente funciones almacenadas dentro de objetos). Un método disponible para los elementos de entrada es focus(), por lo que ahora podemos usar esta línea para enfocar la entrada de texto:
+
+// guessField.focus();
+
+// Las variables que no contengan referencias a elementos de formulario no tendrán focus() disponible para ellos. Por ejemplo, la constante adivinanzas contiene una referencia a un elemento <p> y la variable contadorAdivinanza contiene un número.
