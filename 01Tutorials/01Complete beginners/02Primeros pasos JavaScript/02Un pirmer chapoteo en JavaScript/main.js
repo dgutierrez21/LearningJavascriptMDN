@@ -167,6 +167,7 @@ function checkAdivinanza() {
   } else if (contadorAdivinanza === 10) {
     ultimoResultado.textContent = "SE ACABÓ EL JUEGO.";
     bajoOAlto.textContent = "";
+    setJuegoTerminado();
   } else {
     ultimoResultado.textContent = "Equivocado.";
     ultimoResultado.style.backgroundColor = "red";
@@ -219,13 +220,13 @@ enviarAdivinanza.addEventListener("click", checkAdivinanza);
 // Agreguemos esa función setGameOver() a la parte inferior de nuestro código y luego recorrámosla. Agregue esto ahora, debajo del resto de su JavaScript:
 
 function setJuegoTerminado() {
-  const main = document.querySelector("main");
+  const container = document.querySelector(".container");
 
   campoAdivinanza.disabled = true;
   enviarAdivinanza.disabled = true;
   resetButton = document.createElement("button");
   resetButton.textContent = "Iniciar Nuevo Juego";
-  main.append(resetButton);
+  container.appendChild(resetButton);
   resetButton.addEventListener("click", reiniciarJuego);
 }
 
@@ -237,7 +238,7 @@ function setJuegoTerminado() {
 
 // ¡Ahora también tenemos que definir esta función! Agregue el siguiente código, de nuevo a la parte inferior de su JavaScript:
 
-function setJuegoTerminado() {
+function reiniciarJuego() {
   contadorAdivinanza = 1;
 
   const reiniciarParrafos = document.querySelectorAll(".containerResultados p");
