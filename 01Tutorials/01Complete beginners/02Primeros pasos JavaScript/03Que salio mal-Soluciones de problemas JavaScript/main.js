@@ -125,3 +125,53 @@
 // Math.floor(Math.random() * 100) + 1;
 
 // Intente actualizar ambas líneas de esta manera, luego guarde y actualice: ¡el juego ahora debería jugarse como lo pretendemos!
+
+// Otros errores comunes #008000
+// Hay otros errores comunes que encontrarás en tu código. Esta sección destaca la mayoría de ellos
+
+// SyntaxError: falta ; antes de la declaración #00aae4
+// Este error generalmente significa que ha perdido un punto y coma al final de una de sus líneas de código, pero a veces puede ser más críptico. Por ejemplo, si cambiamos esta línea dentro de la función checkGuess()):
+
+// const userGuess = Number(guessField.value);
+
+// Para
+
+// const userGuess === Number(guessField.value);
+
+// Arroja este error porque cree que estás tratando de hacer algo diferente. Debe asegurarse de no mezclar el operador de asignación (=), que establece que una variable es igual a un valor, con el operador de igualdad estricta (===), que prueba si un valor es igual a otro y devuelve un resultado true/false.
+
+// Nota: Consulte nuestra página de referencia SyntaxError: missing ; before para obtener más detalles sobre este error.
+
+// El programa siempre dice que has ganado, independientemente de la suposición que introduzcas. #00aae4
+// Esto podría ser otro síntoma de la confusión entre los operadores de asignación e igualdad estricta. Por ejemplo, si tuviéramos que cambiar esta línea dentro de checkGuess():
+
+// if (userGuess === randomNumber) {
+
+// Para
+
+// if (userGuess = randomNumber) {
+
+// la prueba siempre volvería true, lo que haría que el programa informara que el juego se ha ganado. ¡Ten cuidado!
+
+// SyntaxError: falta ) después de la lista de argumentos #00aae4
+// Este es bastante simple: generalmente significa que se ha perdido el paréntesis de cierre al final de una llamada a una función / método.
+
+// Nota: Consulte nuestra página de referencia SyntaxError: missing ) after argument list para obtener más detalles sobre este error.
+
+// SyntaxError: falta : después del identificador de propiedad #00aae4
+// Este error generalmente se relaciona con un objeto JavaScript formado incorrectamente, pero en este caso logramos obtenerlo cambiando
+
+// Esto ha hecho que el navegador piense que estamos tratando de pasar el contenido de la función a la función como un argumento. ¡Cuidado con esos paréntesis!
+
+// SyntaxError: falta } después del cuerpo de la función #00aae4
+// Esto es fácil: generalmente significa que ha perdido uno de sus aparatos ortopédicos rizados de una función o estructura condicional. Obtuvimos este error al eliminar una de las llaves rizadas de cierre cerca de la parte inferior de la función checkGuess()).
+
+// SyntaxError: expresión esperada, got 'string' o SyntaxError: literal de cadena sin terminar #00aae4
+// Estos errores generalmente significan que ha dejado de lado la comillas de apertura o cierre de un valor de cadena. En el primer error anterior, la cadena se reemplazaría con los caracteres inesperados que encontró el navegador en lugar de una comillas al comienzo de una cadena. El segundo error significa que la cadena no se ha terminado con comillas.
+
+// Para todos estos errores, piense en cómo abordamos los ejemplos que vimos en el tutorial. Cuando surja un error, mire el número de línea que se le da, vaya a esa línea y vea si puede detectar lo que está mal. Tenga en cuenta que el error no necesariamente va a estar en esa línea, ¡y también que el error podría no ser causado por el mismo problema que citamos anteriormente!
+
+// Nota: Consulte nuestras páginas de referencia literal SyntaxError: Unexpected token y SyntaxError: cadena sin terminar para obtener más detalles sobre estos errores.
+
+// Resumen #00aae4
+// Así que ahí lo tenemos, los conceptos básicos para descubrir errores en programas JavaScript simples. No siempre será tan simple averiguar qué está mal en su código, pero al menos esto le ahorrará unas horas de sueño y le permitirá progresar un poco más rápido cuando las cosas no salgan bien, especialmente en las primeras etapas de su viaje de aprendizaje.
