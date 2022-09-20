@@ -214,3 +214,63 @@ enviarAdivinanza.addEventListener("click", checkAdivinanza);
 // Aquí estamos agregando un detector de eventos al botón guessSubmit. Este es un método que toma dos valores de entrada (llamados argumentos): el tipo de evento que estamos escuchando (en este casoclick) como una cadena y el código que queremos ejecutar cuando ocurra el evento (en este caso, la función checkGuess()). Tenga en cuenta que no es necesario especificar los paréntesis al escribirlo dentro de addEventListener().
 
 // Intente guardar y actualizar su código ahora, y su ejemplo debería funcionar, hasta cierto punto. El único problema ahora es que si adivinas la respuesta correcta o te quedas sin conjeturas, el juego se romperá porque aún no hemos definido la función setGameOver() que se supone que se ejecutará una vez que termine el juego. Agreguemos nuestro código faltante ahora y completemos la funcionalidad de ejemplo.
+
+// Finalización de la funcionalidad del juego #00aae4
+// Agreguemos esa función setGameOver() a la parte inferior de nuestro código y luego recorrámosla. Agregue esto ahora, debajo del resto de su JavaScript:
+
+function setJuegoTerminado() {
+  const main = document.querySelector("main");
+
+  campoAdivinanza.disabled = true;
+  enviarAdivinanza.disabled = true;
+  resetButton = document.createElement("button");
+  resetButton.textContent = "Iniciar Nuevo Juego";
+  main.append(resetButton);
+  resetButton.addEventListener("click", reiniciarJuego);
+}
+
+// Las dos primeras líneas deshabilitan la entrada de texto del formulario y el botón estableciendo sus propiedades deshabilitadas true. Esto es necesario, porque si no lo hiciéramos, el usuario podría enviar más conjeturas después de que termine el juego, lo que arruinaría las cosas.
+
+// Las siguientes tres líneas generan un nuevo elemento <button>, establecen su etiqueta de texto en "Iniciar nuevo juego" y lo agregan a la parte inferior de nuestro HTML existente.
+
+// La línea final establece un detector de eventos en nuestro nuevo botón para que cuando se haga clic en él, se ejecute una función llamada resetGame()).
+
+// ¡Ahora también tenemos que definir esta función! Agregue el siguiente código, de nuevo a la parte inferior de su JavaScript:
+
+function setJuegoTerminado() {
+  contadorAdivinanza = 1;
+
+  const reiniciarParrafos = document.querySelectorAll(".containerResultados p");
+  for (const reiniciarParrafo of reiniciarParrafos) {
+    reiniciarParrafo.textContent = "";
+  }
+
+  resetButton.parentNode.removeChild(resetButton);
+
+  campoAdivinanza.disabled = false;
+  enviarAdivinanza.disabled = false;
+  campoAdivinanza.value = "";
+  campoAdivinanza.focus();
+
+  ultimoResultado.style.backgroundColor = "white";
+
+  numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+}
+
+// Este bloque de código bastante largo restablece completamente todo a cómo estaba al comienzo del juego, para que el jugador pueda intentarlo de nuevo. Eso:
+
+// Vuelve a reducir guessCount a 1.
+
+// Vacía todo el texto de los párrafos de información. Seleccionamos todos los párrafos dentro <div class="resultParas"></div>, luego recorremos cada uno, estableciendo su textContent en '' (una cadena vacía).
+
+// Elimina el botón de reinicio de nuestro código.
+
+// Habilita los elementos del formulario y vacía y enfoca el campo de texto, listo para que se introduzca una nueva suposición.
+
+// Quita el color de fondo del último lastResult.
+
+// ¡Genera un nuevo número aleatorio para que no vuelvas a adivinar el mismo número!
+
+// En este punto, deberías tener un juego completamente funcional (simple), ¡felicidades!
+
+// Todo lo que nos queda por hacer ahora en este artículo es hablar sobre algunas otras características importantes del código que ya ha visto, aunque es posible que no se haya dado cuenta.
