@@ -275,3 +275,42 @@ function reiniciarJuego() {
 // En este punto, deberías tener un juego completamente funcional (simple), ¡felicidades!
 
 // Todo lo que nos queda por hacer ahora en este artículo es hablar sobre algunas otras características importantes del código que ya ha visto, aunque es posible que no se haya dado cuenta.
+
+// Bucles #008000
+// Una parte del código anterior que necesitamos echar un vistazo más detallado es el para... de bucle. Los bucles son un concepto muy importante en la programación, que le permiten seguir ejecutando una pieza de código una y otra vez, hasta que se cumpla una cierta condición.
+
+// Para empezar, vaya de nuevo a la consola de JavaScript de las herramientas de desarrollo de su navegador e introduzca lo siguiente:
+
+const fruits = ["apples", "bananas", "cherries"];
+
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+
+// ¿¿Qué pasó?? Las cadenas 'apples', 'bananas', 'cherries' se imprimieron en su consola.
+
+// Esto se debe al bucle. La línea const fruits = ['apples', 'bananas', 'cherries']; crea una matriz. Trabajaremos a través de una guía completa de Matrices más adelante en este módulo, pero por ahora: una matriz es una colección de elementos (en este caso cadenas).
+
+// A for...of bucle le da una forma de obtener cada elemento en la matriz y ejecutar algo de JavaScript en él. La línea for (const fruit of fruits) dice:
+
+// Consigue el primer artículo en fruits.
+// Establezca la variable fruit ese elemento y, a continuación, ejecute el código entre los corchetes {}.
+// Obtenga el siguiente elemento en fruits y repita 2, hasta que llegue al final de las fruits.
+// En este caso, el código dentro de los corchetes está escribiendo fruit en la consola.
+
+// Ahora veamos el bucle en nuestro juego de adivinanzas de números: lo siguiente se puede encontrar dentro de la función resetGame()):
+
+/*
+
+function reiniciarJuego() {
+  const reiniciarParrafos = document.querySelectorAll(".containerResultados p");
+  for (const reiniciarParrafo of reiniciarParrafos) {
+    reiniciarParrafo.textContent = "";
+  }
+}
+
+*/
+
+// Este código crea una variable que contiene una lista de todos los párrafos dentro <div class="resultParas"> utilizando el método querySelectorAll() luego recorre cada uno de ellos, eliminando el contenido de texto de cada uno.
+
+// Tenga en cuenta que aunque resetParas es una constante, podemos cambiar sus propiedades internas como textContent.
