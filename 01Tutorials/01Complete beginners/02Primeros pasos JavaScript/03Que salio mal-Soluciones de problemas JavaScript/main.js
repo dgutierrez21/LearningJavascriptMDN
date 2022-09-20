@@ -106,3 +106,22 @@
 // Para verificar si estas líneas son realmente el problema, pasemos a nuestra consola de amigosconsole.log() nuevamente: inserte la siguiente línea directamente debajo de cada una de las dos líneas anteriores:
 
 // Guarde y actualice, luego juegue algunos juegos: verá que randomNumber es igual a 1 en cada punto donde se registra en la consola.
+
+// Trabajando a través de la lógica #00aae4
+// Para solucionar esto, consideremos cómo funciona esta línea. Primero, invocamos Math.random(), que genera un número decimal aleatorio entre 0 y 1, por ejemplo, 0.5675493843.
+
+// Math.random();
+
+// A continuación, pasamos el resultado de invocar Math.random() a través Math.floor(), que redondea el número que se le ha pasado al número entero más cercano. Luego agregamos 1 a ese resultado:
+
+// Math.floor(Math.random()) + 1;
+
+// Redondear un número decimal aleatorio entre 0 y 1 hacia abajo siempre devolverá 0, por lo que agregarle 1 siempre devolverá 1. Necesitamos multiplicar el número aleatorio por 100 antes de redondearlo hacia abajo. Lo siguiente nos daría un número aleatorio entre 0 y 99:
+
+// Math.floor(Math.random() * 100);
+
+// De ahí que queramos añadir 1, para darnos un número aleatorio entre 1 y 100:
+
+// Math.floor(Math.random() * 100) + 1;
+
+// Intente actualizar ambas líneas de esta manera, luego guarde y actualice: ¡el juego ahora debería jugarse como lo pretendemos!
