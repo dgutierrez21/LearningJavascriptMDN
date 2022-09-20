@@ -335,3 +335,36 @@ campoAdivinanza.focus();
 // guessField.focus();
 
 // Las variables que no contengan referencias a elementos de formulario no tendrán focus() disponible para ellos. Por ejemplo, la constante adivinanzas contiene una referencia a un elemento <p> y la variable contadorAdivinanza contiene un número.
+
+// Jugar con objetos del navegador #008000
+// Juguemos un poco con algunos objetos del navegador.
+
+// En primer lugar, abra su programa en un navegador.
+// A continuación, abra las herramientas de desarrollo de su navegador y asegúrese de que la pestaña de la consola de JavaScript esté abierta.
+// Escriba guessField en la consola y la consola muestra que la variable contiene un elemento <input>. También notará que la consola autocompleta los nombres de los objetos que existen dentro del entorno de ejecución, ¡incluidas sus variables!
+// Ahora escriba lo siguiente:
+
+// guessField.value = 2;
+
+// La propiedad value representa el valor actual introducido en el campo de texto. Verás que al ingresar este comando, ¡hemos cambiado el texto en el campo de texto!
+
+// Ahora intente escribir guesses en la consola y presione retorno. La consola muestra que la variable contiene un elemento <p>.
+
+// Ahora intente ingresar la siguiente línea:
+// guesses.value
+
+// El explorador devuelve undefined, porque los párrafos no tienen la propiedad value.
+
+// Para cambiar el texto dentro de un párrafo, necesita la propiedad textContent en su lugar. Prueba esto:
+
+// guesses.textContent = "Where is my paragraph?";
+
+// Ahora para algunas cosas divertidas. Intente ingresar las siguientes líneas, una por una:
+
+// Ahora para algunas cosas divertidas. Intente ingresar las siguientes líneas, una por una:
+// guesses.style.backgroundColor = 'yellow';
+// guesses.style.fontSize = '200%';
+// guesses.style.padding = '10px';
+// guesses.style.boxShadow = '3px 3px 6px black';
+
+// Cada elemento de una página tiene una propiedad style, que a su vez contiene un objeto cuyas propiedades contienen todos los estilos CSS en línea aplicados a ese elemento. Esto nos permite establecer dinámicamente nuevos estilos CSS en elementos utilizando JavaScript.
