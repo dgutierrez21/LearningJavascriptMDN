@@ -97,9 +97,9 @@ let contadorAdivinanza = 1,
 // Funciones #00aae4
 // A continuación, agregue lo siguiente debajo de su JavaScript anterior:
 
-function checkAdivinanza() {
-  alert("Soy un marcador de posición");
-}
+// function checkAdivinanza() {
+//   alert("Soy un marcador de posición");
+// }
 
 // Las funciones son bloques de código reutilizables que puede escribir una vez y ejecutarse una y otra vez, ahorrando la necesidad de seguir repitiendo código todo el tiempo. Esto es realmente útil. Hay varias formas de definir funciones, pero por ahora nos concentraremos en un tipo simple. Aquí hemos definido una función usando la function de palabra clave, seguida de un nombre, con paréntesis puestos después de ella. Después de eso, ponemos dos brackets rizados ({ }). Dentro de las llaves rizadas va todo el código que queremos ejecutar cada vez que llamamos a la función.
 
@@ -145,3 +145,61 @@ function checkAdivinanza() {
 // Cuando estamos ejecutando pruebas verdaderas/falsas (por ejemplo, dentro de condicionales, ver más abajo) usamos operadores de comparación. Por ejemplo:
 
 // ver imagen...
+
+// Condicionales #00aae4
+// Volviendo a nuestra función checkAdivinanza() creo que es seguro decir que no queremos que simplemente escupa un mensaje de marcador de posición. Queremos que compruebe si la suposición de un jugador es correcta o no, y responder adecuadamente.
+
+// En este punto, reemplace su función checkAdivinanza() actual con esta versión en su lugar:
+
+function checkAdivinanza() {
+  const usuarioAdivinanza = Number(campoAdivinanza.value);
+  if (contadorAdivinanza === 1) {
+    adivinanzas.textContent = "Adivinanzas anteriores: ";
+  }
+
+  adivinanzas.textContent += `${usuarioAdivinanza} `;
+
+  if (usuarioAdivinanza === numeroAleatorio) {
+    ultimoResultado.textContent = "¡Enhorabuena! Has acertado.";
+    ultimoResultado.style.backgroundColor = "green";
+    bajoOAlto.textContent = "";
+    setJuegoTerminado();
+  } else if (contadorAdivinanza === 10) {
+    ultimoResultado.textContent = "SE ACABÓ EL JUEGO.";
+    bajoOAlto.textContent = "";
+  } else {
+    ultimoResultado.textContent = "Equivocado.";
+    ultimoResultado.style.backgroundColor = "red";
+    if (usuarioAdivinanza < numeroAleatorio) {
+      bajoOAlto.textContent = "¡La última suposición fue demasiado baja!";
+    } else if (usuarioAdivinanza > numeroAleatorio) {
+      bajoOAlto.textContent = "'¡La última suposición era demasiado alta!";
+    }
+  }
+
+  contadorAdivinanza++;
+  campoAdivinanza.value = "";
+  campoAdivinanza.focus();
+}
+
+// Esto es mucho código, ¡sobrino! Repasemos cada sección y expliquemos lo que hace.
+
+// La primera línea declara una variable denominada userGuess y establece su valor en el valor actual introducido dentro del campo de texto. También ejecutamos este valor a través del constructor Number() integrado, solo para asegurarnos de que el valor sea definitivamente un número. Como no estamos cambiando esta variable, la declararemos usando const.
+
+// A continuación, encontramos nuestro primer bloque de código condicional. Un bloque de código condicional le permite ejecutar código de forma selectiva, dependiendo de si una determinada condición es verdadera o no. Se parece un poco a una función, pero no lo es. La forma más simple de bloque condicional comienza con la palabra clave if, luego algunos paréntesis, luego algunos brackets rizados. Dentro de los paréntesis, incluimos una prueba. Si la prueba devuelve true, ejecutamos el código dentro de las llaves rizadas. Si no, no lo hacemos, y pasamos al siguiente bit de código. En este caso, la prueba está probando si la variable guessCount es igual a 1 (es decir, si este es el primer intento del jugador o no):
+
+// guessCount === 1
+
+// Si es así, hacemos que el contenido del texto del párrafo de conjeturas sea igual a Previous guesses:. Si no, no lo hacemos.
+
+// La línea 6 agrega el valor userGuess actual al final del párrafo de guesses, más un espacio en blanco para que haya un espacio entre cada conjetura que se muestra.
+
+// El siguiente bloque hace algunas comprobaciones:
+
+// El primero if (){ } comprueba si la suposición del usuario es igual al randomNumber en la parte superior de nuestro JavaScript. Si es así, el jugador ha adivinado correctamente y el juego está ganado, por lo que le mostramos un mensaje de felicitación con un bonito color verde, borramos el contenido del cuadro de información de conjeturas Baja / Alta y ejecutamos una función llamada setGameOver(), que discutiremos más adelante.
+
+// Ahora hemos encadenado otra prueba al final de la última usando una estructura else if (){ }. Este comprueba si este turno es el último turno del usuario. Si es así, el programa hace lo mismo que en el bloque anterior, excepto con un mensaje de juego en lugar de un mensaje de felicitación.
+
+// El bloque final encadenado al final de este código (el else { }) contiene código que solo se ejecuta si ninguna de las otras dos pruebas devuelve true (es decir, el jugador no adivinó bien, pero le quedan más conjeturas). En este caso les decimos que están equivocados, luego realizamos otra prueba condicional para comprobar si la conjetura era mayor o menor que la respuesta, mostrando un mensaje adicional según corresponda para decirles más alto o más bajo.
+
+// Las últimas tres líneas de la función (líneas 26-28 anteriores) nos preparan para la siguiente suposición que se enviará. Agregamos 1 a la variable guessCount para que el jugador use su turno (++ es una operación de incremento, incremento en 1), y vaciamos el valor del campo de texto del formulario y lo enfocamos nuevamente, listo para que se ingrese la siguiente suposición.
