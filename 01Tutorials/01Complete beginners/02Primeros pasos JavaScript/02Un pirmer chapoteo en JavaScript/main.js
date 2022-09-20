@@ -93,3 +93,20 @@ let contadorAdivinanza = 1,
 // Las dos constantes siguientes almacenan referencias a la entrada de texto del formulario y al botón enviar y se utilizan para controlar el envío de la suposición más adelante.
 
 // Nuestras dos últimas variables almacenan un recuento de conjeturas de 1 (utilizado para realizar un seguimiento de cuántas conjeturas ha tenido el jugador) y una referencia a un botón de reinicio que aún no existe (pero que lo hará más adelante).
+
+// Funciones #00aae4
+// A continuación, agregue lo siguiente debajo de su JavaScript anterior:
+
+function checkAdivinanza() {
+  alert("Soy un marcador de posición");
+}
+
+// Las funciones son bloques de código reutilizables que puede escribir una vez y ejecutarse una y otra vez, ahorrando la necesidad de seguir repitiendo código todo el tiempo. Esto es realmente útil. Hay varias formas de definir funciones, pero por ahora nos concentraremos en un tipo simple. Aquí hemos definido una función usando la function de palabra clave, seguida de un nombre, con paréntesis puestos después de ella. Después de eso, ponemos dos brackets rizados ({ }). Dentro de las llaves rizadas va todo el código que queremos ejecutar cada vez que llamamos a la función.
+
+// Cuando queremos ejecutar el código, escribimos el nombre de la función seguido de los paréntesis.
+
+// Vamos a intentarlo ahora. Guarde su código y actualice la página en su navegador. A continuación, vaya a la consola de JavaScript de herramientas de desarrollo e introduzca la siguiente línea:
+
+// checkGuess();
+
+// Después de presionar Return/Enter, debería ver aparecer una alerta que dice que I am a placeholder; hemos definido una función en nuestro código que crea una alerta cada vez que la llamamos.
