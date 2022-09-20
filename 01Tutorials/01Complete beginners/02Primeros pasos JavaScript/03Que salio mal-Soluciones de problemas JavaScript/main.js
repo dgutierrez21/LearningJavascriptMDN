@@ -45,3 +45,40 @@
 // Entonces, mirando esta página, el error parece ser que hemos escrito mal el nombre de la función. Recuerde que JavaScript distingue entre mayúsculas y minúsculas, por lo que cualquier ligera diferencia en la ortografía o la carcasa causará un error. Cambiar addeventListener a addEventListener debería solucionar esto. Haz esto ahora.
 
 // Nota: Consulte nuestra página TypeError: "x" no es una función de referencia para obtener más detalles sobre este error.
+
+// Errores de sintaxis ronda dos #00aae4
+// Guarde su página y actualice, y debería ver que el error ha desaparecido.
+// Ahora, si intenta ingresar una suposición y presiona el botón Enviar suposición, ¡verá otro error!
+
+// Esta vez el error que se informa es "TypeError: lowOrHi is null", en la línea 78.
+
+// Nota: Null es un valor especial que significa "nada" o "ningún valor". Así que lowOrHi ha sido declarado e inicializado, pero no con ningún valor significativo, no tiene ningún tipo o valor.
+
+// Nota: Este error no apareció tan pronto como se cargó la página porque este error se produjo dentro de una función (dentro del bloque checkGuess() { }). Como aprenderá con más detalle en nuestro artículo de funciones posterior, el código dentro de las funciones se ejecuta en un ámbito separado que las funciones de código externo. En este caso, el código no se ejecutó y el error no se produjo hasta que la función checkGuess() fue ejecutada por la línea 86.
+
+// Echa un vistazo a la línea 78 y verás el siguiente código:
+
+// lowOrHi.textContent = "Last guess was too high!";
+
+// Esta línea intenta establecer la propiedad textContent de la constante lowOrHi una cadena de texto, pero no funciona porque lowOrHi no contiene lo que se supone que debe contener. Veamos por qué es esto: intente buscar otras instancias de lowOrHi en el código. La primera instancia que encontrará en JavaScript está en la línea 49:
+
+// const lowOrHi = document.querySelector("lowOrHi");
+
+// En este punto estamos intentando que la variable contenga una referencia a un elemento en el HTML del documento. Vamos a comprobar si el valor es null después de que se haya ejecutado esta línea. Añádase el código siguiente en la línea 50:
+
+// Nota: console.log() es una función de depuración realmente útil que imprime un valor en la consola. Por lo tanto, imprimirá el valor de lowOrHi en la consola tan pronto como hayamos intentado configurarlo en la línea 49.
+
+// Guarde y actualice, y ahora debería ver el resultado console.log() en su consola.
+
+// Efectivamente, el valor de lowOrHi es null en este punto, por lo que definitivamente hay un problema con la línea 49.
+// Pensemos en cuál podría ser el problema. La línea 49 utiliza un método document.querySelector() para obtener una referencia a un elemento seleccionándolo con un selector CSS. Buscando más arriba en nuestro archivo, podemos encontrar el párrafo en cuestión:
+
+// Pensemos en cuál podría ser el problema. La línea 49 utiliza un método document.querySelector() para obtener una referencia a un elemento seleccionándolo con un selector CSS. Buscando más arriba en nuestro archivo, podemos encontrar el párrafo en cuestión:
+
+// <p class="lowOrHi"></p>
+
+// Por lo tanto, necesitamos un selector de clases aquí, que comienza con un punto (.), pero el selector que se pasa al método querySelector() en la línea 49 no tiene punto. ¡Este podría ser el problema! Intente cambiar lowOrHi a .lowOrHi en la línea 49.
+
+// Intente guardar y actualizar de nuevo, y la console.log() debería devolver el elemento <p> que queremos. ¡Ufff! ¡Otro error corregido! Puede eliminar la línea console.log() ahora o mantenerla para que haga referencia más adelante, su elección.
+
+// Nota: Consulte nuestra página de referencia TypeError: "x" es (no) "y" para obtener más detalles sobre este error.
