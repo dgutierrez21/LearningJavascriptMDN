@@ -60,3 +60,36 @@
 // Para comenzar este tutorial, nos gustaría que hicieras una copia local del archivo number-guessing-game-start.html (véalo en vivo aquí). Ábrelo tanto en tu editor de texto como en tu navegador web. Por el momento, verá un encabezado simple, un párrafo de instrucciones y un formulario para ingresar una suposición, pero el formulario actualmente no hará nada.
 
 // El lugar donde agregaremos todo nuestro código es dentro del elemento <script> en la parte inferior del HTML:
+
+// Añadir variables para almacenar nuestros datos #00aae4
+// Empecemos. En primer lugar, agregue las siguientes líneas dentro de su elemento <script>:
+
+let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+
+const adivinanzas = document.querySelector(".adivinanzas"),
+  ultimoResultado = document.querySelector(".ultimoResultado"),
+  bajoOAlto = document.querySelector(".bajoOAlto");
+
+const enviarAdivinanza = document.querySelector("enviarAdivinanza"),
+  campoAdivinanza = document.querySelector("campoAdivinanza");
+
+let contadorAdivinanza = 1,
+  resetButton;
+
+// Esta sección del código configura las variables y constantes que necesitamos para almacenar los datos que utilizará nuestro programa.
+
+// Las variables son básicamente nombres para valores (como números o cadenas de texto). Se crea una variable con la palabra clave let seguida de un nombre para la variable.
+
+// Las constantes también se usan para nombrar valores, pero a diferencia de las variables, no se puede cambiar el valor una vez establecido. En este caso, estamos utilizando constantes para almacenar referencias a partes de nuestra interfaz de usuario. El texto dentro de algunos de estos elementos puede cambiar, pero cada constante siempre hace referencia al mismo elemento HTML con el que se inicializó. Se crea una constante con la palabra clave const un nombre para la constante.
+
+// Puede asignar un valor a su variable o constante con un signo igual (=) seguido del valor que desea darle.
+
+// En nuestro ejemplo:
+
+// A la primera variable, numeroAleatorio, se le asigna un número aleatorio entre 1 y 100, calculado utilizando un algoritmo matemático.
+
+// Las tres primeras constantes se hacen cada una para almacenar una referencia a los párrafos de resultados en nuestro HTML, y se utilizan para insertar valores en los párrafos más adelante en el código (nótese cómo están dentro de un elemento <div>, que a su vez se utiliza para seleccionar los tres más adelante para el restablecimiento, cuando reiniciamos el juego):
+
+// Las dos constantes siguientes almacenan referencias a la entrada de texto del formulario y al botón enviar y se utilizan para controlar el envío de la suposición más adelante.
+
+// Nuestras dos últimas variables almacenan un recuento de conjeturas de 1 (utilizado para realizar un seguimiento de cuántas conjeturas ha tenido el jugador) y una referencia a un botón de reinicio que aún no existe (pero que lo hará más adelante).
