@@ -110,3 +110,38 @@ function checkAdivinanza() {
 // checkGuess();
 
 // Después de presionar Return/Enter, debería ver aparecer una alerta que dice que I am a placeholder; hemos definido una función en nuestro código que crea una alerta cada vez que la llamamos.
+
+// Operadores #00aae4
+// Los operadores de JavaScript nos permiten realizar pruebas, hacer matemáticas, unir cadenas y otras cosas por el estilo.
+
+// Si aún no lo ha hecho, guarde el código, actualice la página en su navegador y abra la consola de JavaScript de herramientas de desarrollo. Luego podemos intentar escribir los ejemplos que se muestran a continuación: escriba cada uno desde las columnas "Ejemplo" exactamente como se muestra, presionando Return/Enter después de cada uno, y ver qué resultados devuelven.
+
+// Primero veamos los operadores aritméticos, por ejemplo:
+
+// +	Adición	6 + 9
+// -	Sustracción	20 - 15
+// *	Multiplicación	3 * 7
+// /	División	10 / 5
+
+// También puede usar el operador + para unir cadenas de texto (en programación, esto se llama concatenación). Intente ingresar las siguientes líneas, una a la vez:
+
+// const name = "Bingo";
+// name;
+// const hello = " says hello!";
+// hello;
+// const greeting = name + hello;
+// greeting;
+
+// También hay algunos operadores de acceso directo disponibles, llamados operadores de asignación aumentada. Por ejemplo, si desea agregar una nueva cadena de texto a una existente y devolver el resultado, puede hacer lo siguiente:
+
+// let name1 = "Bingo";
+// name1 += " says hello!";
+
+// Esto es equivalente a
+
+// let name2 = "Bingo";
+// name2 = name2 + " says hello!";
+
+// Cuando estamos ejecutando pruebas verdaderas/falsas (por ejemplo, dentro de condicionales, ver más abajo) usamos operadores de comparación. Por ejemplo:
+
+// ver imagen...
