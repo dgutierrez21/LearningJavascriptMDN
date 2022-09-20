@@ -18,10 +18,26 @@
           respuesta es demasiado alta o demasiado baja.
         </p>
         <form action="#">
-          <label for="number">Introduce un número:</label>
-          <input type="number" name="number" id="number" />
-          <button type="submit">Enviar adivinanza</button>
+          <label for="campoAdivinanza">Introduce un número:</label>
+          <input
+            type="number"
+            name="number"
+            id="campoAdivinanza"
+            required
+            class="campoAdivinanza"
+            min="1"
+            max="100"
+          />
+          <button type="submit" class="enviarAdivinanza">
+            Enviar adivinanza
+          </button>
         </form>
+
+        <div class="containerResultados">
+          <p class="adivinanzas"></p>
+          <p class="ultimoResultado"></p>
+          <p class="bajoOAlto"></p>
+        </div>
       </div>
     </main>
   </body>
