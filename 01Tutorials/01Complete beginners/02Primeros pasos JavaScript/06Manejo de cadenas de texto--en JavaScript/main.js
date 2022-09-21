@@ -62,3 +62,5 @@ console.log(cdCs);
 // Sin embargo, no puede incluir la misma comillas dentro de la cadena si se usa para contenerlas. Lo siguiente será un error, ya que confunde al navegador en cuanto a dónde termina la cadena:
 
 // const  bocaGrande = 'I' ve got no right to take my place...'; // Uncaught SyntaxError: Unexpected identifier 've' (at main.js:64:25)
+
+// Esto nos lleva muy bien a nuestro siguiente tema.
