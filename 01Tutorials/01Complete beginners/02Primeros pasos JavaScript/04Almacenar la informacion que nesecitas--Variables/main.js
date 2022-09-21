@@ -312,3 +312,12 @@ console.log(pajaro.especie);
 pajaro.especie = "Striated Caracara";
 
 console.log(pajaro.especie);
+
+// Cuándo usar const y cuándo usar let #008000
+// Si no puedes hacer tanto con const como puedes con let, ¿por qué preferirías usarlo en lugar de let? De hecho const es muy útil. Si usa const para nombrar un valor, le dice a cualquiera que mire su código que este nombre nunca se asignará a un valor diferente. Cada vez que vean este nombre, sabrán a qué se refiere.
+
+// En este curso, adoptamos el siguiente principio sobre cuándo usar let y cuándo usar const:
+
+// Usa const cuando puedas, y usa let cuando tengas que hacerlo.
+
+// Esto significa que si puede inicializar una variable cuando la declara y no necesita reasignarla más tarde, conviértala en una constante.
