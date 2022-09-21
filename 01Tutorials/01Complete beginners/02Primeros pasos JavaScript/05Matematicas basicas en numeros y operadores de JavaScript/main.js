@@ -83,3 +83,55 @@ let miNumero2 = "74";
 miNumero2 = Number(miNumero2) + 3;
 
 console.log(miNumero2);
+
+// Operadores aritméticos #008000
+// Los operadores aritméticos son los operadores básicos que utilizamos para hacer sumas en JavaScript:
+
+// ver imagen...
+
+// Nota: A veces verás números involucrados en la aritmética conocidos como operandos..
+
+// Nota: A veces puede ver exponentes expresados utilizando el método Math.pow() más antiguo, que funciona de una manera muy similar. Por ejemplo, en Math.pow(7, 3), 7 es la base y 3 es el exponente, por lo que el resultado de la expresión es 343. Math.pow(7, 3) es equivalente a 7**3.
+
+// Probablemente no necesitemos enseñarle cómo hacer matemáticas básicas, pero nos gustaría probar su comprensión de la sintaxis involucrada. Intente ingresar los ejemplos a continuación en la consola de JavaScript de su herramienta de desarrollo para familiarizarse con la sintaxis.
+
+// Primero intente ingresar algunos ejemplos simples propios, como
+
+console.log(10 + 7);
+console.log(9 * 8);
+console.log(63 / 3);
+console.log(60 % 3);
+
+// También puede intentar declarar e inicializar algunos números dentro de las variables, e intentar usarlos en las sumas: las variables se comportarán exactamente como los valores que tienen para los fines de la suma. Por ejemplo:
+
+const num1 = 10;
+const num2 = 50;
+
+console.log(num1 + num2);
+console.log(num2 - num1);
+console.log(9 * num1);
+console.log(num1 ** 3);
+console.log(num2 + num1 / 8 + 2);
+
+// Es posible que partes de este último conjunto de cálculos no le den el resultado que esperaba; la siguiente sección bien podría dar la respuesta de por qué.
+
+// Precedencia del operador #00aae4
+// Veamos el último ejemplo de arriba, asumiendo que num2 tiene el valor 50 y num1 tiene el valor 10 (como se indicó originalmente anteriormente):
+
+console.log(num2 + num1 / 8 + 2);
+
+// Como ser humano, puedes leer esto como "50 más 10 es igual a 60", luego "8 más 2 es igual a 10" y finalmente "60 dividido por 10 es igual a 6".
+
+// Pero el navegador hace "10 dividido por 8 es igual a 1.25", luego "50 más 1.25 más 2 es igual a 53.25".
+
+// Esto se debe a la precedencia del operador: algunos operadores se aplican antes que otros al calcular el resultado de un cálculo (denominado expresión, en programación). La precedencia del operador en JavaScript es la misma que se enseña en las clases de matemáticas en la escuela: multiplicar y dividir siempre se hacen primero, luego sumar y restar (el cálculo siempre se evalúa de izquierda a derecha).
+
+// Si desea anular la precedencia del operador, puede poner paréntesis alrededor de las partes que desea que se traten explícitamente primero. Entonces, para obtener un resultado de 6, podríamos hacer esto:
+
+// Si desea anular la precedencia del operador, puede poner paréntesis alrededor de las partes que desea que se traten explícitamente primero. Entonces, para obtener un resultado de 6, podríamos hacer esto:
+
+console.log((num2 + num1) / (8 + 2));
+
+// Pruébalo y verás.
+
+// Nota: Puede encontrar una lista completa de todos los operadores de JavaScript y su precedencia en https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
