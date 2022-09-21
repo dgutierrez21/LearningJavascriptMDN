@@ -270,3 +270,45 @@ num = 500; // esto es un numero
 console.log(typeof num);
 
 // Intente ingresar las cuatro líneas anteriores en su consola una por una y vea cuáles son los resultados. Notarás que estamos usando un operador especial llamado typeof, que devuelve el tipo de datos de la variable que escribes después de él. La primera vez que se llama, debe devolver string, ya que en ese momento la variable myNumber contiene una cadena, '500'. Echa un vistazo y mira lo que devuelve la segunda vez que lo llamas.
+
+// Constantes en JavaScript #008000
+// Además de las variables, puede declarar constantes. Estas son como variables, excepto que:
+
+// Debe inicializarlos cuando los declare
+// no puede asignarles un nuevo valor después de haberlos inicializado.
+// Por ejemplo, usando let puede declarar una variable sin inicializarla:
+
+let count;
+
+// Si intenta hacer esto usando const, verá un error:
+
+// const count2; // Uncaught SyntaxError: Missing initializer in const declaration (at main.js:285:7)
+
+// Del mismo modo, con let puede inicializar una variable y luego asignarle un nuevo valor (esto también se llama reasignación de la variable):
+
+let count3 = 1;
+
+count3 = 5;
+
+console.log(count3);
+
+// Si intenta hacer esto usando const, verá un error:
+
+const count4 = 5;
+
+// count4 = 10; // Uncaught TypeError: Assignment to constant variable.
+
+// Tenga en cuenta que aunque una constante en JavaScript siempre debe nombrar el mismo valor, puede cambiar el contenido del valor que nombra. Esta no es una distinción útil para tipos simples como números o booleanos, pero considere un objeto:
+
+const pajaro = {
+  especie: "Kestrel",
+  color: "Verde",
+};
+
+console.log(pajaro.especie);
+
+// Puede actualizar, agregar o quitar propiedades de un objeto declarado mediante const, ya que aunque el contenido del objeto haya cambiado, la constante sigue apuntando al mismo objeto:
+
+pajaro.especie = "Striated Caracara";
+
+console.log(pajaro.especie);
