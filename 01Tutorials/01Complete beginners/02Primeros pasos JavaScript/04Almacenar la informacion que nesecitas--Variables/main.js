@@ -62,3 +62,22 @@ console.log(miEdad);
 // console.log(scoobyDoo); // ReferenceError: scoobyDoo is not defined
 
 // Nota: No confundas una variable que existe pero no tiene un valor definido con una variable que no existe en absoluto, son cosas muy diferentes. En la analogía de la caja que viste anteriormente, no existir significaría que no hay una caja (variable) para que entre un valor. Ningún valor definido significaría que hay una caja, pero no tiene valor dentro de ella.
+
+// Inicialización de una variable #008000
+// Una vez que haya declarado una variable, puede inicializarla con un valor. Para ello, escriba el nombre de la variable, seguido de un signo igual (=), seguido del valor que desea asignarle. Por ejemplo:
+
+miNombre = "Chris";
+miEdad = 34;
+
+// Intente volver a la consola ahora y escriba estas líneas. Debería ver el valor que ha asignado a la variable devuelta en la consola para confirmarlo, en cada caso. Una vez más, puede devolver los valores de las variables escribiendo su nombre en la consola; inténtelos de nuevo:
+
+console.log(miNombre);
+console.log(miEdad);
+
+// Puede declarar e inicializar una variable al mismo tiempo, de la siguiente manera:
+
+let miPerro = "Rover";
+
+console.log(miPerro);
+
+// Esto es probablemente lo que harás la mayor parte del tiempo, ya que es más rápido que hacer las dos acciones en dos líneas separadas.
