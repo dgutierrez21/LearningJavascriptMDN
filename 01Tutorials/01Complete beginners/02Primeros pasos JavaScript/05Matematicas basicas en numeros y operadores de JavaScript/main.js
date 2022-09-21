@@ -168,3 +168,39 @@ let num5 = 20;
 ++num5;
 
 console.log(num5);
+
+// Operadores de asignación #008000
+// Los operadores de asignación son operadores que asignan un valor a una variable. Ya hemos utilizado el más básico, =, cargas de veces: asigna a la variable de la izquierda el valor indicado a la derecha:
+
+let x = 5; // x contiene el valor 5
+let y = 3; // y contiene el valor 3
+
+x = y; // x contiene ahora el mismo valor que contiene y, 3
+
+console.log(`y = ${x} | x = ${y}`);
+
+// Pero hay algunos tipos más complejos, que proporcionan accesos directos útiles para mantener su código más ordenado y eficiente. Los más comunes se enumeran a continuación:
+
+// ver imagen...
+
+// Intente escribir algunos de los ejemplos anteriores en su consola, para tener una idea de cómo funcionan. En cada caso, vea si puede adivinar cuál es el valor antes de escribir la segunda línea.
+
+// Tenga en cuenta que puede usar felizmente otras variables en el lado derecho de cada expresión, por ejemplo:
+
+let x1 = 3; // x1 contiene el valor de 3
+let y1 = 4; // y1 contiene el valor de 4
+
+x1 *= y1; // x1 ahora contiene el valor de 12
+
+console.log(x1);
+
+// ejemplo 2
+
+let x2 = 10;
+let y2 = 5;
+
+x2 += y2;
+
+console.log(x2);
+
+// Nota: Hay muchos otros operadores de asignación disponibles, pero estos son los básicos que debe aprender ahora. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#assignment_operators
