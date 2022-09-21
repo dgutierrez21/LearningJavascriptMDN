@@ -129,3 +129,34 @@ const saludo4 = "Hola";
 const nombre4 = "Roberto";
 
 console.log(`${saludo4}, ${nombre4}`);
+
+// Números vs. cadenas #008000
+// Entonces, ¿qué sucede cuando intentamos combinar una cadena y un número? Vamos a probarlo en nuestra consola:
+
+const nombre5 = "Front";
+
+const numero = 243;
+
+console.log(`${nombre5} ${numero}`);
+
+// Puede esperar que esto devuelva un error, pero funciona bien. Tratar de representar una cadena como un número realmente no tiene sentido, pero representar un número como una cadena sí, por lo que el navegador convierte el número en una cadena y concatena las dos cadenas.
+
+// Si tiene una variable numérica que desea convertir en una cadena pero no cambiar de otro modo, o una variable de cadena que desea convertir en un número pero no cambiar de otro modo, puede utilizar las dos construcciones siguientes:
+
+// El objeto Number convierte todo lo que se le pasa en un número, si puede. Pruebe lo siguiente:
+
+const miString = "123";
+
+const miNumero = Number(miString);
+
+console.log(typeof miNumero);
+
+// Por el contrario, cada número tiene un método llamado toString() que lo convierte en la cadena equivalente. Prueba esto:
+
+const miNumero2 = 123;
+
+const miString2 = miNumero2.toString();
+
+console.log(typeof miString2);
+
+// Estas construcciones pueden ser realmente útiles en algunas situaciones. Por ejemplo, si un usuario introduce un número en el campo de texto de un formulario, se trata de una cadena. Sin embargo, si desea agregar este número a algo, necesitará que sea un número, por lo que puede pasarlo a través Number() para manejar esto. Hicimos exactamente esto en nuestro juego de adivinanzas numéricas, en la línea 59.
