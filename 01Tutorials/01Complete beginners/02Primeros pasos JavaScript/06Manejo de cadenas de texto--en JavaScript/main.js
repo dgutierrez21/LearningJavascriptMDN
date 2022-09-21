@@ -39,7 +39,7 @@ console.log(cadenaBuena);
 // Comillas simples vs. comillas dobles
 // En JavaScript, puede elegir comillas simples o comillas dobles para envolver sus cadenas. Ambos de los siguientes funcionarán bien:
 
-const comillasSimples = 'Comillas simples';
+const comillasSimples = "Comillas simples";
 
 const comillasDobles = "Comillas dobles";
 
@@ -68,8 +68,64 @@ console.log(cdCs);
 // Carácter de escape en una cadena #008000
 // Para corregir nuestra línea de código de problema anterior, necesitamos escapar de la marca de comillas del problema. Escapar de los caracteres significa que les hacemos algo para asegurarnos de que se reconozcan como texto, no como parte del código. En JavaScript, hacemos esto colocando una barra diagonal inversa justo antes del personaje. Prueba esto:
 
-const bocaGrande = 'I\'ve got no right to take my place...';
+const bocaGrande = "I've got no right to take my place...";
 
 console.log(bocaGrande);
 
 // Esto funciona bien. Puede escapar de otros caracteres de la misma manera, por ejemplo, \", y además hay algunos códigos especiales. Consulte https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#escape_sequences para obtener más detalles.
+
+// Concatenar cadenas #008000
+// Concatenar solo significa "unirse". Para unir cadenas en JavaScript, puede usar un tipo diferente de cadena, llamado literal de plantilla.
+
+// Un literal de plantilla se parece a una cadena normal, pero en lugar de usar comillas simples o dobles (' o "), se usan caracteres de retroceso (`):
+
+const saludo = `Hola`;
+
+// Esto puede funcionar igual que una cadena normal, excepto que puede incluir variables en ella, envueltas dentro de caracteres ${ }, y el valor de la variable se insertará en el resultado:
+
+const nombre = "Chris";
+
+const saludo2 = `Hola, ${nombre}`;
+
+console.log(saludo2);
+
+// Puede utilizar la misma técnica para unir dos variables:
+
+const uno = "Hola, ";
+
+const dos = "cómo estas?";
+
+const union = `${uno}${dos}`;
+
+console.log(union);
+
+// Concatenación en contexto #00aae4
+// Echemos un vistazo a la concatenación que se utiliza en acción:
+
+const btn1 = document.querySelector(".btn_1");
+
+function saludar() {
+  const nombre = prompt("Cual es tu nombre?");
+  alert(`Hola ${nombre}, me alegro de verte.`);
+}
+
+btn1.addEventListener("click", saludar);
+
+// Aquí estamos usando la función window.prompt() que le pide al usuario que responda una pregunta a través de un cuadro de diálogo emergente y luego almacena el texto que ingresa dentro de una variable determinada, en este caso name. Luego usamos la función window.alert() para mostrar otra ventana emergente que contiene una cadena que inserta el nombre en un mensaje de saludo genérico.
+
+// Concatenación usando "+" #00aae4
+// También puede concatenar cadenas utilizando el operador +:
+
+const saludo3 = "Hola";
+
+const nombre2 = "Hector";
+
+console.log(saludo3 + ", " + nombre2);
+
+// Sin embargo, los literales de plantilla generalmente le dan código más legible:
+
+const saludo4 = "Hola";
+
+const nombre4 = "Roberto";
+
+console.log(`${saludo4}, ${nombre4}`);
