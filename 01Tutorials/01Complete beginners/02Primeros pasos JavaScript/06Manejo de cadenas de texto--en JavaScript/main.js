@@ -64,3 +64,12 @@ console.log(cdCs);
 // const  bocaGrande = 'I' ve got no right to take my place...'; // Uncaught SyntaxError: Unexpected identifier 've' (at main.js:64:25)
 
 // Esto nos lleva muy bien a nuestro siguiente tema.
+
+// Carácter de escape en una cadena #008000
+// Para corregir nuestra línea de código de problema anterior, necesitamos escapar de la marca de comillas del problema. Escapar de los caracteres significa que les hacemos algo para asegurarnos de que se reconozcan como texto, no como parte del código. En JavaScript, hacemos esto colocando una barra diagonal inversa justo antes del personaje. Prueba esto:
+
+const bocaGrande = 'I\'ve got no right to take my place...';
+
+console.log(bocaGrande);
+
+// Esto funciona bien. Puede escapar de otros caracteres de la misma manera, por ejemplo, \", y además hay algunos códigos especiales. Consulte https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#escape_sequences para obtener más detalles.
