@@ -160,3 +160,16 @@ const miString2 = miNumero2.toString();
 console.log(typeof miString2);
 
 // Estas construcciones pueden ser realmente útiles en algunas situaciones. Por ejemplo, si un usuario introduce un número en el campo de texto de un formulario, se trata de una cadena. Sin embargo, si desea agregar este número a algo, necesitará que sea un número, por lo que puede pasarlo a través Number() para manejar esto. Hicimos exactamente esto en nuestro juego de adivinanzas numéricas, en la línea 59.
+
+// Inclusión de expresiones en cadenas #008000
+// Puede incluir expresiones JavaScript en literales de plantilla, así como variables simples, y los resultados se incluirán en el resultado:
+
+const song = "Wet Dreamz";
+const score = 9;
+const highestScore = 10;
+
+const output = `I like the song ${song}, I gave it a score of ${
+  (score / highestScore) * 100
+}%.`;
+
+console.log(output);
