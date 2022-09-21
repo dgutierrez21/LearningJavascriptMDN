@@ -81,3 +81,54 @@ let miPerro = "Rover";
 console.log(miPerro);
 
 // Esto es probablemente lo que harás la mayor parte del tiempo, ya que es más rápido que hacer las dos acciones en dos líneas separadas.
+
+// Una nota sobre var #008000
+// Probablemente también verá una forma diferente de declarar variables, utilizando la palabra clave var:
+
+var miNombre2;
+var miEdad2;
+
+// Cuando se creó JavaScript por primera vez, esta era la única forma de declarar variables. El diseño de var es confuso y propenso a errores. Así que let creó en las versiones modernas de JavaScript, una nueva palabra clave para crear variables que funciona de manera algo diferente a var, solucionando sus problemas en el proceso.
+
+// A continuación se explican un par de diferencias simples. No entraremos en todas las diferencias ahora, pero comenzará a descubrirlas a medida que aprenda más sobre JavaScript (si realmente desea leer sobre ellas ahora, no dude en consultar nuestra página de referencia de let).
+
+// Para empezar, si escribe un programa JavaScript multilínea que declara e inicializa una variable, en realidad puede declarar una variable con var después de inicializarla y seguirá funcionando. Por ejemplo:
+
+miNombre3 = "Jhon";
+
+function registroNombre() {
+  console.log(miNombre3);
+}
+
+registroNombre();
+
+var miNombre3;
+
+// Nota: Esto no funcionará al escribir líneas individuales en una consola de JavaScript, solo cuando se ejecutan varias líneas de JavaScript en un documento web.
+
+// Esto funciona debido al hoisting
+
+// El hoisting ya no funciona con let. Si cambiamos var para let entrar el ejemplo anterior, fallaría con un error. Esto es algo bueno: declarar una variable después de inicializarla resulta en un código confuso y más difícil de entender.
+
+// En segundo lugar, cuando usas var, puedes declarar la misma variable tantas veces como quieras, pero con let no puedes. Funcionaría lo siguiente:
+
+var miNombre4 = "Juan";
+var miNombre4 = "Pablo";
+
+console.log(miNombre4);
+
+// Pero lo siguiente arrojaría un error en la segunda línea:
+
+// let miNombre5 = "Sebas";
+// let miNombre5 = "Fran";  // Uncaught SyntaxError: Identifier 'miNombre5' has already been declared (at main.js:123:5)
+
+// Tendrías que hacer esto en su lugar:
+
+let miNombre6 = "Juan";
+miNombre6 = "Pedro";
+
+console.log(miNombre6);
+
+// Una vez más, esta es una decisión de lenguaje sensata. No hay razón para volver a declarar variables, solo hace que las cosas sean más confusas.
+
+// Por estas razones y más, le recomendamos que use let en su código, en lugar de var. No hay ninguna razón para usar var, a menos que necesite admitir Internet Explorer 10 o anterior con su código.
