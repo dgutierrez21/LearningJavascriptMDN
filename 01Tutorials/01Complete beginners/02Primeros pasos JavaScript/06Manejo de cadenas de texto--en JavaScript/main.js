@@ -173,3 +173,22 @@ const output = `I like the song ${song}, I gave it a score of ${
 }%.`;
 
 console.log(output);
+
+// Cadenas multilínea #008000
+// Los literales de plantilla respetan los saltos de línea en el código fuente, por lo que puede escribir cadenas que abarquen varias líneas como esta:
+
+const output2 = `Cristiano Ronaldo: "El objetivo es el
+Mundial... pero también la Euro2024"`;
+
+console.log(output2);
+
+// Para tener la salida equivalente usando una cadena normal, tendría que incluir caracteres de salto de línea (\n) en la cadena:
+
+const output3 =
+  'Cristiano Ronaldo: "El objetivo es el\nMundial... pero también la Euro2024"';
+
+console.log(output3);
+
+//   Consulte nuestra página de referencia de literales de plantilla para obtener más ejemplos y detalles de funciones avanzadas.
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
