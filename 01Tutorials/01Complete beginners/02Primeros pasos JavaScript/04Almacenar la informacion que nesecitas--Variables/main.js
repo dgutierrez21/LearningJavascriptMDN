@@ -132,3 +132,54 @@ console.log(miNombre6);
 // Una vez más, esta es una decisión de lenguaje sensata. No hay razón para volver a declarar variables, solo hace que las cosas sean más confusas.
 
 // Por estas razones y más, le recomendamos que use let en su código, en lugar de var. No hay ninguna razón para usar var, a menos que necesite admitir Internet Explorer 10 o anterior con su código.
+
+// Actualización de una variable #008000
+// Una vez que una variable se ha inicializado con un valor, puede cambiar (o actualizar) ese valor dándole un valor diferente. Intente introducir las siguientes líneas en la consola:
+
+let miEdad3 = "Bob";
+miEdad3 = 40;
+
+console.log(miEdad3);
+
+// Un aparte en las reglas de nomenclatura de variables #00aae4
+// Puede llamar a una variable prácticamente lo que quiera, pero hay limitaciones. En general, debe limitarse a usar caracteres latinos (0-9, a-z, A-Z) y el carácter de subrayado.
+
+// No debes usar otros personajes porque pueden causar errores o ser difíciles de entender para una audiencia internacional.
+
+// No use guiones bajos al comienzo de los nombres de las variables: esto se usa en ciertas construcciones de JavaScript para significar cosas específicas, por lo que puede ser confuso.
+
+// No uses números al principio de las variables. Esto no está permitido y causa un error.
+
+// Una convención segura a la que debe atenerse es la llamada "minúscula camello", donde se pegan varias palabras, usando minúsculas para toda la primera palabra y luego se ponen en mayúsculas las palabras posteriores. Hemos estado usando esto para nuestros nombres de variables en el artículo hasta ahora.
+
+// Haga que los nombres de las variables sean intuitivos, de modo que describan los datos que contienen. No solo use letras / números individuales o frases largas grandes.
+
+// Las variables distinguen entre mayúsculas y minúsculas, por lo que myage es una variable diferente de myAge.
+
+// Un último punto: también debe evitar el uso de palabras reservadas de JavaScript como nombres de variables; con esto, ¡nos referimos a las palabras que componen la sintaxis real de JavaScript! Por lo tanto, no puede usar palabras como var, function, let y for como nombres de variables. Los navegadores los reconocen como diferentes elementos de código, por lo que obtendrá errores.
+
+// Nota: Puede encontrar una lista bastante completa de palabras clave reservadas para evitar en https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
+
+// Ejemplos de buenos nombres:
+
+// age
+// myAge
+// init
+// initialColor
+// finalOutputValue
+// audio1
+// audio2
+
+// Ejemplos de mal nombre:
+
+// 1
+// a
+// _12
+// myage
+// MYAGE
+// var
+// Document
+// skjfndskjfnbdskjfb
+// thisisareallylongvariablenameman
+
+// Intente crear algunas variables más ahora, con la guía anterior en mente.
