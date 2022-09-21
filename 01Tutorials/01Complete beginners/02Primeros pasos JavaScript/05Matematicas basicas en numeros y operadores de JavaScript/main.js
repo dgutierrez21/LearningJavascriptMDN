@@ -204,3 +204,84 @@ x2 += y2;
 console.log(x2);
 
 // Nota: Hay muchos otros operadores de asignación disponibles, pero estos son los básicos que debe aprender ahora. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#assignment_operators
+
+// Operadores de comparación #008000
+// A veces querremos ejecutar pruebas verdaderas / falsas, luego actuar en consecuencia dependiendo del resultado de esa prueba; para hacer esto, usamos operadores de comparación..
+
+// ver imagen...
+
+// ejemplos
+
+// igualdad estricta
+
+console.log(5 === 5 + 3);
+console.log(5 === 3 + 2);
+
+// estricta no igualdad
+
+console.log(5 !== 5 + 3);
+console.log(5 !== 3 + 2);
+
+// menor que
+
+console.log(10 < 5);
+
+// mayor que
+
+console.log(10 > 5);
+
+// menor o igual que
+
+console.log(5 <= 5);
+
+// mayor o igual que
+
+console.log(10 > 10);
+
+// tenga en cuenta que los operadores de menor o igual que / mayor o igual que, no hacen una comparacion estricta:
+
+console.log(5 >= "5");
+
+// para realizar este tipo de comparacion se tiene que hacer uso de los operadores logicos que se veran más adelante. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators
+
+console.log(5 >= "5" || 5 >= "5");
+
+// Nota: Es posible que veas a algunas personas usando == y != en sus pruebas de igualdad y no igualdad. Estos son operadores válidos en JavaScript, pero difieren de ===/!==. Las versiones anteriores prueban si los valores son los mismos, pero no si los tipos de datos de los valores son los mismos. Estas últimas versiones estrictas prueban la igualdad tanto de los valores como de sus tipos de datos. Las versiones estrictas tienden a resultar en menos errores, por lo que le recomendamos que las use.
+
+// Si intenta ingresar algunos de estos valores en una consola, verá que todos devuelven valores true / false, esos booleanos que mencionamos en el último artículo. Estos son muy útiles, ya que nos permiten tomar decisiones en nuestro código, y se utilizan cada vez que queremos hacer una elección de algún tipo. Por ejemplo, los booleanos se pueden usar para:
+
+// Mostrar la etiqueta de texto correcta en un botón en función de si una función está activada o desactivada
+
+// Mostrar un mensaje de game over si un juego ha terminado o un mensaje de victoria si el juego se ha ganado
+
+// Muestre el saludo de temporada correcto dependiendo de la temporada navideña que sea
+
+// Acercar o alejar un mapa en función del nivel de zoom seleccionado
+
+// Veremos cómo codificar dicha lógica cuando veamos las declaraciones condicionales en un artículo futuro. Por ahora, veamos un ejemplo rápido:
+
+// ver html...
+
+const btn = document.querySelector(".btn"),
+  txt = document.querySelector(".container p"),
+  msjInicialBtn = "Arrancar la máquina";
+
+btn.addEventListener("click", botonActualizacion);
+
+function botonActualizacion() {
+  if (btn.textContent === msjInicialBtn) {
+    btn.textContent = "Detener la máquina";
+    txt.classList.remove("text-danger");
+    txt.classList.add("text-success");
+    txt.textContent = "¡La máquina ha arrancado!";
+  } else {
+    btn.textContent = msjInicialBtn;
+    txt.classList.remove("text-success");
+    txt.classList.add("text-danger");
+    txt.textContent = "La máquina está detenida.";
+  }
+}
+
+// Puede ver el operador de igualdad que se está utilizando justo dentro de la función updateBtn()). En este caso, no estamos probando si dos expresiones matemáticas tienen el mismo valor, estamos probando si el contenido de texto de un botón contiene una cierta cadena, pero sigue siendo el mismo principio en funcionamiento. Si el botón está diciendo actualmente "Iniciar máquina" cuando se presiona, cambiamos su etiqueta a "Detener máquina" y actualizamos la etiqueta según corresponda. Si el botón está diciendo actualmente "Detener máquina" cuando se presiona, volvemos a cambiar la pantalla.
+
+// Nota: Tal control que intercambia entre dos estados generalmente se conoce como un interruptor. Alterna entre un estado y otro: luz encendida, luz apagada, etc.
