@@ -1,0 +1,2 @@
+// Matemáticas básicas en JavaScript: números y operadores #ff0
+// En este punto del curso, discutimos las matemáticas en JavaScript: cómo podemos usar operadores y otras características para manipular con éxito los números para hacer nuestras ofertas.
