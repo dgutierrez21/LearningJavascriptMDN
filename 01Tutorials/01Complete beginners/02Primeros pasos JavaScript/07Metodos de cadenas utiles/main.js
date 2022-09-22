@@ -195,3 +195,37 @@ for (const saludo of saludos1) {
     listItem.appendChild(listItemParr);
   }
 }
+
+// Fijación de mayúsculas #00aae4
+// En este ejercicio, tenemos los nombres de las ciudades en el Reino Unido, pero la capitalización está desordenada. Queremos que los cambies para que estén todos en minúsculas, excepto una primera letra mayúscula. Una buena manera de hacerlo es:
+
+// Convierta toda la cadena contenida en la variable city a minúsculas y guárdela en una nueva variable.
+// Toma la primera letra de la cadena en esta nueva variable y guárdala en otra variable.
+// Usando esta última variable como subcadena, reemplace la primera letra de la cadena minúscula por la primera letra de la cadena minúscula cambiada a mayúscula. Almacene el resultado de este procedimiento de reemplazo en otra variable nueva.
+// Cambie el valor de la variable result a igual al resultado final, no a la city.
+
+// Nota: Una sugerencia: los parámetros de los métodos de cadena no tienen que ser literales de cadena; también pueden ser variables, o incluso variables con un método invocado en ellas.
+
+const listLiveOutput2 = document.querySelector(".list_live_output_2");
+const listResult2 = document.querySelector(".list_result_2");
+listLiveOutput2.innerHTML = "";
+listResult2.innerHTML = "";
+const cities = ["lonDon", "ManCHESTer", "BiRmiNGHAM", "liVERpoOL"];
+
+liveOutput(cities, listLiveOutput2);
+
+for (const city of cities) {
+  const toLowerCase = city.toLowerCase();
+  const extractFirstLetter = toLowerCase.slice(0, 1);
+  const replaceFirstLetter = toLowerCase.replace(
+    extractFirstLetter,
+    extractFirstLetter.toUpperCase()
+  );
+
+  const result = replaceFirstLetter;
+  const listItem = document.createElement("li");
+  const listItemParr = document.createElement("p");
+  listItemParr.textContent = result;
+  listResult2.appendChild(listItem);
+  listItem.appendChild(listItemParr);
+}
