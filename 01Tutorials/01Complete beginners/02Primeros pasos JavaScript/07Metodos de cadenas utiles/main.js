@@ -11,3 +11,13 @@ const string = "Esta es mi cadena";
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 // Ahora, antes de que tu cerebro comience a derretirse, ¡no te preocupes! Realmente no necesita saber sobre la mayoría de estos al principio de su viaje de aprendizaje. Pero hay algunos que potencialmente usará con bastante frecuencia que veremos aquí.
+
+// Búsqueda de la longitud de una cadena #008000
+// Esto es fácil: se utiliza la propiedad length. Intente introducir las siguientes líneas:
+
+const navegador = "mozilla";
+
+console.log(navegador.length);
+
+// Esto debería devolver el número 7, porque "mozilla" tiene 7 caracteres. Esto es útil por muchas razones; por ejemplo, es posible que desee buscar las longitudes de una serie de nombres para que pueda mostrarlos en orden de longitud, o informar a un usuario de que un nombre de usuario que ha introducido en un campo de formulario es demasiado largo si tiene más de una longitud determinada.
+
