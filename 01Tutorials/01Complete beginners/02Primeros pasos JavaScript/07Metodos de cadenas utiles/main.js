@@ -229,3 +229,54 @@ for (const city of cities) {
   listResult2.appendChild(listItem);
   listItem.appendChild(listItemParr);
 }
+
+// Hacer nuevas cuerdas a partir de piezas antiguas #00aae4
+// En este último ejercicio, la matriz contiene un montón de cadenas que contienen información sobre las estaciones de tren en el norte de Inglaterra. Las cadenas son elementos de datos que contienen el código de estación de tres letras, seguido de algunos datos legibles por máquina, seguido de un punto y coma, seguido del nombre de la estación legible por humanos. Por ejemplo:
+
+// MAN675847583748sjt567654;Manchester Piccadilly
+
+// Queremos extraer el código y el nombre de la estación, y ponerlos juntos en una cadena con la siguiente estructura:
+
+// MAN: Manchester Piccadilly
+
+// Recomendamos hacerlo así:
+
+// Extraiga el código de estación de tres letras y guárdelo en una nueva variable.
+
+// Busque el número de índice de caracteres del punto y coma.
+
+// Extraiga el nombre de la estación legible por humanos utilizando el número de índice de caracteres de punto y coma como punto de referencia y guárdelo en una nueva variable.
+
+// Concatenar las dos nuevas variables y una cadena literal para hacer la cadena final.
+
+// Cambie el valor de la variable de result a la cadena final, no a la station.
+
+const listLiveOutput3 = document.querySelector(".list_live_output_3"),
+  listResult3 = document.querySelector(".list_result_3");
+listLiveOutput3.innerHTML = "";
+listResult3.innerHTML = "";
+
+const stations = [
+  "MAN675847583748sjt567654;Manchester Piccadilly",
+  "GNF576746573fhdg4737dh4;Greenfield",
+  "LIV5hg65hd737456236dch46dg4;Liverpool Lime Street",
+  "SYB4f65hf75f736463;Stalybridge",
+  "HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield",
+];
+
+liveOutput(stations, listLiveOutput3);
+
+for (const station of stations) {
+  const firstThreeLetters = station.slice(0, 3),
+    semicolonIndex = station.indexOf(";");
+  legibleName = station.slice(semicolonIndex + 1);
+
+  const result = `${firstThreeLetters}: ${legibleName}`,
+    listItem = document.createElement("li"),
+    lisItemParr = document.createElement("p");
+  lisItemParr.textContent = result;
+  listResult3.appendChild(listItem);
+  listItem.appendChild(lisItemParr);
+
+  console.log(legibleName);
+}
