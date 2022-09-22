@@ -21,3 +21,15 @@ console.log(navegador.length);
 
 // Esto debería devolver el número 7, porque "mozilla" tiene 7 caracteres. Esto es útil por muchas razones; por ejemplo, es posible que desee buscar las longitudes de una serie de nombres para que pueda mostrarlos en orden de longitud, o informar a un usuario de que un nombre de usuario que ha introducido en un campo de formulario es demasiado largo si tiene más de una longitud determinada.
 
+// Recuperación de un carácter de cadena específico #008000
+// En una nota relacionada, puede devolver cualquier carácter dentro de una cadena utilizando la notación entre corchetes, lo que significa que incluye corchetes ([]) al final del nombre de la variable. Dentro de los corchetes, incluye el número del carácter que desea devolver, por lo que, por ejemplo, para recuperar la primera letra, haría lo siguiente:
+
+// browserType[0];
+
+// Recuerde: ¡las computadoras cuentan desde 0, no desde 1!
+
+// Para recuperar el último carácter de cualquier cadena, podríamos usar la siguiente línea, combinando esta técnica con la propiedad length que vimos anteriormente:
+
+console.log(navegador[navegador.length - 1]);
+
+// La longitud de la cadena "mozilla" es 7, pero debido a que el recuento comienza en 0, la posición del último carácter es 6; usando length-1 nos da el último carácter.
