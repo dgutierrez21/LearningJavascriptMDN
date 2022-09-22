@@ -91,3 +91,24 @@ console.log(primeraAparicion);
 console.log(segundaAparicion);
 
 // Aquí estamos diciendo el método para buscar la subcadena "developers" a partir del índice 21 (firstOccurrence + 1), y devuelve el índice 35.
+
+// Extracción de una subcadena de una cadena #008000
+// Puede extraer una subcadena de una cadena mediante el método slice()). Lo pasas:
+
+// el índice en el que se va a empezar a extraer
+// el índice en el que se va a dejar de extraer. Esto es exclusivo, lo que significa que el carácter de este índice no se incluye en la subcadena extraída.
+// Por ejemplo:
+
+const navegador5 = "mozilla";
+
+console.log(navegador5.slice(1, 4));
+
+// El carácter en el índice 1 es "o" y el carácter en el índice 4 es "l" Así que extraemos todos los caracteres comenzando en "o" y terminando justo antes "l" dándonos "ozi".
+
+// Si sabe que desea extraer todos los caracteres restantes de una cadena después de un determinado carácter, no tiene que incluir el segundo parámetro. En su lugar, solo necesita incluir la posición del carácter desde donde desea extraer los caracteres restantes en una cadena. Pruebe lo siguiente:
+
+console.log(navegador5.slice(4));
+
+// Esto devuelve "lla": esto se debe a que la posición del carácter de 4 es la letra "l" y debido a que no incluyó un segundo parámetro, la subcadena que se devolvió fue todos los caracteres restantes de la cadena.
+
+// Nota: slice() también tiene otras opciones; estudie la página slice() para ver qué más puede averiguar. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
