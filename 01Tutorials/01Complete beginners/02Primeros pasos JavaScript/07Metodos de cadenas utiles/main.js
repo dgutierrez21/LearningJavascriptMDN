@@ -152,3 +152,8 @@ let quote = "ser o no ser";
 quote = quote.replaceAll("ser", "código");
 
 console.log(quote);
+
+// Ejemplos de aprendizaje activo #008000
+// En esta sección, le pediremos que pruebe a escribir código de manipulación de cadenas. En cada ejercicio a continuación, tenemos una matriz de cadenas y un bucle que procesa cada valor de la matriz y lo muestra en una lista con viñetas. No necesita comprender las matrices o bucles en este momento, estos se explicarán en artículos futuros. Todo lo que necesita hacer en cada caso es escribir el código que generará las cadenas en el formato en el que las queremos.
+
+// Cada ejemplo viene con un botón "Restablecer", que puede usar para restablecer el código si comete un error y no puede volver a funcionar, y un botón "Mostrar solución" que puede presionar para ver una posible respuesta si realmente se atasca.
