@@ -157,3 +157,41 @@ console.log(quote);
 // En esta sección, le pediremos que pruebe a escribir código de manipulación de cadenas. En cada ejercicio a continuación, tenemos una matriz de cadenas y un bucle que procesa cada valor de la matriz y lo muestra en una lista con viñetas. No necesita comprender las matrices o bucles en este momento, estos se explicarán en artículos futuros. Todo lo que necesita hacer en cada caso es escribir el código que generará las cadenas en el formato en el que las queremos.
 
 // Cada ejemplo viene con un botón "Restablecer", que puede usar para restablecer el código si comete un error y no puede volver a funcionar, y un botón "Mostrar solución" que puede presionar para ver una posible respuesta si realmente se atasca.
+
+// Filtrado de mensajes de saludo #00aae4
+// En el primer ejercicio, comenzaremos de manera simple: tenemos una variedad de mensajes de tarjetas de felicitación, pero queremos ordenarlos para enumerar solo los mensajes de Navidad. Queremos que completes una prueba condicional dentro de la estructura if () para probar cada cadena y solo imprimirla en la lista si es un mensaje de Navidad.
+
+// Piensa en cómo podrías probar si el mensaje en cada caso es un mensaje de Navidad. ¿Qué cadena está presente en todos esos mensajes y qué método podría usar para probar si está presente?
+const listLiveOutput1 = document.querySelector(".list_live_output_1");
+const listResutl1 = document.querySelector(".list_result_1");
+listLiveOutput1.innerHTML = "";
+listResutl1.innerHTML = "";
+const saludos1 = [
+  "Happy Birthday!",
+  "Merry Christmas my love",
+  "A happy Christmas to all the family",
+  "You're all I want for Christmas",
+  "Get well soon",
+];
+
+function liveOutput(list, selectorList) {
+  for (const saludo of list) {
+    const listItem = document.createElement("li");
+    const listItemParr = document.createElement("p");
+    listItemParr.textContent = saludo;
+    selectorList.appendChild(listItem);
+    listItem.appendChild(listItemParr);
+  }
+}
+
+liveOutput(saludos1, listLiveOutput1);
+
+for (const saludo of saludos1) {
+  if (saludo.includes("Christmas")) {
+    const listItem = document.createElement("li");
+    const listItemParr = document.createElement("p");
+    listItemParr.textContent = saludo;
+    listResutl1.appendChild(listItem);
+    listItem.appendChild(listItemParr);
+  }
+}
