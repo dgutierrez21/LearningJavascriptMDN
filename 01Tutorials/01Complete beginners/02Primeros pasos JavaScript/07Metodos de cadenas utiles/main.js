@@ -64,3 +64,30 @@ if (navegador4.startsWith("Saf")) {
 } else {
   console.log("NO estas usando un navegador desarrollado por Apple.");
 }
+
+// Búsqueda de la posición de una subcadena en una cadena #008000
+// Puede encontrar la posición de una subcadena dentro de una cadena más grande mediante el método indexOf()). Este método toma dos parámetros: la subcadena que desea buscar y un parámetro opcional que especifica el punto de partida de la búsqueda.
+
+// Si la cadena contiene la subcadena, indexOf() devuelve el índice de la primera aparición de la subcadena. Si la cadena no contiene la subcadena, indexOf() devuelve -1.
+
+const tagLine = "MDN - Resources for developers, by developers";
+
+console.log(tagLine.indexOf("developers")); // 20
+
+// A partir de 0, si cuenta el número de caracteres (incluido el espacio en blanco) desde el principio de la cadena, la primera aparición de la subcadena "developers" está en el índice 20.
+
+console.log(tagLine.indexOf("x")); // -1
+
+// Esto, por otro lado, devuelve -1 porque el carácter x no está presente en la cadena.
+
+// Entonces, ahora que sabes cómo encontrar la primera ocurrencia de una subcadena, ¿cómo haces para encontrar ocurrencias posteriores? Puede hacerlo pasando un valor que sea mayor que el índice de la aparición anterior como segundo parámetro del método.
+
+const tagLine2 = "MDN - Resources for developers, by developers";
+
+const primeraAparicion = tagLine2.indexOf("developers"),
+  segundaAparicion = tagLine2.indexOf("developers", primeraAparicion + 1);
+
+console.log(primeraAparicion);
+console.log(segundaAparicion);
+
+// Aquí estamos diciendo el método para buscar la subcadena "developers" a partir del índice 21 (firstOccurrence + 1), y devuelve el índice 35.
