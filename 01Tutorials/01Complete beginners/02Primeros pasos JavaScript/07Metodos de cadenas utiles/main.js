@@ -33,3 +33,34 @@ console.log(navegador.length);
 console.log(navegador[navegador.length - 1]);
 
 // La longitud de la cadena "mozilla" es 7, pero debido a que el recuento comienza en 0, la posición del último carácter es 6; usando length-1 nos da el último carácter.
+
+// Probar si una cadena contiene una subcadena #008000
+// A veces querrás averiguar si una cadena más pequeña está presente dentro de una más grande (generalmente decimos si una subcadena está presente dentro de una cadena). Esto se puede hacer utilizando el método includes() que toma un solo parámetro: la subcadena que desea buscar.
+
+// Devuelve true si la cadena contiene la subcadena false en caso contrario.
+
+const navegador2 = "Google Chrome";
+
+if (navegador2.includes("Google")) {
+  console.log("Google Chrome es el navegador predeterminado.");
+} else {
+  console.log("Google Chrome NO es el navegador predeterminado.");
+}
+
+// A menudo querrá saber si una cadena comienza o termina con una subcadena en particular. Esta es una necesidad lo suficientemente común como para que haya dos métodos especiales para esto: startsWith() y endsWith():
+
+const navegador3 = "Firefox developer edition";
+
+if (navegador3.endsWith("edition")) {
+  console.log("Estas usando el navegador para desarrolladores de mozilla");
+} else {
+  console.log("NO estas usando un navegador para desarrollador");
+}
+
+const navegador4 = "Safari";
+
+if (navegador4.startsWith("Saf")) {
+  console.log("Estas usando un navegador desarrollado por Apple.");
+} else {
+  console.log("NO estas usando un navegador desarrollado por Apple.");
+}
