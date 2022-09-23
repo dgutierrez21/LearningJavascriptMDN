@@ -260,9 +260,14 @@ const productos = [
 
 for (const producto of productos) {
   // numero 3
-  const indexColon = producto.indexOf(":"),
-    nombre = producto.slice(0, indexColon),
-    precio = Number(producto.slice(indexColon + 1)); // numero 4
+  // const indexColon = producto.indexOf(":"),
+  //   nombre = producto.slice(0, indexColon),
+  //   precio = Number(producto.slice(indexColon + 1)); // numero 4
+
+  // solucion #2 para el punto numero 3 y 4
+  const subMatriz = producto.split(":"),
+    nombre = subMatriz[0],
+    precio = Number(subMatriz[1]);
 
   // numero 5
   total += precio;
