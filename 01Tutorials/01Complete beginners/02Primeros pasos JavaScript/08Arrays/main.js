@@ -24,3 +24,10 @@ console.log(secuencia);
 const alAzar = ["Arbol", 456, [0, 1, 2]];
 
 console.log(alAzar);
+
+// Búsqueda de la longitud de una matriz #008000
+// Puede averiguar la longitud de una matriz (cuántos elementos hay en ella) exactamente de la misma manera que averigua la longitud (en caracteres) de una cadena, utilizando la propiedad length. Pruebe lo siguiente:
+
+const compras2 = ["Leche", "Fideos", "Pan", "Queso"];
+
+console.log(compras2.length); // 4
