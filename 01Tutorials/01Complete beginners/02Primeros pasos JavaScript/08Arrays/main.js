@@ -31,3 +31,27 @@ console.log(alAzar);
 const compras2 = ["Leche", "Fideos", "Pan", "Queso"];
 
 console.log(compras2.length); // 4
+
+// Acceso y modificación de elementos de matriz #008000
+// Los elementos de una matriz están numerados, comenzando desde cero. Este número se denomina índice del elemento. Entonces, el primer elemento tiene índice 0, el segundo tiene índice 1, y así sucesivamente. Puede acceder a elementos individuales de la matriz mediante notación de corchetes y proporcionando el índice del elemento, de la misma manera que accedió a las letras de una cadena.
+
+// Introduzca lo siguiente en la consola:
+
+const compras3 = ["Leche", "Fideos", "Pan", "Queso"];
+
+console.log(compras3[3]);
+
+// También puede modificar un elemento de una matriz asignando un nuevo valor a un único elemento de matriz. Prueba esto:
+
+compras3[1] = "Banano";
+
+console.log(compras3);
+console.log(compras3[1]);
+
+// Nota: Lo hemos dicho antes, pero solo como recordatorio: ¡las computadoras comienzan a contar desde 0!
+
+// Tenga en cuenta que una matriz dentro de una matriz se denomina matriz multidimensional. Puede acceder a un elemento dentro de una matriz que se encuentra dentro de otra matriz encadenando dos conjuntos de corchetes. Por ejemplo, para acceder a uno de los elementos dentro de la matriz que es el tercer elemento dentro de la matriz random (ver sección anterior), podríamos hacer algo como esto:
+
+const alAzar2 = ["Arbol", 456, [0, "Lechuga", 2]];
+
+console.log(alAzar2[2][1]);
