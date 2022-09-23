@@ -93,3 +93,56 @@ const ciudades3 = ["Bristol", "Manchester"];
 ciudades3.unshift("Edinburgh");
 
 console.log(ciudades3);
+
+// Eliminación de elementos #008000
+// Para quitar el último elemento de la matriz, utilice pop().
+
+const paisesMasSeguros22 = [
+  "Islandia",
+  "Nueva Zelanda",
+  "Irlanda",
+  "Dinamarca",
+];
+
+paisesMasSeguros22.pop();
+
+console.log(paisesMasSeguros22);
+
+// El método pop() devuelve el elemento que se quitó. Para guardar ese elemento en una nueva variable, puede hacer lo siguiente:
+
+const paisesMejoresSueldos22 = ["Suiza", "Islandia", "Dinamarca", "Noruega"];
+
+const paisEliminado = paisesMejoresSueldos22.pop();
+
+console.log(paisEliminado);
+
+// Para quitar el primer elemento de una matriz, utilice shift():
+
+paisesMejoresSueldos22.shift();
+
+console.log(paisesMejoresSueldos22);
+
+// Si conoce el índice de un elemento, puede quitarlo de la matriz mediante splice():
+
+PaisesMejoresSalariosMinimosEuropa = [
+  "Luxemburgo",
+  "Irlandia",
+  "Paises bajos",
+  "Bélgica",
+];
+
+const index = PaisesMejoresSalariosMinimosEuropa.indexOf("Paises bajos");
+
+if (index !== -1) {
+  PaisesMejoresSalariosMinimosEuropa.splice(index, 1);
+}
+
+console.log(PaisesMejoresSalariosMinimosEuropa);
+
+// En esta llamada a splice(), el primer argumento dice por dónde empezar a eliminar elementos, y el segundo argumento dice cuántos elementos deben eliminarse. Para que pueda eliminar más de un elemento:
+
+if (index !== -1) {
+  PaisesMejoresSalariosMinimosEuropa.splice(index, 2);
+}
+
+console.log(PaisesMejoresSalariosMinimosEuropa);
