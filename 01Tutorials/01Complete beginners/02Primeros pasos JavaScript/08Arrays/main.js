@@ -55,3 +55,11 @@ console.log(compras3[1]);
 const alAzar2 = ["Arbol", 456, [0, "Lechuga", 2]];
 
 console.log(alAzar2[2][1]);
+
+// Búsqueda de elementos en una matriz #008000
+// Esto está bien si conoces el índice de un artículo, pero ¿qué pasa si no lo haces? Puede encontrar el índice de un elemento determinado mediante el método indexOf()). Esto toma un elemento como argumento y devuelve el índice, o -1 si el elemento no se encontró en la matriz:
+
+const lenguajesProgramacion = ["Swift", "C++", "Python"];
+
+console.log(lenguajesProgramacion.indexOf("Python"));
+console.log(lenguajesProgramacion.indexOf("Javascript"));
