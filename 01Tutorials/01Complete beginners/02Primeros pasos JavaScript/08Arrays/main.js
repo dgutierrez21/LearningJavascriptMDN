@@ -63,3 +63,33 @@ const lenguajesProgramacion = ["Swift", "C++", "Python"];
 
 console.log(lenguajesProgramacion.indexOf("Python"));
 console.log(lenguajesProgramacion.indexOf("Javascript"));
+
+// Adición de elementos #008000
+// Para añadir uno o más elementos al final de una matriz podemos usar push(). Tenga en cuenta que debe incluir uno o más elementos que desee agregar al final de la matriz.
+
+const ciudades = ["Manchester", "Liverpool"];
+
+ciudades.push("Cardiff");
+
+console.log(ciudades);
+
+ciudades.push("Brandford", "Brighton");
+
+console.log(ciudades);
+
+// La nueva longitud de la matriz se devuelve cuando se completa la llamada al método. Si desea almacenar la nueva longitud de matriz en una variable, puede hacer algo como esto:
+
+const ciudades2 = ["Liverpool", "Manchester"];
+
+const nuevaLongitud = ciudades2.push("Bristol");
+
+console.log(ciudades2);
+console.log(nuevaLongitud);
+
+// Para agregar un elemento al inicio de la matriz, use unshift():
+
+const ciudades3 = ["Bristol", "Manchester"];
+
+ciudades3.unshift("Edinburgh");
+
+console.log(ciudades3);
