@@ -187,3 +187,37 @@ const masLargo = ciudades4.filter(esLargo);
 console.log(masLargo);
 
 // Al igual que map(), damos una función al método filter() y filter() llama a esta función para cada elemento de la matriz, pasando el elemento. Si la función devuelve true, el elemento se agrega a una nueva matriz. Finalmente devuelve la nueva matriz.
+
+// Conversión entre cadenas y matrices #008000
+// A menudo se le presentarán algunos datos sin procesar contenidos en una cadena larga grande, y es posible que desee separar los elementos útiles en una forma más útil y luego hacerles cosas, como mostrarlos en una tabla de datos. Para ello, podemos utilizar el método split()). En su forma más simple, esto toma un solo parámetro, el carácter en el que desea separar la cadena, y devuelve las subcadenas entre el separador como elementos en una matriz.
+
+// Nota: De acuerdo, este es técnicamente un método de cadena, no un método de matriz, pero lo hemos puesto con matrices, ya que va bien aquí.
+
+// Juguemos con esto, para ver cómo funciona. Primero, cree una cadena en la consola:
+
+const datos = "Manchester,London,Liverpool,Birmingham,Leeds,Carlisle";
+
+// Ahora vamos a dividirlo en cada coma:
+
+const ciudades5 = datos.split(",");
+
+console.log(ciudades5);
+
+// Finalmente, intente encontrar la longitud de su nueva matriz y recuperar algunos elementos de ella:
+
+console.log(ciudades5.length);
+console.log(ciudades5[0]); // El primer elemento en la matriz
+console.log(ciudades5[2]); // El tercer elemento en la matriz
+console.log(ciudades5[ciudades5.length - 1]); // El ultimo elemento en la matriz
+
+// También puede ir en sentido contrario utilizando el método join()). Pruebe lo siguiente:
+
+const separacionComa = ciudades5.join(", ");
+
+console.log(separacionComa);
+
+// Otra forma de convertir una matriz en una cadena es utilizar el método toString()). toString() es posiblemente más simple que join() ya que no toma un parámetro, sino más limitante. Con join() puede especificar diferentes separadores, mientras que toString() siempre usa una coma. (Intente ejecutar el paso 4 con un carácter diferente al de una coma).
+
+const nombrePerros = ["Jumpy", "Lorik", "Volter", "Dexter"];
+
+console.log(nombrePerros.toString());
