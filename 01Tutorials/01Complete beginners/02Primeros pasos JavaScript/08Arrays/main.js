@@ -284,3 +284,61 @@ for (const producto of productos) {
 }
 
 totalBox.textContent = `Total: $${total.toFixed(2)}`;
+
+// Aprendizaje activo: las 5 mejores búsquedas #008000
+// Un buen uso para los métodos de matriz como push() y pop() es cuando mantiene un registro de los elementos actualmente activos en una aplicación web. En una escena animada, por ejemplo, es posible que tenga una matriz de objetos que representen los gráficos de fondo que se muestran actualmente, y es posible que solo desee que se muestren 50 a la vez, por razones de rendimiento o desorden. A medida que se crean nuevos objetos y se agregan a la matriz, los más antiguos se pueden eliminar de la matriz para mantener el número deseado.
+
+// En este ejemplo vamos a mostrar un uso mucho más simple: aquí te damos un sitio de búsqueda falso, con un cuadro de búsqueda. La idea es que cuando se ingresan términos en el cuadro de búsqueda, los 5 términos de búsqueda anteriores principales se muestran en la lista. Cuando el número de términos supera los 5, el último término comienza a eliminarse cada vez que se agrega un nuevo término a la parte superior, por lo que siempre se muestran los 5 términos anteriores.
+
+// Nota: En una aplicación de búsqueda real, probablemente podría hacer clic en los términos de búsqueda anteriores para volver a las búsquedas anteriores, ¡y mostraría resultados de búsqueda reales! Simplemente lo mantenemos simple por ahora.
+
+// Para completar la aplicación, necesitamos que:
+
+// Agregue una línea debajo del comentario // number 1 que agregue el valor actual ingresado en la entrada de búsqueda al inicio de la matriz. Esto se puede recuperar mediante searchInput.value.
+// Agregue una línea debajo del comentario // number 2 que elimine el valor actualmente al final de la matriz.
+
+const list_result_2 = document.querySelector(".list_result_2"),
+  inputBuscar = document.querySelector(".list_output_2 input"),
+  btnBuscar = document.querySelector(".list_output_2 button");
+
+list_result_2.innerHTML = "";
+
+const miHistoria = [];
+const HISTORIA_MAXIMA = 5;
+
+btnBuscar.onclick = () => {
+  // sólo permitiremos que se introduzca un término si la entrada de búsqueda no está vacía
+  if (inputBuscar.value !== "") {
+    // numero 1
+    miHistoria.unshift(inputBuscar.value);
+
+    // vaciar la lista para no mostrar entradas duplicadas
+
+    // la visualización se regenera cada vez que se introduce un término de búsqueda.
+
+    list_result_2.innerHTML = "";
+
+    // recorre la matriz y muestra todos los términos de búsqueda en la lista
+
+    for (const textElemento of miHistoria) {
+      const listItem = document.createElement("li"),
+        listItemParr = document.createElement("p");
+
+      listItemParr.textContent = textElemento;
+      list_result_2.appendChild(listItem);
+      listItem.appendChild(listItemParr);
+    }
+
+    // Si la longitud del array es de 5 o más, elimina el término de búsqueda más antiguo
+
+    if (miHistoria.length >= HISTORIA_MAXIMA) {
+      // numero 2
+      miHistoria.pop();
+    }
+
+    // vacía la entrada de búsqueda y la enfoca, lista para que se introduzca el siguiente término
+
+    inputBuscar.value = "";
+    inputBuscar.focus();
+  }
+};
