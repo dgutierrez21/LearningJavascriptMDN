@@ -146,3 +146,44 @@ if (index !== -1) {
 }
 
 console.log(PaisesMejoresSalariosMinimosEuropa);
+
+// Acceso a todos los elementos #008000
+// Muy a menudo querrá acceder a todos los elementos de la matriz. Puede hacer esto usando el for...of la declaración:
+
+const halcones = [
+  "Halcón berigora",
+  "Halcón pechirrojo",
+  "Halcón Eleonor",
+  "Halcón maorí",
+];
+
+for (const halcon of halcones) {
+  console.log(halcon);
+}
+
+// A veces querrá hacer lo mismo con cada elemento de una matriz, dejándolo con una matriz que contiene los elementos modificados. Puede hacerlo usando map(). El siguiente código toma una matriz de números y duplica cada número:
+
+function doble(numero) {
+  return numero * 2;
+}
+
+const numeros = [5, 2, 7, 10];
+const duplicado = numeros.map(doble);
+console.log(numeros);
+console.log(duplicado);
+
+// Damos una función al map(), y map() llama a la función una vez por cada elemento de la matriz, pasando el elemento. A continuación, agrega el valor devuelto de cada llamada a la función a una nueva matriz y, finalmente, devuelve la nueva matriz.
+
+// A veces querrá crear una nueva matriz que contenga solo los elementos de la matriz original que coincidan con alguna prueba. Puede hacerlo usando filter(). El código siguiente toma una matriz de cadenas y devuelve una matriz que contiene solo las cadenas que tienen más de 8 caracteres:
+
+function esLargo(ciudad) {
+  return ciudad.length > 8;
+}
+
+const ciudades4 = ["London", "Liverpool", "Totnes", "Edinburgh"];
+
+const masLargo = ciudades4.filter(esLargo);
+
+console.log(masLargo);
+
+// Al igual que map(), damos una función al método filter() y filter() llama a esta función para cada elemento de la matriz, pasando el elemento. Si la función devuelve true, el elemento se agrega a una nueva matriz. Finalmente devuelve la nueva matriz.
