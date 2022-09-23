@@ -221,3 +221,61 @@ console.log(separacionComa);
 const nombrePerros = ["Jumpy", "Lorik", "Volter", "Dexter"];
 
 console.log(nombrePerros.toString());
+
+// Aprendizaje activo: Impresión de esos productos #008000
+// Volvamos al ejemplo que describimos anteriormente: imprimir nombres de productos y precios en una factura, luego totalizar los precios e imprimirlos en la parte inferior. En el ejemplo editable a continuación hay comentarios que contienen números: cada uno de estos marca un lugar donde debe agregar algo al código. Son los siguientes:
+
+// 1. Debajo del comentario // number 1 hay una serie de cadenas, cada una de las cuales contiene un nombre de producto y un precio separados por dos puntos. Nos gustaría que convirtiera esto en una matriz y la almacenara en una matriz llamada products.
+
+// 2. Debajo del comentario // number 2, comience un for...of() bucle para recorrer cada elemento de la matriz de products.
+
+// 3. Debajo del comentario // number 3 queremos que escriba una línea de código que divida el elemento de matriz actual (name:price) en dos elementos separados, uno que contenga solo el nombre y otro que contenga solo el precio. Si no está seguro de cómo hacerlo, consulte el artículo Métodos de cadena útiles para obtener ayuda, o incluso mejor, consulte la sección Conversión entre cadenas y matrices de este artículo.
+
+// 4. Como parte de la línea de código anterior, también querrá convertir el precio de una cadena a un número. Si no recuerdas cómo hacerlo, consulta el primer artículo sobre cadenas.
+
+// 5. Hay una variable llamada total que se crea y se le da un valor de 0 en la parte superior del código. Dentro del bucle (debajo // number 4) queremos que agregue una línea que agregue el precio actual del artículo a ese total en cada iteración del bucle, de modo que al final del código se imprima el total correcto en la factura. Es posible que necesite un operador de asignación para hacer esto.
+
+// 6. Queremos que cambie la línea justo debajo // number 5 para que la variable itemText sea igual a "nombre actual del artículo - $current precio del artículo", por ejemplo, "Zapatos - $ 23.99" en cada caso, para que la información correcta para cada artículo se imprima en la factura. Esto es solo una simple concatenación de cadenas, que debería ser familiar para usted.
+
+// 7. Finalmente, debajo del comentario // number 6, deberá agregar un } para marcar el final del for...of() bucle.
+
+const listResult = document.querySelector(".list_result_1"),
+  totalBox = document.querySelector(".p_total");
+
+let total = 0;
+listResult.innerHTML = "";
+totalBox.textContent = "";
+
+// numero 1
+
+const productos = [
+  "Underpants:6.99",
+  "Socks:5.99",
+  "T-shirt:14.99",
+  "Trousers:31.99",
+  "Shoes:23.99",
+];
+
+// numero 2
+
+for (const producto of productos) {
+  // numero 3
+  const indexColon = producto.indexOf(":"),
+    nombre = producto.slice(0, indexColon),
+    precio = Number(producto.slice(indexColon + 1)); // numero 4
+
+  // numero 5
+  total += precio;
+
+  // numero 6
+  let itemText = `${nombre} - $${precio}`;
+
+  const lisItem = document.createElement("li"),
+    listItemParr = document.createElement("p");
+
+  listItemParr.textContent = itemText;
+  listResult.appendChild(lisItem);
+  lisItem.appendChild(listItemParr);
+}
+
+totalBox.textContent = `Total: $${total.toFixed(2)}`;
