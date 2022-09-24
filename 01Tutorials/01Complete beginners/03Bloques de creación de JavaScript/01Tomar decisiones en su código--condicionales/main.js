@@ -75,3 +75,42 @@ if (comprasRealizadas === true) {
 console.log(asignacionParaHijo);
 
 // Este código como se muestra siempre da como resultado que la variable shoppingDone regrese false, lo que significa decepción para nuestro pobre hijo. Dependería de nosotros proporcionar un mecanismo para que el padre establezca la variable shoppingDone en true si el niño hizo las compras.
+
+// else if #00aae4
+
+// El último ejemplo nos proporcionó dos opciones, o resultados, pero ¿qué pasa si queremos más de dos?
+
+// Hay una manera de encadenar opciones / resultados adicionales a su if...else — usando else if. Cada opción adicional requiere un bloque adicional para poner entre if () { } y else { } — echa un vistazo al siguiente ejemplo más involucrado, que podría ser parte de una aplicación simple de pronóstico del tiempo:
+
+const select = document.querySelector(".pronosticoTiempo select");
+const para = document.querySelector(".pronosticoTiempo p");
+
+select.addEventListener("change", setTiempo);
+
+function setTiempo() {
+  const eleccion = select.value;
+
+  if (eleccion === "soleado") {
+    para.textContent =
+      "Hoy hace buen tiempo y está soleado. Ponte pantalones cortos. Ve a la playa, o al parque, y toma un helado.";
+  } else if (eleccion === "lluvioso") {
+    para.textContent =
+      "Está lloviendo fuera; llévate un chubasquero y un paraguas, y no te quedes fuera mucho tiempo.";
+  } else if (eleccion === "nevado") {
+    para.textContent =
+      "La nieve está cayendo, ¡está helada! Lo mejor es quedarse en casa con una taza de chocolate caliente, o ir a construir un muñeco de nieve.";
+  } else if (eleccion == "nublado") {
+    para.textContent =
+      "No llueve, pero el cielo está gris y sombrío; podría cambiar en cualquier momento, así que llévate un chubasquero por si acaso.";
+  } else {
+    para.textContent = "";
+  }
+}
+
+// 1. Aquí tenemos un elemento HTML <select> que nos permite tomar diferentes decisiones climáticas y un párrafo simple.
+
+// 2. En JavaScript, estamos almacenando una referencia a los elementos <select> y <p>, y agregando un detector de eventos al elemento <select> para que cuando se cambie su valor, se ejecute la función setWeather()).
+
+// 3. Cuando se ejecuta esta función, primero establecemos una variable llamada choice en el valor actual seleccionado en el elemento <select>. Luego usamos una declaración condicional para mostrar texto diferente dentro del párrafo dependiendo de cuál sea el valor de choice. Observe cómo todas las condiciones se prueban en else if () { } blocks, excepto la primera, que se prueba en un bloque if () { }.
+
+// 4. La última opción, dentro del bloque else { }, es básicamente una opción de "último recurso": el código dentro de él se ejecutará si ninguna de las condiciones true. En este caso, sirve para vaciar el texto del párrafo si no se selecciona nada, por ejemplo, si un usuario decide volver a seleccionar la opción de marcador de posición "--Hacer una elección--" que se muestra al principio.
