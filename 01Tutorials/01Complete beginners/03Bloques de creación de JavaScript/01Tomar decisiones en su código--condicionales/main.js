@@ -58,3 +58,20 @@ else ejecutar otro código en su lugar
 */
 
 // Esta sintaxis es perfectamente válida, pero es mucho más fácil entender el código si se utilizan las llaves para delimitar los bloques de código, y se utilizan varias líneas y sangrías.
+
+// Un ejemplo real #008000
+// Para entender mejor esta sintaxis, consideremos un ejemplo real. Imagínese a un niño al que su madre o su padre le piden ayuda con una tarea. El padre podría decir "¡Hola cariño! Si me ayudas yendo y haciendo las compras, te daré una asignación adicional para que puedas pagar ese juguete que querías". En JavaScript, podríamos representar esto así:
+
+let comprasRealizadas = false;
+
+let asignacionParaHijo;
+
+if (comprasRealizadas === true) {
+  asignacionParaHijo = 10;
+} else {
+  asignacionParaHijo = 5;
+}
+
+console.log(asignacionParaHijo);
+
+// Este código como se muestra siempre da como resultado que la variable shoppingDone regrese false, lo que significa decepción para nuestro pobre hijo. Dependería de nosotros proporcionar un mecanismo para que el padre establezca la variable shoppingDone en true si el niño hizo las compras.
