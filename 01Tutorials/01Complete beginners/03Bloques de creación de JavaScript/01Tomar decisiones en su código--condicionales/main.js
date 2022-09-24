@@ -7,3 +7,6 @@
 
 // Las declaraciones condicionales nos permiten representar dicha toma de decisiones en JavaScript, desde la elección que se debe hacer (por ejemplo, "una galleta o dos"), hasta el resultado resultante de esas elecciones (tal vez el resultado de "comió una galleta" podría ser "todavía sentía hambre", y el resultado de "comió dos galletas" podría ser "se sintió lleno, pero mamá me regañó por comer todas las galletas").
 
+// Declaración if...else #008000
+
+// Veamos, con mucho, el tipo más común de declaración condicional que usará en JavaScript: el humilde if...else.
