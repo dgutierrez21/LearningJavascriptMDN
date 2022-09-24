@@ -74,3 +74,14 @@
 // 5.4 Justo debajo de las dos definiciones de variables, agregue dos líneas de reemplazo de cuerdas más que reemplacen '94 fahrenheit' con el contenido de la variable temperature, y '300 libras' con el contenido de la variable de weight.
 
 // 6. Finalmente, en la penúltima línea de la función, haga que la propiedad textContent de la variable story (que hace referencia al párrafo) sea igual a newStory.
+
+// Consejos y sugerencias #008000
+// No es necesario editar el HTML de ninguna manera, excepto para aplicar el JavaScript a su HTML.
+
+// Si no está seguro de si JavaScript se aplica a su HTML correctamente, intente eliminar todo lo demás del archivo JavaScript temporalmente, agregue un simple poco de JavaScript que sepa que creará un efecto obvio, luego guarde y actualice. Lo siguiente, por ejemplo, convierte el fondo del elemento <html> en rojo, por lo que toda la ventana del navegador debería ponerse roja si JavaScript se aplica correctamente:
+
+// document.querySelector("html").style.backgroundColor = "red";
+
+// Math.round() es un método JavaScript integrado que redondea el resultado de un cálculo al número entero más cercano.
+
+// Hay tres instancias de cadenas que deben reemplazarse. Puede repetir el método replace() varias veces o puede usar replaceAll(). Recuerda, ¡las cuerdas son inmutables!
