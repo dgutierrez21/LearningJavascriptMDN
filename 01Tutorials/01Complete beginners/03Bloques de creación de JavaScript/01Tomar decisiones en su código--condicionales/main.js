@@ -114,3 +114,35 @@ function setTiempo() {
 // 3. Cuando se ejecuta esta función, primero establecemos una variable llamada choice en el valor actual seleccionado en el elemento <select>. Luego usamos una declaración condicional para mostrar texto diferente dentro del párrafo dependiendo de cuál sea el valor de choice. Observe cómo todas las condiciones se prueban en else if () { } blocks, excepto la primera, que se prueba en un bloque if () { }.
 
 // 4. La última opción, dentro del bloque else { }, es básicamente una opción de "último recurso": el código dentro de él se ejecutará si ninguna de las condiciones true. En este caso, sirve para vaciar el texto del párrafo si no se selecciona nada, por ejemplo, si un usuario decide volver a seleccionar la opción de marcador de posición "--Hacer una elección--" que se muestra al principio.
+
+// Una nota sobre los operadores de comparación #00aae4
+// Los operadores de comparación se utilizan para probar las condiciones dentro de nuestras declaraciones condicionales. Primero analizamos los operadores de comparación en nuestro artículo Matemáticas básicas en JavaScript: números y operadores. Nuestras opciones son:
+
+// === y !== — prueba si un valor es idéntico o no idéntico a otro.
+// < y >: pruebe si un valor es menor o mayor que otro.
+// <= y >= — prueba si un valor es menor o igual que, o mayor o igual a, otro.
+
+// Queríamos hacer una mención especial a las pruebas de valores booleanos (true / false) y un patrón común que encontrará una y otra vez. Cualquier valor que no sea false, undefined, null, 0, NaN o una cadena vacía ('') en realidad devuelve true cuando se prueba como una instrucción condicional, por lo tanto, puede usar un nombre de variable por sí solo para probar si es true o incluso si existe (es decir, no está indefinido). Así, por ejemplo:
+
+let queso = "Cheddar";
+
+if (queso) {
+  console.log("Sí. Queso disponible para hacer tostadas con queso.");
+} else {
+  console.log("Hoy no hay queso en las tostadas para ti.");
+}
+
+// Y, volviendo a nuestro ejemplo anterior sobre el niño haciendo una tarea para sus padres, podría escribirlo así:
+
+let comprasRealizadas2 = false,
+  asignacionParaHijo2;
+
+  // No necesitamos especificar explícitamente 'comprasRealizadas2 === true'
+
+if (comprasRealizadas2) {
+  asignacionParaHijo2 = 10;
+} else {
+  asignacionParaHijo2 = 5;
+}
+
+console.log(asignacionParaHijo2);
