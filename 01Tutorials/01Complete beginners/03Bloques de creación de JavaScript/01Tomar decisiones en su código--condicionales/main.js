@@ -296,3 +296,42 @@ function setTiempo2() {
       break;
   }
 }
+
+// Operador ternario #008000
+// Hay un último fragmento de sintaxis que queremos presentarte antes de que juegues con algunos ejemplos. El operador ternario o condicional es un pequeño bit de sintaxis que prueba una condición y devuelve un valor/expresión si es true, y otro si es false; esto puede ser útil en algunas situaciones y puede ocupar mucho menos código que un if...else block si tiene dos opciones que se eligen entre a través de una condición true/false. El pseudocódigo se ve así:
+
+// codición ? ejecute este codigo : ejecute este codigo en su lugar
+
+// Así que veamos un ejemplo simple:
+
+let esUnCumpleanios = true;
+
+const saludo = esUnCumpleanios
+  ? "Feliz cumpleaños, Sra. Smith, esperamos que tenga un gran día."
+  : "Buenas noches Sra. Smith.";
+
+console.log(saludo);
+
+// Aquí tenemos una variable llamada isBirthday: si esto es true, le damos a nuestro invitado un mensaje de feliz cumpleaños; si no, le damos el saludo diario estándar.
+
+// Ejemplo de operador ternario #00aae4
+// El operador ternario no es solo para establecer valores de variables; también puede ejecutar funciones o líneas de código, lo que desee. El siguiente ejemplo en vivo muestra un selector de tema simple donde el estilo para el sitio se aplica utilizando un operador ternario.
+
+// ver html...
+
+const seleccionTema = document.querySelector(".seleccionDeTema select");
+
+function actualizacion(bgColor, textColor) {
+  document.body.style.backgroundColor = bgColor;
+  document.body.style.color = textColor;
+}
+
+seleccionTema.addEventListener("change", () =>
+  seleccionTema.value === "oscuro"
+    ? actualizacion("black", "white")
+    : actualizacion("white", "black")
+);
+
+// Aquí tenemos un elemento <select> para elegir un tema (blanco o negro), además de un simple <h1> para mostrar el título de un sitio web. También tenemos una función llamada update(), que toma dos colores como parámetros (entradas). El color de fondo del sitio web se establece en el primer color proporcionado y su color de texto se establece en el segundo color proporcionado.
+
+// Finalmente, también tenemos un detector de eventos onchange que sirve para ejecutar una función que contiene un operador ternario. Comienza con una condición de prueba— select.value === 'black'. Si esto devuelve true, ejecutamos la función update() con parámetros de negro y blanco, lo que significa que terminamos con un color de fondo de negro y un color de texto de blanco. Si devuelve false, ejecutamos la función update() con parámetros de blanco y negro, lo que significa que los colores del sitio están invertidos.
