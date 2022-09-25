@@ -335,3 +335,61 @@ seleccionTema.addEventListener("change", () =>
 // Aquí tenemos un elemento <select> para elegir un tema (blanco o negro), además de un simple <h1> para mostrar el título de un sitio web. También tenemos una función llamada update(), que toma dos colores como parámetros (entradas). El color de fondo del sitio web se establece en el primer color proporcionado y su color de texto se establece en el segundo color proporcionado.
 
 // Finalmente, también tenemos un detector de eventos onchange que sirve para ejecutar una función que contiene un operador ternario. Comienza con una condición de prueba— select.value === 'black'. Si esto devuelve true, ejecutamos la función update() con parámetros de negro y blanco, lo que significa que terminamos con un color de fondo de negro y un color de texto de blanco. Si devuelve false, ejecutamos la función update() con parámetros de blanco y negro, lo que significa que los colores del sitio están invertidos.
+
+// Aprendizaje activo: un calendario sencillo #008000
+// En este ejemplo, nos ayudarás a terminar una aplicación de calendario simple. En el código que tienes:
+
+// Un elemento <select> para permitir al usuario elegir entre diferentes meses.
+
+// Un onchange para detectar cuándo se cambia el valor seleccionado en el menú <select>.
+
+// Función denominada createCalendar() que dibuja el calendario y muestra el mes correcto en el elemento <h1>.
+
+// Necesitamos que escriba una instrucción condicional dentro de la función onchange, justo debajo del comentario // ADD CONDITIONAL HERE. Debería:
+
+// 1. Mire el mes seleccionado (almacenado en la variable choice. Este será el valor del elemento <select> después de que cambie el valor, por ejemplo, "enero").
+// 2. Establezca una variable denominada days para que sea igual al número de días del mes seleccionado. Para ello tendrás que buscar el número de días en cada mes del año. Puede ignorar los años bisiestos para los fines de este ejemplo.
+
+// Consejos:
+
+// Se recomienda usar OR lógico para agrupar varios meses en una sola condición; muchos de ellos comparten el mismo número de días.
+
+// Piense en qué número de días es el más común y úselo como valor predeterminado.
+
+const seleccionCalendario = document.querySelector(".calendario select"),
+  listaCalendario = document.querySelector(".listaCalendario"),
+  parrafoMes = document.querySelector(".calendario .p_result");
+
+seleccionCalendario.addEventListener("change", () => {
+  const eleccion = seleccionCalendario.value;
+
+  let dias;
+
+  // añadir la condicion aquí
+  if (eleccion === "febrero") {
+    dias = 28;
+  } else if (
+    eleccion === "abril" ||
+    eleccion === "junio" ||
+    eleccion === "septiembre" ||
+    eleccion === "noviembre"
+  ) {
+    dias = 30;
+  } else {
+    dias = 31;
+  }
+
+  crearCalendario(dias, eleccion);
+});
+
+function crearCalendario(dias, eleccion) {
+  listaCalendario.innerHTML = "";
+  parrafoMes.textContent = eleccion;
+  for (let i = 1; i <= dias; i++) {
+    const elementoLista = document.createElement("li");
+    elementoLista.textContent = i;
+    listaCalendario.appendChild(elementoLista);
+  }
+}
+
+crearCalendario(31, "enero");
