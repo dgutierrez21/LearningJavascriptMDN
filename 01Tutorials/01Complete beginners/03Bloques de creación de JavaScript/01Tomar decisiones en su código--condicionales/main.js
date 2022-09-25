@@ -89,10 +89,14 @@ select.addEventListener("change", setTiempo);
 
 function setTiempo() {
   const eleccion = select.value;
+  let temperatura = 35;
 
   if (eleccion === "soleado") {
-    para.textContent =
-      "Hoy hace buen tiempo y está soleado. Ponte pantalones cortos. Ve a la playa, o al parque, y toma un helado.";
+    if (temperatura < 35) {
+      para.textContent = `Afuera hace ${temperatura} grados - agradable y soleado. Vamos a la playa, o al parque, a tomar un helado.`;
+    } else if (temperatura >= 35) {
+      para.textContent = `Hace ${temperatura} grados afuera - ¡REALMENTE CALIENTE! Si quieres salir a la calle, asegúrate de ponerte crema solar.`;
+    }
   } else if (eleccion === "lluvioso") {
     para.textContent =
       "Está lloviendo fuera; llévate un chubasquero y un paraguas, y no te quedes fuera mucho tiempo.";
@@ -137,7 +141,7 @@ if (queso) {
 let comprasRealizadas2 = false,
   asignacionParaHijo2;
 
-  // No necesitamos especificar explícitamente 'comprasRealizadas2 === true'
+// No necesitamos especificar explícitamente 'comprasRealizadas2 === true'
 
 if (comprasRealizadas2) {
   asignacionParaHijo2 = 10;
@@ -146,3 +150,10 @@ if (comprasRealizadas2) {
 }
 
 console.log(asignacionParaHijo2);
+
+// Anidación if...else #00aae4
+// Está perfectamente bien poner uno if...else declaración dentro de otra, para anidarlos. Por ejemplo, podríamos actualizar nuestra aplicación de pronóstico del tiempo para mostrar un conjunto adicional de opciones dependiendo de cuál sea la temperatura:
+
+// ver ejemplo anterior de una aplicación simple de pronóstico del tiempo:linea 90
+
+// A pesar de que todo el código funciona en conjunto, cada if...else declaración funciona completamente independientemente de la otra.
