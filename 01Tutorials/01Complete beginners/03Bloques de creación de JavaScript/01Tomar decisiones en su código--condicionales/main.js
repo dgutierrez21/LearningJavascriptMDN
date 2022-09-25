@@ -91,12 +91,10 @@ function setTiempo() {
   const eleccion = select.value;
   let temperatura = 35;
 
-  if (eleccion === "soleado") {
-    if (temperatura < 35) {
-      para.textContent = `Afuera hace ${temperatura} grados - agradable y soleado. Vamos a la playa, o al parque, a tomar un helado.`;
-    } else if (temperatura >= 35) {
-      para.textContent = `Hace ${temperatura} grados afuera - ¡REALMENTE CALIENTE! Si quieres salir a la calle, asegúrate de ponerte crema solar.`;
-    }
+  if (eleccion === "soleado" && temperatura < 35) {
+    para.textContent = `Afuera hace ${temperatura} grados - agradable y soleado. Vamos a la playa, o al parque, a tomar un helado.`;
+  } else if (eleccion === "soleado" && temperatura >= 35) {
+    para.textContent = `Hace ${temperatura} grados afuera - ¡REALMENTE CALIENTE! Si quieres salir a la calle, asegúrate de ponerte crema solar.`;
   } else if (eleccion === "lluvioso") {
     para.textContent =
       "Está lloviendo fuera; llévate un chubasquero y un paraguas, y no te quedes fuera mucho tiempo.";
@@ -157,3 +155,68 @@ console.log(asignacionParaHijo2);
 // ver ejemplo anterior de una aplicación simple de pronóstico del tiempo:linea 90
 
 // A pesar de que todo el código funciona en conjunto, cada if...else declaración funciona completamente independientemente de la otra.
+
+// Operadores lógicos: AND, OR y NOT #00aae4
+// Si desea probar múltiples condiciones sin escribir anidadas if...else statements, los operadores lógicos pueden ayudarle. Cuando se usan en condiciones, los dos primeros hacen lo siguiente:
+
+// && — Y; permite encadenar dos o más expresiones para que todas ellas tengan que evaluarse individualmente como true para que toda la expresión devuelva true.
+// || — O BIEN; permite encadenar dos o más expresiones para que una o varias de ellas tengan que evaluarse individualmente como true para que toda la expresión devuelva true.
+
+// Para darle un ejemplo AND, el fragmento de código de ejemplo anterior se puede reescribir a esto:
+
+// ver ejemplo anterior de una aplicación simple de pronóstico del tiempo:linea 90
+
+// Así, por ejemplo, el primer bloque de código solo se ejecutará si choice === 'sunny' y temperature < 86 true.
+
+// Veamos un ejemplo rápido de OR:
+
+const FurgonetaDeHeladosEnElExterior = true;
+const estadoCasa = "en llamas";
+
+if (FurgonetaDeHeladosEnElExterior || estadoCasa === "en llamas") {
+  console.log("Debes salir de la casa rápidamente.");
+} else {
+  console.log("Probablemente debería quedarse dentro entonces.");
+}
+
+// El último tipo de operador lógico, NOT, expresado por el operador !, se puede usar para negar una expresión. Vamos a combinarlo con OR en el ejemplo anterior:
+
+if (!(FurgonetaDeHeladosEnElExterior || estadoCasa == "on fire")) {
+  console.log("Probablemente debería quedarse dentro entonces.");
+} else {
+  console.log("Debes salir de la casa rápidamente.");
+}
+
+// En este fragmento de código, si la instrucción OR devuelve true, el operador NOT la negará para que la expresión general devuelva false.
+
+// Puede combinar tantas declaraciones lógicas como desee, en cualquier estructura. En el ejemplo siguiente se ejecuta el código en su interior sólo si ambas instrucciones OR devuelven true, lo que significa que la instrucción AND general devolverá true:
+
+const nombreUsuario = "Steve",
+  conectado = true,
+  x = 5,
+  y = 10,
+  z = 7;
+
+if ((x === 5 || y > 3 || z <= 10) && (conectado || nombreUsuario === "Steve")) {
+  console.log("Los datos han sido verificados correctamente");
+}
+
+// Un error común al usar el operador OR lógico en sentencias condicionales es intentar indicar la variable cuyo valor está comprobando una vez, y luego dar una lista de valores que podría ser devolver true, separados por operadores || (OR). Por ejemplo:
+
+/*
+
+if (x === 5 || 7 || 10 || 20) {
+  // run my code
+}
+
+*/
+
+// En este caso, la condición dentro de if () siempre se evaluará a true ya que 7 (o cualquier otro valor distinto de cero) siempre se evalúa a true. Esta condición en realidad está diciendo "si x es igual a 5, o 7 es verdadero, que siempre lo es". ¡Esto lógicamente no es lo que queremos! Para que esto funcione, debe especificar una prueba completa a cada lado de cada operador de quirófano:
+
+/*
+
+if (x === 5 || x === 7 || x === 10 || x === 20) {
+  // run my code
+}
+
+*/
