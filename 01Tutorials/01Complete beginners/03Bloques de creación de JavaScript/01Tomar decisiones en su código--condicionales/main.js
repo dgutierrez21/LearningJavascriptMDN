@@ -393,3 +393,41 @@ function crearCalendario(dias, eleccion) {
 }
 
 crearCalendario(31, "enero");
+
+// Aprendizaje activo: más opciones de color #008000
+// En este ejemplo, tomará el ejemplo del operador ternario que vimos anteriormente y convertirá el operador ternario en una instrucción de cambio para permitirnos aplicar más opciones al sitio web simple. Mira el <select>, esta vez verás que no tiene dos opciones de tema, sino cinco. Debe agregar una instrucción switch justo debajo del comentario // ADD SWITCH STATEMENT:
+
+// Debe aceptar la variable choice como su expresión de entrada.
+// Para cada caso, la elección debe ser igual a uno de los <option> valueque se pueden seleccionar, es decir, white, black, purple, yellow o psychedelic.
+// Para cada caso, se debe ejecutar la función update() y pasar dos valores de color, el primero para el color de fondo y el segundo para el color del texto. Recuerde que los valores de color son cadenas, por lo que deben estar envueltos entre comillas.
+
+const seleccionTema2 = document.querySelector(".cambioColor select"),
+  body = document.body;
+
+seleccionTema2.addEventListener("change", () => {
+  const cambio = seleccionTema2.value;
+
+  // AÑADIR DECLARACIÓN DE SWITCH
+  switch (cambio) {
+    case "blanco":
+      cambioColor2("white", "black");
+      break;
+    case "oscuro":
+      cambioColor2("black", "white");
+      break;
+    case "purpura":
+      cambioColor2("purple", "white");
+      break;
+    case "amarillo":
+      cambioColor2("yellow", "black");
+      break;
+    case "psicodelico":
+      cambioColor2("lime", "black");
+      break;
+  }
+});
+
+function cambioColor2(bgcolor, colorTexto) {
+  body.style.backgroundColor = bgcolor;
+  body.style.color = colorTexto;
+}
