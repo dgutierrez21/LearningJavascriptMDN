@@ -59,7 +59,7 @@ else ejecutar otro código en su lugar
 
 // Esta sintaxis es perfectamente válida, pero es mucho más fácil entender el código si se utilizan las llaves para delimitar los bloques de código, y se utilizan varias líneas y sangrías.
 
-// Un ejemplo real #008000
+// Un ejemplo real #00aae4
 // Para entender mejor esta sintaxis, consideremos un ejemplo real. Imagínese a un niño al que su madre o su padre le piden ayuda con una tarea. El padre podría decir "¡Hola cariño! Si me ayudas yendo y haciendo las compras, te daré una asignación adicional para que puedas pagar ese juguete que querías". En JavaScript, podríamos representar esto así:
 
 let comprasRealizadas = false;
