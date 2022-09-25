@@ -220,3 +220,79 @@ if (x === 5 || x === 7 || x === 10 || x === 20) {
 }
 
 */
+
+// instrucciones switch #008000
+// if...else instrucciones else hacen bien el trabajo de habilitar el código condicional, pero no están exentas de desventajas. Son principalmente buenos para los casos en los que tiene un par de opciones, y cada una requiere una cantidad razonable de código para ejecutarse, y / o las condiciones son complejas (por ejemplo, múltiples operadores lógicos). Para los casos en los que solo desea establecer una variable en una determinada elección de valor o imprimir una instrucción en particular dependiendo de una condición, la sintaxis puede ser un poco engorrosa, especialmente si tiene una gran cantidad de opciones.
+
+// En tal caso, las instrucciones switch son su amiga: toman una sola expresión / valor como entrada y luego revisan varias opciones hasta que encuentran una que coincida con ese valor, ejecutando el código correspondiente que lo acompaña. Aquí hay un poco más de pseudocódigo, para que te hagas una idea:
+
+/*
+
+switch (expression) {
+  case choice1:
+    ejecute este codigo
+    break;
+
+  case choice2:
+    ejecute este codigo en su lugar
+    break;
+
+  // incluya todos los casos que desee
+
+  default:
+    En realidad, basta con ejecutar este código
+}
+
+*/
+
+// Aquí tenemos:
+
+// 1. El switch palabra clave, seguido de un conjunto de paréntesis.
+
+// 2. Expresión o valor dentro de los paréntesis.
+
+// 3. El case de la palabra clave, seguido de una elección de que la expresión/valor podría ser, seguido de dos puntos.
+
+// 4. Algún código para ejecutar si la opción coincide con la expresión.
+
+// 5. Una declaración break, seguida de un punto y coma. Si la opción anterior coincide con la expresión/valor, el explorador deja de ejecutar el bloque de código aquí y pasa a cualquier código que aparezca debajo de la instrucción switch.
+
+// 6. Tantos otros casos (viñetas 3-5) como quieras.
+
+// 7. La palabra clave default, seguida exactamente del mismo patrón de código que uno de los casos (viñetas 3-5), excepto que default no tiene una opción después de él, y no necesita la break ya que no hay nada que ejecutar después de esto en el bloque de todos modos. Esta es la opción predeterminada que se ejecuta si ninguna de las opciones coincide.
+
+// Nota: No tiene que incluir la sección default: puede omitirla de forma segura si no hay posibilidad de que la expresión termine siendo igual a un valor desconocido. Sin embargo, si existe la posibilidad de esto, debe incluirlo para manejar casos desconocidos.
+
+// Un ejemplo de switch #00aae4
+// Echemos un vistazo a un ejemplo real: reescribiremos nuestra aplicación de pronóstico del tiempo para usar una instrucción de cambio en su lugar:
+
+const select2 = document.querySelector(".pronosticoTiempo2 select"),
+  para2 = document.querySelector(".pronosticoTiempo2 p");
+
+select2.addEventListener("change", setTiempo2);
+
+function setTiempo2() {
+  const eleccion = select2.value;
+
+  switch (eleccion) {
+    case "soleado":
+      para2.textContent =
+        "Hoy hace buen tiempo y está soleado. Ponte pantalones cortos. Ve a la playa, o al parque, y toma un helado.";
+      break;
+    case "lluvioso":
+      para2.textContent =
+        "Está lloviendo fuera; llévate un chubasquero y un paraguas, y no te quedes fuera mucho tiempo.";
+      break;
+    case "nevado":
+      para2.textContent =
+        "La nieve está cayendo, ¡está helada! Lo mejor es quedarse en casa con una taza de chocolate caliente, o ir a construir un muñeco de nieve.";
+      break;
+    case "nublado":
+      para2.textContent =
+        "No llueve, pero el cielo está gris y sombrío; podría cambiar en cualquier momento, así que llévate un chubasquero por si acaso.";
+      break;
+    default:
+      para2.textContent = "";
+      break;
+  }
+}

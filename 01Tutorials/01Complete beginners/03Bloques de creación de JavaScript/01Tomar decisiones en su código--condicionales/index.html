@@ -16,9 +16,23 @@
   </head>
   <body>
     <div class="container p-5 text-center">
-      <div class="pronosticoTiempo">
+      <div class="pronosticoTiempo my-3">
         <label for="tiempo" class="h1"
           >Seleccione el tipo de clima de hoy:</label
+        >
+        <select id="tiempo" class="text-center my-3">
+          <option value="">--Haz una elección--</option>
+          <option value="soleado">Soleado</option>
+          <option value="lluvioso">Lluvioso</option>
+          <option value="nevado">Nevado</option>
+          <option value="nublado">Nublado</option>
+        </select>
+        <p class="p_result mt-3 fs-4 fw-bold"></p>
+      </div>
+
+      <div class="pronosticoTiempo2 my-3">
+        <label for="tiempo" class="h1"
+          >Seleccione el tipo de clima de hoy(con switch):</label
         >
         <select id="tiempo" class="text-center my-3">
           <option value="">--Haz una elección--</option>
