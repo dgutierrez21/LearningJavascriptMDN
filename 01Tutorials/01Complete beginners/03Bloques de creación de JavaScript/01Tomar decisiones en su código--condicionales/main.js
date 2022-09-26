@@ -409,9 +409,6 @@ seleccionTema2.addEventListener("change", () => {
 
   // AÑADIR DECLARACIÓN DE SWITCH
   switch (cambio) {
-    case "blanco":
-      cambioColor2("white", "black");
-      break;
     case "oscuro":
       cambioColor2("black", "white");
       break;
@@ -424,6 +421,8 @@ seleccionTema2.addEventListener("change", () => {
     case "psicodelico":
       cambioColor2("lime", "black");
       break;
+    default:
+      cambioColor2("white", "black");
   }
 });
 
