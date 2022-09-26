@@ -170,3 +170,47 @@ for (inicializador; condicion; expresion-final) {
 // 2.3 Una expresión final: siempre se evalúa (o ejecuta) cada vez que el bucle ha pasado por una iteración completa. Por lo general, sirve para aumentar (o en algunos casos disminuir) la variable contraria, para acercarla al punto en que la condición ya no es true.
 
 // 3. Algunas llaves rizadas que contienen un bloque de código: este código se ejecutará cada vez que el bucle se repita.
+
+// Cálculo de cuadrados #00aae4
+// Veamos un ejemplo real para que podamos visualizar lo que estos hacen con mayor claridad.
+
+const resultadoCuadrados = document.querySelector(".resultados");
+
+function calcular() {
+  for (let i = 1; i < 10; i++) {
+    const nuevoResultado = `${i} x ${i} = ${i * i}`;
+    resultadoCuadrados.textContent += `${nuevoResultado}\n`;
+  }
+
+  resultadoCuadrados.textContent += "\nFinalizado!";
+}
+
+const btnCalcular = document.querySelector(".calcular"),
+  btnLimpiar = document.querySelector(".limpiar");
+
+btnCalcular.addEventListener("click", calcular);
+
+btnLimpiar.addEventListener(
+  "click",
+  () => (resultadoCuadrados.textContent = "")
+);
+
+// Este código calcula los cuadrados para los números del 1 al 9 y escribe el resultado. El núcleo del código es el bucle for que realiza el cálculo.
+
+// Vamos a dividir la línea for (let i = 1; i < 10; i++) en sus tres partes:
+
+// 1. let i = 1: la variable contraria, i, comienza en 1. Tenga en cuenta que tenemos que usar let para el contador, porque lo reasignamos cada vez que damos la vuelta al bucle.
+
+// 2. i < 10: sigue dando vueltas alrededor del bucle mientras i menor de 10.
+
+// 3. i++: añade uno a i cada vez que recorra el bucle.
+
+// Dentro del bucle, calculamos el cuadrado del valor actual de i, es decir: i * i. Creamos una cadena que expresa el cálculo que hicimos y el resultado, y agregamos esta cadena al texto de salida. También agregamos \n, por lo que la siguiente cadena que agreguemos comenzará en una nueva línea. Así que:
+
+// 1. Durante la primera ejecución, i = 1, por lo que agregaremos 1 x 1 = 1.
+
+// 2. Durante la segunda ejecución, i = 2, por lo que agregaremos 2 x 2 = 4.
+
+// 3. Y así sucesivamente...
+
+// 4. Cuando i a ser igual a 10 dejaremos de ejecutar el bucle y pasaremos directamente al siguiente bit de código debajo del bucle, imprimiendo el mensaje Finished! en una nueva línea.

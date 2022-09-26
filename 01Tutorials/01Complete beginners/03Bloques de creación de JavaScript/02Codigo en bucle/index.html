@@ -16,9 +16,18 @@
   </head>
   <body>
     <div class="container p-5">
-      <div class="canvasContainer d-flex flex-column align-items-center">
+      <div class="canvasContainer d-flex flex-column align-items-center p-3">
         <button class="btn btn-primary m-3">Actualizar</button>
         <canvas width="500" height="500" style="background-color: #ddd">
+        </canvas>
+      </div>
+
+      <div class="cuadradosContainer d-flex flex-column align-items-center p-3">
+        <div>
+            <button class="btn btn-primary m-3 calcular">Calcular</button>
+            <button class="btn btn-primary m-3 limpiar">Limpiar</button>
+        </div>
+        <pre class="fs-3 resultados d-inline"></pre>
         </canvas>
       </div>
     </div>
