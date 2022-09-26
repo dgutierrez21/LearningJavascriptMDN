@@ -145,3 +145,28 @@ const filtrarAnimales = animales4.filter((animal) => animal.startsWith("A"));
 console.log(filtrarAnimales);
 
 // ["Ardilla"];
+
+// El estándar para el bucle #008000
+// En el ejemplo de "círculos de dibujo" anterior, no tiene una colección de elementos para recorrer: realmente solo desea ejecutar el mismo código 100 veces. En un caso como ese, debe usar el bucle for. Tiene la sintaxis siguiente:
+
+/*
+
+for (inicializador; condicion; expresion-final) {
+    // código a ejecutar
+}
+
+*/
+
+// Aquí tenemos:
+
+// 1. La palabra clave for, seguida de algunos paréntesis.
+
+// 2. Dentro de los paréntesis tenemos tres ítems, separados por punto y coma:
+
+// 2.1 Un inicializador: generalmente es una variable establecida en un número, que se incrementa para contar el número de veces que se ha ejecutado el bucle. A veces también se le conoce como una variable de contador..
+
+// 2.2 Una condición: define cuándo el bucle debe detener el bucle. Esta es generalmente una expresión que presenta un operador de comparación, una prueba para ver si se ha cumplido la condición de salida.
+
+// 2.3 Una expresión final: siempre se evalúa (o ejecuta) cada vez que el bucle ha pasado por una iteración completa. Por lo general, sirve para aumentar (o en algunos casos disminuir) la variable contraria, para acercarla al punto en que la condición ya no es true.
+
+// 3. Algunas llaves rizadas que contienen un bloque de código: este código se ejecutará cada vez que el bucle se repita.
