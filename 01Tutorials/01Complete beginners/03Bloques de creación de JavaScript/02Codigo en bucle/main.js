@@ -214,3 +214,60 @@ btnLimpiar.addEventListener(
 // 3. Y así sucesivamente...
 
 // 4. Cuando i a ser igual a 10 dejaremos de ejecutar el bucle y pasaremos directamente al siguiente bit de código debajo del bucle, imprimiendo el mensaje Finished! en una nueva línea.
+
+// Bucle a través de colecciones con un bucle for #00aae4
+// Puede utilizar un bucle for iterar a través de una colección, en lugar de un for...of bucle.
+
+// Veamos de nuevo nuestro for...of ejemplo anterior:
+
+const animales5 = ["Venado", "Tigre", "Anaconda", "Leon"];
+
+for (const animal of animales5) {
+  console.log(animal);
+}
+
+// Podríamos reescribir ese código así:
+
+for (let i = 0; i < animales5.length; i++) {
+  console.log(animales5[i]);
+}
+
+// En este bucle estamos comenzando i en 0, y deteniéndonos cuando i la longitud de la matriz. Luego, dentro del bucle, estamos usando i para acceder a cada elemento de la matriz a su vez.
+
+// Esto funciona muy bien, y en las primeras versiones de JavaScript, for...of no existía, por lo que esta era la forma estándar de iterar a través de una matriz. Sin embargo, ofrece más posibilidades de introducir errores en su código. Por ejemplo:
+
+// puede comenzar i en 1, olvidando que el primer índice de matriz es cero, no 1.
+
+// Puede detenerse en i <= cats.length, olvidando que el último índice de matriz está en length - 1.
+
+// Por razones como esta, generalmente es mejor usar for...of si puedes.
+
+// A veces todavía necesita usar un bucle for iterar a través de una matriz. Por ejemplo, en el siguiente código queremos registrar un mensaje que enumere a nuestros gatos:
+
+const gatos = ["Felix", "Figaro", "Romeo", "Tom"];
+
+let misGatosFavoritos = "Mis gatos se llaman ";
+
+for (const gato of gatos) {
+  misGatosFavoritos += `${gato}, `;
+}
+
+console.log(misGatosFavoritos);
+
+// La oración de salida final no está muy bien formada:
+
+// Preferimos que maneje al último gato de manera diferente, Pero para hacer esto necesitamos saber cuándo estamos en la iteración del bucle final, y para hacer eso podemos usar un bucle for y examinar el valor de i:
+
+let misGatosFavoritos2 = "Mis gatos se llaman ";
+
+for (let i = 0; i < gatos.length; i++) {
+  if (i === gatos.length - 1) {
+    misGatosFavoritos2 += `y ${gatos[i]}.`;
+  } else if (i === gatos.length - 2) {
+    misGatosFavoritos2 += `${gatos[i]} `;
+  } else {
+    misGatosFavoritos2 += `${gatos[i]}, `;
+  }
+}
+
+console.log(misGatosFavoritos2);
