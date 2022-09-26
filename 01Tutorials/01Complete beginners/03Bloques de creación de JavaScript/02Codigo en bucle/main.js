@@ -271,3 +271,68 @@ for (let i = 0; i < gatos.length; i++) {
 }
 
 console.log(misGatosFavoritos2);
+
+// Salir de bucles con break #008000
+// Si desea salir de un bucle antes de que se hayan completado todas las iteraciones, puede utilizar la instrucción break. Ya conocimos esto en el artículo anterior cuando observamos las instrucciones switch: cuando se cumple un caso en una instrucción switch que coincide con la expresión input, la instrucción break sale inmediatamente de la instrucción switch y pasa al código después de ella.
+
+// Es lo mismo con los bucles: una instrucción break saldrá inmediatamente del bucle y hará que el navegador pase a cualquier código que lo siga.
+
+// ¿Digamos que queríamos buscar a través de una variedad de contactos y números de teléfono y devolver solo el número que queríamos encontrar? Primero, un HTML simple: un elemento <input> que nos permite ingresar un nombre para buscar, un elemento <button> para enviar una búsqueda y un elemento <p> para mostrar los resultados en:
+
+// ver html...
+
+// Ahora vamos al JavaScript:
+
+const contactos = [
+  "chris:2232322",
+  "Sarah:9230444",
+  "Bill:659033",
+  "Mary:6730258",
+  "Dianne:9839833",
+];
+
+const contactosInput = document.querySelector(".contactosInput"),
+  contactosBtn = document.querySelector(".contactosBtn"),
+  contactosPara = document.querySelector(".contactosPara");
+
+function buscarNombre() {
+  const buscarNombre = contactosInput.value.toLowerCase();
+
+  contactosInput.value = "";
+  contactosInput.focus();
+  contactosPara.textContent = "";
+
+  for (const contacto of contactos) {
+    const splitContacto = contacto.split(":");
+
+    if (splitContacto[0].toLowerCase() === buscarNombre) {
+      contactosPara.textContent = `El numero de ${splitContacto[0]} es ${splitContacto[1]}`;
+      break;
+    }
+  }
+
+  if (contactosPara.textContent === "") {
+    contactosPara.textContent = "El contacto no fue encontrado.";
+  }
+}
+
+contactosBtn.addEventListener("click", buscarNombre);
+contactosInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    buscarNombre();
+  }
+});
+
+// 1. En primer lugar, tenemos algunas definiciones de variables: tenemos una matriz de información de contacto, y cada elemento es una cadena que contiene un nombre y un número de teléfono separados por dos puntos.
+
+// 2. A continuación, adjuntamos un detector de eventos al btn) para que cuando se presione se ejecute algún código para realizar la búsqueda y devolver los resultados.
+
+// 3. Almacenamos el valor ingresado en la entrada de texto en una variable llamada searchName, antes de vaciar la entrada de texto y enfocarla nuevamente, lista para la siguiente búsqueda. Tenga en cuenta que también ejecutamos el método toLowerCase() en la cadena, de modo que las búsquedas no distingan entre mayúsculas y minúsculas.
+
+// 4. Ahora vamos a la parte interesante, el for...of bucle:
+
+// 4.1 Dentro del bucle, primero dividimos el contacto actual en el carácter de dos puntos y almacenamos los dos valores resultantes en una matriz llamada splitContact.
+
+// 4.2 A continuación, utilizamos una instrucción condicional para comprobar si splitContact[0] (el nombre del contacto, de nuevo en minúsculas con toLowerCase()) es igual al searchName introducido. Si es así, ingresamos una cadena en el párrafo para informar cuál es el número del contacto y usamos break para terminar el bucle.
+
+// 5. Después del bucle, comprobamos si establecemos un contacto, y si no, establecemos el texto del párrafo en "Contacto no encontrado".
