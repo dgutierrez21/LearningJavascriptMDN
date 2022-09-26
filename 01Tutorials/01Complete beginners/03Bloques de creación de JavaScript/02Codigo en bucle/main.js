@@ -336,3 +336,44 @@ contactosInput.addEventListener("keyup", (e) => {
 // 4.2 A continuación, utilizamos una instrucción condicional para comprobar si splitContact[0] (el nombre del contacto, de nuevo en minúsculas con toLowerCase()) es igual al searchName introducido. Si es así, ingresamos una cadena en el párrafo para informar cuál es el número del contacto y usamos break para terminar el bucle.
 
 // 5. Después del bucle, comprobamos si establecemos un contacto, y si no, establecemos el texto del párrafo en "Contacto no encontrado".
+
+// Omitir iteraciones con continue #008000
+// La instrucción continue funciona de manera similar para break, pero en lugar de salir del bucle por completo, salta a la siguiente iteración del bucle. Veamos otro ejemplo que toma un número como entrada y devuelve solo los números que son cuadrados de enteros (números enteros).
+
+// El HTML es básicamente el mismo que el último ejemplo: una entrada de texto simple y un párrafo para la salida.
+
+// ver html...
+
+const enterosInput = document.querySelector(".enterosInput"),
+  enterosBtn = document.querySelector(".enterosBtn"),
+  enterosPara = document.querySelector(".enterosPara");
+
+function cuadradosEnteros() {
+  enterosPara.textContent = "Salida: ";
+  const numero = enterosInput.value;
+  enterosInput.value = "";
+  enterosInput.focus();
+
+  for (let i = 1; i < numero; i++) {
+    let sqRoot = Math.sqrt(i);
+    if (Math.floor(sqRoot) !== sqRoot) {
+      continue;
+    }
+    enterosPara.textContent += `${i}, `;
+  }
+}
+
+enterosBtn.addEventListener("click", cuadradosEnteros);
+enterosInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    cuadradosEnteros();
+  }
+});
+
+// 1. En este caso, la entrada debe ser un número (num). Al bucle for se le da un contador que comienza en 1 (ya que no estamos interesados en 0 en este caso), una condición de salida que dice que el bucle se detendrá cuando el contador se vuelva más grande que el num entrada, y un iterador que agrega 1 al contador cada vez.
+
+// 2. Dentro del bucle, encontramos la raíz cuadrada de cada número usando Math.sqrt(i), luego verificamos si la raíz cuadrada es un entero probando si es la misma que ella cuando se ha redondeado al entero más cercano (esto es lo que Math.floor() hace con el número que se pasa).
+
+// 3. Si la raíz cuadrada y la raíz cuadrada redondeada no son iguales entre sí (!==), significa que la raíz cuadrada no es un entero, por lo que no estamos interesados en ella. En tal caso, usamos la continue para saltar a la siguiente iteración de bucle sin registrar el número en ninguna parte.
+
+// 4. Si la raíz cuadrada es un entero, saltamos el bloque if por completo, por lo que la continue no se ejecuta; en su lugar, concatenamos el valor i actual más un espacio al final del contenido del párrafo.
