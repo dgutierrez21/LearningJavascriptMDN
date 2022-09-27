@@ -455,3 +455,49 @@ console.log(misGatosFavoritos4);
 
 // Advertencia: Con el tiempo y el hacer... mientras que, como con todos los bucles, debe asegurarse de que el inicializador se incremente o, según el caso, disminuya, para que la condición finalmente se vuelva falsa. De lo contrario, el bucle continuará para siempre, y el navegador lo obligará a detenerse o se bloqueará. Esto se denomina bucle infinito. #FF0000
 
+// Aprendizaje activo: Inicie la cuenta regresiva #008000
+// En este ejercicio, queremos que imprima una cuenta regresiva de lanzamiento simple para el cuadro de salida, desde 10 hasta Blastoff. En concreto, queremos que:
+
+// En este ejercicio, queremos que imprima una cuenta regresiva de lanzamiento simple para el cuadro de salida, desde 10 hasta Blastoff. En concreto, queremos que:
+
+// Bucle de 10 a 0. Le hemos proporcionado un inicializador: let i = 10;.
+
+// Para cada iteración, cree un nuevo párrafo y agréguelo al <div>, que hemos seleccionado usando const output = document.querySelector('.output');. En los comentarios, le proporcionamos tres líneas de código que deben usarse en algún lugar dentro del bucle:
+
+// --const para = document.createElement('p'); — crea un nuevo párrafo.
+
+// --output.appendChild(para); — adjunta el párrafo al <div>.
+
+// --para.textContent = hace que el texto dentro del párrafo sea igual a lo que coloque en el lado derecho, después del signo igual.
+
+// Los diferentes números de iteración requieren que se coloque texto diferente en el párrafo para esa iteración (necesitará una instrucción condicional y múltiples para.textContent = líneas):
+
+// --Si el número es 10, imprima "Cuenta regresiva 10" en el párrafo.
+
+// --Si el número es 0, imprima "¡Despegue!" en el párrafo.
+
+// --Para cualquier otro número, imprima solo el número en el párrafo.
+
+// ¡Recuerda incluir un iterador! Sin embargo, en este ejemplo estamos contando hacia abajo después de cada iteración, no hacia arriba, por lo que no quieres i++, ¿cómo iteras hacia abajo?
+
+// Nota: Si comienza a escribir el bucle (por ejemplo, while(i>=0)), es posible que el navegador se atasque porque aún no ha introducido la condición final. Así que ten cuidado con esto. Puede comenzar a escribir su código en un comentario para tratar este problema y eliminar el comentario después de que termine.
+
+const contenedorCR = document.querySelector(".cuentaRegresivaContainer");
+
+contenedorCR.innerHTML = "";
+
+let z = 10;
+
+while (z >= 0) {
+  const para = document.createElement("p");
+  contenedorCR.appendChild(para);
+  if (z === 10) {
+    para.textContent = "Cuenta Regresiva 10";
+  } else if (z === 0) {
+    para.textContent = "Despegue";
+  } else {
+    para.textContent = z;
+  }
+
+  z--;
+}
