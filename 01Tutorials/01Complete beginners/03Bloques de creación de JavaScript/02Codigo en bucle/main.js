@@ -377,3 +377,81 @@ enterosInput.addEventListener("keyup", (e) => {
 // 3. Si la raíz cuadrada y la raíz cuadrada redondeada no son iguales entre sí (!==), significa que la raíz cuadrada no es un entero, por lo que no estamos interesados en ella. En tal caso, usamos la continue para saltar a la siguiente iteración de bucle sin registrar el número en ninguna parte.
 
 // 4. Si la raíz cuadrada es un entero, saltamos el bloque if por completo, por lo que la continue no se ejecuta; en su lugar, concatenamos el valor i actual más un espacio al final del contenido del párrafo.
+
+// while y do...while #008000
+// for no es el único tipo de bucle disponible en JavaScript. En realidad, hay muchos otros y, aunque no necesita entender todos estos ahora, vale la pena echar un vistazo a la estructura de un par de otros para que pueda reconocer las mismas características en el trabajo de una manera ligeramente diferente.
+
+// Primero, echemos un vistazo al bucle while. La sintaxis de este bucle se ve así:
+
+/*
+
+initializer;
+while (condition) {
+  // code to run
+
+  final - expression;
+}
+
+*/
+
+// Echemos un vistazo de nuevo a nuestro ejemplo de lista de gatos, pero reescrito para usar un bucle de tiempo:
+
+const gatos2 = ["Pete", "Fufu", "Jasmine"];
+
+let misGatosFavoritos3 = "Mis gatos se llaman ";
+
+let i = 0;
+
+while (i < gatos2.length) {
+  if (i === gatos2.length - 1) {
+    misGatosFavoritos3 += `y ${gatos2[i]}`;
+  } else if (i === gatos2.length - 2) {
+    misGatosFavoritos3 += `${gatos2[i]} `;
+  } else {
+    misGatosFavoritos3 += `${gatos2[i]}, `;
+  }
+
+  i++;
+}
+
+console.log(misGatosFavoritos3);
+
+// El bucle do... while es muy similar, pero proporciona una variación en la estructura while:
+
+/*
+
+initializer
+do {
+  // code to run
+
+  final-expression
+} while (condition)
+
+*/
+
+// En este caso, el inicializador vuelve a ser lo primero, antes de que se inicie el bucle. La palabra clave precede directamente a las llaves rizadas que contienen el código a ejecutar y la expresión final.
+
+// La principal diferencia entre undo...while bucle y bucle while es que el código dentro de un do...while bucle siempre se ejecuta al menos una vez. Esto se debe a que la condición viene después del código dentro del bucle. Por lo tanto, siempre ejecutamos ese código, luego verificamos si necesitamos ejecutarlo nuevamente. En while comprobación es lo primero, por lo que es posible que el código nunca se ejecute.for
+
+const gatos4 = ["Chulo", "Gaspy", "Fredy"];
+
+let misGatosFavoritos4 = "Mis gatos se llaman ";
+
+let x = 0;
+
+do {
+  if (x === gatos4.length - 1) {
+    misGatosFavoritos4 += `y ${gatos4[x]}`;
+  } else if (x === gatos4.length - 2) {
+    misGatosFavoritos4 += `${gatos4[x]} `;
+  } else {
+    misGatosFavoritos4 += `${gatos4[x]}, `;
+  }
+
+  x++;
+} while (x < gatos4.length);
+
+console.log(misGatosFavoritos4);
+
+// Advertencia: Con el tiempo y el hacer... mientras que, como con todos los bucles, debe asegurarse de que el inicializador se incremente o, según el caso, disminuya, para que la condición finalmente se vuelva falsa. De lo contrario, el bucle continuará para siempre, y el navegador lo obligará a detenerse o se bloqueará. Esto se denomina bucle infinito. #FF0000
+
