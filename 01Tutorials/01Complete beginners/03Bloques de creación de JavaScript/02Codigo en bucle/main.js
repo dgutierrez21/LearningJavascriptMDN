@@ -501,3 +501,55 @@ while (z >= 0) {
 
   z--;
 }
+
+// Aprendizaje activo: Rellenar una lista de invitados #008000
+// En este ejercicio, queremos que tome una lista de nombres almacenados en una matriz y los coloque en una lista de invitados. Pero no es tan fácil: ¡no queremos dejar entrar a Phil y Lola porque son codiciosos y groseros, y siempre comen toda la comida! Tenemos dos listas, una para que los huéspedes admitan y otra para que los huéspedes se nieguen.
+
+// En concreto, queremos que:
+
+// En concreto, queremos que:
+
+// 1. Escriba un bucle que iterará a través de la matriz people.
+
+// 2. Durante cada iteración de bucle, compruebe si el elemento de matriz actual es igual a "Phil" o "Lola" mediante una instrucción condicional:
+
+// 2.1 Si es así, concatenar el elemento de matriz al final del textContent del párrafo refused, seguido de una coma y un espacio.
+
+// 2.2 Si no es así, concatenar el elemento de matriz al final del textContent del párrafo admitted, seguido de una coma y un espacio.
+
+// Ya te hemos proporcionado:
+
+// ---refused.textContent += — los comienzos de una línea que concatenará algo al final de refused.textContent.
+
+// ---admitted.textContent += — los comienzos de una línea que concatenará algo al final de admitted.textContent.
+
+// Pregunta de bonificación adicional: después de completar las tareas anteriores con éxito, se quedará con dos listas de nombres, separadas por comas, pero estarán desordenadas: habrá una coma al final de cada una. ¿Puedes averiguar cómo escribir líneas que corten la última coma en cada caso y agreguen un punto completo al final? Echa un vistazo al artículo Métodos de cadena útiles para obtener ayuda.
+
+const personas = [
+  "Chris",
+  "Anne",
+  "Colin",
+  "Terri",
+  "Phil",
+  "Lola",
+  "Sam",
+  "Kay",
+  "Bruce",
+];
+
+const personasContainer = document.querySelectorAll(".personasContainer p"),
+  personasAdmitidas = document.querySelector(".admitidos"),
+  personasNoAdmitidas = document.querySelector(".noAdmitidos");
+
+for (const persona of personas) {
+  if (persona === "Phil" || persona === "Lola") {
+    personasNoAdmitidas.textContent += `${persona}, `;
+  } else {
+    personasAdmitidas.textContent += `${persona}, `;
+  }
+}
+
+for (const para of personasContainer) {
+  para.textContent =
+    para.textContent.slice(0, para.textContent.length - 2) + ".";
+}
