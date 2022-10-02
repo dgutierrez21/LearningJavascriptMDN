@@ -553,3 +553,58 @@ for (const para of personasContainer) {
   para.textContent =
     para.textContent.slice(0, para.textContent.length - 2) + ".";
 }
+
+// ¿Qué tipo de bucle debe usar? #008000
+// Si está iterando a través de una matriz o algún otro objeto que lo admita, y no necesita acceso a la posición de índice de cada elemento, entonces for...of es la mejor opción. Es más fácil de leer y hay menos que salir mal.
+
+// Para otros usos, for, while, y do...while bucles son en gran medida intercambiables. Todos se pueden usar para resolver los mismos problemas, y cuál de los que use dependerá en gran medida de sus preferencias personales, cuál le resulte más fácil de recordar o más intuitivo. Lo recomendaríamos, al menos for empezar, ya que es probablemente el más fácil para recordar todo: el inicializador, la condición y la expresión final tienen que ir perfectamente entre paréntesis, por lo que es fácil ver dónde están y verificar que no se los esté perdiendo.
+
+// Echemos un vistazo a todos ellos de nuevo.
+
+// Primero for...of:
+
+/*
+
+for (const item of array) {
+  // code to run
+}
+
+*/
+
+// for:
+
+/*
+
+for (initializer; condition; final-expression) {
+  // code to run
+}
+
+*/
+
+// while:
+
+/*
+
+initializer
+while (condition) {
+  // code to run
+
+  final-expression
+}
+
+*/
+
+// y finalmente do...while:
+
+/*
+
+initializer
+do {
+  // code to run
+
+  final-expression
+} while (condition)
+
+*/
+
+// Nota: También hay otros tipos / características de bucle, que son útiles en situaciones avanzadas / especializadas y más allá del alcance de este artículo. Si desea ir más allá con su aprendizaje en bucle, lea nuestra guía avanzada de bucles e iteraciones. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration
