@@ -78,3 +78,53 @@ miFuncion();
 // llama a la función una vez
 
 // Nota: Esta forma de crear una función también se conoce como declaración de función. Siempre se eleva, por lo que puede llamar a la función por encima de la definición de la función y funcionará bien.
+
+// Parámetros de función #008000
+// Algunas funciones requieren que se especifiquen parámetros cuando los invoca: estos son valores que deben incluirse dentro de los paréntesis de funciones, que debe hacer su trabajo correctamente.
+
+// Nota: Los parámetros a veces se denominan argumentos, propiedades o incluso atributos.
+
+// Por ejemplo, la función Math.random() integrada del navegador no requiere ningún parámetro. Cuando se llama, siempre devuelve un número aleatorio entre 0 y 1:
+
+const miNumero2 = Math.random() * 1000;
+const miNumero3 = Math.floor(miNumero2);
+
+console.log(miNumero2);
+console.log(miNumero3);
+
+// Sin embargo, la función string replace() integrada del navegador necesita dos parámetros: la subcadena que se encuentra en la cadena principal y la subcadena para reemplazar esa cadena con:
+
+const texto = "Esta es una cadena de prueba";
+
+const miNuevaCadena = texto.replace("cadena", "funcion");
+
+console.log(miNuevaCadena);
+
+// Nota: Cuando necesite especificar varios parámetros, se separan por comas.
+
+// Parámetros opcionales #00aae4
+// A veces, los parámetros son opcionales, no es necesario especificarlos. Si no lo hace, la función generalmente adoptará algún tipo de comportamiento predeterminado. Por ejemplo, el parámetro de la función join() de la matriz es opcional:
+
+const miMatriz2 = ["Este", "es", "una", "matriz"];
+
+console.log(miMatriz2.join(" "));
+console.log(miMatriz2.join()); // agrega coma de forma predeterminada
+
+// Si no se incluye ningún parámetro para especificar un carácter de unión/delimitación, se utiliza una coma de forma predeterminada.
+
+// Parámetros predeterminados #00aae4
+// Si está escribiendo una función y desea admitir parámetros opcionales, puede especificar valores predeterminados agregando = después del nombre del parámetro, seguido del valor predeterminado:
+
+function porcentajeDeCantidad(porcentaje = 50, cantidad = 10) {
+  let por = `0.${porcentaje}`;
+  let resolver = cantidad * Number(por);
+  let resultado = `El ${porcentaje}% de ${cantidad} es: ${resolver.toFixed()}`;
+  console.log(resultado);
+}
+
+porcentajeDeCantidad(); // Ejecutando funcion con parametros predeterminados
+
+let miPorcentaje = 50;
+let miCantidad = 100000;
+
+porcentajeDeCantidad(miPorcentaje, miCantidad); //// Ejecutando funcion con parametros ingresados mediante variables
