@@ -128,3 +128,83 @@ let miPorcentaje = 50;
 let miCantidad = 100000;
 
 porcentajeDeCantidad(miPorcentaje, miCantidad); //// Ejecutando funcion con parametros ingresados mediante variables
+
+// Funciones anónimas y funciones de flecha #008000
+// Hasta ahora acabamos de crear una función como esta:
+
+function myFunction() {
+  console.log("Esta es una declaración de función");
+}
+
+// Pero también puede crear una función que no tenga nombre:
+
+(function () {
+  console.log("Esta es una función anonima.");
+});
+
+// Esto se llama una función anónima, porque no tiene nombre. A menudo verá funciones anónimas cuando una función espera recibir otra función como parámetro. En este caso, el parámetro de función a menudo se pasa como una función anónima.
+
+// Nota: Esta forma de crear una función también se conoce como expresión de función. A diferencia de la declaración de función, las expresiones de función no se elevan.
+
+// Ejemplo de función anónima #00aae4
+// Por ejemplo, supongamos que desea ejecutar código cuando el usuario escribe en un cuadro de texto. Para ello, puede llamar a la función addEventListener() del cuadro de texto. Esta función espera que le pases (al menos) dos parámetros:
+
+// --el nombre del evento que se va a escuchar, que en este caso es keydown
+// --una función que se ejecutará cuando se produzca el evento.
+
+// Cuando el usuario presiona una tecla, el navegador llamará a la función que proporcionó y le pasará un parámetro que contiene información sobre este evento, incluida la tecla particular que el usuario presionó:
+
+const cajaDeTexto = document.querySelector(".cajaDeTexto");
+
+let nombre;
+
+function logkey(event) {
+  console.log(`Ha presionado la tecla ${event.key}`);
+}
+
+cajaDeTexto.addEventListener("keydown", logkey);
+
+// En lugar de definir una función logKey() independiente, puede pasar una función anónima addEventListener():
+
+const cajaDeTexto2 = document.querySelector(".cajaDeTexto2");
+
+cajaDeTexto2.addEventListener("keydown", function (event) {
+  console.log(`Ha presionado la tecla ${event.key}`);
+});
+
+// Funciones de flecha #00aae4
+// Si pasas una función anónima como esta, hay una forma alternativa que puedes usar, llamada función de flecha. En lugar de function(event), escribe (event) =>:
+
+const cajaDeTexto3 = document.querySelector(".cajaDeTexto3");
+
+cajaDeTexto3.addEventListener("keydown", (e) => {
+  console.log(`Ha presionado la tecla ${e.key}`);
+});
+
+// Si la función sólo tiene una línea entre corchetes rizados, omita los corchetes rizados:
+
+// Si la función solo toma un parámetro, también puede omitir los corchetes alrededor del parámetro:
+
+const cajaDeTexto4 = document.querySelector(".cajaDeTexto4");
+
+cajaDeTexto4.addEventListener("keydown", (e) =>
+  console.log(`Ha presionado la tecla ${e.key}`)
+);
+
+// Por último, si la función necesita devolver un valor y contiene sólo una línea, también puede omitir la return. En el siguiente ejemplo, estamos usando el método map() de Array para duplicar todos los valores de la matriz original:
+
+const original = [5, 10, 20];
+
+const duplicado = original.map((item) => console.log(item * 2));
+
+// El método map() toma cada elemento de la matriz a su vez, pasándolo a la función dada. A continuación, toma el valor devuelto por esa función y lo agrega a una nueva matriz.
+
+// Entonces, en el ejemplo anterior, (item) => item * 2 es el equivalente de la función de flecha de:
+
+function doubleItem(item) {
+  return item * 2;
+}
+
+// Le recomendamos que utilice funciones de flecha, ya que pueden hacer que su código sea más corto y más legible.
+
+// Nota: Hay algunas diferencias sutiles entre las funciones de flecha y las funciones normales. Están fuera del alcance de esta guía introductoria, y es poco probable que marquen la diferencia en los casos que hemos discutido aquí. Para obtener más información, consulte la documentación de referencia de la función de flecha. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
