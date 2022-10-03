@@ -66,3 +66,15 @@ function random(number) {
 
 console.log(random(10));
 console.log(random(5));
+
+// Invocar funciones #008000
+// Probablemente ya lo tenga claro, pero por si acaso, para usar realmente una función después de que se haya definido, debe ejecutarla o invocarla. Esto se hace incluyendo el nombre de la función en el código en algún lugar, seguido de paréntesis.
+
+function miFuncion() {
+  console.log("Hola Mundo desde una función.");
+}
+
+miFuncion();
+// llama a la función una vez
+
+// Nota: Esta forma de crear una función también se conoce como declaración de función. Siempre se eleva, por lo que puede llamar a la función por encima de la definición de la función y funcionará bien.
