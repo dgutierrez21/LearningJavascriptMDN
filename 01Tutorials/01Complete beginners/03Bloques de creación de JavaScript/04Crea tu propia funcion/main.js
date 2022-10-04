@@ -86,3 +86,42 @@ function mostrarMensaje() {
 }
 
 // Eso fue mucho código para trabajar, ¡no te preocupes demasiado si no recuerdas exactamente cómo funciona cada parte en este momento! La parte principal en la que queremos centrarnos aquí es la estructura y el uso de la función, pero queríamos mostrar algo interesante para este ejemplo.
+
+// Llamar a la función #008000
+// Ahora tiene su definición de función escrita en su elemento <script> muy bien, pero no hará nada tal como está.
+
+// 1. Intente incluir la siguiente línea debajo de su función para llamarla:
+
+// displayMessage();
+
+// 1.
+// 3. mostrarMensaje();
+
+// Esta línea invoca la función, haciendo que se ejecute inmediatamente. Cuando guarde su código y lo vuelva a cargar en el navegador, verá que el pequeño cuadro de mensaje aparece inmediatamente, solo una vez. Después de todo, solo lo llamamos una vez.
+
+// 2. Ahora abra las herramientas de desarrollo de su navegador en la página de ejemplo, vaya a la consola de JavaScript y escriba la línea nuevamente allí, ¡verá que aparece nuevamente! Así que esto es divertido: ahora tenemos una función reutilizable que podemos llamar en cualquier momento que queramos. Pero probablemente queremos que aparezca en respuesta a las acciones del usuario y del sistema. En una aplicación real, tal cuadro de mensaje probablemente se llamaría en respuesta a nuevos datos disponibles, o a que se haya producido un error, o al usuario que intente eliminar su perfil ("¿está seguro de esto?"), o al usuario que agrega un nuevo contacto y la operación se completa con éxito, etc. En esta demostración, obtendremos el cuadro de mensaje que aparecerá cuando el usuario haga clic en el botón.
+
+// 3. Elimine la línea anterior que agregó.
+
+// 4. A continuación, seleccionaremos el botón y almacenaremos una referencia a él en una constante. Agregue la siguiente línea al código, encima de la definición de la función:
+
+// 4.
+
+const btn = document.querySelector("button");
+
+// 5.
+btn.addEventListener("click", mostrarMensaje);
+
+// 5. Finalmente, agregue la siguiente línea debajo de la anterior:
+
+// De manera similar al controlador de eventos click de closeBtn, aquí estamos llamando a un código en respuesta a un botón en el que se hace clic. Pero en este caso, en lugar de llamar a una función anónima que contiene algún código, estamos llamando a nuestra función displayMessage() por su nombre.
+
+// 6. Intente guardar y actualizar la página: ahora debería ver aparecer el cuadro de mensaje cuando haga clic en el botón.
+
+// Es posible que se pregunte por qué no hemos incluido los paréntesis después del nombre de la función. Esto se debe a que no queremos llamar a la función inmediatamente, solo después de que se haya hecho clic en el botón. Si intenta cambiar la línea a
+
+// btn.addEventListener('click', displayMessage());
+
+// y guardando y recargando, ¡verá que el cuadro de mensaje aparece sin que se haga clic en el botón! Los paréntesis en este contexto a veces se denominan "operador de invocación de funciones". Solo se utilizan cuando se desea ejecutar la función inmediatamente en el ámbito actual. En el mismo sentido, el código dentro de la función anónima no se ejecuta inmediatamente, ya que está dentro del ámbito de la función.
+
+// Si probaste el último experimento, asegúrate de deshacer el último cambio antes de continuar.
