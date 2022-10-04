@@ -63,3 +63,59 @@ console.log(nuevaCadena);
 // ctx.arc(500, 200, 35, 0, 2 * Math.PI);
 
 // Las llamadas a la función en la línea se ejecutan primero, y sus valores devueltos se sustituyen por las llamadas a la función, antes de que la línea en sí se ejecute.
+
+// Aprendizaje activo: nuestra propia función de valor de retorno #008000
+// Vamos a intentar escribir nuestras propias funciones con valores de retorno.
+
+// 1. En primer lugar, haga una copia local del archivo de .html de la biblioteca de funciones de GitHub. Esta es una página HTML simple que contiene un campo <input> y un párrafo. También hay un elemento <script>, en el que hemos almacenado una referencia a ambos elementos HTML en dos variables. Esta pequeña página le permitirá ingresar un número en el cuadro de texto y mostrar diferentes números relacionados con él en el párrafo a continuación.
+
+const input = document.querySelector(".numberInput"),
+  para = document.querySelector("p");
+
+// 2. Agreguemos algunas funciones útiles a este elemento <script>. Debajo de las dos líneas existentes de JavaScript, agregue las siguientes definiciones de funciones:
+
+function alCuadrado(num) {
+  return num * num;
+}
+
+function alCubo(num) {
+  return num * num * num;
+}
+
+function factorial(num) {
+  if (num < 0) {
+    return undefined;
+  }
+
+  if (num === 0) {
+    return 1;
+  }
+
+  let x = num - 1;
+
+  while (x > 1) {
+    num *= x;
+
+    x--;
+  }
+
+  return num;
+}
+
+// Las funciones squared() y cubed() son bastante obvias: devuelven el cuadrado o cubo del número que se dio como parámetro. La función factorial() devuelve el factorial del número dado.
+
+input.addEventListener("change", () => {
+  const num = parseFloat(input.value);
+
+  if (isNaN(num)) {
+    para.textContent = "Tienes que introducir un número.";
+  } else {
+    para.textContent = `El numero ${num} al cuadrado es: ${alCuadrado(num)}, `;
+    para.textContent += `El numero ${num} al cubo es: ${alCubo(num)}, `;
+    para.textContent += `El factorial de ${num} es : ${factorial(num)}`;
+  }
+});
+
+// Aquí estamos agregando un oyente al evento change. Se ejecuta cada vez que el evento change se activa en la entrada de texto, es decir, cuando se ingresa un nuevo valor en la input texto y se envía (por ejemplo, ingrese un valor, luego desenfoque la entrada presionando Tab o Return). Cuando se ejecuta esta función anónima, el valor de la input se almacena en la constante num. A continuación, hacemos una prueba condicional. Si el valor introducido no es un número, se imprime un mensaje de error en el párrafo. La prueba analiza si la expresión isNaN(num) devuelve true. La función isNaN() prueba si el valor num no es un número; si es así, devuelve true y, si no, devuelve false. Si la prueba devuelve false, el valor num es un número. Por lo tanto, se imprime una oración dentro del elemento de párrafo que indica los valores cuadrados, cúbicos y factoriales del número. La oración llama a las funciones squared(), cubed() y factorial() para calcular los valores requeridos.
+
+// Guarde su código, cárguelo en un navegador y pruébelo.
