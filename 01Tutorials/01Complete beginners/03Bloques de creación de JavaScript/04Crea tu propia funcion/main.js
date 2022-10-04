@@ -23,7 +23,7 @@
 // 2. A continuación, agregue lo siguiente dentro del <script>:
 
 // 2.
-function mostrarMensaje() {
+function mostrarMensaje(msgText, msgType) {
   // 3.
   const body = document.body;
 
@@ -32,7 +32,7 @@ function mostrarMensaje() {
   body.appendChild(panel);
 
   const msg = document.createElement("p");
-  msg.textContent = "Este es un buzón de mensajes";
+  msg.textContent = msgText;
   panel.appendChild(msg);
 
   const closeBtn = document.createElement("button");
@@ -40,6 +40,17 @@ function mostrarMensaje() {
   panel.appendChild(closeBtn);
 
   closeBtn.addEventListener("click", () => panel.parentNode.removeChild(panel));
+
+  if (msgType === "advertencia") {
+    msg.style.backgroundImage = "url(./img/warning.png)";
+    panel.style.backgroundColor = "red";
+    msg.style.color = "white";
+  } else if (msgType === "chat") {
+    msg.style.backgroundImage = "url(./img/chat.png)";
+    panel.style.backgroundColor = "aqua";
+  } else {
+    msg.style.paddingLeft = "20px";
+  }
 }
 
 // 3. Finalmente, agregue el siguiente código dentro de las llaves rizadas:
@@ -110,7 +121,9 @@ function mostrarMensaje() {
 const btn = document.querySelector("button");
 
 // 5.
-btn.addEventListener("click", mostrarMensaje);
+btn.addEventListener("click", () =>
+  mostrarMensaje("Wow, este es un mensaje diferente!", "advertencia")
+);
 
 // 5. Finalmente, agregue la siguiente línea debajo de la anterior:
 
@@ -125,3 +138,65 @@ btn.addEventListener("click", mostrarMensaje);
 // y guardando y recargando, ¡verá que el cuadro de mensaje aparece sin que se haga clic en el botón! Los paréntesis en este contexto a veces se denominan "operador de invocación de funciones". Solo se utilizan cuando se desea ejecutar la función inmediatamente en el ámbito actual. En el mismo sentido, el código dentro de la función anónima no se ejecuta inmediatamente, ya que está dentro del ámbito de la función.
 
 // Si probaste el último experimento, asegúrate de deshacer el último cambio antes de continuar.
+
+// Mejora de la función con parámetros #008000
+// Tal como está, la función todavía no es muy útil: no queremos mostrar el mismo mensaje predeterminado cada vez. Mejoremos nuestra función añadiendo algunos parámetros, permitiéndonos llamarla con algunas opciones diferentes.
+
+// 1. En primer lugar, actualice la primera línea de la función:
+// function displayMessage() {
+
+// a esto:
+// function displayMessage(msgText, msgType) {
+
+// Ahora, cuando llamamos a la función, podemos proporcionar dos valores de variable dentro de los paréntesis para especificar el mensaje que se mostrará en el cuadro de mensaje y el tipo de mensaje que es.
+
+// 2. Para hacer uso del primer parámetro, actualice la siguiente línea dentro de su función:
+// msg.textContent = 'This is a message box';
+// Copiar en el portapapeles
+// Para
+// msg.textContent = msgText;
+
+// 3. Por último, pero no menos importante, ahora necesita actualizar su llamada a la función para incluir un texto de mensaje actualizado. Cambie la siguiente línea:
+// btn.addEventListener('click', displayMessage);
+// Copiar en el portapapeles
+// a este bloque:
+// btn.addEventListener('click', () => displayMessage('Woo, this is a different message!'));
+
+// Si queremos especificar parámetros entre paréntesis para la función a la que estamos llamando, entonces no podemos llamarla directamente, debemos ponerla dentro de una función anónima para que no esté en el ámbito inmediato y, por lo tanto, no se llame de inmediato. Ahora no se llamará hasta que se haga clic en el botón.
+
+// 4. Vuelva a cargar y pruebe el código nuevamente y verá que todavía funciona bien, ¡excepto que ahora también puede variar el mensaje dentro del parámetro para que se muestren diferentes mensajes en el cuadro!
+
+// Un parámetro más complejo #00aae4
+// Pasamos al siguiente parámetro. Este va a implicar un poco más de trabajo: lo vamos a configurar para que, dependiendo de en qué se establezca el parámetro msgType, la función muestre un icono diferente y un color de fondo diferente.
+
+// 1. En primer lugar, descargue los iconos necesarios para este ejercicio (advertencia y chat) desde GitHub. Guárdelos en una nueva carpeta llamada icons en la misma ubicación que su archivo HTML.
+
+// 2. A continuación, busque el CSS dentro de su archivo HTML. Haremos algunos cambios para dar paso a los iconos. Primero, actualice el ancho .msgBox desde:
+
+// width: 200px;
+
+// Para
+
+// width: 242px;
+
+// 3. A continuación, agregue las siguientes líneas dentro de la regla .msgBox p { }:
+
+// padding-left: 82px;
+// background-position: 25px center;
+// background-repeat: no-repeat;
+
+// 4. Ahora necesitamos agregar código a nuestra función displayMessage() para manejar la visualización de los iconos. Agregue el siguiente bloque justo encima de la llave rizada de cierre (}) de su función:
+
+// Aquí, si el parámetro msgType se establece como 'warning', se muestra el icono de advertencia y el color de fondo del panel se establece en rojo. Si se establece 'chat', se muestra el icono de chat y el color de fondo del panel se establece en azul aguamarina. Si el parámetro msgType no está establecido en absoluto (o en algo diferente), entonces la else { } del código entra en juego, y el párrafo recibe relleno predeterminado y ningún icono, sin ningún color de panel de fondo establecido tampoco. Esto proporciona un estado predeterminado si no se proporciona ningún parámetro msgType, lo que significa que es un parámetro opcional.
+
+// 5. Probemos nuestra función actualizada, intente actualizar la llamada displayMessage() desde esta:
+
+// displayMessage('Woo, this is a different message!');
+
+// a uno de estos:
+
+// displayMessage('Your inbox is almost full — delete some mails', 'warning');
+
+// displayMessage('Brian: Hi there, how are you today?','chat');
+
+// Puedes ver lo útil que se está volviendo nuestra (ahora no tan) pequeña función.
