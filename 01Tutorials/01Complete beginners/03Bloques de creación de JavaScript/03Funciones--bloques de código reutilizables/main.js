@@ -227,3 +227,87 @@ function doubleItem(item) {
 // Es un poco como un zoológico. Los leones, cebras, tigres y pingüinos se mantienen en sus propios recintos y solo tienen acceso a las cosas dentro de sus recintos, de la misma manera que los visores de funciones. Si pudieran entrar en otros recintos, se producirían problemas. En el mejor de los casos, diferentes animales se sentirían realmente incómodos dentro de hábitats desconocidos: un león o un tigre se sentirían terribles dentro del dominio acuoso y helado de los pingüinos. En el peor de los casos, ¡los leones y tigres podrían tratar de comerse a los pingüinos!
 
 // El cuidador del zoológico es como el alcance global: tienen las llaves para acceder a cada recinto, reabastecer alimentos, atender a animales enfermos, etc.
+
+// Aprendizaje activo: Jugar con el alcance #008000
+// Veamos un ejemplo real para demostrar el alcance.
+
+// 1. Primero, haga una copia local de nuestro ámbito de función.html ejemplo. Contiene dos funciones llamadas a() y b(), y tres variables: x, y y z, dos de las cuales se definen dentro de las funciones y una en el ámbito global. También contiene una tercera función llamada output(), que toma un solo parámetro y lo genera en un párrafo de la página.
+
+// 2. Abra el ejemplo en un navegador y en su editor de texto.
+
+// 3. Abra la consola de JavaScript en las herramientas de desarrollo de su navegador. En la consola de JavaScript, escriba el siguiente comando:
+
+output(x);
+
+// Debería ver el valor de la variable x impresa en la ventana gráfica del navegador.
+// 4. Ahora intente ingresar lo siguiente en su consola
+
+// output(y); // Uncaught ReferenceError: y is not defined
+// output(z); // Uncaught ReferenceError: z is not defined
+
+// Ambos deberían arrojar un error en la consola en la línea de "ReferenceError: y no está definido". ¿Por qué? Debido al ámbito de la función, y y z están bloqueados dentro de las funciones aa() y b()), por lo que output() no puede acceder a ellas cuando se llama desde el ámbito global.
+
+// 5. Sin embargo, ¿qué pasa cuando se llama desde dentro de otra función? Intente editar a() y b() para que se vean así:
+
+// function a() {
+//   const y = 2;
+//   output(y);
+// }
+
+// function b() {
+//   const z = 3;
+//   output(z);
+// }
+
+// Guarde el código y vuelva a cargarlo en su navegador, luego intente llamar a las funciones a() y b() desde la consola de JavaScript:
+
+a();
+b();
+
+// Debería ver los valores y y z impresos en la ventana gráfica del navegador. Esto funciona bien, ya que la función output() se llama dentro de las otras funciones, en el mismo ámbito en que se definen las variables en las que se está imprimiendo, en cada caso. output() en sí está disponible desde cualquier lugar, tal como se define en el ámbito global.
+
+// 6. Ahora intente actualizar su código de esta manera:
+
+/*
+
+function a() {
+  const y = 2;
+  output(x);
+}
+
+function b() {
+  const z = 3;
+  output(x);
+}
+
+*/
+
+// 7. Guarde y vuelva a cargar, e inténtelo de nuevo en la consola de JavaScript:
+
+// a();
+// b();
+
+// Tanto la llamada a() como b() deben imprimir el valor de x en la ventana gráfica del navegador. Estos funcionan bien porque aunque las llamadas output() no están en el mismo ámbito en el que se define x, x es una variable global, por lo que está disponible dentro de todo el código, en todas partes.
+
+// 8. Finalmente, intente actualizar su código de esta manera:
+
+/*
+
+function a() {
+  const y = 2;
+  output(z);
+}
+
+function b() {
+  const z = 3;
+  output(y);
+}
+
+*/
+
+// 9. Guarde y vuelva a cargar, e inténtelo de nuevo en la consola de JavaScript:
+
+// Esta vez, las llamadas aa() y b() arrojarán ese molesto error ReferenceError: el nombre de la variable no está definido en la consola, esto se debe a que las llamadas output() y las variables que están intentando imprimir no están en los mismos ámbitos de función, las variables son efectivamente invisibles para esas llamadas a funciones.
+// Nota: Las mismas reglas de alcance no se aplican a los bloques de bucle (por ejemplo, for() { }) y condicional (por ejemplo, if () { }) — se ven muy similares, ¡pero no son lo mismo! Tenga cuidado de no confundirlos.
+
+// Nota: El error ReferenceError: "x" no está definido es uno de los más comunes que encontrará. Si recibe este error y está seguro de que ha definido la variable en cuestión, verifique en qué alcance se encuentra.
