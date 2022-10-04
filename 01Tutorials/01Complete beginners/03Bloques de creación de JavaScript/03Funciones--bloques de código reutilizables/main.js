@@ -208,3 +208,22 @@ function doubleItem(item) {
 // Le recomendamos que utilice funciones de flecha, ya que pueden hacer que su código sea más corto y más legible.
 
 // Nota: Hay algunas diferencias sutiles entre las funciones de flecha y las funciones normales. Están fuera del alcance de esta guía introductoria, y es poco probable que marquen la diferencia en los casos que hemos discutido aquí. Para obtener más información, consulte la documentación de referencia de la función de flecha. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+// Alcance de la función y conflictos #008000
+// Hablemos un poco sobre el alcance, un concepto muy importante cuando se trata de funciones. Cuando se crea una función, las variables y otras cosas definidas dentro de la función están dentro de su propio ámbito separado, lo que significa que están encerradas en sus propios compartimentos separados, inaccesibles desde el código fuera de las funciones.
+
+// El nivel superior fuera de todas sus funciones se denomina alcance global. Los valores definidos en el ámbito global son accesibles desde cualquier parte del código.
+
+// JavaScript se configura de esta manera por varias razones, pero principalmente debido a la seguridad y la organización. A veces no desea que las variables sean accesibles desde cualquier parte del código: los scripts externos a los que llama desde otro lugar podrían comenzar a interferir con su código y causar problemas porque usan los mismos nombres de variables que otras partes del código, causando conflictos. Esto podría hacerse maliciosamente, o simplemente por accidente.
+
+// Por ejemplo, supongamos que tiene un archivo HTML que está llamando a dos archivos JavaScript externos, y ambos tienen una variable y una función definidas que usan el mismo nombre:
+
+// ver archivos js...
+
+// Ambas funciones a las que desea llamar se denominan greeting(), pero solo puede acceder a la first.js greeting() del primer archivo .js (la segunda se ignora). Además, se produce un error al intentar (en el second.js) asignar un nuevo valor a la variable name, porque ya se declaró con const y, por lo tanto, no se puede reasignar.
+
+// Mantener partes de su código bloqueadas en funciones evita tales problemas y se considera la mejor práctica.
+
+// Es un poco como un zoológico. Los leones, cebras, tigres y pingüinos se mantienen en sus propios recintos y solo tienen acceso a las cosas dentro de sus recintos, de la misma manera que los visores de funciones. Si pudieran entrar en otros recintos, se producirían problemas. En el mejor de los casos, diferentes animales se sentirían realmente incómodos dentro de hábitats desconocidos: un león o un tigre se sentirían terribles dentro del dominio acuoso y helado de los pingüinos. En el peor de los casos, ¡los leones y tigres podrían tratar de comerse a los pingüinos!
+
+// El cuidador del zoológico es como el alcance global: tienen las llaves para acceder a cada recinto, reabastecer alimentos, atender a animales enfermos, etc.
