@@ -138,4 +138,32 @@ document
 
 // Algunos eventos, como click, están disponibles en casi cualquier elemento. Otros son más específicos y solo útiles en ciertas situaciones: por ejemplo, el evento play solo está disponible en algunos elementos, como <video>.
 
-// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
+// Eliminación de oyentes #00aae4
+// Si ha agregado un controlador de eventos mediante addEventListener(), puede volver a quitarlo mediante el método removeEventListener()). Por ejemplo, esto quitaría el changeBackground()) cuando se haga doble click en el segundo boton:
+
+btnCambiarTema2.addEventListener("dblclick", () => {
+  btnCambiarTema2.removeEventListener("click", cambiarFondo);
+});
+
+// Los controladores de eventos también se pueden quitar pasando un AbortSignal a addEventListener() y, a continuación, llamando posteriormente a abort() en el controlador propietario de AbortSignal. Por ejemplo, para agregar un controlador de eventos que podemos eliminar con un AbortSignal:
+
+const btnCambiarTema8 = document.querySelector(".btnCambiarTema8");
+
+const controller = new AbortController();
+
+btnCambiarTema8.addEventListener(
+  "click",
+  () => {
+    const rndCol = `rgb(${ramdom2(255)}, ${ramdom2(255)}, ${ramdom2(255)})`;
+    document.body.style.backgroundColor = rndCol;
+  },
+  { signal: controller.signal }
+); // pasar una AbortSignal a este manejador
+
+// A continuación, el controlador de eventos creado por el código anterior se puede quitar de la siguiente manera:
+
+btnCambiarTema8.addEventListener("dblclick", () => {
+  controller.abort();
+}); // elimina cualquier/todos los manejadores de eventos asociados a este controlador
+
+// Para programas simples y pequeños, no es necesario limpiar controladores de eventos antiguos y no utilizados, pero para programas más grandes y complejos, puede mejorar la eficiencia. Además, la capacidad de eliminar controladores de eventos le permite tener el mismo botón realizando diferentes acciones en diferentes circunstancias: todo lo que tiene que hacer es agregar o quitar controladores.
