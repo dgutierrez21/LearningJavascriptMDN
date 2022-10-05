@@ -66,3 +66,39 @@ btnCambiarTema.addEventListener("click", () => {
 // También puede usar JavaScript para crear complementos entre navegadores (mejoras en la funcionalidad del navegador) utilizando una tecnología llamada WebExtensions. El modelo de eventos es similar al modelo de eventos web, pero un poco diferente: las propiedades de los oyentes de eventos están cubiertas por camellos (como onMessage en lugar de onmessage) y deben combinarse con la función addListener. Consulte la página runtime.onMessage para ver un ejemplo.
 
 // No necesita entender nada sobre otros entornos similares en esta etapa de su aprendizaje; solo queríamos dejar claro que los eventos pueden diferir en diferentes entornos de programación.
+
+// Uso de addEventListener() #008000
+// El mecanismo recomendado para agregar controladores de eventos en páginas web es el método addEventListener()):
+
+/*
+
+const btn = document.querySelector("button");
+
+function random(number) {
+  return Math.floor(Math.random() * (number + 1));
+}
+
+btn.addEventListener("click", () => {
+  const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  document.body.style.backgroundColor = rndCol;
+});
+
+*/
+
+// Dentro de la función addEventListener() especificamos dos parámetros: el nombre del evento para el que queremos registrar este controlador y el código que comprende la función de controlador que queremos ejecutar en respuesta a él.
+
+// Está bien hacer que la función del controlador sea una función con nombre separada, como esta:
+
+const btnCambiarTema2 = document.querySelector(".btnCambiarTema2");
+
+function ramdom2(numero) {
+  return Math.floor(Math.random() * (numero + 1));
+}
+
+function cambiarFondo() {
+  const colorFondo = `rgb(${ramdom2(255)}, ${ramdom2(255)}, ${ramdom2(255)})`;
+
+  document.body.style.backgroundColor = colorFondo;
+}
+
+btnCambiarTema2.addEventListener("click", cambiarFondo);
