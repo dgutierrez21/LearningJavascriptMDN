@@ -221,3 +221,35 @@ btn10.onclick = cambiarFondo2;
 
 // element.onclick = function1;
 // element.onclick = function2;
+
+// Controladores de eventos en línea: no los use #00aae4
+// También es posible que veas un patrón como este en el código:
+
+// <button onclick="bgChange()">Press me</button>
+
+// function bgChange() {
+//   const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+//   document.body.style.backgroundColor = rndCol;
+// }
+
+// El método más antiguo de registro de controladores de eventos que se encuentra en la Web involucraba atributos HTML de controladores de eventos (o controladores de eventos en línea) como el que se muestra arriba: el valor del atributo es literalmente el código JavaScript que desea ejecutar cuando se produce el evento. El ejemplo anterior invoca una función definida dentro de un elemento <script> en la misma página, pero también puede insertar JavaScript directamente dentro del atributo, por ejemplo:
+
+// <button onclick="alert('Hello, this is my old-fashioned event handler!');">
+//   Press me
+// </button>
+
+// Puede encontrar equivalentes de atributos HTML para muchas de las propiedades del controlador de eventos; sin embargo, no debe usarlos, ya que se consideran una mala práctica. Puede parecer fácil usar un atributo de controlador de eventos si está haciendo algo realmente rápido, pero rápidamente se vuelven inmanejables e ineficientes.
+
+// Para empezar, no es una buena idea mezclar su HTML y su JavaScript, ya que se vuelve difícil de leer. Mantener su JavaScript separado es una buena práctica, y si está en un archivo separado, puede aplicarlo a varios documentos HTML.
+
+// Incluso en un solo archivo, los controladores de eventos en línea no son una buena idea. Un botón está bien, pero ¿qué pasaría si tuvieras 100 botones? Tendría que agregar 100 atributos al archivo; se convertiría rápidamente en una pesadilla de mantenimiento. Con JavaScript, puede agregar fácilmente una función de controlador de eventos a todos los botones de la página sin importar cuántos haya, usando algo como esto:
+
+const botones = document.querySelectorAll(".btnContainer button");
+
+for (const boton of botones) {
+  boton.addEventListener("click", cambiarFondo);
+}
+
+// Finalmente, muchas configuraciones de servidor comunes no permitirán JavaScript en línea, como medida de seguridad.
+
+// Nunca debe usar los atributos del controlador de eventos HTML: están desactualizados y su uso es una mala práctica. #FF0000
