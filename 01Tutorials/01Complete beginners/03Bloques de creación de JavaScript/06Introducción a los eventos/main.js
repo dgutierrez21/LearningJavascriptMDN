@@ -183,3 +183,41 @@ btnCambiarTema8.addEventListener("dblclick", () => {
 
 // Otros mecanismos de escucha de eventos #008000
 // Se recomienda utilizar addEventListener() para registrar controladores de eventos. Es el método más poderoso y se escala mejor con programas más complejos. Sin embargo, hay otras dos formas de registrar controladores de eventos que puede ver: propiedades de controlador de eventos y controladores de eventos en línea.
+
+// Propiedades del controlador de eventos #00aae4
+// Los objetos (como los botones) que pueden desencadenar eventos también suelen tener propiedades cuyo nombre está on seguido del nombre del evento. Por ejemplo, los elementos tienen una propiedad onclick. Esto se denomina propiedad de controlador de eventos. Para escuchar el evento, puede asignar la función de controlador a la propiedad.
+
+// Por ejemplo, podríamos reescribir el ejemplo de color aleatorio de esta manera:
+
+const btn9 = document.querySelector(".btn9");
+
+function random(numero) {
+  return Math.floor(Math.random() * (numero + 1));
+}
+
+btn9.onclick = () => {
+  const color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  document.body.style.backgroundColor = color;
+};
+
+// También puede establecer la propiedad handler en una función con nombre:
+
+const btn10 = document.querySelector(".btn10");
+
+function cambiarFondo2() {
+  const color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  document.body.style.backgroundColor = color;
+}
+
+btn10.onclick = cambiarFondo2;
+
+// Con las propiedades del controlador de eventos, no puede agregar más de un controlador para un solo evento. Por ejemplo, puede llamar a addEventListener('click', handler) en un elemento varias veces, con diferentes funciones especificadas en el segundo argumento:
+
+// element.addEventListener('click', function1);
+// element.addEventListener('click', function2);
+// Copiar en el portapapeles
+
+// Esto es imposible con las propiedades del controlador de eventos porque cualquier intento posterior de establecer la propiedad sobrescribirá los anteriores:
+
+// element.onclick = function1;
+// element.onclick = function2;
