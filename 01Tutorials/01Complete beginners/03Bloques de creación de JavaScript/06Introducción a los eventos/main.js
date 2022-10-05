@@ -167,3 +167,16 @@ btnCambiarTema8.addEventListener("dblclick", () => {
 }); // elimina cualquier/todos los manejadores de eventos asociados a este controlador
 
 // Para programas simples y pequeños, no es necesario limpiar controladores de eventos antiguos y no utilizados, pero para programas más grandes y complejos, puede mejorar la eficiencia. Además, la capacidad de eliminar controladores de eventos le permite tener el mismo botón realizando diferentes acciones en diferentes circunstancias: todo lo que tiene que hacer es agregar o quitar controladores.
+
+// Agregar varios agentes de escucha para un solo evento #00aae4
+// Al realizar más de una llamada a addEventListener(), proporcionando diferentes controladores, puede tener varios controladores para un solo evento:
+
+// myElement.addEventListener('click', functionA);
+// myElement.addEventListener('click', functionB);
+
+// Ambas funciones se ejecutarían ahora cuando se haga clic en el elemento.
+
+// Aprende más #00aae4
+// Hay otras potentes funciones y opciones disponibles con addEventListener().
+
+// Estos están un poco fuera del alcance de este artículo, pero si desea leerlos, visite las páginas addEventListener() y removeEventListener()).
