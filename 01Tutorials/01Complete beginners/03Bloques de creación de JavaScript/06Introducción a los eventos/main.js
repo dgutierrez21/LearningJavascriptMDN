@@ -180,3 +180,6 @@ btnCambiarTema8.addEventListener("dblclick", () => {
 // Hay otras potentes funciones y opciones disponibles con addEventListener().
 
 // Estos están un poco fuera del alcance de este artículo, pero si desea leerlos, visite las páginas addEventListener() y removeEventListener()).
+
+// Otros mecanismos de escucha de eventos #008000
+// Se recomienda utilizar addEventListener() para registrar controladores de eventos. Es el método más poderoso y se escala mejor con programas más complejos. Sin embargo, hay otras dos formas de registrar controladores de eventos que puede ver: propiedades de controlador de eventos y controladores de eventos en línea.
