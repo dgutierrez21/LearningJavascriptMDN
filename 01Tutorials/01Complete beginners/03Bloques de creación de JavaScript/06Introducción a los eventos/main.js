@@ -102,3 +102,40 @@ function cambiarFondo() {
 }
 
 btnCambiarTema2.addEventListener("click", cambiarFondo);
+
+// Escuchar otros eventos #00aae4
+// Hay muchos eventos diferentes que pueden ser disparados por un elemento de botón. Experimentemos.
+
+// Primero, haga una copia local de random-color-addeventlistener.html y ábrala en su navegador. Es solo una copia del simple ejemplo de color aleatorio con el que ya hemos jugado. Ahora intente cambiar el click a los siguientes valores diferentes a su vez y observe los resultados en el ejemplo:
+
+// focus y blur: el color cambia cuando el botón está enfocado y desenfocado; intente presionar la pestaña para enfocar el botón y presione la pestaña nuevamente para enfocar lejos del botón. A menudo se utilizan para mostrar información sobre cómo rellenar campos de formulario cuando están enfocados, o para mostrar un mensaje de error si un campo de formulario se rellena con un valor incorrecto.
+
+document
+  .querySelector(".btnCambiarTema3")
+  .addEventListener("focus", cambiarFondo);
+
+document
+  .querySelector(".btnCambiarTema4")
+  .addEventListener("blur", cambiarFondo);
+
+// dblclick — El color cambia sólo cuando se hace doble clic en el botón.
+
+document
+  .querySelector(".btnCambiarTema5")
+  .addEventListener("dblclick", cambiarFondo);
+
+// mouseover y mouseout — El color cambia cuando el puntero del mouse se desplaza sobre el botón, o cuando el puntero se mueve fuera del botón, respectivamente.
+
+document
+  .querySelector(".btnCambiarTema6")
+  .addEventListener("mouseover", cambiarFondo);
+
+// contextmenu -- se activa cuando el usuario intenta abrir un menú contextual. Este evento normalmente se desencadena haciendo clic en el botón derecho del mouse o presionando la tecla del menú contextual.
+
+document
+  .querySelector(".btnCambiarTema7")
+  .addEventListener("contextmenu", cambiarFondo);
+
+// Algunos eventos, como click, están disponibles en casi cualquier elemento. Otros son más específicos y solo útiles en ciertas situaciones: por ejemplo, el evento play solo está disponible en algunos elementos, como <video>.
+
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
