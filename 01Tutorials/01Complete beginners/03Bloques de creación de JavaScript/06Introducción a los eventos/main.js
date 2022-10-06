@@ -253,3 +253,33 @@ for (const boton of botones) {
 // Finalmente, muchas configuraciones de servidor comunes no permitirán JavaScript en línea, como medida de seguridad.
 
 // Nunca debe usar los atributos del controlador de eventos HTML: están desactualizados y su uso es una mala práctica. #FF0000
+
+// Objetos de evento #008000
+// A veces, dentro de una función de controlador de eventos, verá un parámetro especificado con un nombre como event, evt o e. Esto se denomina objeto de evento y se pasa automáticamente a los controladores de eventos para proporcionar características e información adicionales. Por ejemplo, reescribamos ligeramente nuestro ejemplo de color aleatorio:
+
+const btn23 = document.querySelector(".btn23");
+
+function cambiarFondo3(e) {
+  const colorFondo = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  e.target.style.backgroundColor = colorFondo;
+  console.log(e);
+}
+
+btn23.addEventListener("click", cambiarFondo3);
+
+// Aquí puede ver que estamos incluyendo un objeto de evento, e, en la función, y en la función que establece un estilo de color de fondo en e.target, que es el botón en sí. target target del objeto de evento es siempre una referencia al elemento en el que se produjo el evento. Entonces, en este ejemplo, estamos estableciendo un color de fondo aleatorio en el botón, no en la página.
+
+// Nota: Puede usar cualquier nombre que desee para el objeto de evento; solo necesita elegir un nombre que luego pueda usar para hacer referencia a él dentro de la función de controlador de eventos. e/evt/event es el más utilizado por los desarrolladores porque son cortos y fáciles de recordar. Siempre es bueno ser consistente, contigo mismo y con los demás si es posible.
+
+// Propiedades adicionales de los objetos de evento #00aae4
+// La mayoría de los objetos de evento tienen un conjunto estándar de propiedades y métodos disponibles en el objeto de evento; consulte la Event para obtener una lista completa. https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+// Algunos objetos de evento agregan propiedades adicionales que son relevantes para ese tipo particular de evento. Por ejemplo, el evento keydown activa cuando el usuario presiona una tecla. Su objeto de evento es un KeyboardEvent, que es un objeto Event especializado con una propiedad key que le indica qué tecla se presionó:
+
+const input = document.querySelector(".cajaDeTexto");
+
+const output = document.querySelector(".output");
+
+input.addEventListener("keydown", (e) => {
+  output.textContent = `Ha presionado la tecla ${e.key}`;
+});
