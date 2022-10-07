@@ -283,3 +283,34 @@ const output = document.querySelector(".output");
 input.addEventListener("keydown", (e) => {
   output.textContent = `Ha presionado la tecla ${e.key}`;
 });
+
+// Prevención del comportamiento predeterminado #008000
+// A veces, se encontrará con una situación en la que desea evitar que un evento haga lo que hace de forma predeterminada. El ejemplo más común es el de un formulario web, por ejemplo, un formulario de registro personalizado. Cuando completa los detalles y hace clic en el botón Enviar, el comportamiento natural es que los datos se envíen a una página específica en el servidor para su procesamiento, y que el navegador se redirija a una página de "mensaje de éxito" de algún tipo (o la misma página, si no se especifica otra).
+
+// El problema viene cuando el usuario no ha enviado los datos correctamente: como desarrollador, desea evitar el envío al servidor y dar un mensaje de error que diga qué está mal y qué se debe hacer para corregir las cosas. Algunos navegadores admiten funciones de validación automática de datos de formularios, pero como muchos no lo hacen, se recomienda no confiar en ellas e implementar sus propias comprobaciones de validación. Veamos un ejemplo simple.
+
+// Primero, un formulario HTML simple que requiere que ingrese su nombre y apellido:
+
+// ver html...
+
+// Ahora algo de JavaScript: aquí implementamos una comprobación muy simple dentro de un controlador para el evento submit (el evento submit se activa en un formulario cuando se envía) que prueba si los campos de texto están vacíos. Si lo son, llamamos a la función preventDefault() en el objeto de evento, que detiene el envío del formulario, y luego mostramos un mensaje de error en el párrafo debajo de nuestro formulario para decirle al usuario lo que está mal:
+
+const form = document.querySelector(".formularioContacto"),
+  nombre = document.querySelector("#nombre"),
+  apellido = document.querySelector("#apellido"),
+  parrafo = document.querySelector(".pMsjForm");
+
+form.addEventListener("submit", (e) => {
+  if (nombre.value === "" || apellido.value === "") {
+    e.preventDefault(); //  cancela el evento si es cancelable, lo que significa que la acción predeterminada que pertenece al evento no ocurrirá.
+
+    // Por ejemplo, esto puede ser útil cuando:
+
+    // Al hacer clic en el botón "Enviar", evite que envíe un formulario
+    // Al hacer clic en un enlace, evite que el enlace siga la URL
+
+    parrafo.textContent = "Tienes que rellenar los dos nombres.";
+  }
+});
+
+// Obviamente, esta es una validación de formulario bastante débil, no impediría que el usuario valide el formulario con espacios o números ingresados en los campos, por ejemplo, pero está bien para fines de ejemplo.
