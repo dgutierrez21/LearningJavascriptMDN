@@ -326,7 +326,7 @@ form.addEventListener("submit", (e) => {
 const contPagSalida = document.querySelector(".contPag pre");
 
 function manejarClick(e) {
-  contPagSalida.textContent = `Has hecho click en un elemento ${e.currentTarget.tagName} \n`;
+  contPagSalida.textContent += `Has hecho click en un elemento ${e.currentTarget.tagName}\n`;
   console.log(e);
   console.log(e.currentTarget);
   console.log(e.currentTarget.tagName);
