@@ -404,3 +404,34 @@ video.addEventListener("click", () => video.play());
 // Ahora, cuando se hace clic en el área del <div> fuera del video, el cuadro debe ocultarse nuevamente y cuando se hace clic en el video en sí, el video debe comenzar a reproducirse.
 
 // Pero hay un problema: actualmente, cuando hace clic en el video, comienza a reproducirse, pero hace que el <div> se oculte al mismo tiempo. Esto se debe a que el video está dentro de la <div>, es parte de él, por lo que al hacer clic en el video en realidad se ejecutan los dos controladores de eventos anteriores.
+
+// Explicación del burbujeo y la captura #00aae4
+// Cuando se activa un evento en un elemento que tiene elementos padres (en este caso, el <video> tiene el <div> como padre), los navegadores modernos ejecutan tres fases diferentes: la fase de captura, la fase de destino y la fase de burbujeo.
+
+// En la fase de captura:
+
+// ---El explorador comprueba si el antecesor más externo del elemento (<html>) tiene un controlador de eventos click registrado en él para la fase de captura y, de ser así, lo ejecuta.
+
+// ---Luego pasa al siguiente elemento dentro <html> y hace lo mismo, luego al siguiente, y así sucesivamente hasta que llega al padre directo del elemento en el que realmente se hizo clic.
+
+// En la fase objetivo:
+
+// ---El explorador comprueba si la propiedad target tiene un controlador de eventos para el evento click registrado en ella y, de ser así, lo ejecuta.
+
+// ---Luego, si bubbles es true, propaga el evento al padre directo del elemento en el que se hizo clic, luego al siguiente, y así sucesivamente hasta que llegue al elemento <html>. De lo contrario, si bubbles false, no propagan el evento a ningún antepasado del objetivo.
+
+// En la fase de burbujeo, ocurre exactamente lo contrario de la fase de captura:
+
+// ---El explorador comprueba si el elemento primario directo del elemento en el que se ha hecho clic tiene un controlador de eventos click registrado en él para la fase de burbujeo y, de ser así, lo ejecuta.
+
+// ---Luego pasa al siguiente elemento antepasado inmediato y hace lo mismo, luego al siguiente, y así sucesivamente hasta que alcanza el elemento <html>.
+
+// En los navegadores modernos, de forma predeterminada, todos los controladores de eventos se registran para la fase de burbujeo. Entonces, en nuestro ejemplo actual, cuando hace clic en el video, el evento burbujea desde el elemento <video> hacia afuera hasta el elemento <html>. En el camino:
+
+// Nota: Todos los eventos de JavaScript pasan por las fases de captura y destino. La propiedad bubbles puede comprobar si un evento entra en la fase de burbujeo.
+
+// Nota: Los agentes de escucha de eventos registrados para el elemento <html> no están en la parte superior de la jerarquía. Por ejemplo, los detectores de eventos registrados para los objetos window y document son más altos en la jerarquía.
+
+// En el ejemplo siguiente se muestra el comportamiento descrito anteriormente. Coloque el cursor sobre los números y haga clic en ellos para desencadenar eventos, y luego observe la salida que se registra.
+
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#bubbling_and_capturing_explained
