@@ -397,6 +397,6 @@ contenedorVideo.addEventListener("click", () =>
   contenedorVideo.setAttribute("class", "oculto")
 );
 
-const video = document.querySelector(".contenedorVideo video");
+const video = document.querySelector(".contenedorRV div video");
 
 video.addEventListener("click", () => video.play());
