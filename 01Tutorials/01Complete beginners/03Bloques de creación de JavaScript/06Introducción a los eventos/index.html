@@ -12,6 +12,43 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+
+    <style>
+      .reproductorVideo {
+        position: relative;
+        width: 580px;
+        height: 480px;
+        overflow: hidden;
+      }
+      .reproductorVideo div {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 480px;
+        height: 380px;
+        border-radius: 10px;
+        background-color: #eee;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.1)
+        );
+      }
+
+      .oculto {
+        left: -50%;
+      }
+
+      .mostrando {
+        left: 10%;
+      }
+
+      .reproductorVideo div video {
+        display: block;
+        width: 400px;
+        margin: 40px auto;
+      }
+    </style>
     <script src="main.js" defer></script>
   </head>
   <body>
@@ -76,6 +113,32 @@
       <div class="container contPag2">
         <button class="btn btn-primary mb-3">Click Aquí(2)</button>
         <pre id="output"></pre>
+      </div>
+
+      <button class="btn btn-dark btnRV">Mostrar video</button>
+
+      <div
+        class="container mt-5 border border-3 border-danger reproductorVideo"
+      >
+        <div class="oculto border border-3 border-success contenedorVideo">
+          <video>
+            <source src="./video/rabbit320.mp4" type="video/mp4" />
+
+            <source
+              src="./video/javascript_building-blocks_events_rabbit320.webm"
+              type="video/webm"
+            />
+
+            <p>
+              Su navegador no soporta el vídeo HTML. Aquí tiene un
+              <a
+                href="https://media.tenor.com/BsXLPSZZpoAAAAAC/%E0%B8%AD%E0%B8%B4%E0%B8%AD%E0%B8%B4-snowball.gif"
+                >enlace</a
+              >
+              para ver el video
+            </p>
+          </video>
+        </div>
       </div>
     </div>
   </body>

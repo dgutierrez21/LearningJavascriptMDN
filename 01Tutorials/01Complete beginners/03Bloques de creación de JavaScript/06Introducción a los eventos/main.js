@@ -373,3 +373,36 @@ btnPag2.addEventListener("click", mostrarMensaje);
 // Describimos esto diciendo que el evento burbujea desde el elemento más interno en el que se hizo clic.
 
 // Este comportamiento puede ser útil y también puede causar problemas inesperados. En la siguiente sección, veremos un problema que causa y encontraremos la solución.
+
+// Ejemplo de reproductor de vídeo #00aae4
+
+// En este ejemplo se muestra y oculta un <div> con un elemento <video> en su interior:
+
+// ver html...
+
+// Cuando se hace clic en el <button>, se muestra el video, cambiando el atributo de clase en el <div> de hidden a showing (el CSS del ejemplo contiene estas dos clases, que colocan el cuadro fuera de la pantalla y en la pantalla, respectivamente):
+
+const btnRV = document.querySelector(".btnRV"),
+  contenedorRV = document.querySelector(".contenedorVideo");
+
+function mostrarVideo() {
+  if (contenedorRV.getAttribute("class") === "oculto") {
+    contenedorRV.setAttribute("class", "mostrando");
+  }
+}
+
+btnRV.addEventListener("click", mostrarVideo);
+
+// Luego agregamos un par de controladores de eventos click más: el primero al <div> y el segundo al <video>:
+
+contenedorRV.addEventListener("click", () =>
+  contenedorRV.setAttribute("class", "oculto")
+);
+
+const video = document.querySelector(".reproductorVideo video");
+
+video.addEventListener("click", () => video.play());
+
+console.log(btnRV);
+console.log(contenedorRV);
+console.log(video);
