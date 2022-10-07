@@ -399,7 +399,10 @@ contenedorVideo.addEventListener("click", () =>
 
 const video = document.querySelector(".contenedorRV div video");
 
-video.addEventListener("click", () => video.play());
+video.addEventListener("click", (e) => {
+  e.stopPropagation();
+  video.play();
+});
 
 // Ahora, cuando se hace clic en el área del <div> fuera del video, el cuadro debe ocultarse nuevamente y cuando se hace clic en el video en sí, el video debe comenzar a reproducirse.
 
@@ -435,3 +438,16 @@ video.addEventListener("click", () => video.play());
 // En el ejemplo siguiente se muestra el comportamiento descrito anteriormente. Coloque el cursor sobre los números y haga clic en ellos para desencadenar eventos, y luego observe la salida que se registra.
 
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#bubbling_and_capturing_explained
+
+// Solucionar el problema con stopPropagation() #00aae4
+// Como vimos en el ejemplo del video, este puede ser un comportamiento muy molesto, ¡pero hay una manera de prevenirlo! El objeto Event estándar tiene una función disponible llamada stopPropagation() que, cuando se invoca en el objeto de evento de un controlador, hace que se ejecute el primer controlador, pero el evento no burbujee más arriba en la cadena, por lo que no se ejecutarán más controladores.
+
+// Por lo tanto, podemos solucionar nuestro problema actual cambiando la función de segundo controlador en el bloque de código anterior a esto:
+
+// ver linea 402
+
+// Nota: ¿Por qué molestarse tanto con la captura como con el burbujeo? Bueno, en los malos viejos tiempos, cuando los navegadores eran mucho menos compatibles entre sí de lo que son ahora, Netscape solo usaba la captura de eventos e Internet Explorer solo usaba el burbujeo de eventos. Cuando el W3C decidió intentar estandarizar el comportamiento y llegar a un consenso, acabaron con este sistema que incluía ambos, que es el que implementaron los navegadores modernos.
+
+// Nota: Como se mencionó anteriormente, de forma predeterminada, casi todos los controladores de eventos se registran en la fase de burbujeo, y esto tiene más sentido la mayor parte del tiempo. Si realmente desea registrar un evento en la fase de captura, puede hacerlo registrando el controlador mediante addEventListener()y estableciendo la tercera propiedad opcional true.
+
+// el siguiente enlace lleva a una explicacíon en video https://www.youtube.com/watch?v=UWCvbwo9IRk
