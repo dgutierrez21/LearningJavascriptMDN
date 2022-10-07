@@ -314,3 +314,33 @@ form.addEventListener("submit", (e) => {
 });
 
 // Obviamente, esta es una validación de formulario bastante débil, no impediría que el usuario valide el formulario con espacios o números ingresados en los campos, por ejemplo, pero está bien para fines de ejemplo.
+
+// Burbujeo y captura de eventos #008000
+// El burbujeo y la captura de eventos son términos que describen fases en la forma en que el explorador maneja los eventos dirigidos a elementos anidados.
+
+// Establecer un agente de escucha en un elemento primario #00aae4
+// Considere una página web como esta:
+
+// Aquí el botón está dentro de otro elemento, un elemento <div>. Decimos que el elemento <div> aquí es el padre del elemento que contiene. ¿Qué sucede si agregamos un controlador de eventos click al padre y luego hacemos clic en el botón?
+
+const contPagSalida = document.querySelector(".contPag pre");
+
+function manejarClick(e) {
+  contPagSalida.textContent = `Has hecho click en un elemento ${e.currentTarget.tagName} \n`;
+  console.log(e);
+  console.log(e.currentTarget);
+  console.log(e.currentTarget.tagName);
+}
+
+const contPag = document.querySelector(".contPag");
+
+contPag.addEventListener("click", manejarClick);
+
+// Verás que el padre activa un evento de clic cuando el usuario hace clic en el botón:
+
+// You clicked on a DIV element
+// Esto tiene sentido: el botón está dentro de la <div>, por lo que cuando haces clic en el botón también estás haciendo clic implícitamente en el elemento que está dentro.
+
+// ---La propiedad de solo lectura currentTarget de la interfaz Event identifica el destino actual del evento, a medida que el evento atraviesa el DOM. Siempre se refiere al elemento al que se ha unido el controlador de eventos, a diferencia Event.target, que identifica el elemento en el que se produjo el evento y que puede ser su descendiente.
+
+// ---La propiedad de solo lectura tagName de la interfaz Element devuelve el nombre de etiqueta del elemento al que se llama.
