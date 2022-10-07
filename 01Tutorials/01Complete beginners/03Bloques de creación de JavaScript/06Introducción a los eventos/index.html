@@ -14,13 +14,13 @@
     />
 
     <style>
-      .reproductorVideo {
+      .contenedorRV {
         position: relative;
         width: 580px;
         height: 480px;
-        overflow: hidden;
       }
-      .reproductorVideo div {
+
+      .contenedorRV div {
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -36,19 +36,20 @@
       }
 
       .oculto {
-        left: -50%;
+        left: -100%;
       }
 
       .mostrando {
-        left: 10%;
+        left: 50%;
       }
 
-      .reproductorVideo div video {
+      .contenedorRV div video {
         display: block;
         width: 400px;
         margin: 40px auto;
       }
     </style>
+
     <script src="main.js" defer></script>
   </head>
   <body>
@@ -115,27 +116,22 @@
         <pre id="output"></pre>
       </div>
 
-      <button class="btn btn-dark btnRV">Mostrar video</button>
+      <button class="btn btn-dark btnRv">Mostrar Video</button>
 
-      <div
-        class="container mt-5 border border-3 border-danger reproductorVideo"
-      >
-        <div class="oculto border border-3 border-success contenedorVideo">
+      <div class="container contenedorRV mt-4 border border-3 border-danger">
+        <div class="oculto">
           <video>
             <source src="./video/rabbit320.mp4" type="video/mp4" />
-
             <source
               src="./video/javascript_building-blocks_events_rabbit320.webm"
               type="video/webm"
             />
-
             <p>
-              Su navegador no soporta el vídeo HTML. Aquí tiene un
+              Su navegador no soporta el formato de video, por favor visite este
               <a
                 href="https://media.tenor.com/BsXLPSZZpoAAAAAC/%E0%B8%AD%E0%B8%B4%E0%B8%AD%E0%B8%B4-snowball.gif"
                 >enlace</a
-              >
-              para ver el video
+              >para verlo.
             </p>
           </video>
         </div>

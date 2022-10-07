@@ -382,27 +382,21 @@ btnPag2.addEventListener("click", mostrarMensaje);
 
 // Cuando se hace clic en el <button>, se muestra el video, cambiando el atributo de clase en el <div> de hidden a showing (el CSS del ejemplo contiene estas dos clases, que colocan el cuadro fuera de la pantalla y en la pantalla, respectivamente):
 
-const btnRV = document.querySelector(".btnRV"),
-  contenedorRV = document.querySelector(".contenedorVideo");
+const bntRv = document.querySelector(".btnRv"),
+  contenedorVideo = document.querySelector(".contenedorRV div");
 
 function mostrarVideo() {
-  if (contenedorRV.getAttribute("class") === "oculto") {
-    contenedorRV.setAttribute("class", "mostrando");
+  if (contenedorVideo.getAttribute("class", "oculto")) {
+    contenedorVideo.setAttribute("class", "mostrando");
   }
 }
 
-btnRV.addEventListener("click", mostrarVideo);
+bntRv.addEventListener("click", mostrarVideo);
 
-// Luego agregamos un par de controladores de eventos click más: el primero al <div> y el segundo al <video>:
-
-contenedorRV.addEventListener("click", () =>
-  contenedorRV.setAttribute("class", "oculto")
+contenedorVideo.addEventListener("click", () =>
+  contenedorVideo.setAttribute("class", "oculto")
 );
 
-const video = document.querySelector(".reproductorVideo video");
+const video = document.querySelector(".contenedorVideo video");
 
 video.addEventListener("click", () => video.play());
-
-console.log(btnRV);
-console.log(contenedorRV);
-console.log(video);
