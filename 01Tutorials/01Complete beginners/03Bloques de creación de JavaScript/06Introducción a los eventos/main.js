@@ -344,3 +344,32 @@ contPag.addEventListener("click", manejarClick);
 // ---La propiedad de solo lectura currentTarget de la interfaz Event identifica el destino actual del evento, a medida que el evento atraviesa el DOM. Siempre se refiere al elemento al que se ha unido el controlador de eventos, a diferencia Event.target, que identifica el elemento en el que se produjo el evento y que puede ser su descendiente.
 
 // ---La propiedad de solo lectura tagName de la interfaz Element devuelve el nombre de etiqueta del elemento al que se llama.
+
+// Ejemplo burbujeante #00aae4
+// ¿Qué sucede si agregamos detectores de eventos al botón y al padre?
+
+// ver html...
+
+// Intentemos agregar controladores de eventos click al botón, su elemento primario (el <div>
+
+const contPag2 = document.querySelector(".contPag2"),
+  btnPag2 = document.querySelector(".contPag2 button"),
+  contPagSalida2 = document.querySelector(".contPag2 pre");
+
+function mostrarMensaje(e) {
+  contPagSalida2.textContent += `Ha hecho click en un elemento ${e.currentTarget.tagName}\n`;
+}
+
+contPag2.addEventListener("click", mostrarMensaje);
+btnPag2.addEventListener("click", mostrarMensaje);
+
+// Verás que los dos elementos activan un evento de clic cuando el usuario hace clic en el botón:
+
+// En este caso:
+
+// el clic en el botón se activa primero
+// seguido del clic en su padre (el elemento <div>)
+
+// Describimos esto diciendo que el evento burbujea desde el elemento más interno en el que se hizo clic.
+
+// Este comportamiento puede ser útil y también puede causar problemas inesperados. En la siguiente sección, veremos un problema que causa y encontraremos la solución.
