@@ -400,3 +400,7 @@ contenedorVideo.addEventListener("click", () =>
 const video = document.querySelector(".contenedorRV div video");
 
 video.addEventListener("click", () => video.play());
+
+// Ahora, cuando se hace clic en el área del <div> fuera del video, el cuadro debe ocultarse nuevamente y cuando se hace clic en el video en sí, el video debe comenzar a reproducirse.
+
+// Pero hay un problema: actualmente, cuando hace clic en el video, comienza a reproducirse, pero hace que el <div> se oculte al mismo tiempo. Esto se debe a que el video está dentro de la <div>, es parte de él, por lo que al hacer clic en el video en realidad se ejecutan los dos controladores de eventos anteriores.
