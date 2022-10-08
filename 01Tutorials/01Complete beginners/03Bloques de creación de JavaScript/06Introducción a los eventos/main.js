@@ -451,3 +451,27 @@ video.addEventListener("click", (e) => {
 // Nota: Como se mencionó anteriormente, de forma predeterminada, casi todos los controladores de eventos se registran en la fase de burbujeo, y esto tiene más sentido la mayor parte del tiempo. Si realmente desea registrar un evento en la fase de captura, puede hacerlo registrando el controlador mediante addEventListener()y estableciendo la tercera propiedad opcional true.
 
 // el siguiente enlace lleva a una explicacíon en video https://www.youtube.com/watch?v=UWCvbwo9IRk
+
+// Delegación del evento #00aae4
+// Sin embargo, el burbujeo de eventos no solo es molesto: puede ser muy útil. En particular, permite una práctica llamada delegación de eventos. En esta práctica, cuando queremos que se ejecute algún código cuando el usuario interactúa con cualquiera de un gran número de elementos secundarios, establecemos el detector de eventos en su padre y hacemos que los eventos que ocurren en ellos lleguen a su padre en lugar de tener que establecer el detector de eventos en cada niño individualmente.
+
+// Volvamos a nuestro primer ejemplo, donde establecemos el color de fondo de toda la página cuando el usuario hizo clic en un botón. Supongamos que, en cambio, la página se divide en 16 mosaicos y queremos establecer cada mosaico en un color aleatorio cuando el usuario hace clic en ese mosaico.
+
+// Aquí está el HTML:
+
+// ver html...
+
+// Ahora en JavaScript, podríamos agregar un controlador de eventos click para cada mosaico. Pero una opción mucho más simple y eficiente es establecer el controlador de eventos click en el primario y confiar en el burbujeo de eventos para garantizar que el controlador se ejecute cuando el usuario haga clic en un mosaico:
+
+function cambiarFondo4() {
+  const color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  return color;
+}
+
+const contenedorMosaico = document.querySelector(".contenedorMosaico");
+
+contenedorMosaico.addEventListener("click", (e) => {
+  e.target.style.backgroundColor = cambiarFondo4();
+});
+
+// Nota: En este ejemplo, estamos usando event.target para obtener el elemento que fue el destino del evento (es decir, el elemento más interno). Si quisiéramos acceder al elemento que manejaba este evento (en este caso el contenedor) podríamos usar event.currentTarget.
