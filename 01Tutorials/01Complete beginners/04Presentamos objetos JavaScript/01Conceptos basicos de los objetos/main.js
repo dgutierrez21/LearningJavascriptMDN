@@ -113,3 +113,70 @@ console.log(persona4.nombre.segundo);
 // name.last;
 
 // De lo contrario, sus métodos ya no funcionarán.
+
+// Notación entre corchetes #008000
+// La notación entre corchetes proporciona una forma alternativa de acceder a las propiedades del objeto. En lugar de usar notación de puntos como esta:
+
+// person.age;
+// person.name.first;
+
+// En su lugar, puede usar corchetes:
+
+const persona5 = {
+  nombre: {
+    primero: "Juan",
+    segundo: "Andres",
+  },
+  edad: 67,
+};
+
+console.log(persona5["nombre"]["segundo"]);
+console.log(persona5["edad"]);
+
+// Esto se parece mucho a cómo se accede a los elementos de una matriz, y es básicamente lo mismo: en lugar de usar un número de índice para seleccionar un elemento, está utilizando el nombre asociado con el valor de cada miembro. No es de extrañar que los objetos a veces se llamen matrices asociativas: asignan cadenas a valores de la misma manera que las matrices asignan números a valores.
+
+// La notación de puntos generalmente se prefiere a la notación entre corchetes porque es más sucinta y más fácil de leer. Sin embargo, hay algunos casos en los que tiene que usar corchetes. Por ejemplo, si el nombre de una propiedad de objeto se mantiene en una variable, no puede usar la notación de puntos para obtener acceso al valor, pero puede acceder al valor mediante la notación entre corchetes.
+
+// En el ejemplo siguiente, la función logProperty() puede utilizar person[propertyName] para recuperar el valor de la propiedad denominada en propertyName.
+
+const persona6 = {
+  nombre: ["Jhon", "Doe"],
+  edad: 23,
+  hermano: {
+    mayor: "Pablo",
+    menor: "Esteban",
+  },
+};
+
+// con notación entre corchetes
+
+function registrarPropiedad(nombrePropiedad, indicePropiedad) {
+  console.log(persona6[nombrePropiedad][indicePropiedad]);
+  //   console.log(persona6.nombrePropiedad[indicePropiedad]); // Esto genera error debido a que se esta accediendo directamente a la propiedad del objeto, la cual no existe.
+}
+
+registrarPropiedad("nombre", 0);
+
+// con notación entre corchetes
+
+function registrarPropiedad2(nombrePropiedad, nombreSegundaPropiedad) {
+  console.log(persona6[nombrePropiedad][nombreSegundaPropiedad]);
+}
+
+registrarPropiedad2("hermano", "menor");
+
+// con notación de punto
+
+function registrarPropiedad3(indicePropiedad) {
+  console.log(persona6.nombre[indicePropiedad]);
+}
+
+registrarPropiedad3(1);
+
+// con notación de punto
+
+function registrarPropiedad4(nombrePropiedad) {
+  console.log(persona6.hermano[nombrePropiedad]);
+}
+
+registrarPropiedad4("mayor");
