@@ -338,3 +338,23 @@ const hallam = new Persona("Hallam");
 console.log(hallam);
 console.log(hallam.nombre);
 hallam.introducirSe();
+
+// Has estado usando objetos todo el tiempo #008000
+// A medida que has estado revisando estos ejemplos, probablemente hayas estado pensando que la notación de puntos que has estado usando es muy familiar. ¡Eso es porque lo has estado usando durante todo el curso! Cada vez que hemos estado trabajando en un ejemplo que usa una API de navegador incorporada u objeto JavaScript, hemos estado usando objetos, porque tales características se construyen utilizando exactamente el mismo tipo de estructuras de objetos que hemos estado viendo aquí, aunque más complejas que en nuestros propios ejemplos personalizados básicos.
+
+// Entonces, cuando usaste métodos de cadena como:
+
+// myString.split(",");
+
+// Estaba utilizando un método disponible en un objeto String. Cada vez que se crea una cadena en el código, esa cadena se crea automáticamente como una instancia de String y, por lo tanto, tiene varios métodos y propiedades comunes disponibles.
+
+// Cuando accedió al modelo de objetos de documento utilizando líneas como esta:
+
+const myDiv = document.createElement("div");
+const myVideo = document.querySelector("video");
+
+// Estaba utilizando métodos disponibles en un objeto Document. Para cada página web cargada, se crea una instancia de Document, denominada document, que representa la estructura, el contenido y otras características de toda la página, como su URL. Una vez más, esto significa que tiene varios métodos y propiedades comunes disponibles en él.
+
+// Lo mismo ocurre con casi cualquier otro objeto o API integrada que haya estado utilizando: Array, Math, etc.
+
+// Tenga en cuenta que los objetos y las API integrados no siempre crean instancias de objetos automáticamente. Por ejemplo, la API de notificaciones, que permite a los navegadores modernos activar las notificaciones del sistema, requiere que cree una instancia de un nuevo objeto utilizando el constructor para cada notificación que desee activar.
