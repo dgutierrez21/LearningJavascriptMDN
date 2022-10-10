@@ -238,3 +238,32 @@ persona7[misDatosNombre] = misDatosValor;
 console.log(persona7.height);
 
 // Agregar una propiedad a un objeto mediante el método anterior no es posible con la notación de puntos, que solo puede aceptar un nombre de miembro literal, no un valor de variable que apunte a un nombre.
+
+// ¿Qué es "this"? #008000
+// Es posible que haya notado algo un poco extraño en nuestros métodos. Mira este, por ejemplo:
+
+// introduceSelf() {
+//   console.log(`Hi! I'm ${this.name[0]}.`);
+// }
+
+// Probablemente te estés preguntando qué es "this". La palabra clave this se refiere al objeto actual en el que se está escribiendo el código, por lo que en este caso this es equivalente a person. Entonces, ¿por qué no simplemente escribir person en su lugar?
+
+// Bueno, cuando solo tienes que crear un solo objeto literal, no es tan útil. Pero si crea más de uno, this le permite usar la misma definición de método para cada objeto que cree.
+
+// Ilustremos lo que queremos decir con un par simplificado de objetos de persona:
+
+const persona8 = {
+  nombre: "Chris",
+  introducirSe() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+const persona9 = {
+  nombre: "Kendrick",
+  introducirSe() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+// Aunque el código del método es exactamente el mismo en cada caso. Esto no es muy útil cuando se escriben literales de objetos a mano, pero será esencial cuando comencemos a usar constructores para crear más de un objeto a partir de una sola definición de objeto, y ese es el tema de la siguiente sección.
