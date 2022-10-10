@@ -180,3 +180,61 @@ function registrarPropiedad4(nombrePropiedad) {
 }
 
 registrarPropiedad4("mayor");
+
+// Establecer miembros de objeto #008000
+// Hasta ahora, solo hemos analizado la recuperación (u obtención) de miembros de objetos: también puede establecer (actualizar) el valor de los miembros de objetos declarando el miembro que desea establecer (usando notación de puntos o corchetes), de la siguiente manera:
+
+const persona7 = {
+  nombre: {
+    apellido: "Sean",
+  },
+  edad: 34,
+};
+
+console.log(persona7.edad);
+console.log(persona7["nombre"]["apellido"]);
+
+persona7.edad = 45;
+
+persona7["nombre"]["apellido"] = "Trace";
+
+// Intente ingresar las líneas anteriores y luego haga que los miembros vuelvan a ver cómo han cambiado, así:
+
+console.log(persona7.edad);
+console.log(persona7["nombre"]["apellido"]);
+
+// La configuración de miembros no solo se detiene en la actualización de los valores de las propiedades y métodos existentes; también puede crear miembros completamente nuevos. Pruebe estos en la consola de JS:
+
+persona7["nombre"]["primerNombre"] = "Dean";
+persona7["colorOjos"] = "azules";
+
+persona7.saludo = function () {
+  console.log(
+    `Hola, mi nombre es ${persona7.nombre["primerNombre"]} ${persona7["nombre"]["apellido"]} y mis ojos son de color ${persona7.colorOjos}`
+  );
+};
+
+console.log(persona7["colorOjos"]);
+persona7.saludo();
+
+// Un aspecto útil de la notación entre corchetes es que se puede usar para establecer no solo valores de miembros dinámicamente, sino también nombres de miembros. Digamos que queríamos que los usuarios pudieran almacenar tipos de valores personalizados en los datos de sus personas, escribiendo el nombre y el valor del miembro en dos entradas de texto. Podríamos obtener esos valores como este:
+
+// const myDataName = nameInput.value;
+// const myDataValue = nameValue.value;
+
+// A continuación, podríamos agregar este nuevo nombre de miembro y valor al objeto person de esta manera:
+
+// person[myDataName] = myDataValue;
+
+// Para probar esto, intente agregar las siguientes líneas en su código, justo debajo de la llave de cierre del objeto person:
+
+const misDatosNombre = "height",
+  misDatosValor = "1.80cm";
+
+persona7[misDatosNombre] = misDatosValor;
+
+// Ahora intente guardar y actualizar, e ingrese lo siguiente en su entrada de texto:
+
+console.log(persona7.height);
+
+// Agregar una propiedad a un objeto mediante el método anterior no es posible con la notación de puntos, que solo puede aceptar un nombre de miembro literal, no un valor de variable que apunte a un nombre.
