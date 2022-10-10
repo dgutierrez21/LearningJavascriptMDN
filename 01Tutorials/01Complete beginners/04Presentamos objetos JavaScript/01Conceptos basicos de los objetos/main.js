@@ -267,3 +267,74 @@ const persona9 = {
 };
 
 // Aunque el código del método es exactamente el mismo en cada caso. Esto no es muy útil cuando se escriben literales de objetos a mano, pero será esencial cuando comencemos a usar constructores para crear más de un objeto a partir de una sola definición de objeto, y ese es el tema de la siguiente sección.
+
+// Introducción a los constructores #008000
+// El uso de literales de objetos está bien cuando solo necesita crear un objeto, pero si tiene que crear más de uno, como en la sección anterior, son muy inadecuados. Tenemos que escribir el mismo código para cada objeto que creamos, y si queremos cambiar algunas propiedades del objeto, como agregar una propiedad height, entonces tenemos que recordar actualizar cada objeto.
+
+// Nos gustaría una forma de definir la "forma" de un objeto, el conjunto de métodos y las propiedades que puede tener, y luego crear tantos objetos como queramos, simplemente actualizando los valores de las propiedades que son diferentes.
+
+// La primera versión de esto es solo una función:
+
+function crearPersona(nombre) {
+  const obj = {};
+  obj.nombre = nombre;
+  obj.introducirSe = function () {
+    console.log(`Hola, soy ${this.nombre}`);
+  };
+
+  return obj;
+}
+
+// Esta función crea y devuelve un nuevo objeto cada vez que lo llamamos. El objeto tendrá dos miembros:
+
+// un nombre de propiedad
+// un método introducirSe().
+
+// Tenga en cuenta que createPerson() toma un nombre de parámetro para establecer el valor de la propiedad nombre, pero el valor del método introducirSe() será el mismo para todos los objetos creados con esta función. Este es un patrón muy común para crear objetos.
+
+// Ahora podemos crear tantos objetos como queramos, reutilizando la definición:
+
+const charley = crearPersona("Charley");
+
+console.log(charley);
+console.log(charley.nombre);
+charley.introducirSe();
+
+const frankie = crearPersona("Frankie");
+
+console.log(frankie);
+console.log(frankie.nombre);
+frankie.introducirSe();
+
+// Esto funciona bien, pero es un poco largo: tenemos que crear un objeto vacío, inicializarlo y devolverlo. Una mejor manera es usar un constructor. Un constructor es solo una función llamada usando la new palabra clave. Cuando llame a un constructor,:
+
+// ---Crear un nuevo objeto
+
+// --Enlazar this al nuevo objeto, para que pueda hacer referencia a this código del constructor
+
+// --Ejecute el código en el constructor
+
+// --devolver el nuevo objeto.
+
+// Los constructores, por convención, comienzan con una letra mayúscula y reciben su nombre por el tipo de objeto que crean. Así que podríamos reescribir nuestro ejemplo así:
+
+function Persona(nombre) {
+  this.nombre = nombre;
+  this.introducirSe = function () {
+    console.log(`Hola, soy ${this.nombre}`);
+  };
+}
+
+// Para llamar a Person() como constructor, usamos new:
+
+const sandy = new Persona("Sandy");
+
+console.log(sandy);
+console.log(sandy.nombre);
+sandy.introducirSe();
+
+const hallam = new Persona("Hallam");
+
+console.log(hallam);
+console.log(hallam.nombre);
+hallam.introducirSe();
