@@ -73,3 +73,43 @@ persona3.introducirseASiMismo();
 // Un objeto como este se conoce como un objeto literal: literalmente hemos escrito el contenido del objeto a medida que lo hemos creado. Esto es diferente en comparación con los objetos instanciados de las clases, que veremos más adelante.
 
 // Es muy común crear un objeto utilizando un literal de objeto cuando se desea transferir una serie de elementos de datos estructurados y relacionados de alguna manera, por ejemplo, enviando una solicitud al servidor para que se coloque en una base de datos. Enviar un solo objeto es mucho más eficiente que enviar varios elementos individualmente, y es más fácil trabajar con él que con una matriz, cuando se desea identificar elementos individuales por su nombre.
+
+// Notación de puntos #008000
+// Arriba, accedió a las propiedades y métodos del objeto mediante notación de puntos. El nombre del objeto (persona) actúa como el espacio de nombres: primero debe ingresarse para acceder a cualquier cosa dentro del objeto. A continuación, escriba un punto, luego el elemento al que desea acceder: puede ser el nombre de una propiedad simple, un elemento de una propiedad array o una llamada a uno de los métodos del objeto, por ejemplo:
+
+console.log(persona3.nombre[0]);
+console.log(persona3.edad);
+
+// Objetos como propiedades de objeto #00aae4
+// Una propiedad de objeto puede ser en sí misma un objeto. Por ejemplo, intente cambiar el name del miembro de
+
+// const person = {
+//   name: ["Bob", "Smith"],
+// };
+
+// Para
+
+const persona4 = {
+  nombre: {
+    primero: "Juan",
+    segundo: "Andres",
+  },
+  // …
+};
+
+// Para acceder a estos elementos solo necesitas encadenar el paso extra al final con otro punto. Pruebe estos en la consola de JS:
+
+console.log(persona4.nombre.primero);
+console.log(persona4.nombre.segundo);
+
+// Si hace esto, también deberá revisar el código de su método y cambiar cualquier instancia de
+
+// name[0];
+// name[1];
+
+// Para
+
+// name.first;
+// name.last;
+
+// De lo contrario, sus métodos ya no funcionarán.
