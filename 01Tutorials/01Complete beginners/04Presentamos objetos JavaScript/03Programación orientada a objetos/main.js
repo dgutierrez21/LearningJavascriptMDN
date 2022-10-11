@@ -234,7 +234,7 @@ class Estudiante2 extends Persona {
 
 const estudiante2 = new Estudiante2("Pedro", 1);
 
-if (estudiante2.anio > 1) {
+if (estudiante2.puedeEstudiarArqueria()) {
   console.log("Puedes entrar a estudiar arqueria");
 } else {
   console.log("No cumples los requisitos para estudiar arqueria");
