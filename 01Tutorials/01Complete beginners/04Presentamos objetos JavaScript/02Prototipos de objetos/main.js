@@ -161,3 +161,14 @@ console.log(Object.hasOwn(irma, "saludar")); // false
 console.log(Object.hasOwn(Persona.prototype, "saludar")); // true
 
 // Nota: También puede utilizar el método no estático Object.hasOwnProperty() aquí, pero le recomendamos que utilice Object.hasOwn() si puede.
+
+// Prototipos y herencia #008000
+// Los prototipos son una característica potente y muy flexible de JavaScript, que permite reutilizar código y combinar objetos.
+
+// En particular, apoyan una versión de herencia. La herencia es una característica de los lenguajes de programación orientados a objetos que permite a los programadores expresar la idea de que algunos objetos en un sistema son versiones más especializadas de otros objetos.
+
+// Por ejemplo, si estamos modelando una escuela, podríamos tener profesores y estudiantes: ambos son personas, por lo que tienen algunas características en común (por ejemplo, ambos tienen nombres), pero cada uno puede agregar características adicionales (por ejemplo, los profesores tienen una materia que enseñan), o pueden implementar la misma característica de diferentes maneras. En un sistema de POO podríamos decir que tanto profesores como estudiantes heredan de las personas.
+
+// Puede ver cómo en JavaScript, si Professor y Student pueden tener prototipos Person, entonces pueden heredar las propiedades comunes, mientras agregan y redefinen aquellas propiedades que necesitan diferir.
+
+// En el próximo artículo discutiremos la herencia junto con las otras características principales de los lenguajes de programación orientados a objetos, y veremos cómo JavaScript los admite.
