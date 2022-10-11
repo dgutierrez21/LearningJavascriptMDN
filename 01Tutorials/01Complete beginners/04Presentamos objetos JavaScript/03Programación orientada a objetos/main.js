@@ -261,3 +261,20 @@ student.year // error: 'year' is a private property of Student
  */
 
 // En lenguajes que no aplican el acceso como este, los programadores usan convenciones de nomenclatura, como comenzar el nombre con un guión bajo, para indicar que la propiedad debe considerarse privada.
+
+// OOP y JavaScript #008000
+// En este artículo, hemos descrito algunas de las características básicas de la programación orientada a objetos basada en clases implementada en lenguajes como Java y C ++.
+
+// En los dos artículos anteriores, analizamos un par de características principales de JavaScript: constructores y prototipos. Estas características ciertamente tienen alguna relación con algunos de los conceptos de POO descritos anteriormente.
+
+// ---los constructores en JavaScript nos proporcionan algo así como una definición de clase, lo que nos permite definir la "forma" de un objeto, incluidos los métodos que contiene, en un solo lugar. Pero los prototipos también se pueden usar aquí. Por ejemplo, si un método se define en la propiedad prototype de un constructor, todos los objetos creados con ese constructor obtienen ese método a través de su prototipo, y no necesitamos definirlo en el constructor.
+
+// ---la cadena de prototipos parece una forma natural de implementar la herencia. Por ejemplo, si podemos tener un objeto Student cuyo prototipo es Person, entonces puede heredar name y anular introduceSelf().
+
+// Pero vale la pena comprender las diferencias entre estas características y los conceptos "clásicos" de POO descritos anteriormente. Destacaremos un par de ellos aquí.
+
+// En primer lugar, en la POO basada en clases, las clases y los objetos son dos construcciones separadas, y los objetos siempre se crean como instancias de clases. Además, hay una distinción entre la característica utilizada para definir una clase (la sintaxis de la clase en sí) y la característica utilizada para crear una instancia de un objeto (un constructor). En JavaScript, podemos y a menudo creamos objetos sin ninguna definición de clase separada, ya sea usando una función o un literal de objeto. Esto puede hacer que trabajar con objetos sea mucho más ligero de lo que es en el POO clásico.
+
+// En segundo lugar, aunque una cadena prototipo parece una jerarquía de herencia y se comporta como ella de alguna manera, es diferente en otras. Cuando se crea una instancia de una subclase, se crea un único objeto que combina las propiedades definidas en la subclase con las propiedades definidas más arriba en la jerarquía. Con la creación de prototipos, cada nivel de la jerarquía está representado por un objeto separado, y se vinculan entre sí a través de la propiedad __proto__. El comportamiento de la cadena prototipo es menos como herencia y más como delegación. La delegación es un patrón de programación en el que un objeto, cuando se le pide que realice una tarea, puede realizar la tarea en sí mismo o pedir a otro objeto (su delegado) que realice la tarea en su nombre. En muchos sentidos, la delegación es una forma más flexible de combinar objetos que la herencia (por un lado, es posible cambiar o reemplazar completamente el delegado en tiempo de ejecución).
+
+// Dicho esto, los constructores y prototipos se pueden usar para implementar patrones OOP basados en clases en JavaScript. Pero usarlos directamente para implementar características como la herencia es complicado, por lo que JavaScript proporciona características adicionales, en capas sobre el modelo prototipo, que se asignan más directamente a los conceptos de POO basada en clases. Estas características adicionales son el tema del próximo artículo.
