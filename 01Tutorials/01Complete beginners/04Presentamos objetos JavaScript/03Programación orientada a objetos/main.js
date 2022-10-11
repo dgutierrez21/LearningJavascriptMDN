@@ -185,3 +185,79 @@ const pratt = new Persona("Pratt");
 pratt.presentarse();
 
 // Esta característica, cuando un método tiene el mismo nombre pero una implementación diferente en diferentes clases, se denomina polimorfismo. Cuando un método de una subclase reemplaza la implementación de la superclase, decimos que la subclase anula la versión de la superclase.
+
+// Encapsulación #008000
+// Los objetos proporcionan una interfaz para otro código que desea usarlos pero mantener su propio estado interno. El estado interno del objeto se mantiene privado, lo que significa que solo se puede acceder a él por los propios métodos del objeto, no desde otros objetos. Mantener privado el estado interno de un objeto y, en general, hacer una división clara entre su interfaz pública y su estado interno privado, se denomina encapsulación..
+
+// Esta es una característica útil porque permite al programador cambiar la implementación interna de un objeto sin tener que encontrar y actualizar todo el código que lo utiliza: crea una especie de firewall entre este objeto y el resto del sistema.
+
+// Por ejemplo, supongamos que a los estudiantes se les permite estudiar tiro con arco si están en el segundo año o más. Podríamos implementar esto simplemente exponiendo la propiedad del year del estudiante, y otro código podría examinar eso para decidir si el estudiante puede tomar el curso:
+
+/* 
+class Student : extends Person
+    properties
+       year
+    constructor
+        Student(name, year)
+    methods
+       introduceSelf()
+       canStudyArchery() { return this.year > 1 }
+       
+*/
+
+const estudiante1 = new Estudiante("Juan", 2);
+
+if (estudiante1.anio > 1) {
+  console.log("Puedes entrar a estudiar arqueria");
+} else {
+  console.log("No cumples los requisitos para estudiar arqueria");
+}
+
+// El problema es que, si decidimos cambiar los criterios para permitir que los estudiantes estudien tiro con arco, por ejemplo, exigiendo también al padre o tutor que dé su permiso, tendríamos que actualizar cada lugar de nuestro sistema que realice esta prueba. Sería mejor tener un método canStudyArchery() en objetos Student, que implemente la lógica en un solo lugar:
+
+class Estudiante2 extends Persona {
+  constructor(nombre, anio) {
+    super(nombre);
+    this.anio = anio;
+  }
+
+  presentarse() {
+    console.log(
+      `Hola, mi nombre es ${this.nombre}, soy estudiante y estoy en ${this.anio} año`
+    );
+  }
+
+  puedeEstudiarArqueria() {
+    return this.anio > 1;
+  }
+}
+
+const estudiante2 = new Estudiante2("Pedro", 1);
+
+if (estudiante2.anio > 1) {
+  console.log("Puedes entrar a estudiar arqueria");
+} else {
+  console.log("No cumples los requisitos para estudiar arqueria");
+}
+
+// De esa manera, si queremos cambiar las reglas sobre el estudio del tiro con arco, solo tenemos que actualizar la clase Student, y todo el código que lo use seguirá funcionando.
+
+// En muchos lenguajes OOP, podemos evitar que otro código acceda al estado interno de un objeto marcando algunas propiedades como private. Esto generará un error si el código fuera del objeto intenta acceder a ellos:
+
+/*
+
+class Student : extends Person
+    properties
+       private year
+    constructor
+        Student(name, year)
+    methods
+       introduceSelf()
+       canStudyArchery() { return this.year > 1 }
+
+student = new Student('Weber', 1)
+student.year // error: 'year' is a private property of Student
+
+ */
+
+// En lenguajes que no aplican el acceso como este, los programadores usan convenciones de nomenclatura, como comenzar el nombre con un guión bajo, para indicar que la propiedad debe considerarse privada.
