@@ -83,3 +83,105 @@ console.log(liliam.ensenia);
 liliam.presentarse();
 
 // Esto crea dos objetos, ambas instancias de la clase Professor.
+
+// Herencia #008000
+// Supongamos que en nuestra escuela también queremos representar a los estudiantes. A diferencia de los profesores, los estudiantes no pueden calificar los trabajos, no enseñan un tema en particular y pertenecen a un año en particular.
+
+// Sin embargo, los estudiantes tienen un nombre y también pueden querer presentarse, por lo que podríamos escribir la definición de una clase de estudiante de esta manera:
+
+/*
+
+  class Estudiante
+    propiedades
+       nombre
+       anio
+    constructor
+       Estudiante(nombre, anio)
+    metodos
+       presentarse()
+
+*/
+
+// Sería útil si pudiéramos representar el hecho de que los estudiantes y los profesores comparten algunas propiedades, o más exactamente, el hecho de que en algún nivel, son el mismo tipo de cosas. La herencia nos permite hacer esto.
+
+// Comenzamos observando que los estudiantes y los profesores son personas, y las personas tienen nombres y quieren presentarse. Podemos modelar esto definiendo una nueva clase Person, donde definimos todas las propiedades comunes de las personas. Luego, Professor y Student pueden derivar de Person, agregando sus propiedades adicionales:
+
+/*
+class Person
+    properties
+        name
+    constructor
+        Person(name)
+    methods
+        introduceSelf()
+
+class Professor : extends Person
+    properties
+        teaches
+    constructor
+        Professor(name, teaches)
+    methods
+        grade(paper)
+        introduceSelf()
+
+class Student : extends Person
+    properties
+        year
+    constructor
+        Student(name, year)
+    methods
+        introduceSelf()
+*/
+
+class Persona {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  presentarse() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  }
+}
+
+class Profesor2 extends Persona {
+  constructor(nombre, ensenia) {
+    super(nombre);
+    this.ensenia = ensenia;
+  }
+
+  presentarse() {
+    console.log(
+      `Hola, mi nombre es ${this.nombre} y soy profesor/a de ${this.ensenia}`
+    );
+  }
+}
+
+class Estudiante extends Persona {
+  constructor(nombre, anio) {
+    super(nombre);
+    this.anio = anio;
+  }
+
+  presentarse() {
+    console.log(
+      `Hola, mi nombre es ${this.nombre}, soy estudiante y estoy en ${this.anio} año`
+    );
+  }
+}
+
+// En este caso, diríamos que Person es la superclase o clase de padres tanto del Professor como Student. Por el contrario, Professor y Student son subclases o clases infantiles de Person.
+
+// Es posible que observe que introduceSelf() se define en las tres clases. La razón de esto es que, si bien todas las personas quieren presentarse, la forma en que lo hacen es diferente:
+
+const stew = new Profesor2("Stew", "matematicas");
+stew.presentarse();
+
+const jordan = new Estudiante("Jordan", "tercer");
+jordan.presentarse();
+
+// Es posible que tengamos una implementación predeterminada de introduceSelf() para personas que no son estudiantes o profesores:
+
+const pratt = new Persona("Pratt");
+pratt.presentarse();
+
+// Esta característica, cuando un método tiene el mismo nombre pero una implementación diferente en diferentes clases, se denomina polimorfismo. Cuando un método de una subclase reemplaza la implementación de la superclase, decimos que la subclase anula la versión de la superclase.
