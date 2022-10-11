@@ -67,3 +67,20 @@ do {
 // ver imagen...
 
 // De hecho, cuando llama a métodos familiares, como myDate2.getMonth(), está llamando a un método definido en Date.prototype.
+
+// Propiedades de sombreado #008000
+// ¿Qué sucede si se define una propiedad en un objeto, cuando se define una propiedad con el mismo nombre en el prototipo del objeto? Veamos:
+
+const miFecha = new Date(1995, 11, 17);
+
+console.log(miFecha.getYear());
+
+miFecha.getYear = function () {
+  console.log("Otra cosa!");
+};
+
+miFecha.getYear();
+
+// Esto debería ser predecible, dada la descripción de la cadena de prototipos. Cuando llamamos a getYear() el navegador primero busca en myDate una propiedad con ese nombre, y solo comprueba el prototipo si myDate no lo define. Entonces, cuando agregamos getYear() a myDate, se llama a la versión en myDate.
+
+// Esto se llama "sombreado" de la propiedad.
