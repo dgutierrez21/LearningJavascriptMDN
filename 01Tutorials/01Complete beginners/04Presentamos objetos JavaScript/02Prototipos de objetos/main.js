@@ -84,3 +84,80 @@ miFecha.getYear();
 // Esto debería ser predecible, dada la descripción de la cadena de prototipos. Cuando llamamos a getYear() el navegador primero busca en myDate una propiedad con ese nombre, y solo comprueba el prototipo si myDate no lo define. Entonces, cuando agregamos getYear() a myDate, se llama a la versión en myDate.
 
 // Esto se llama "sombreado" de la propiedad.
+
+// Configuración de un prototipo #008000
+// Hay varias formas de establecer el prototipo de un objeto en JavaScript, y aquí describiremos dos: Object.create() y constructores.
+
+// Uso de Object.create #00aae4
+// El método Object.create() crea un nuevo objeto y permite especificar un objeto que se utilizará como prototipo del nuevo objeto.
+
+// Aquí hay un ejemplo:
+
+const prototypePersona = {
+  saludar() {
+    console.log("Hola!");
+  },
+};
+
+const carro1 = Object.create(prototypePersona);
+
+carro1.saludar();
+
+// Uso de un constructor #00aae4
+// En JavaScript, todas las funciones tienen una propiedad denominada prototype. Cuando se llama a una función como constructor, esta propiedad se establece como el prototipo del objeto recién construido (por convención, en la propiedad denominada __proto__).
+
+// Entonces, si establecemos el prototype de un constructor, podemos asegurarnos de que todos los objetos creados con ese constructor reciban ese prototipo:
+
+const prototypePersona2 = {
+  saludar() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+function Persona(nombre) {
+  this.nombre = nombre;
+}
+
+Object.assign(Persona.prototype, prototypePersona2);
+
+// O
+
+// Person.prototype.greet = personPrototype.greet;
+
+// Aquí creamos:
+
+// ---un objeto personPrototype, que tiene un greet()
+
+// ---una función Person() que inicializa el nombre de la persona que se va a crear.
+
+// A continuación, colocamos los métodos definidos en personPrototype en la propiedad prototype de la función Person usando Object.assign.
+
+// Después de este código, los objetos creados con Person() obtendrán Person.prototype como su prototipo, que contiene automáticamente el método greet.
+
+const jackson = new Persona("Jackson");
+
+jackson.saludar();
+
+// Esto también explica por qué dijimos anteriormente que el prototipo de myDate se llama Date.prototype: prototype prototype del constructor Date.
+
+// Propiedades propias #00aae4
+// Los objetos que creamos usando el constructor Person anterior tienen dos propiedades:
+
+// ---una propiedad name, que se establece en el constructor, por lo que aparece directamente en los objetos Person
+
+// ---un método greet()), que se establece en el prototipo.
+
+// Es común ver este patrón, en el que los métodos se definen en el prototipo, pero las propiedades de los datos se definen en el constructor. Esto se debe a que los métodos suelen ser los mismos para cada objeto que creamos, mientras que a menudo queremos que cada objeto tenga su propio valor para sus propiedades de datos (al igual que aquí, donde cada persona tiene un nombre diferente). #FF0000
+
+// Las propiedades que se definen directamente en el objeto, como el name aquí, se denominan propiedades propias y puede comprobar si una propiedad es una propiedad propia mediante el método estático Object.hasOwn()):
+
+const irma = new Persona("Irma");
+
+console.log(irma.nombre);
+irma.saludar();
+
+console.log(Object.hasOwn(irma, "nombre")); // true
+console.log(Object.hasOwn(irma, "saludar")); // false
+console.log(Object.hasOwn(Persona.prototype, "saludar")); // true
+
+// Nota: También puede utilizar el método no estático Object.hasOwnProperty() aquí, pero le recomendamos que utilice Object.hasOwn() si puede.
