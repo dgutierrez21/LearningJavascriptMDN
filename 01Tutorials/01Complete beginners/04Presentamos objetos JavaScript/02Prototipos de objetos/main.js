@@ -172,3 +172,122 @@ console.log(Object.hasOwn(Persona.prototype, "saludar")); // true
 // Puede ver cómo en JavaScript, si Professor y Student pueden tener prototipos Person, entonces pueden heredar las propiedades comunes, mientras agregan y redefinen aquellas propiedades que necesitan diferir.
 
 // En el próximo artículo discutiremos la herencia junto con las otras características principales de los lenguajes de programación orientados a objetos, y veremos cómo JavaScript los admite.
+
+// repaso
+
+const miObjeto2 = {
+  ciudad: "Madrid",
+  saludar() {
+    console.log(`Saludos desde ${this.ciudad}`);
+  },
+};
+
+miObjeto2.saludar();
+
+console.log(miObjeto2.toString());
+
+// forma estándar de acceder a el prototipo del objeto
+
+console.log(Object.getPrototypeOf(miObjeto2));
+
+// el prototipo del prototipo es null
+
+const prototipoDelPrototipo = Object.getPrototypeOf(miObjeto2);
+
+console.log(Object.getPrototypeOf(prototipoDelPrototipo)); // null
+
+// El prototipo de un objeto no siempre es Object.prototype. Prueba esto:
+
+const miFecha2 = new Date();
+
+let objeto2 = miFecha2;
+
+console.log(Object.getPrototypeOf(objeto2));
+
+do {
+  objeto2 = Object.getPrototypeOf(objeto2);
+  console.log(objeto2);
+} while (objeto2);
+
+// ¿Qué sucede si se define una propiedad en un objeto, cuando se define una propiedad con el mismo nombre en el prototipo del objeto? Veamos:
+
+const miFecha3 = new Date(1995, 11, 17);
+
+console.log(miFecha3.getYear()); // 95
+
+miFecha3.getYear = function () {
+  console.log("Cualquier otra cosa!");
+};
+
+miFecha3.getYear();
+
+// Cuando llamamos a getYear() el navegador primero busca en myDate una propiedad con ese nombre, y solo comprueba el prototipo si myDate no lo define. Entonces, cuando agregamos getYear() a myDate, se llama a la versión en myDate.
+
+// Esto se llama "sombreado" de la propiedad.
+
+// Hay varias formas de establecer el prototipo de un objeto en JavaScript, y aquí describiremos dos: Object.create() y constructores.
+
+const prototipoAnimales = {
+  animalesMamiferos() {
+    console.log("Murcielago, Tigre, Oso polar, Nutrias");
+  },
+};
+
+const tiposAnimal = Object.create(prototipoAnimales);
+
+tiposAnimal.animalesMamiferos();
+
+// Uso de un constructor
+
+const prototipoPersona = {
+  saludar() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+function Persona2(nombre) {
+  this.nombre = nombre;
+}
+
+Object.assign(Persona2.prototype, prototipoPersona);
+// or
+// Person.prototype.greet = personPrototype.greet;
+
+// Aquí creamos:
+
+// un objeto personPrototype, que tiene un greet()
+// una función Person() que inicializa el nombre de la persona que se va a crear.
+// A continuación, colocamos los métodos definidos en personPrototype en la propiedad prototype de la función Person usando Object.assign.
+
+// Después de este código, los objetos creados con Person() obtendrán Person.prototype como su prototipo, que contiene automáticamente el método greet.
+
+const nadia = new Persona2("Nadia");
+
+nadia.saludar();
+
+// Propiedades propias
+// Los objetos que creamos usando el constructor Person anterior tienen dos propiedades:
+
+// ---una propiedad name, que se establece en el constructor, por lo que aparece directamente en los objetos Person
+
+// ---un método greet()), que se establece en el prototipo.
+
+// Es común ver este patrón, en el que los métodos se definen en el prototipo, pero las propiedades de los datos se definen en el constructor. Esto se debe a que los métodos suelen ser los mismos para cada objeto que creamos, mientras que a menudo queremos que cada objeto tenga su propio valor para sus propiedades de datos (al igual que aquí, donde cada persona tiene un nombre diferente).
+
+// Las propiedades que se definen directamente en el objeto, como el name aquí, se denominan propiedades propias y puede comprobar si una propiedad es una propiedad propia mediante el método estático Object.hasOwn()):
+
+const klara = new Persona2("Klara");
+
+console.log(Object.hasOwn(klara, "nombre")); // true
+console.log(Object.hasOwn(klara, "saludar")); // false
+
+console.log(Object.hasOwn(Persona2.prototype, "saludar")); // true
+
+// Prototipos y herencia
+// Los prototipos son una característica potente y muy flexible de JavaScript, que permite reutilizar código y combinar objetos.
+
+// En particular, apoyan una versión de herencia. La herencia es una característica de los lenguajes de programación orientados a objetos que permite a los programadores expresar la idea de que algunos objetos en un sistema son versiones más especializadas de otros objetos.
+
+// Por ejemplo, si estamos modelando una escuela, podríamos tener profesores y estudiantes: ambos son personas, por lo que tienen algunas características en común (por ejemplo, ambos tienen nombres), pero cada uno puede agregar características adicionales (por ejemplo, los profesores tienen una materia que enseñan), o pueden implementar la misma característica de diferentes maneras. En un sistema de POO podríamos decir que tanto profesores como estudiantes heredan de las personas.
+
+// Puede ver cómo en JavaScript, si Professor y Student pueden tener prototipos Person, entonces pueden heredar las propiedades comunes, mientras agregan y redefinen aquellas propiedades que necesitan diferir.
