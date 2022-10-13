@@ -199,6 +199,40 @@ async function rellenar() {
 
     header.appendChild(parrafo);
   }
+
+  function rellenarHeroes(obj) {
+    const section = document.querySelector("section"),
+      heroes = obj.members;
+
+    for (const heroe of heroes) {
+      const articulo = document.createElement("article"),
+        h2 = document.createElement("h2"),
+        parrafo1 = document.createElement("p"),
+        parrafo2 = document.createElement("p"),
+        parrafo3 = document.createElement("p"),
+        lista = document.createElement("ul");
+
+      h2.textContent = heroe.name;
+      parrafo1.textContent = `Identidad secreta: ${heroe.secretIdentity}`;
+      parrafo2.textContent = `Edad: ${heroe.age}`;
+      parrafo3.textContent = "Superpoderes:";
+
+      const superPoderes = heroe.powers;
+      for (const poder of superPoderes) {
+        const elementoLista = document.createElement("li");
+        elementoLista.textContent = poder;
+        lista.appendChild(elementoLista);
+      }
+
+      articulo.appendChild(h2);
+      articulo.appendChild(parrafo1);
+      articulo.appendChild(parrafo2);
+      articulo.appendChild(parrafo3);
+      articulo.appendChild(lista);
+
+      section.appendChild(articulo);
+    }
+  }
 }
 
 // Para obtener el JSON, utilizamos una API llamada Fetch. Esta API nos permite realizar solicitudes de red para recuperar recursos de un servidor a través de JavaScript (por ejemplo, imágenes, texto, JSON, incluso fragmentos HTML), lo que significa que podemos actualizar pequeñas secciones de contenido sin tener que volver a cargar toda la página.
@@ -223,3 +257,24 @@ async function rellenar() {
 // ver función rellenar...
 
 // Aquí primero creamos un elemento <h1> con createElement(), establecemos su textContent para que sea igual a la propiedad squadName del objeto y, a continuación, lo anexamos al encabezado usando appendChild(). Luego hacemos una operación muy similar con un párrafo: crearlo, establecer su contenido de texto y agregarlo al encabezado. La única diferencia es que su texto se establece en un literal de plantilla que contiene las propiedades homeTown y formed del objeto.
+
+// Creación de las tarjetas de información del héroe #00aae4
+// A continuación, agregue la siguiente función en la parte inferior del código, que crea y muestra las cartas de superhéroes:
+
+// ver función rellenar...
+
+// Para empezar, almacenamos la propiedad members del objeto JavaScript en una nueva variable. Esta matriz contiene varios objetos que contienen la información de cada héroe.
+
+// A continuación, utilizamos un for...of bucle a través de cada objeto de la matriz. Para cada uno, nosotros:
+
+// 1. Cree varios elementos nuevos: un <article>, un <h2>, tres <p>s y un <ul>.
+
+// 2. Establezca el <h2> para que contenga el name del héroe actual.
+
+// 3. Llene los tres párrafos con su secretIdentity, age y una línea que diga "Superpoderes:" para introducir la información en la lista.
+
+// 4. Almacene la propiedad powers en otra nueva constante llamada superPowers, que contiene una matriz que enumera los superpoderes del héroe actual.
+
+// 5. Usa otro for...of bucle a bucle a través de los superpoderes del héroe actual: para cada uno creamos un elemento <li>, ponemos el superpoder dentro de él, luego colocamos el listItem dentro del elemento <ul> (myList) usando appendChild().
+
+// 6. Lo último que hacemos es agregar el <h2> <p>s y <ul> dentro del <article> (myArticle), luego agregar el <article> dentro de la <section>. El orden en que se anexan las cosas es importante, ya que este es el orden en que se mostrarán dentro del HTML.
