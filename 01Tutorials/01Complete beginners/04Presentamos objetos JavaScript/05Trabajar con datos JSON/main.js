@@ -172,3 +172,34 @@ console.log(superHeroes.members[1].powers[2]);
 // Hemos hecho que nuestros datos JSON estén disponibles en nuestro GitHub, en https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json.
 
 // Vamos a cargar el JSON en nuestro script y usar una ingeniosa manipulación DOM para mostrarlo, como este: ver imagen...
+
+// Función de nivel superior #00aae4
+// La función de nivel superior se ve así:
+
+async function rellenar() {
+  const solicitarURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+  const solicitar = new Request(solicitarURL);
+
+  const respuesta = await fetch(solicitar),
+    superHeroes2 = await respuesta.json();
+
+  rellenarHeader(superHeroes2);
+  rellenarHeroes(superHeroes2);
+}
+
+// Para obtener el JSON, utilizamos una API llamada Fetch. Esta API nos permite realizar solicitudes de red para recuperar recursos de un servidor a través de JavaScript (por ejemplo, imágenes, texto, JSON, incluso fragmentos HTML), lo que significa que podemos actualizar pequeñas secciones de contenido sin tener que volver a cargar toda la página.
+
+// En nuestra función, las primeras cuatro líneas usan la API Fetch para obtener el JSON del servidor:
+
+// --Declaramos la variable requestURL para almacenar la URL de GitHub
+
+// --usamos la URL para inicializar un nuevo objeto Request.
+
+// --Realizamos la solicitud de red mediante la función fetch()) y esto devuelve un objeto Response
+
+// --recuperamos la respuesta como JSON usando la función json() del objeto Response.
+
+// Nota: La API fetch() es asincrónica. Aprenderemos mucho sobre las funciones asincrónicas en el siguiente módulo, pero por ahora, solo diremos que necesitamos agregar la palabra clave async antes del nombre de la función que usa la API fetch y agregar la palabra clave await las llamadas a cualquier función asincrónica.
+
+// Después de todo eso, la variable superHeroes contendrá el objeto JavaScript basado en json. Luego pasamos ese objeto a dos llamadas a funciones: la primera llena el <header> con los datos correctos, mientras que la segunda crea una tarjeta de información para cada héroe del equipo y la inserta en la <section>.
