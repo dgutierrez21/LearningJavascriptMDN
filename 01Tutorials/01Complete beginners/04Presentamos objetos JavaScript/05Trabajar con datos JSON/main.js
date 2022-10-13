@@ -186,6 +186,19 @@ async function rellenar() {
 
   rellenarHeader(superHeroes2);
   rellenarHeroes(superHeroes2);
+
+  function rellenarHeader(obj) {
+    const header = document.querySelector("header"),
+      miH1 = document.createElement("h1");
+
+    miH1.textContent = obj.squadName;
+    header.appendChild(miH1);
+
+    const parrafo = document.createElement("p");
+    parrafo.textContent = `Ciudad natal: ${obj.homeTown} // Formado: ${obj.formed}`;
+
+    header.appendChild(parrafo);
+  }
 }
 
 // Para obtener el JSON, utilizamos una API llamada Fetch. Esta API nos permite realizar solicitudes de red para recuperar recursos de un servidor a través de JavaScript (por ejemplo, imágenes, texto, JSON, incluso fragmentos HTML), lo que significa que podemos actualizar pequeñas secciones de contenido sin tener que volver a cargar toda la página.
@@ -203,3 +216,10 @@ async function rellenar() {
 // Nota: La API fetch() es asincrónica. Aprenderemos mucho sobre las funciones asincrónicas en el siguiente módulo, pero por ahora, solo diremos que necesitamos agregar la palabra clave async antes del nombre de la función que usa la API fetch y agregar la palabra clave await las llamadas a cualquier función asincrónica.
 
 // Después de todo eso, la variable superHeroes contendrá el objeto JavaScript basado en json. Luego pasamos ese objeto a dos llamadas a funciones: la primera llena el <header> con los datos correctos, mientras que la segunda crea una tarjeta de información para cada héroe del equipo y la inserta en la <section>.
+
+// Rellenar el encabezado #00aae4
+// Ahora que hemos recuperado los datos JSON y los hemos convertido en un objeto JavaScript, hagamos uso de ellos escribiendo las dos funciones a las que hicimos referencia anteriormente. En primer lugar, agregue la siguiente definición de función debajo del código anterior:
+
+// ver función rellenar...
+
+// Aquí primero creamos un elemento <h1> con createElement(), establecemos su textContent para que sea igual a la propiedad squadName del objeto y, a continuación, lo anexamos al encabezado usando appendChild(). Luego hacemos una operación muy similar con un párrafo: crearlo, establecer su contenido de texto y agregarlo al encabezado. La única diferencia es que su texto se establece en un literal de plantilla que contiene las propiedades homeTown y formed del objeto.
