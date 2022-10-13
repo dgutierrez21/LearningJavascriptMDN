@@ -278,3 +278,8 @@ async function rellenar() {
 // 5. Usa otro for...of bucle a bucle a través de los superpoderes del héroe actual: para cada uno creamos un elemento <li>, ponemos el superpoder dentro de él, luego colocamos el listItem dentro del elemento <ul> (myList) usando appendChild().
 
 // 6. Lo último que hacemos es agregar el <h2> <p>s y <ul> dentro del <article> (myArticle), luego agregar el <article> dentro de la <section>. El orden en que se anexan las cosas es importante, ya que este es el orden en que se mostrarán dentro del HTML.
+
+// Llamar a la función de nivel superior #00aae4
+// Finalmente, necesitamos llamar a nuestra función populate() de nivel superior:
+
+rellenar();
