@@ -1,0 +1,3 @@
+// Trabajar con JSON #ff0
+
+// JavaScript Object Notation (JSON) es un formato estándar basado en texto para representar datos estructurados basados en la sintaxis de objetos JavaScript. Se utiliza comúnmente para transmitir datos en aplicaciones web (por ejemplo, enviar algunos datos desde el servidor al cliente, para que puedan mostrarse en una página web, o viceversa). Lo encontrará con bastante frecuencia, por lo que en este artículo, le damos todo lo que necesita para trabajar con JSON usando JavaScript, incluido el análisis de JSON para que pueda acceder a los datos dentro de él y la creación de JSON.
