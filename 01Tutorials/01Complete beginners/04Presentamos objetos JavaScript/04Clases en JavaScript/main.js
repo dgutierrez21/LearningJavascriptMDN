@@ -63,3 +63,44 @@ class Animal {
 const spot = new Animal();
 
 spot.dormir();
+
+// Herencia #008000
+// Dada nuestra clase Person anterior, definamos la subclase Professor.
+
+class Profesor extends Persona {
+  imparteMateria;
+
+  constructor(nombre, imparteMateria) {
+    super(nombre);
+    this.imparteMateria = imparteMateria;
+  }
+
+  presentarse() {
+    console.log(
+      `Hola, mi nombres es ${this.nombre} y soy profesor de ${this.imparteMateria}`
+    );
+  }
+
+  grado(papel) {
+    const grado = Math.floor(Math.random() * 100) + 1;
+    console.log(grado);
+  }
+}
+
+// Usamos la palabra clave extends para decir que esta clase hereda de otra clase.
+
+// La clase Professor agrega una nueva propiedad teaches, por lo que declaramos eso.
+
+// Dado que queremos establecer teaches cuando se crea un nuevo Professor, definimos un constructor, que toma el name y teaches como argumentos. Lo primero que hace este constructor es llamar al constructor de superclase usando super(), pasando por alto el parámetro name. El constructor de superclase se encarga de establecer el name. Después de eso, el constructor Professor establece la propiedad teaches.
+
+// Nota: Si una subclase tiene que hacer alguna de sus propias inicializaciones, primero debe llamar al constructor de superclase usando super(), pasando por alto cualquier parámetro que el constructor de superclase esté esperando.
+
+// También hemos anulado el método introduceSelf() de la superclase, y hemos agregado un nuevo método grade(), para calificar un trabajo (nuestro profesor no es muy bueno, y solo asigna calificaciones aleatorias a los trabajos).
+
+// Con esta declaración ahora podemos crear y utilizar profesores:
+
+const walsh = new Profesor("Walsh", "Psicologia");
+
+walsh.presentarse();
+
+walsh.grado();
