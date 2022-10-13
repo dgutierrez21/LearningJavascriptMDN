@@ -104,3 +104,66 @@ const walsh = new Profesor("Walsh", "Psicologia");
 walsh.presentarse();
 
 walsh.grado();
+
+// Encapsulación #008000
+// Finalmente, veamos cómo implementar la encapsulación en JavaScript. En el último artículo discutimos cómo nos gustaría hacer que el year sea propiedad de Student privado, para que podamos cambiar las reglas sobre las clases de tiro con arco sin romper ningún código que use la clase Student.
+
+// Aquí hay una declaración de la clase Student que hace precisamente eso:
+
+class Estudiante extends Persona {
+  #anio;
+
+  constructor(nombre, anio) {
+    super(nombre);
+    this.#anio = anio;
+  }
+
+  presentarse() {
+    console.log(
+      `Hola, mi nombre es ${
+        this.nombre
+      }, soy estudiante de secundaria y estoy en mi año numero ${this.#anio}`
+    );
+  }
+
+  puedeEstudiarArqueria() {
+    return this.#anio > 2;
+  }
+}
+
+// En esta declaración de clase, #year es una propiedad de datos privada. Podemos construir un objeto Student, y puede usar #year internamente, pero si el código fuera del objeto intenta acceder a #year el navegador arroja un error:
+
+const darrell = new Estudiante("Darrell", 3);
+
+darrell.presentarse();
+
+console.log(darrell.puedeEstudiarArqueria());
+
+if (darrell.puedeEstudiarArqueria()) {
+  console.log(`${darrell.nombre} puede estudiar arqueria.`);
+} else {
+  console.log(`${darrell.nombre} este año NO puede estudiar arqueria.`);
+}
+
+// console.log(darrell.#anio); // Uncaught SyntaxError: Private field '#anio' must be declared in an enclosing class (at main.js:148:20)
+
+// Las propiedades de datos privados deben declararse en la declaración de clase y sus nombres comienzan con #.
+
+// Métodos privados #00aae4
+// Puede tener métodos privados, así como propiedades de datos privados. Al igual que las propiedades de datos privados, sus nombres comienzan con #, y solo pueden ser llamados por los propios métodos del objeto:
+
+class Ejemplo {
+  algunMetodoPublico() {
+    this.#algunMetodoPrivado();
+  }
+
+  #algunMetodoPrivado() {
+    console.log("Me llamas?");
+  }
+}
+
+const miEjemplo = new Ejemplo();
+
+miEjemplo.algunMetodoPublico(); // Me llamas?
+
+// miEjemplo.algunMetodoPrivado(); // Uncaught TypeError: miEjemplo.algunMetodoPrivado is not a function
