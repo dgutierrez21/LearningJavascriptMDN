@@ -150,3 +150,25 @@ console.log(superHeroes.members[1].powers[2]);
 */
 
 // Lo anterior es JSON perfectamente válido. Solo tendría que acceder a los elementos de la matriz (en su versión analizada) comenzando con un índice de matriz, por ejemplo[[0]["powers"][0].
+
+// Otras notas #00aae4
+
+// JSON es puramente una cadena con un formato de datos especificado: contiene solo propiedades, no métodos.
+
+// JSON requiere que se usen comillas dobles alrededor de cadenas y nombres de propiedad. Las comillas simples no son válidas aparte de rodear toda la cadena JSON.
+
+// Incluso una sola coma o dos puntos extraviados puede hacer que un archivo JSON salga mal y no funcione. Debe tener cuidado de validar cualquier dato que intente usar (aunque es menos probable que JSON generado por computadora incluya errores, siempre y cuando el programa generador funcione correctamente). Puede validar JSON utilizando una aplicación como JSONLint.
+
+// JSON en realidad puede tomar la forma de cualquier tipo de datos que sea válido para su inclusión dentro de JSON, no solo matrices u objetos. Así, por ejemplo, una sola cadena o número sería JSON válido.
+
+// A diferencia del código JavaScript en el que las propiedades de los objetos pueden no estar entre comillas, en JSON solo se pueden usar cadenas entrecomilladas como propiedades.
+
+// Aprendizaje activo: Trabajar a través de un ejemplo JSON #008000
+// Entonces, trabajemos a través de un ejemplo para mostrar cómo podríamos hacer uso de algunos datos con formato JSON en un sitio web.
+
+// Empezar #00aae4
+// Para empezar, haz copias locales de nuestros héroes.html y estilo.css archivos. Este último contiene algunos CSS simples para dar estilo a nuestra página, mientras que el primero contiene un cuerpo HTML muy simple, además de un elemento <script> para contener el código JavaScript que escribiremos en este ejercicio:
+
+// Hemos hecho que nuestros datos JSON estén disponibles en nuestro GitHub, en https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json.
+
+// Vamos a cargar el JSON en nuestro script y usar una ingeniosa manipulación DOM para mostrarlo, como este: ver imagen...
