@@ -122,3 +122,31 @@ console.log(superHeroes.members[1].powers[2]);
 // ---Dentro de la propiedad powers hay una matriz que contiene los superpoderes del héroe seleccionado. Queremos el tercero, así que usamos [2].
 
 // Nota: Hemos hecho que el JSON visto anteriormente esté disponible dentro de una variable en nuestro JSONTest.html ejemplo (consulte el código fuente). Intente cargar esto y luego acceda a los datos dentro de la variable a través de la consola JavaScript de su navegador.
+
+// Matrices como JSON #00aae4
+// Anteriormente mencionamos que el texto JSON básicamente se parece a un objeto JavaScript dentro de una cadena. También podemos convertir matrices a/desde JSON. A continuación también es válido JSON, por ejemplo:
+
+/*
+
+[
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+
+*/
+
+// Lo anterior es JSON perfectamente válido. Solo tendría que acceder a los elementos de la matriz (en su versión analizada) comenzando con un índice de matriz, por ejemplo[[0]["powers"][0].
