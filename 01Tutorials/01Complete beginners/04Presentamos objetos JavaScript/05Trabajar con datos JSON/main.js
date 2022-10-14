@@ -283,3 +283,53 @@ async function rellenar() {
 // Finalmente, necesitamos llamar a nuestra función populate() de nivel superior:
 
 rellenar();
+
+// Conversión entre objetos y texto #008000
+// El ejemplo anterior fue simple en términos de acceso al objeto JavaScript, porque convertimos la respuesta de red directamente en un objeto JavaScript usando response.json().
+
+// Pero a veces no tenemos tanta suerte, a veces recibimos una cadena JSON sin procesar y necesitamos convertirla en un objeto nosotros mismos. Y cuando queremos enviar un objeto JavaScript a través de la red, necesitamos convertirlo a JSON (una cadena) antes de enviarlo. Afortunadamente, estos dos problemas son tan comunes en el desarrollo web que un objeto JSON incorporado está disponible en los navegadores, que contiene los siguientes dos métodos:
+
+// parse()Acepta una cadena JSON como parámetro y devuelve el objeto JavaScript correspondiente.
+
+// stringify()Acepta un objeto como parámetro y devuelve la cadena JSON equivalente.
+
+// Puedes ver el primero en acción en nuestro ejemplo heroes-finished-json-parse.html (ver el código fuente) — esto hace exactamente lo mismo que el ejemplo que construimos anteriormente, excepto que:
+
+// ---Recuperamos la respuesta como texto en lugar de JSON, llamando al método text() de la respuesta
+
+// ---luego usamos parse() para convertir el texto en un objeto JavaScript.
+// El fragmento clave de código está aquí:
+
+async function rellenar2() {
+  const solicitarURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+  const solicitar = new Request(solicitarURL);
+  console.log(solicitar);
+
+  const respuesta = await fetch(solicitar);
+  console.log(respuesta);
+
+  const superHeroesTexto = await respuesta.text();
+  console.log(superHeroesTexto);
+
+  const superHeroesJson = JSON.parse(superHeroesTexto);
+  console.log(superHeroesJson);
+}
+
+rellenar2();
+
+// Como puede adivinar, stringify() funciona de la manera opuesta. Intente ingresar las siguientes líneas en la consola de JavaScript de su navegador una por una para verlo en acción:
+
+let miObj = {
+  nombre: "Chris",
+  edad: 45,
+};
+
+console.log(miObj);
+
+let miCadena = JSON.stringify(miObj);
+
+console.log(miCadena);
+
+// Aquí estamos creando un objeto JavaScript, luego verificando lo que contiene, luego convirtiéndolo en una cadena JSON usando stringify() – guardando el valor devuelto en una nueva variable – y luego volviéndolo a marcar.
