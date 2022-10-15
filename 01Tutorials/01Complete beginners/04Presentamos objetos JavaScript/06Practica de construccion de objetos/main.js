@@ -46,3 +46,30 @@ function randomRGB() {
 }
 
 // La función random() toma dos números como argumentos y devuelve un número aleatorio en el rango entre los dos. La función randomRGB() genera un color aleatorio representado como una cadena rgb()
+
+// Modelando una pelota en nuestro programa #008000
+
+// Nuestro programa contará con muchas bolas rebotando alrededor de la pantalla. Dado que todas estas bolas se comportarán de la misma manera, tiene sentido representarlas con un objeto. Comencemos agregando la siguiente definición de clase al final de nuestro código.
+
+class Bolas {
+  constructor(x, y, velX, VelY, color, tamanio) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.VelY = VelY;
+    this.color = color;
+    this.tamanio = tamanio;
+  }
+}
+
+// Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
+
+//--- x y: las coordenadas horizontales y verticales donde comienza la bola en la pantalla. Esto puede variar entre 0 (esquina superior izquierda) hasta el ancho y alto de la ventana gráfica del navegador (esquina inferior derecha).
+
+// ---velocidad horizontal y vertical (velX y velY): a cada bola se le asigna una velocidad horizontal y vertical; en términos reales, estos valores se agregan regularmente a los valores y x / y cuando animamos las bolas, para moverlas tanto en cada cuadro.
+
+// ---color: cada bola tiene un color.
+
+// ---size: cada bola tiene un tamaño, este es su radio, en píxeles.
+
+// Esto maneja las propiedades, pero ¿qué pasa con los métodos? Queremos que nuestras pelotas realmente hagan algo en nuestro programa.
