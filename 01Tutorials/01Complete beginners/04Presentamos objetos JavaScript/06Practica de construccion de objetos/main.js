@@ -60,6 +60,13 @@ class Bolas {
     this.color = color;
     this.tamanio = tamanio;
   }
+
+  dibujar() {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.arc(this.x, this.y, this.tamanio, 0, 2 * Math.PI);
+    ctx.fill();
+  }
 }
 
 // Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
@@ -73,3 +80,43 @@ class Bolas {
 // ---size: cada bola tiene un tamaño, este es su radio, en píxeles.
 
 // Esto maneja las propiedades, pero ¿qué pasa con los métodos? Queremos que nuestras pelotas realmente hagan algo en nuestro programa.
+
+// Dibujar la pelota #00aae4
+// En primer lugar, agregue el siguiente método draw() a la clase Ball:
+
+// ver clase...
+
+// Usando esta función, podemos decirle a la bola que se dibuje en la pantalla, llamando a una serie de miembros del contexto de lienzo 2D que definimos anteriormente (ctx). El contexto es como el papel, y ahora queremos ordenar a nuestro bolígrafo que dibuje algo en él:
+
+// ---Primero, usamos beginPath() para indicar que queremos dibujar una forma en el papel.
+
+// ---A continuación, usamos fillStyle para definir qué color queremos que sea la forma: la establecemos en la propiedad de color de nuestra bola.
+
+// ---A continuación, usamos el método arc() para trazar una forma de arco en el papel. Sus parámetros son:
+
+// ---La x posición x e y del centro del arco: estamos especificando las propiedades x e y de la y bola.
+
+// ---El radio del arco, en este caso, la propiedad de size de la bola.
+
+// ---Los dos últimos parámetros especifican el número inicial y final de grados alrededor del círculo entre el que se dibuja el arco. Aquí especificamos 0 grados, y 2 * PI, que es el equivalente a 360 grados en radianes (molestamente, tienes que especificar esto en radianes). Eso nos da un círculo completo. Si hubiera especificado solo 1 * PI obtendría un semicírculo (180 grados).
+
+// ---Por último, usamos el método fill(), que básicamente dice "terminar de dibujar la ruta que comenzamos con beginPath(), y llenar el área que ocupa con el color que especificamos anteriormente en fill() fillStyle."
+
+// Ya puede comenzar a probar su objeto.
+
+// Guarde el código hasta ahora y cargue el archivo HTML en un navegador.
+
+// Abra la consola JavaScript del explorador y, a continuación, actualice la página para que el tamaño del lienzo cambie a la ventana gráfica visible más pequeña que queda cuando se abre la consola.
+
+// Escriba lo siguiente para crear una nueva instancia de bola
+
+const testBola = new Bolas(50, 100, 4, 4, "blue", 30);
+
+// Intente llamar a sus miembros:
+
+testBola.x;
+testBola.tamanio;
+testBola.color;
+testBola.dibujar();
+
+// Cuando entres en la última línea, deberías ver que la bola se dibuja en algún lugar del lienzo.
