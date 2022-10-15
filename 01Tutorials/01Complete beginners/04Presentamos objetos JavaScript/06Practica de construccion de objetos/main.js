@@ -67,6 +67,27 @@ class Bolas {
     ctx.arc(this.x, this.y, this.tamanio, 0, 2 * Math.PI);
     ctx.fill();
   }
+
+  actualizacion() {
+    if (this.x + this.tamanio >= width) {
+      this.velX = -this.velX;
+    }
+
+    if (this.x - this.tamanio <= 0) {
+      this.velX = -this.velX;
+    }
+
+    if (this.y + this.tamanio >= height) {
+      this.VelY = -this.VelY;
+    }
+
+    if (this.y - this.tamanio >= 0) {
+      this.VelY = -this.VelY;
+    }
+
+    this.x += this.velX;
+    this.y += this.VelY;
+  }
 }
 
 // Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
@@ -120,3 +141,26 @@ testBola.color;
 testBola.dibujar();
 
 // Cuando entres en la última línea, deberías ver que la bola se dibuja en algún lugar del lienzo.
+
+// Actualización de los datos del balón #00aae4
+// Podemos dibujar la pelota en posición, pero para mover realmente la pelota, necesitamos una función de actualización de algún tipo. Agregue el código siguiente dentro de la definición de clase para Ball:
+
+// ver clase bolas...
+
+// Las primeras cuatro partes de la función comprueban si la bola ha alcanzado el borde del lienzo. Si es así, invertimos la polaridad de la velocidad relevante para hacer que la bola viaje en la dirección opuesta. Entonces, por ejemplo, si la bola viajaba hacia arriba (velY negativo), entonces la velocidad vertical cambia para que comience a viajar hacia abajo en su lugar (velY).
+
+// ---En los cuatro casos, estamos comprobando para ver:
+
+// ---Si la coordenada x es mayor que el ancho del lienzo (la bola se sale del borde derecho).
+
+// ---si la coordenada x es menor que 0 (la bola se sale del borde izquierdo).
+
+// ---si la coordenada y es mayor que la altura del lienzo (la bola se sale del borde inferior).
+
+// ---si la coordenada y es menor que 0 (la bola se sale del borde superior).
+
+// En cada caso, incluimos el size de la pelota en el cálculo porque las coordenadas x / y están en el centro de la pelota, pero queremos que el borde de la pelota rebote en el perímetro, no queremos que la pelota se vaya a la mitad de la pantalla antes de que comience a rebotar.
+
+// Las dos últimas líneas agregan el valor velX a la coordenada x y el valor velY a la coordenada y: la bola se mueve en efecto cada vez que se llama a este método.
+
+// Esto servirá por ahora; ¡Sigamos con un poco de animación!
