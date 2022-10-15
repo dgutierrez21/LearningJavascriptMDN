@@ -164,3 +164,55 @@ testBola.dibujar();
 // Las dos últimas líneas agregan el valor velX a la coordenada x y el valor velY a la coordenada y: la bola se mueve en efecto cada vez que se llama a este método.
 
 // Esto servirá por ahora; ¡Sigamos con un poco de animación!
+
+// Animando la pelota #008000
+// Ahora hagamos que esto sea divertido. Ahora vamos a empezar a añadir bolas al lienzo, y animarlas.
+
+// Primero, necesitamos crear un lugar para almacenar todas nuestras bolas y luego poblarlas. Lo siguiente hará este trabajo: agréguelo a la parte inferior de su código ahora:
+
+const bolas = [];
+
+while (bolas.length < 25) {
+  const tamanio = random(10, 20);
+  const bola = new Bolas(
+    // la posición de la bola siempre se dibuja al menos a un ancho de bola
+    // del borde del lienzo, para evitar errores de dibujo
+
+    random(0 + tamanio, width - tamanio),
+    random(0 + tamanio, height - tamanio),
+    random(-7, 7),
+    random(-7, 7),
+    randomRGB(),
+    tamanio
+  );
+
+  bolas.push(bola);
+}
+
+// El bucle while crea una nueva instancia de nuestra Ball() utilizando valores aleatorios generados con nuestras funciones random() y randomRGB() luego push() al final de nuestra matriz de bolas, pero solo mientras el número de bolas en la matriz es inferior a 25. Entonces, cuando tengamos 25 bolas en la matriz, no se empujarán más bolas. Puede intentar variar el número en balls.length < 25 para obtener más o menos bolas en la matriz. Dependiendo de la potencia de procesamiento que tenga su computadora / navegador, ¡especificar varios miles de bolas podría ralentizar bastante la animación!
+
+// A continuación, agregue lo siguiente al final del código:
+
+function bucle() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+  ctx.fillRect(0, 0, width, height);
+
+  for (const bola of bolas) {
+    bola.dibujar();
+    bola.actualizacion();
+  }
+
+  requestAnimationFrame(bucle);
+}
+
+// Todos los programas que animan cosas generalmente implican un bucle de animación, que sirve para actualizar la información en el programa y luego renderizar la vista resultante en cada fotograma de la animación; Esta es la base de la mayoría de los juegos y otros programas similares. Nuestra función loop() hace lo siguiente:
+
+// ---Establece el color de relleno del lienzo en negro semitransparente y, a continuación, dibuja un rectángulo del color en todo el ancho y alto del lienzo, utilizando fillRect()los cuatro parámetros proporcionan una coordenada inicial y un ancho y alto para el rectángulo dibujado). Esto sirve para cubrir el dibujo del fotograma anterior antes de dibujar el siguiente. Si no haces esto, ¡verás largas serpientes abriéndose paso alrededor del lienzo en lugar de bolas moviéndose! El color del relleno se establece en semitransparente, rgba(0,0,0,0.25) para permitir que los fotogramas anteriores brillen ligeramente, produciendo los pequeños rastros detrás de las bolas a medida que se mueven. Si cambiaste 0.25 a 1, ya no los verás en absoluto. Intente variar este número para ver el efecto que tiene.
+
+// ---Recorre todas las bolas de la matriz de balls y ejecuta la función draw() y update() de cada bola para dibujar cada una en la pantalla, luego realiza las actualizaciones necesarias para la posición y la velocidad a tiempo para el siguiente cuadro.draw()
+
+// ---Ejecuta la función de nuevo mediante el método requestAnimationFrame() cuando este método se ejecuta repetidamente y se pasa el mismo nombre de función, ejecuta esa función un número determinado de veces por segundo para crear una animación suave. Esto generalmente se hace de forma recursiva, lo que significa que la función se llama a sí misma cada vez que se ejecuta, por lo que se ejecuta una y otra vez.
+
+// Finalmente, agregue la siguiente línea a la parte inferior de su código: debemos llamar a la función una vez para comenzar la animación.
+
+bucle();
