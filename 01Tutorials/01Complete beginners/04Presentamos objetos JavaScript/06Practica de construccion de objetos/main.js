@@ -135,6 +135,47 @@ class CirculoDelMal extends Forma {
       }
     });
   }
+
+  dibujar() {
+    ctx.beginPath();
+    ctx.strokeStyle = this.color;
+    ctx.arc(this.x, this.y, this.tamanio, 0, 2 * Math.PI);
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  actualizacion() {
+    if (this.x + this.tamanio >= width) {
+      this.x -= this.tamanio;
+    }
+
+    if (this.x - this.tamanio <= 0) {
+      this.x += this.tamanio;
+    }
+
+    if (this.y + this.tamanio >= height) {
+      this.y -= this.tamanio;
+    }
+
+    if (this.y - this.tamanio <= 0) {
+      this.y += this.tamanio;
+    }
+  }
+
+  detectarColision() {
+    for (const bola of bolas) {
+      if (this.existe) {
+        const dx = this.x - bola.x;
+        const dy = this.y - bola.y;
+
+        const distancia = Math.sqrt(dx * dx + dy * dy);
+
+        if (distancia < this.tamanio + bola.tamanio) {
+          this.existe = false;
+        }
+      }
+    }
+  }
 }
 
 // Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
