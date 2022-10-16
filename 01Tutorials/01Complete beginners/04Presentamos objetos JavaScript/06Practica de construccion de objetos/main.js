@@ -61,11 +61,11 @@ class Forma {
 }
 
 class Bolas extends Forma {
-  constructor(x, y, velX, VelY, color, tamanio, existe = true) {
+  constructor(x, y, velX, VelY, color, tamanio) {
     super(x, y, velX, VelY);
     this.color = color;
     this.tamanio = tamanio;
-    this.existe = existe;
+    this.existe = true;
   }
 
   dibujar() {
