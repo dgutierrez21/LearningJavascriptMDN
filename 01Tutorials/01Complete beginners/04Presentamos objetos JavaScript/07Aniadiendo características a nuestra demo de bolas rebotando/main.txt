@@ -18,3 +18,25 @@ ver carpeta img...
 Pasos a completar #008000
 En las secciones siguientes se describe lo que debe hacer.
 
+Crear una clase Shape #00aae4
+En primer lugar, cree una nueva clase Shape. Esto solo tiene un constructor. El constructor Shape debe definir las propiedades x, y, velX y velY de la misma manera que lo hacía originalmente el constructor Ball() pero no las propiedades color y size.
+
+La clase Ball debe derivarse de Shape usando extends. El constructor de Ball debe:
+
+---tome los mismos argumentos que antes: x, y, velX, velY, size y color
+
+---llamar al constructor Shape usando super(), pasando los argumentos x, y, velX y velY
+
+---Inicialice sus propias propiedades de color y size a partir de los parámetros que se le dan.
+
+El constructor Ball debe definir una nueva propiedad llamada exists, que se utiliza para rastrear si las bolas existen en el programa (no han sido devoradas por el círculo maligno). Debe ser un booleano (truetrue/false), inicializado en true en el constructor.
+
+El método collisionDetect() de la clase Ball necesita una pequeña actualización. Una bola debe considerarse para la detección de colisiones solo si la propiedad exists es true. Por lo tanto, reemplace el código collisionDetect() existente con el siguiente código:
+
+ver funcion detectarColision en main.js...
+
+Como se discutió anteriormente, la única adición es verificar si la bola existe, usando ball.exists en el condicional if.
+
+Las definiciones de los métodos draw()() y update() deberían poder permanecer exactamente igual que antes.
+
+En este punto, intente volver a cargar el código: debería funcionar igual que antes, con nuestros objetos rediseñados.

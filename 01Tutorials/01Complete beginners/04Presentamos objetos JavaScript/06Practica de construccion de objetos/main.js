@@ -51,14 +51,21 @@ function randomRGB() {
 
 // Nuestro programa contará con muchas bolas rebotando alrededor de la pantalla. Dado que todas estas bolas se comportarán de la misma manera, tiene sentido representarlas con un objeto. Comencemos agregando la siguiente definición de clase al final de nuestro código.
 
-class Bolas {
-  constructor(x, y, velX, VelY, color, tamanio) {
+class Forma {
+  constructor(x, y, velX, VelY) {
     this.x = x;
     this.y = y;
     this.velX = velX;
     this.VelY = VelY;
+  }
+}
+
+class Bolas extends Forma {
+  constructor(x, y, velX, VelY, color, tamanio, existe = true) {
+    super(x, y, velX, VelY);
     this.color = color;
     this.tamanio = tamanio;
+    this.existe = existe;
   }
 
   dibujar() {
@@ -91,7 +98,7 @@ class Bolas {
 
   detectarColision() {
     for (const bola of bolas) {
-      if (this !== bola) {
+      if (this !== bola && this.existe) {
         const dx = this.x - bola.x;
         const dy = this.y - bola.y;
 
