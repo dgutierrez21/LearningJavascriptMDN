@@ -81,7 +81,7 @@ class Bolas {
       this.VelY = -this.VelY;
     }
 
-    if (this.y - this.tamanio >= 0) {
+    if (this.y - this.tamanio <= 0) {
       this.VelY = -this.VelY;
     }
 
@@ -97,7 +97,7 @@ class Bolas {
 
         const distancia = Math.sqrt(dx * dx + dy * dy);
 
-        if (distancia > this.tamanio - bola.tamanio) {
+        if (distancia < this.tamanio + bola.tamanio) {
           bola.color = this.color = randomRGB();
         }
       }
