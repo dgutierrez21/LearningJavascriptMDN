@@ -25,6 +25,10 @@ const canvas = document.querySelector("canvas"),
 const width = (canvas.width = window.innerWidth),
   height = (canvas.height = window.innerHeight);
 
+const parrafo = document.querySelector("p");
+
+let numeroDeBolas = 0;
+
 // Este script obtiene una referencia al elemento <canvas> y luego llama al método getContext() para darnos un contexto en el que podemos comenzar a dibujar. La constante resultante (ctx) es el objeto que representa directamente el área de dibujo del lienzo y nos permite dibujar formas 2D sobre él.
 
 // A continuación, establecemos constantes llamadas width y height, y el ancho y el alto del elemento canvas (representado por las propiedades width y canvas.height) para que coincida con el ancho y el alto de la ventana gráfica del navegador (el área en la que aparece la página web, esto se puede obtener de las propiedades Window.innerWidth y heightcanvas.width Window.innerWidth).Window.innerHeight canvas.height
@@ -172,6 +176,8 @@ class CirculoDelMal extends Forma {
 
         if (distancia < this.tamanio + bola.tamanio) {
           bola.existe = false;
+          numeroDeBolas--;
+          parrafo.textContent = numeroDeBolas;
         }
       }
     }
@@ -275,7 +281,10 @@ while (bolas.length < 25) {
   );
 
   bolas.push(bola);
+  numeroDeBolas++;
 }
+
+parrafo.textContent += numeroDeBolas;
 
 // El bucle while crea una nueva instancia de nuestra Ball() utilizando valores aleatorios generados con nuestras funciones random() y randomRGB() luego push() al final de nuestra matriz de bolas, pero solo mientras el número de bolas en la matriz es inferior a 25. Entonces, cuando tengamos 25 bolas en la matriz, no se empujarán más bolas. Puede intentar variar el número en balls.length < 25 para obtener más o menos bolas en la matriz. Dependiendo de la potencia de procesamiento que tenga su computadora / navegador, ¡especificar varios miles de bolas podría ralentizar bastante la animación!
 
