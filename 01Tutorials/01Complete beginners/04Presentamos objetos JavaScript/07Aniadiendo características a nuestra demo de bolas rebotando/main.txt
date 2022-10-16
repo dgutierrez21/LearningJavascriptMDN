@@ -7,3 +7,10 @@ Un par de consejos antes de empezar.
 
 Esta evaluación es bastante desafiante. Lea toda la evaluación antes de comenzar a codificar y dé cada paso lenta y cuidadosamente.
 Puede ser una buena idea guardar una copia separada de la demostración después de que cada etapa funcione, para que pueda consultarla si se encuentra en problemas más adelante.
+
+Resumen del proyecto #008000
+Nuestra demostración de bola hinchable es divertida, pero ahora queremos hacerla un poco más interactiva agregando un círculo malvado controlado por el usuario, que se comerá las bolas si las atrapa. También queremos poner a prueba tus habilidades de construcción de objetos creando un objeto Shape() del que nuestras bolas y el círculo maligno puedan heredar. Finalmente, queremos agregar un contador de puntuación para rastrear la cantidad de bolas que quedan por capturar.
+
+La siguiente captura de pantalla le da una idea de cómo debería verse el programa terminado:
+
+ver carpeta img...
