@@ -1,0 +1,3 @@
+Añadir funciones a nuestra demo de bolas que rebotan #ff0
+
+En esta evaluación, se espera que utilice la demostración de bolas que rebotan del artículo anterior como punto de partida y le agregue algunas características nuevas e interesantes.
