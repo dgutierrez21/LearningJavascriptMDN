@@ -145,3 +145,66 @@ document.querySelector("#reload2").addEventListener("click", () => {
 });
 
 // Esto es igual que los controladores de eventos que hemos encontrado en un módulo anterior, excepto que en lugar de que el evento sea una acción del usuario, como el usuario haciendo clic en un botón, el evento es un cambio en el estado de algún objeto.
+
+// Callbacks #008000
+// Un controlador de eventos es un tipo particular de devolución de llamada. Una devolución de llamada es solo una función que se pasa a otra función, con la expectativa de que la devolución de llamada se llamará en el momento adecuado. Como acabamos de ver, las devoluciones de llamada solían ser la principal forma en que se implementaban las funciones asíncronas en JavaScript.
+
+// Sin embargo, el código basado en devolución de llamada puede ser difícil de entender cuando la devolución de llamada en sí tiene que llamar a funciones que aceptan una devolución de llamada. Esta es una situación común si necesita realizar alguna operación que se divide en una serie de funciones asincrónicas. Por ejemplo, considere lo siguiente:
+
+function hacerPaso1(init) {
+  return init + 1;
+}
+
+function hacerPaso2(init) {
+  return init + 2;
+}
+
+function hacerPaso3(init) {
+  return init + 3;
+}
+
+function hacerOperacion() {
+  let resultado = 0;
+  resultado = hacerPaso1(resultado);
+  resultado = hacerPaso2(resultado);
+  resultado = hacerPaso3(resultado);
+
+  console.log(`Resultado de la operación: ${resultado}`);
+}
+
+hacerOperacion();
+
+// Aquí tenemos una sola operación que se divide en tres pasos, donde cada paso depende del último paso. En nuestro ejemplo, el primer paso agrega 1 a la entrada, el segundo agrega 2 y el tercero agrega 3. Comenzando con una entrada de 0, el resultado final es 6 (0 + 1 + 2 + 3). Como programa sincrónico, esto es muy sencillo. Pero, ¿qué pasa si implementamos los pasos usando devoluciones de llamada?
+
+function hacerPaso11(init, callback) {
+  const resultado = init + 1;
+  callback(resultado);
+}
+
+function hacerPaso22(init, callback) {
+  const resultado = init + 2;
+  callback(resultado);
+}
+
+function hacerPaso33(init, callback) {
+  const resultado = init + 3;
+  callback(resultado);
+}
+
+function hacerOperacion2() {
+  hacerPaso11(0, (resultado1) => {
+    hacerPaso22(resultado1, (resultado2) => {
+      hacerPaso33(resultado2, (resultado3) => {
+        console.log(`El resultado de la operación 2 es: ${resultado3}`);
+      });
+    });
+  });
+}
+
+hacerOperacion2();
+
+// Debido a que tenemos que llamar a las devoluciones de llamada dentro de las devoluciones de llamada, obtenemos una función doOperation() profundamente anidada, que es mucho más difícil de leer y depurar. Esto a veces se llama "infierno de devolución de llamada" o la "pirámide de la perdición" (porque la hendidura parece una pirámide en su lado).
+
+// Cuando anidamos devoluciones de llamada como esta, también puede ser muy difícil manejar los errores: a menudo tiene que manejar errores en cada nivel de la "pirámide", en lugar de tener un manejo de errores solo una vez en el nivel superior. #FF0000
+
+// Por estas razones, la mayoría de las API asíncronas modernas no usan devoluciones de llamada. En cambio, la base de la programación asíncrona en JavaScript es la Promise, y ese es el tema del próximo artículo.
