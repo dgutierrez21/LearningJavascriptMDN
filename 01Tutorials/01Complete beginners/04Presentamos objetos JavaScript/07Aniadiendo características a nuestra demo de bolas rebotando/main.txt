@@ -1,3 +1,9 @@
 Añadir funciones a nuestra demo de bolas que rebotan #ff0
 
 En esta evaluación, se espera que utilice la demostración de bolas que rebotan del artículo anterior como punto de partida y le agregue algunas características nuevas e interesantes.
+
+Consejos y sugerencias #008000
+Un par de consejos antes de empezar.
+
+Esta evaluación es bastante desafiante. Lea toda la evaluación antes de comenzar a codificar y dé cada paso lenta y cuidadosamente.
+Puede ser una buena idea guardar una copia separada de la demostración después de que cada etapa funcione, para que pueda consultarla si se encuentra en problemas más adelante.
