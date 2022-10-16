@@ -88,6 +88,21 @@ class Bolas {
     this.x += this.velX;
     this.y += this.VelY;
   }
+
+  detectarColision() {
+    for (const bola of bolas) {
+      if (this !== bola) {
+        const dx = this.x - bola.x;
+        const dy = this.y - bola.y;
+
+        const distancia = Math.sqrt(dx * dx + dy * dy);
+
+        if (distancia > this.tamanio - bola.tamanio) {
+          bola.color = this.color = randomRGB();
+        }
+      }
+    }
+  }
 }
 
 // Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
@@ -200,6 +215,7 @@ function bucle() {
   for (const bola of bolas) {
     bola.dibujar();
     bola.actualizacion();
+    bola.detectarColision();
   }
 
   requestAnimationFrame(bucle);
@@ -216,3 +232,25 @@ function bucle() {
 // Finalmente, agregue la siguiente línea a la parte inferior de su código: debemos llamar a la función una vez para comenzar la animación.
 
 bucle();
+
+// Adición de detección de colisiones #008000
+// Ahora, para un poco de diversión, agreguemos un poco de detección de colisiones a nuestro programa, para que nuestras bolas sepan cuándo han golpeado otra bola.
+
+// En primer lugar, agregue la siguiente definición de método a la clase Ball.
+
+// ver clase la bolas...
+
+// Este método es un poco complejo, así que no te preocupes si no entiendes exactamente cómo funciona por ahora. A continuación se explica:
+
+// ---Para cada bola, necesitamos revisar cada otra bola para ver si ha chocado con la bola actual. Para ello, iniciamos otro for...of bucle a bucle a través de todas las bolas en la matriz balls[]].
+
+// ---Inmediatamente dentro del bucle for, usamos una instrucción if para verificar si la bola actual que se está atravesando es la misma bola que la que estamos verificando actualmente. ¡No queremos comprobar si una pelota ha chocado consigo misma! Para hacer esto, verificamos si la bola actual (es decir, la bola cuyo método collisionDetect se está invocando) es la misma que la bola de bucle (es decir, la bola a la que se hace referencia por la iteración actual del bucle for en el método collisionDetect). Luego usamos ! para negar la comprobación, de modo que el código dentro de la if solo se ejecute si no son iguales.
+
+// ---Luego usamos un algoritmo común para verificar la colisión de dos círculos. Básicamente estamos comprobando si alguna de las áreas de los dos círculos se superpone. Esto se explica con más detalle en la detección de colisiones 2D.
+
+// ---Si se detecta una colisión, se ejecuta el código dentro de la instrucción if interna. En este caso, solo establecemos la propiedad de color de ambos círculos en un nuevo color aleatorio. Podríamos haber hecho algo mucho más complejo, como hacer que las bolas rebotaran entre sí de manera realista, pero eso habría sido mucho más complejo de implementar. Para tales simulaciones de física, los desarrolladores tienden a usar juegos o bibliotecas de física como PhysicsJS, matter.js, Phaser, etc.
+// También debe llamar a este método en cada fotograma de la animación. Actualice la función loop() para llamar a ball.collisionDetect() después de ball.update():
+
+// ver funcion bucle...
+
+// Guarda y actualiza la demo de nuevo, ¡y verás que tus bolas cambian de color cuando choquen!
