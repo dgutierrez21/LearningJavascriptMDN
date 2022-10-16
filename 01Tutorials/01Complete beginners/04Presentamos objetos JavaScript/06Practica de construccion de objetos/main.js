@@ -112,6 +112,31 @@ class Bolas extends Forma {
   }
 }
 
+class CirculoDelMal extends Forma {
+  constructor(x, y) {
+    super(x, y, 20, 20);
+    this.color = "white";
+    this.tamanio = 10;
+
+    window.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "a":
+          this.x -= this.velX;
+          break;
+        case "d":
+          this.x += this.velX;
+          break;
+        case "w":
+          this.y -= this.VelY;
+          break;
+        case "s":
+          this.y += this.VelY;
+          break;
+      }
+    });
+  }
+}
+
 // Hasta ahora esta clase solo contiene un constructor, en el que podemos inicializar las propiedades que necesita cada bola para funcionar en nuestro programa:
 
 //--- x y: las coordenadas horizontales y verticales donde comienza la bola en la pantalla. Esto puede variar entre 0 (esquina superior izquierda) hasta el ancho y alto de la ventana gráfica del navegador (esquina inferior derecha).
