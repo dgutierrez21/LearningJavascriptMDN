@@ -14,3 +14,7 @@ Nuestra demostración de bola hinchable es divertida, pero ahora queremos hacerl
 La siguiente captura de pantalla le da una idea de cómo debería verse el programa terminado:
 
 ver carpeta img...
+
+Pasos a completar #008000
+En las secciones siguientes se describe lo que debe hacer.
+
