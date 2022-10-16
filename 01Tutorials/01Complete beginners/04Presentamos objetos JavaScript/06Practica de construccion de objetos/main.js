@@ -144,7 +144,7 @@ class CirculoDelMal extends Forma {
     ctx.stroke();
   }
 
-  actualizacion() {
+  comprobarLimites() {
     if (this.x + this.tamanio >= width) {
       this.x -= this.tamanio;
     }
@@ -281,15 +281,26 @@ while (bolas.length < 25) {
 
 // A continuación, agregue lo siguiente al final del código:
 
+const nuevoCirculoDelMal = new CirculoDelMal(
+  random(0, width),
+  random(0, height)
+);
+
 function bucle() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, width, height);
 
   for (const bola of bolas) {
-    bola.dibujar();
-    bola.actualizacion();
-    bola.detectarColision();
+    if (bola.existe) {
+      bola.dibujar();
+      bola.actualizacion();
+      bola.detectarColision();
+    }
   }
+
+  nuevoCirculoDelMal.dibujar();
+  nuevoCirculoDelMal.comprobarLimites();
+  nuevoCirculoDelMal.detectarColision();
 
   requestAnimationFrame(bucle);
 }
