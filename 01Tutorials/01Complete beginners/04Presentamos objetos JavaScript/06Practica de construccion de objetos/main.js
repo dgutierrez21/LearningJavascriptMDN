@@ -164,14 +164,14 @@ class CirculoDelMal extends Forma {
 
   detectarColision() {
     for (const bola of bolas) {
-      if (this.existe) {
+      if (bola.existe) {
         const dx = this.x - bola.x;
         const dy = this.y - bola.y;
 
         const distancia = Math.sqrt(dx * dx + dy * dy);
 
         if (distancia < this.tamanio + bola.tamanio) {
-          this.existe = false;
+          bola.existe = false;
         }
       }
     }
