@@ -106,3 +106,42 @@ document.querySelector("#reload").addEventListener("click", () => {
 // 3. Notifíquenos con el resultado de la operación cuando finalmente se complete.
 
 // Eso es precisamente lo que pueden hacer las funciones asíncronas. El resto de este módulo explica cómo se implementan en JavaScript.
+
+// Controladores de eventos #008000
+// La descripción que acabamos de ver de las funciones asincrónicas podría recordarle a los controladores de eventos, y si lo hace, tendría razón. Los controladores de eventos son realmente una forma de programación asincrónica: se proporciona una función (el controlador de eventos) a la que se llamará, no de inmediato, sino siempre que ocurra el evento. Si "el evento" es "la operación asincrónica se ha completado", ese evento podría usarse para notificar al autor de la llamada sobre el resultado de una llamada de función asincrónica.
+
+// Algunas de las primeras API asincrónicas usaban eventos de esta manera. La API XMLHttpRequest permite realizar solicitudes HTTP a un servidor remoto mediante JavaScript. Dado que esto puede tardar mucho tiempo, es una API asincrónica y se le notifica sobre el progreso y la finalización final de una solicitud adjuntando detectores de eventos al objeto XMLHttpRequest.
+
+// El siguiente ejemplo muestra esto en acción. Presione "Haga clic para iniciar la solicitud" para enviar una solicitud. Creamos un nuevo XMLHttpRequest y escuchamos su evento loadend. El controlador registra un mensaje "¡Terminado!" junto con el código de estado.
+
+// Después de agregar el detector de eventos, enviamos la solicitud. Tenga en cuenta que después de esto, podemos registrar "Solicitud XHR iniciada": es decir, nuestro programa puede continuar ejecutándose mientras la solicitud está en curso, y se llamará a nuestro controlador de eventos cuando se complete la solicitud.
+
+// ver html...
+
+const log = document.querySelector(".event-log");
+
+document.querySelector("#xhr").addEventListener("click", () => {
+  log.textContent = "";
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("loadend", () => {
+    log.textContent = `${log.textContent}Terminado con el estado: ${xhr.status}`;
+  });
+
+  xhr.open(
+    "GET",
+    "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json"
+  );
+
+  xhr.send();
+
+  log.textContent = `${log.textContent} Inicio de la solicitud de XHR\n`;
+});
+
+document.querySelector("#reload2").addEventListener("click", () => {
+  log.textContent = "";
+  document.location.reload();
+});
+
+// Esto es igual que los controladores de eventos que hemos encontrado en un módulo anterior, excepto que en lugar de que el evento sea una acción del usuario, como el usuario haciendo clic en un botón, el evento es un cambio en el estado de algún objeto.
