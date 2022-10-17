@@ -143,3 +143,98 @@ fetchPromesa5
 // Una promesa se resuelve si está resuelta, o si ha sido "bloqueada" para seguir el estado de otra promesa.
 
 // El artículo "Hablemos de cómo hablar de las promesas" ofrece una gran explicación de los detalles de esta terminología.
+
+// Combinar varias promesas #008000
+// La cadena de promesas es lo que necesitas cuando tu operación consiste en varias funciones asíncronas, y necesitas que cada una se complete antes de iniciar la siguiente. Pero hay otras formas en las que puedes necesitar combinar llamadas a funciones asíncronas, y la API Promise proporciona algunos ayudantes para ellas.
+
+// A veces, necesitas que todas las promesas se cumplan, pero no dependen unas de otras. En un caso así, es mucho más eficiente iniciarlas todas juntas, y luego ser notificado cuando se hayan cumplido todas. El método Promise.all() es lo que necesitas aquí. Toma un array de promesas y devuelve una única promesa.
+
+// La promesa devuelta por Promise.all() se:
+
+// ---se cumple cuando y si todas las promesas del array se cumplen. En este caso, el manejador then() es llamado con un array de todas las respuestas, en el mismo orden en que las promesas fueron pasadas a all().
+
+// ---rechazado cuando y si alguna de las promesas del array es rechazada. En este caso, el manejador catch() es llamado con el error lanzado por la promesa que fue rechazada.
+
+// Por ejemplo:
+
+const fetchPromesa6 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+const fetchPromesa7 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found"
+);
+
+const fetchPromesa8 = fetch(
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"
+);
+
+Promise.all([fetchPromesa6, fetchPromesa7, fetchPromesa8])
+  .then((respuestas) => {
+    for (const respuesta of respuestas) {
+      console.log(`${respuesta.url}: ${respuesta.status}`);
+    }
+  })
+  .catch((error) => {
+    console.log(`Fallo en la búsqueda: ${error}`);
+  });
+
+// Aquí, estamos haciendo tres peticiones fetch() a tres URLs diferentes. Si todas tienen éxito, registraremos el estado de la respuesta de cada una. Si alguna de ellas falla, entonces registraremos el fallo.
+
+// Con las URLs que hemos proporcionado, todas las peticiones deberían cumplirse, aunque para la segunda, el servidor devolverá 404 (Not Found) en lugar de 200 (OK) porque el archivo solicitado no existe. Así que la salida debería ser:
+
+// Si probamos el mismo código con una URL mal formada, así:
+
+const fetchPromesa9 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+const fetchPromesa10 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found"
+);
+
+const fetchPromesa11 = fetch(
+  "mala-suerte://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"
+);
+
+Promise.all([fetchPromesa9, fetchPromesa10, fetchPromesa11])
+  .then((respuestas) => {
+    for (const respuesta of respuestas) {
+      console.log(`${respuesta.url}: ${respuesta.status}`);
+    }
+  })
+  .catch((error) => {
+    console.log(`Fallo en la búsqueda: ${error}`);
+  });
+
+//   Entonces podemos esperar que el controlador catch() se ejecute, y deberíamos ver algo como:
+
+// Failed to fetch: TypeError: Failed to fetch
+
+// A veces, es posible que necesites que se cumpla cualquiera de un conjunto de promesas, y no te importa cuál. En ese caso, se necesita Promise.any(). Es como Promise.all(), salvo que se cumple en cuanto se cumple cualquiera del conjunto de promesas, o se rechaza si se rechazan todas:
+
+const fetchPromesa12 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+const fetchPromesa13 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found"
+);
+
+const fetchPromesa14 = fetch(
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"
+);
+
+Promise.any([fetchPromesa12, fetchPromesa13, fetchPromesa14])
+  .then((respuesta) => {
+    console.log(`${respuesta.url}: ${respuesta.status}`);
+  })
+  .catch((error) => {
+    console.log(`Fallo en la búsqueda: ${error}`);
+  });
+
+// Ten en cuenta que en este caso no podemos predecir qué petición de obtención se completará primero.
+
+// Estas son sólo dos de las funciones adicionales de Promise para combinar múltiples promesas. Para conocer el resto, consulta la documentación de referencia de Promise.
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
