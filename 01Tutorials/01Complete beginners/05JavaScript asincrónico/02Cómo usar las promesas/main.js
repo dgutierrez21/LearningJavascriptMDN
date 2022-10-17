@@ -40,3 +40,58 @@ console.log("Respuesta Iniciada.");
 // Tenga en cuenta que la Started request… se registra antes de recibir la respuesta. A diferencia de una función sincrónica, fetch() devuelve mientras la solicitud aún está en curso, lo que permite que nuestro programa siga respondiendo. La respuesta muestra el código de estado 200 (OK), lo que significa que nuestra solicitud se realizó correctamente.
 
 // Esto probablemente se parece mucho al ejemplo del último artículo, donde agregamos controladores de eventos al objeto XMLHttpRequest. En lugar de eso, estamos pasando un controlador al método then() de la promesa devuelta.
+
+// Encadenamiento de promesas #008000
+// Con la API fetch() una vez que obtiene un objeto Response, debe llamar a otra función para obtener los datos de respuesta. En este caso, queremos obtener los datos de respuesta como JSON, por lo que llamaríamos al método json() del objeto Response. Resulta que json() también es asíncrono. Así que este es un caso en el que tenemos que llamar a dos funciones asíncronas sucesivas.
+
+// Prueba esto:
+
+const fetchPromesa2 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+fetchPromesa2.then((respuesta) => {
+  const jsonPromesa = respuesta.json();
+
+  jsonPromesa.then((datos) => {
+    console.log(datos[0].name);
+  });
+});
+
+// En este ejemplo, como antes, agregamos un controlador then()() a la promesa devuelta por fetch(). Pero esta vez, nuestro controlador llama a response.json(), y luego pasa un nuevo controlador then()() a la promesa devuelta por response.json() response.json().
+
+// Esto debería registrar "frijoles horneados" (el nombre del primer producto listado en "products.json").
+
+// ¡Pero espera! ¿Recuerdas el último artículo, donde dijimos que al llamar a una devolución de llamada dentro de otra devolución de llamada, obtuvimos sucesivamente más niveles de código anidados? ¿Y dijimos que este "infierno de devolución de llamada" hizo que nuestro código fuera difícil de entender? ¿No es esto lo mismo, solo que con then()
+
+// Lo es, por supuesto. Pero la característica elegante de las promesas es que then() devuelve una promesa, que se completará con el resultado de la función que se le ha pasado. Esto significa que podemos (y ciertamente debemos) reescribir el código anterior de esta manera:
+
+const fetchPromesa3 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+fetchPromesa3
+  .then((respuesta) => respuesta.json())
+  .then((datos) => {
+    console.log(datos[1].name);
+  });
+
+// En lugar de llamar al segundo then() dentro del controlador para el primer then(), podemos devolver la promesa devuelta por json()(), y llamar al segundo then() then() en ese valor devuelto.then() Esto se llama encadenamiento de promesas y significa que podemos evitar niveles cada vez mayores de sangría cuando necesitamos realizar llamadas de función asíncronas consecutivas.
+
+// Antes de pasar al siguiente paso, hay una pieza más para agregar. Necesitamos verificar que el servidor aceptó y pudo manejar la solicitud, antes de intentar leerla. Haremos esto verificando el código de estado en la respuesta y arrojando un error si no estaba "OK":
+
+const fetchPromesa4 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+fetchPromesa4
+  .then((respuesta) => {
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status}`);
+    }
+
+    return respuesta.json();
+  })
+  .then((datos) => {
+    console.log(datos[3].name);
+  });
