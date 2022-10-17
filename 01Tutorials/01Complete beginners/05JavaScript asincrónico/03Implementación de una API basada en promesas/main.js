@@ -49,3 +49,35 @@ function alarma(persona, retraso) {
 // ---comprobamos que el retraso no es negativo, y lanzamos un error si lo es.
 
 // ---llamamos a setTimeout(), pasando un callback y un delay. El callback será llamado cuando el temporizador expire, y en el callback llamamos a resolve, pasando nuestro mensaje "Wake up!".
+
+// Utilización de la API alarm() #008000
+// Esta parte debería ser bastante familiar desde el último artículo. Podemos llamar a alarm(), y en la promesa devuelta llamar a then() y catch() para establecer manejadores para el cumplimiento y rechazo de la promesa.
+
+const nombreAlarma = document.querySelector(".contenedorAlarmaEJ2 #nombre"),
+  retrasoAlarma = document.querySelector(".contenedorAlarmaEJ2 #retraso"),
+  btnAlarmaEJ2 = document.querySelector(".contenedorAlarmaEJ2 button"),
+  outputAlarmaEJ2 = document.querySelector(".contenedorAlarmaEJ2 .output");
+
+function alarma2(persona, retraso) {
+  return new Promise((resolver, rechazar) => {
+    if (retraso < 0) {
+      throw new Error("El retraso de la alarma no debe ser negativo");
+    }
+
+    setTimeout(() => {
+      resolver(`Despierta, ${persona}`);
+    }, retraso);
+  });
+}
+
+btnAlarmaEJ2.addEventListener("click", () => {
+  alarma2(nombreAlarma.value, retrasoAlarma.value)
+    .then((mensaje) => (outputAlarmaEJ2.textContent = mensaje))
+    .catch(
+      (error) =>
+        (outputAlarmaEJ2.textContent = `No se puede poner la alarma: ${error}`)
+    );
+});
+
+// Pruebe a establecer valores diferentes para "Nombre" y "Retraso".
+// Prueba a establecer un valor negativo para "Retraso".
