@@ -238,3 +238,109 @@ Promise.any([fetchPromesa12, fetchPromesa13, fetchPromesa14])
 // Estas son sólo dos de las funciones adicionales de Promise para combinar múltiples promesas. Para conocer el resto, consulta la documentación de referencia de Promise.
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+// async y await #008000
+// La palabra clave async ofrece una forma más sencilla de trabajar con código asíncrono basado en promesas. Añadir async al principio de una función la convierte en una función asíncrona:
+
+async function miFuncion() {
+  // Está es una función asíncronica
+}
+
+// Dentro de una función asíncrona, puedes utilizar la palabra clave await antes de una llamada a una función que devuelva una promesa. Esto hace que el código espere en ese punto hasta que la promesa se resuelva, momento en el que el valor cumplido de la promesa se trata como un valor de retorno, o se lanza el valor rechazado.
+
+// Esto permite escribir código que utiliza funciones asíncronas pero que parece código síncrono. Por ejemplo, podríamos utilizarlo para reescribir nuestro ejemplo de fetch:
+
+async function fetchProductos() {
+  try {
+    // después de esta línea, nuestra función esperará a que se resuelva la llamada `fetch()`.
+    // la llamada `fetch()` devolverá una respuesta o lanzará un error
+
+    const respuesta = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+    );
+
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status}`);
+    }
+
+    // después de esta línea, nuestra función esperará a que se resuelva la llamada `response.json()`.
+    // la llamada `response.json()` devolverá el objeto JSON analizado o lanzará un error
+
+    const datos = await respuesta.json();
+    console.log(datos[0].name);
+  } catch (error) {
+    console.error(`No se pudieron conseguir los productos: ${error}`);
+  }
+}
+
+fetchProductos();
+
+// Aquí, estamos llamando a await fetch(), y en lugar de obtener una Promise, nuestro llamador obtiene un objeto Response completamente completo, ¡tal como si fetch() fuera una función sincrónica!
+
+// Incluso podemos usar un bloque try...catch para manejar los errores, exactamente como lo haríamos si el código fuera sincrónico.
+
+// Tenga en cuenta que las funciones asíncronas siempre devuelven una promesa, por lo que no puede hacer algo como
+
+async function fetchProducts() {
+  try {
+    const response = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Could not get products: ${error}`);
+  }
+}
+
+const promise = fetchProducts();
+// console.log(promise[0].name); // "promise" es un objeto Promise, por lo que no funcionará
+
+// En su lugar, tendrías que hacer algo como:
+
+async function fetchProductos2() {
+  try {
+    const respuesta = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+    );
+
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status}`);
+    }
+
+    const datos = await respuesta.json();
+    return datos;
+  } catch (error) {
+    console.error(`No se ha podido conseguir los productos: ${error}`);
+  }
+}
+
+const promesa = fetchProductos2();
+
+promesa.then((datos) => console.log(datos[4].name));
+
+// Además, ten en cuenta que sólo puedes usar await dentro de una función asíncrona, a menos que tu código esté en un módulo JavaScript. Eso significa que no puedes hacer esto en un script normal:
+
+try {
+  // el uso de await fuera de una función async sólo está permitido en un módulo
+
+  // Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules (at main.js:329:20)
+
+  const response = await fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+  );
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+  const data = await response.json();
+  console.log(data[0].name);
+} catch (error) {
+  console.error(`Could not get products: ${error}`);
+}
+
+// Probablemente usarás mucho las funciones asíncronas donde de otra manera podrías usar cadenas de promesas, y hacen que trabajar con promesas sea mucho más intuitivo.
+
+// Ten en cuenta que, al igual que una cadena de promesas, await obliga a que las operaciones asíncronas se completen en serie. Esto es necesario si el resultado de la siguiente operación depende del resultado de la última, pero si ese no es el caso entonces algo como Promise.all() será más performante.
