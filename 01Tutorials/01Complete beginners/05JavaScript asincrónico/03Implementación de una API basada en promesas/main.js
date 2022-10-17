@@ -81,3 +81,32 @@ btnAlarmaEJ2.addEventListener("click", () => {
 
 // Pruebe a establecer valores diferentes para "Nombre" y "Retraso".
 // Prueba a establecer un valor negativo para "Retraso".
+
+// Uso de async y await con la API de alarm() #008000
+// Dado que alarm() devuelve una promesa, podemos hacer con ella todo lo que podríamos hacer con cualquier otra promesa: encadenamiento de promesas, Promise.all(), y async / await:
+
+const nombreAlarma3 = document.querySelector(".contenedorAlarmaEJ3 #nombre"),
+  retrasoAlarm3 = document.querySelector(".contenedorAlarmaEJ3 #retraso"),
+  btnAlarmaEJ3 = document.querySelector(".contenedorAlarmaEJ3 button"),
+  outputAlarmaEJ3 = document.querySelector(".contenedorAlarmaEJ3 .output");
+
+function alarma3(persona, retraso) {
+  return new Promise((resolver, rechazar) => {
+    if (retraso < 0) {
+      throw new Error("El retardo de la alarma no debe ser negativo");
+    }
+
+    setTimeout(() => {
+      resolver(`Despierta, ${persona}`);
+    }, retraso);
+  });
+}
+
+btnAlarmaEJ3.addEventListener("click", async () => {
+  try {
+    const mensaje = await alarma3(nombreAlarma3.value, retrasoAlarm3.value);
+    outputAlarmaEJ3.textContent = mensaje;
+  } catch (error) {
+    outputAlarmaEJ3.textContent = `No se puede poner la alarma: ${error}`;
+  }
+});
