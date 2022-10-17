@@ -127,3 +127,19 @@ fetchPromesa5
   });
 
 // Intente ejecutar esta versión: debería ver el error registrado por nuestro controlador catch()
+
+// Terminología de las promesas #008000
+// Las promesas tienen una terminología bastante específica que conviene aclarar.
+
+// En primer lugar, una promesa puede estar en uno de estos tres estados
+
+// pending: la promesa ha sido creada, y la función asíncrona a la que está asociada aún no ha tenido éxito ni ha fallado. Este es el estado en el que se encuentra tu promesa cuando es devuelta por una llamada a fetch(), y la petición aún se está realizando.
+// fulfilled: la función asíncrona ha tenido éxito. Cuando una promesa se cumple, se llama a su manejador then().
+// rejected: la función asíncrona ha fallado. Cuando una promesa es rechazada, se llama a su manejador catch().
+// Tenga en cuenta que lo que significa "se ha cumplido" o "ha fallado" aquí depende de la API en cuestión: por ejemplo, fetch() considera que una petición se ha cumplido si el servidor ha devuelto un error como 404 Not Found, pero no si un error de red ha impedido el envío de la petición.
+
+// A veces, usamos el término resuelto para cubrir tanto lo cumplido como lo rechazado.
+
+// Una promesa se resuelve si está resuelta, o si ha sido "bloqueada" para seguir el estado de otra promesa.
+
+// El artículo "Hablemos de cómo hablar de las promesas" ofrece una gran explicación de los detalles de esta terminología.
