@@ -95,3 +95,35 @@ fetchPromesa4
   .then((datos) => {
     console.log(datos[3].name);
   });
+
+//   Detección de errores #008000
+// Esto nos lleva a la última pieza: ¿cómo manejamos los errores? La API fetch() puede lanzar un error por muchas razones (por ejemplo, porque no había conectividad de red o la URL estaba malformada de alguna manera) y nosotros mismos lanzamos un error si el servidor devuelve un error.
+
+// En el último artículo, vimos que el manejo de errores puede volverse muy difícil con las devoluciones de llamada anidadas, haciéndonos manejar errores en cada nivel de anidación.
+
+// Para soportar el manejo de errores, los objetos Promise proporcionan un método catch(). Es muy parecido a then(): lo llamas y le pasas una función manejadora. Sin embargo, mientras que el manejador pasado a then() es llamado cuando la operación asíncrona tiene éxito, el manejador pasado a catch() es llamado cuando la operación asíncrona falla.
+
+// Si añades catch() al final de una cadena de promesas, entonces se llamará cuando cualquiera de las llamadas a la función asíncrona falle. Así que puedes implementar una operación como varias llamadas a funciones asíncronas consecutivas, y tener un único lugar para manejar todos los errores.
+
+// Prueba esta versión de nuestro código fetch(). Hemos añadido un manejador de errores usando catch(), y también hemos modificado la URL para que la petición falle.
+
+const fetchPromesa5 = fetch(
+  "mala-suerte://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+);
+
+fetchPromesa5
+  .then((respuesta) => {
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status}`);
+    }
+
+    return respuesta.json();
+  })
+  .then((datos) => {
+    console.log(datos[0].name);
+  })
+  .catch((error) => {
+    console.error(`No se pudieron conseguir los productos: ${error}`); // Output: Fetch API cannot load bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json. URL scheme "bad-scheme" is not supported.
+  });
+
+// Intente ejecutar esta versión: debería ver el error registrado por nuestro controlador catch()
