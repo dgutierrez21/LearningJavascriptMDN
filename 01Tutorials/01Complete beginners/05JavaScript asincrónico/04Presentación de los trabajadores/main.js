@@ -142,3 +142,8 @@ document.querySelector("#reload").addEventListener("click", () => {
 // ---Los trabajadores compartidos pueden ser compartidos por varios scripts que se ejecutan en diferentes ventanas.
 
 // ---Los service workers actúan como servidores proxy, almacenando en caché los recursos para que las aplicaciones web puedan funcionar cuando el usuario está desconectado. Son un componente clave de las aplicaciones web progresivas.
+
+// Conclusión #008000
+// En este artículo hemos introducido los web workers, que permiten a una aplicación web descargar tareas a un hilo separado. El hilo principal y el worker no comparten directamente ninguna variable, sino que se comunican enviando mensajes, que son recibidos por el otro lado como eventos de mensaje.
+
+// Los workers pueden ser una forma efectiva de mantener la respuesta de la aplicación principal, aunque no pueden acceder a todas las APIs que la aplicación principal puede, y en particular no pueden acceder al DOM.
