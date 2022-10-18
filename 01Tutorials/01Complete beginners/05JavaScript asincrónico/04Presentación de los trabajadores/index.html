@@ -5,7 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <label for="quota">Números primos:</label>
+    <input type="text" id="quota" name="quota" value="1000000" />
+
+    <button id="generate">Generar números primos</button>
+    <button id="reload">Recargar</button>
+
+    <textarea id="user-input" rows="5" cols="62">
+Intenta escribir aquí inmediatamente después de pulsar "Generar números primos"</textarea
+    >
+
+    <div id="output"></div>
+  </body>
 </html>
