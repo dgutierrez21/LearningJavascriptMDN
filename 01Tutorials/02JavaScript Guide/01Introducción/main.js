@@ -30,3 +30,7 @@
 // Java es un lenguaje de programación basado en clases, diseñado para la ejecución rápida y la seguridad de tipos. La seguridad de tipos significa, por ejemplo, que no se puede convertir un entero de Java en una referencia a un objeto o acceder a la memoria privada corrompiendo el código de bytes de Java. El modelo basado en clases de Java significa que los programas consisten exclusivamente en clases y sus métodos. La herencia de clases y la tipificación fuerte de Java requieren, por lo general, jerarquías de objetos fuertemente acopladas. Estos requisitos hacen que la programación en Java sea más compleja que la de JavaScript.
 
 // En cambio, JavaScript desciende en espíritu de una línea de lenguajes más pequeños y de tipado dinámico como HyperTalk y dBASE. Estos lenguajes de scripting ofrecen herramientas de programación a un público mucho más amplio debido a su sintaxis más sencilla, su funcionalidad especializada incorporada y sus requisitos mínimos para la creación de objetos.
+
+// Diferencias entre Javascript y java #008000
+
+// // ver imagen...
