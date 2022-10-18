@@ -27,3 +27,10 @@ const aliceTiming = {
 const alice1 = document.querySelector("#alice1");
 const alice2 = document.querySelector("#alice2");
 const alice3 = document.querySelector("#alice3");
+
+// Resumen del proyecto #008000
+// Queremos actualizar esta página para aplicar una animación a las tres imágenes, una tras otra. Así, cuando la primera haya terminado animamos la segunda, y cuando la segunda haya terminado animamos la tercera.
+
+// La animación ya está definida en "main.js": simplemente gira la imagen y la encoge hasta que desaparece.
+
+// Para que te hagas una idea de cómo queremos que funcione la página, echa un vistazo al ejemplo terminado. Ten en cuenta que las animaciones sólo se ejecutan una vez: para verlas de nuevo, recarga la página.
