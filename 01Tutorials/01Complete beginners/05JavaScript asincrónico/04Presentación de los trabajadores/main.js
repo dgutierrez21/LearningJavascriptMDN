@@ -133,3 +133,12 @@ document.querySelector("#reload").addEventListener("click", () => {
 // Ahora el código del trabajador. Copia el siguiente código en "generate.js":
 
 // ver archivo generate.js
+
+// Otros tipos de trabajadores #008000
+// El trabajador que acabamos de crear es lo que se llama un trabajador dedicado. Esto significa que es utilizado por una sola instancia de script.
+
+// Sin embargo, hay otros tipos de workers:
+
+// ---Los trabajadores compartidos pueden ser compartidos por varios scripts que se ejecutan en diferentes ventanas.
+
+// ---Los service workers actúan como servidores proxy, almacenando en caché los recursos para que las aplicaciones web puedan funcionar cuando el usuario está desconectado. Son un componente clave de las aplicaciones web progresivas.
