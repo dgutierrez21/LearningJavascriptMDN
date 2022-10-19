@@ -343,3 +343,23 @@ let z = "40" + 7; // "407"
 
 console.log("37" - 7); // 30
 console.log("10" * 2); // 20
+
+// Convertir cadenas en números #00aae4
+// En el caso de que un valor que represente un número esté en memoria como una cadena, existen métodos para su conversión.
+
+// parseInt()
+
+// parseFloat()
+
+// parseInt sólo devuelve números enteros, por lo que su uso disminuye para los decimales.
+
+// Nota: Además, una buena práctica para parseInt es incluir siempre el parámetro radix. El parámetro radix se utiliza para especificar qué sistema numérico se va a utilizar.
+
+console.log(parseInt("101", 2)); // binario a decimal
+
+// Un método alternativo para recuperar un número de una cadena es con el operador + (unario más):
+
+console.log("1.1" + "1.1"); // 1.11.1
+console.log(+"1.1" + +"1.1"); // 2.2
+
+// Nota: los paréntesis se añaden por claridad, no son necesarios.
