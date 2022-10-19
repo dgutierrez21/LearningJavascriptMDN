@@ -457,3 +457,26 @@ console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
 // 015, 0001, 0o777777777777n              (octal, base 8)
 // 0x1123, 0x00111, 0x123456789ABCDEFn     (hexadecimal, "hex" or base 16)
 // 0b11, 0b0011, 0b11101001010101010101n   (binary, base 2)
+
+// Literales en coma flotante #00aae4
+// Un literal de punto flotante puede tener las siguientes partes:
+
+// Un entero decimal sin signo,
+
+// Un punto decimal (.),
+
+// Una fracción (otro número decimal),
+
+// Un exponente.
+
+// La parte del exponente es una e o E seguida de un entero, que puede tener signo (precedido de + o -). Un literal de punto flotante debe tener al menos un dígito, y un punto decimal o e (o E).
+
+// De forma más sucinta, la sintaxis es:
+
+// [dígitos].[dígitos][(E|e)[(+|-)]dígitos]
+// Por ejemplo
+
+// 3.1415926
+// .123456789
+// 3.1E+12
+// .1e-23
