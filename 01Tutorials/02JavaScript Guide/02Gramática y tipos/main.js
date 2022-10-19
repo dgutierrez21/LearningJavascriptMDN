@@ -438,3 +438,22 @@ console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
 
 // Tenga en cuenta que la especificación del lenguaje requiere que los literales numéricos sean sin signo. Sin embargo, los fragmentos de código como -123.4 están bien, ya que se interpretan como un operador unario - aplicado al literal numérico 123.4.
 
+// Literales enteros #00aae4
+// Los literales enteros y BigInt pueden escribirse en decimal (base 10), hexadecimal (base 16), octal (base 8) y binario (base 2).
+
+// Un literal entero decimal es una secuencia de dígitos sin un 0 (cero) inicial.
+
+// Un 0 (cero) inicial en un literal entero, o un 0o (o 0O) inicial indica que está en octal. Los literales enteros octales sólo pueden incluir los dígitos 0-7.
+
+// Un 0x (o 0X) inicial indica un literal entero hexadecimal. Los enteros hexadecimales pueden incluir dígitos (0-9) y las letras a-f y A-F. (El caso de un carácter no cambia su valor. Por lo tanto: 0xa = 0xA = 10 y 0xf = 0xF = 15).
+
+// Un 0b (o 0B) a la izquierda indica un literal entero binario. Los literales enteros binarios sólo pueden incluir los dígitos 0 y 1.
+
+// Un sufijo n al final de un literal entero indica un literal BigInt. El literal entero puede utilizar cualquiera de las bases anteriores. Tenga en cuenta que la sintaxis octal con ceros a la cabeza, como 0123n, no está permitida, pero 0o123n sí lo está.
+
+// // Algunos ejemplos de literales enteros son:
+
+// 0, 117, 123456789123456789n             (decimal, base 10)
+// 015, 0001, 0o777777777777n              (octal, base 8)
+// 0x1123, 0x00111, 0x123456789ABCDEFn     (hexadecimal, "hex" or base 16)
+// 0b11, 0b0011, 0b11101001010101010101n   (binary, base 2)
