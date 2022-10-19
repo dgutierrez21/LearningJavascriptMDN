@@ -131,3 +131,24 @@ console.log(t + 2); // Se evalúa como NaN
 const n = null;
 
 console.log(n * 32); // Se registrará 0 en la consola
+
+// Alcance de las variables #00aae4
+// Cuando declaras una variable fuera de cualquier función, se llama variable global, porque está disponible para cualquier otro código en el documento actual. Cuando se declara una variable dentro de una función, se denomina variable local, porque sólo está disponible dentro de esa función.
+
+// Las declaraciones let y const se limitan al bloque en el que se declaran.
+
+if (Math.random() > 0.5) {
+  const y1 = 5;
+}
+
+console.log(y1); //  // ReferenceError: y1 no está definido
+
+// Sin embargo, las variables creadas con var no son de ámbito de bloque, sino sólo locales a la función (o ámbito global) dentro de la cual reside el bloque.
+
+// Por ejemplo, el siguiente código registrará 5, porque el ámbito de x es el contexto global (o el contexto de la función si el código es parte de una función). El ámbito de x no se limita al bloque inmediato de la sentencia if.
+
+if (true) {
+  var x1 = 5;
+}
+
+console.log(x1); // 5
