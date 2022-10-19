@@ -79,3 +79,55 @@ console.log(früh);
 // Puede declarar variables para descomponer valores de Literales de Objeto utilizando la sintaxis de Asignación de Desestructuración. Por ejemplo, let { bar } = foo. Esto creará una variable llamada bar y le asignará el valor correspondiente a la clave del mismo nombre de nuestro objeto foo.
 
 // También se puede asignar un valor a una variable. Por ejemplo, x = 42. Esta forma crea una variable global no declarada. También genera una advertencia estricta de JavaScript. Las variables globales no declaradas pueden conducir a menudo a un comportamiento inesperado. Por lo tanto, se desaconseja el uso de variables globales no declaradas.
+
+// Evaluación de variables #00aae4
+// Una variable declarada mediante la sentencia var o let sin valor asignado especificado tiene el valor de indefinida.
+
+// Si se intenta acceder a una variable no declarada, se lanza una excepción ReferenceError:
+
+var a;
+
+console.log(`El valor de la variable a es ${a}`); // El valor de la variable a es undefined
+
+console.log(`El valor de la variable b es ${b}`); // El valor de la variable b es undefined
+
+var b;
+// Esta puede desconcertarte hasta que leas "Levantamiento de variables" más abajo
+
+let x;
+
+console.log(`El valor de la variable x es ${x}`); // El valor de la variable x es undefined
+
+console.log(`El valor de la variable y es ${y}`); // Uncaught ReferenceError: No se puede acceder a 'y' antes de la inicialización
+
+let y;
+
+// Puede utilizar undefined para determinar si una variable tiene un valor. En el siguiente código, a la variable input no se le asigna un valor, y la afirmación if se evalúa como true.
+
+let input;
+
+if (input === undefined) {
+  hacerEsto();
+} else {
+  hacerEso();
+}
+
+// El valor indefinido se comporta como falso cuando se utiliza en un contexto booleano. Por ejemplo, el siguiente código ejecuta la función miFunción porque el elemento miMatriz está indefinido:
+
+const miMatriz = [];
+
+if (!miMatriz[0]) {
+  miFuncion();
+}
+
+// El valor indefinido se convierte en NaN cuando se utiliza en un contexto numérico.
+
+let t;
+
+console.log(t + 2); // Se evalúa como NaN
+
+// Cuando se evalúa una variable nula, el valor nulo se comporta como 0 en contextos numéricos y como falso en contextos booleanos. Por ejemplo:
+
+const n = null;
+
+console.log(n * 32); // Se registrará 0 en la consola
