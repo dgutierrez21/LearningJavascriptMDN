@@ -60,3 +60,12 @@ console.log(früh);
 
 // const
 // Declara una constante con nombre, de sólo lectura y con alcance de bloque.
+
+// Variables #00aae4
+// Las variables se utilizan como nombres simbólicos para los valores de la aplicación. Los nombres de las variables, llamados identificadores, se ajustan a ciertas reglas.
+
+// Un identificador de JavaScript suele comenzar con una letra, un guión bajo (_) o un signo de dólar ($). Los caracteres siguientes también pueden ser dígitos (0-9). Dado que JavaScript distingue entre mayúsculas y minúsculas, las letras incluyen los caracteres de la A a la Z (mayúsculas), así como de la a a la z (minúsculas).
+
+// Puede utilizar la mayoría de las letras ISO 8859-1 o Unicode, como å y ü, en los identificadores. (Para más detalles, consulte esta entrada del blog o la referencia de la gramática léxica). También puede utilizar las secuencias de escape de Unicode como caracteres en los identificadores.
+
+// Algunos ejemplos de nombres legales son Number_hits, temp99, $credit y _name.
