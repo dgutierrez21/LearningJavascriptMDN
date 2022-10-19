@@ -373,3 +373,16 @@ console.log(+"1.1" + +"1.1"); // 2.2
 // Literales de objeto
 // Literales RegExp
 // Literales de cadena
+
+// Literales de matrices #00aae4
+// Un literal de matriz es una lista de cero o más expresiones, cada una de las cuales representa un elemento de la matriz, encerrada entre corchetes ([]). Cuando se crea una matriz utilizando un literal de matriz, ésta se inicializa con los valores especificados como sus elementos, y su longitud se establece en el número de argumentos especificados.
+
+// El siguiente ejemplo crea una matriz de cafés con tres elementos y una longitud de tres:
+
+const cafes = ["Americano", "Expresso", "Cappuccino"];
+
+console.log(cafes); // (3) ["Americano", "Expresso", "Cappuccino"]
+
+// Si se crea una matriz utilizando un literal en un script de nivel superior, JavaScript interpreta la matriz cada vez que evalúa la expresión que contiene el literal de la matriz. Además, un literal utilizado en una función se crea cada vez que se llama a la función.
+
+// Nota: Los literales de matriz crean objetos de matriz. Consulte Array y colecciones indexadas para obtener más información sobre los objetos Array.
