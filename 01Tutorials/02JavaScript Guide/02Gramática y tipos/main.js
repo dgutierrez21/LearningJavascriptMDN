@@ -433,3 +433,8 @@ console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
 
 // El objeto booleano es una envoltura del tipo de datos booleano primitivo. Vea Boolean para más información.
 
+// Literales numéricos #00aae4
+// Los literales numéricos de JavaScript incluyen literales enteros en diferentes bases, así como literales de punto flotante en base-10.
+
+// Tenga en cuenta que la especificación del lenguaje requiere que los literales numéricos sean sin signo. Sin embargo, los fragmentos de código como -123.4 están bien, ya que se interpretan como un operador unario - aplicado al literal numérico 123.4.
+
