@@ -69,3 +69,13 @@ console.log(früh);
 // Puede utilizar la mayoría de las letras ISO 8859-1 o Unicode, como å y ü, en los identificadores. (Para más detalles, consulte esta entrada del blog o la referencia de la gramática léxica). También puede utilizar las secuencias de escape de Unicode como caracteres en los identificadores.
 
 // Algunos ejemplos de nombres legales son Number_hits, temp99, $credit y _name.
+
+// Declaración de variables #00aae4
+// Puedes declarar una variable de dos maneras:
+
+// Con la palabra clave var. Por ejemplo, var x = 42. Esta sintaxis puede utilizarse para declarar variables locales y globales, dependiendo del contexto de ejecución.
+// Con la palabra clave const o let. Por ejemplo, let y = 13. Esta sintaxis se puede utilizar para declarar una variable local de ámbito de bloque. (Ver Ámbito de las variables más adelante).
+
+// Puede declarar variables para descomponer valores de Literales de Objeto utilizando la sintaxis de Asignación de Desestructuración. Por ejemplo, let { bar } = foo. Esto creará una variable llamada bar y le asignará el valor correspondiente a la clave del mismo nombre de nuestro objeto foo.
+
+// También se puede asignar un valor a una variable. Por ejemplo, x = 42. Esta forma crea una variable global no declarada. También genera una advertencia estricta de JavaScript. Las variables globales no declaradas pueden conducir a menudo a un comportamiento inesperado. Por lo tanto, se desaconseja el uso de variables globales no declaradas.
