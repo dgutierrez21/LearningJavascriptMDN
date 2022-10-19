@@ -48,3 +48,15 @@ console.log(früh);
 // Nota: También puede ver un tercer tipo de sintaxis de comentario al principio de algunos archivos JavaScript, que se parece a esto: #!/usr/bin/env node.
 
 // Esto se denomina sintaxis de comentario hashbang, y es un comentario especial que se utiliza para especificar la ruta de acceso a un motor JavaScript concreto que debe ejecutar el script. Ver Comentarios Hashbang para más detalles.
+
+// Declaraciones #008000
+// JavaScript tiene tres tipos de declaraciones de variables.
+
+// var
+// Declara una variable, opcionalmente inicializándola con un valor.
+
+// let
+// Declara una variable local de ámbito de bloque, y opcionalmente la inicializa con un valor.
+
+// const
+// Declara una constante con nombre, de sólo lectura y con alcance de bloque.
