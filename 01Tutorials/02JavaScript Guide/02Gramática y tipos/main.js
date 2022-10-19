@@ -253,3 +253,48 @@ var baz = function () {
 // En las páginas web, el objeto global es la ventana, por lo que puedes establecer y acceder a las variables globales utilizando la sintaxis window.variable.
 
 // En consecuencia, puedes acceder a las variables globales declaradas en una ventana o marco desde otra ventana o marco especificando el nombre de la ventana o marco. Por ejemplo, si en un documento se declara una variable llamada número de teléfono, puedes referirte a esta variable desde un iframe como parent.phoneNumber.
+
+// Constantes #00aae4
+// Puede crear una constante de sólo lectura con la palabra clave const.
+
+// La sintaxis de un identificador de constante es la misma que la de cualquier identificador de variable: debe comenzar con una letra, un guión bajo o un signo de dólar ($), y puede contener caracteres alfabéticos, numéricos o de subrayado.
+
+const PI = 3.14;
+
+console.log(PI);
+
+// Una constante no puede cambiar de valor a través de la asignación o ser re-declarada mientras el script se está ejecutando. Debe ser inicializada a un valor.
+
+// Las reglas de alcance de las constantes son las mismas que las de las variables de alcance de bloque let. Si se omite la palabra clave const, se asume que el identificador representa una variable.
+
+// No se puede declarar una constante con el mismo nombre que una función o variable en el mismo ámbito. Por ejemplo:
+
+// ESTO CAUSARÁ UN ERROR
+function f() {}
+const f = 5;
+
+// ESTO TAMBIÉN PROVOCARÁ UN ERROR
+function f() {
+  const g = 5;
+  var g;
+
+  //declaraciones
+}
+
+// Sin embargo, las propiedades de los objetos asignados a las constantes no están protegidas, por lo que la siguiente sentencia se ejecuta sin problemas.
+
+const MI_OBJETO = {
+  key: "valor",
+};
+
+MI_OBJETO.key = "Otro Valor";
+
+console.log(MI_OBJETO.key); // Otro valor
+
+// Además, el contenido de un array no está protegido, por lo que la siguiente sentencia se ejecuta sin problemas.
+
+const MI_MATRIZ = ["HTML", "CSS"];
+
+MI_MATRIZ.push("JAVASCRIPT");
+
+console.log(MI_MATRIZ); // (3) ["HTML", "CSS", "JAVASCRIPT"]
