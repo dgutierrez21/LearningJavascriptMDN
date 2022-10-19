@@ -152,3 +152,60 @@ if (true) {
 }
 
 console.log(x1); // 5
+
+// Elevación de variables #00aae4
+// Otra cosa inusual sobre las variables en JavaScript es que puedes referirte a una variable declarada más tarde, sin obtener una excepción.
+
+// Este concepto se conoce como elevación. Las variables en JavaScript son, en cierto sentido, "izadas" (o "levantadas") a la parte superior de la función o declaración. Sin embargo, las variables elevadas devuelven un valor indefinido. Por lo tanto, incluso si se declara e inicializa después de usar o hacer referencia a esta variable, sigue devolviendo un valor indefinido.
+
+/**
+ * ejemplo 1
+ */
+
+console.log(x2 === undefined); // true
+
+var x2 = 3;
+
+/**
+ * Ejemplo 2
+ */
+// devolverá un valor indefinido
+
+var miVar = "Mi valor";
+
+(function () {
+  console.log(miVar); // undefined
+  var miVar = "Valor local";
+})();
+
+// Los ejemplos anteriores se interpretarán igual que:
+
+/**
+ * ejemplo 1
+ */
+
+var x3;
+
+console.log(x === undefined); // true
+
+x3 = 3;
+
+/**
+ * ejemplo 2
+ */
+
+var miVar2 = "Mi valor";
+
+(function () {
+  var miVar2;
+  console.log(miVar2); // undefined
+  miVar2 = "Valor local";
+})();
+
+// Debido a la elevación, todas las sentencias var de una función deben colocarse lo más cerca posible de la parte superior de la función. Esta práctica aumenta la claridad del código.
+
+// let y const se elevan pero no se inicializan. Hacer referencia a la variable en el bloque antes de la declaración de la variable resulta en un ReferenceError, porque la variable está en una "zona muerta temporal" desde el inicio del bloque hasta que se procesa la declaración.
+
+console.log(x4); // ReferenceError
+
+const x4 = 3;
