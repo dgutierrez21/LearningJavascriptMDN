@@ -298,3 +298,19 @@ const MI_MATRIZ = ["HTML", "CSS"];
 MI_MATRIZ.push("JAVASCRIPT");
 
 console.log(MI_MATRIZ); // (3) ["HTML", "CSS", "JAVASCRIPT"]
+
+// Estructuras y tipos de datos #008000
+// Tipos de datos #00aae4
+// El último estándar ECMAScript define ocho tipos de datos:
+
+// Siete tipos de datos que son primitivos:
+// 1.Boolean. true y false.
+// 2. null. Una palabra clave especial que denota un valor nulo. (Como JavaScript distingue entre mayúsculas y minúsculas, null no es lo mismo que Null, Nulo o cualquier otra variante).
+// 3. undefined. Una propiedad de nivel superior cuyo valor no está definido.
+// 4. Número. Un número entero o de coma flotante. Por ejemplo: 42 o 3,14159.
+// 5. BigInt. Un número entero con precisión arbitraria. Por ejemplo: 9007199254740992n.
+// 6. Cadena. Una secuencia de caracteres que representa un valor de texto. Por ejemplo: "Hola".
+// 7. Símbolo. Un tipo de datos cuyas instancias son únicas e inmutables.
+
+// y Objeto
+// Aunque estos tipos de datos son relativamente pocos, permiten realizar operaciones útiles con las aplicaciones. Las funciones son los otros elementos fundamentales del lenguaje. Mientras que las funciones son técnicamente un tipo de objeto, puedes pensar en los objetos como contenedores con nombre para valores, y en las funciones como procedimientos que tu script puede realizar.
