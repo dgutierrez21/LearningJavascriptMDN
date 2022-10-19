@@ -314,3 +314,18 @@ console.log(MI_MATRIZ); // (3) ["HTML", "CSS", "JAVASCRIPT"]
 
 // y Objeto
 // Aunque estos tipos de datos son relativamente pocos, permiten realizar operaciones útiles con las aplicaciones. Las funciones son los otros elementos fundamentales del lenguaje. Mientras que las funciones son técnicamente un tipo de objeto, puedes pensar en los objetos como contenedores con nombre para valores, y en las funciones como procedimientos que tu script puede realizar.
+
+// Conversión de tipos de datos #00aae4
+// JavaScript es un lenguaje de tipado dinámico. Esto significa que no tienes que especificar el tipo de datos de una variable cuando la declaras. También significa que los tipos de datos se convierten automáticamente según sea necesario durante la ejecución del script.
+
+// Así, por ejemplo, podrías definir una variable de la siguiente manera
+
+let respuesta = 35;
+
+// Y más tarde, podría asignar a la misma variable un valor de cadena, por ejemplo:
+
+respuesta = "Gracias por todo el pescado";
+
+console.log(respuesta); // Gracias por todo el pescado
+
+// Dado que JavaScript es de tipificación dinámica, esta asignación no provoca un mensaje de error.
