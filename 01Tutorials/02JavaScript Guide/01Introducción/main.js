@@ -48,3 +48,40 @@
 // La especificación ECMAScript utiliza una terminología y una sintaxis que pueden resultar desconocidas para un programador de JavaScript. Aunque la descripción del lenguaje puede ser diferente en ECMAScript, el lenguaje en sí sigue siendo el mismo. JavaScript es compatible con todas las funciones descritas en la especificación ECMAScript.
 
 // La documentación de JavaScript describe aspectos del lenguaje que son apropiados para un programador de JavaScript.
+
+// iniciarse en el uso de javascript
+// Empezar a usar JavaScript es fácil: todo lo que necesitas es un navegador web moderno. Esta guía incluye algunas características de JavaScript que sólo están disponibles actualmente en las últimas versiones de Firefox, por lo que se recomienda utilizar la versión más reciente de Firefox.
+
+// La herramienta de la Consola Web integrada en Firefox es útil para experimentar con JavaScript; puedes utilizarla en dos modos: modo de entrada de una sola línea y modo de entrada de varias líneas.
+
+// Entrada de una sola línea en la Consola Web #00aae4
+// La Consola Web muestra información sobre la página web cargada actualmente, y también incluye un intérprete de JavaScript que puedes utilizar para ejecutar expresiones de JavaScript en la página actual.
+
+// Para abrir la consola web (Ctrl+Mayús+I en Windows y Linux o Cmd-Opción-K en Mac), abre el menú Herramientas en Firefox y selecciona "Desarrollador ▶ Consola web".
+
+// La consola web aparece en la parte inferior de la ventana del navegador. A lo largo de la parte inferior de la consola hay una línea de entrada que puedes utilizar para introducir JavaScript, y la salida aparece en el panel de arriba:
+
+// La consola funciona exactamente igual que eval: se devuelve la última expresión introducida. Para simplificar, se puede imaginar que cada vez que se introduce algo en la consola, se rodea de console.log alrededor de eval, así
+
+// console.log(eval('3 + 5'))
+
+// Entrada de varias líneas en la consola web #00aae4
+// El modo de entrada de una sola línea de la Consola Web es estupendo para probar rápidamente las expresiones de JavaScript, pero aunque puede ejecutar varias líneas, no es muy conveniente para ello. Para un JavaScript más complejo, puede utilizar el modo de entrada multilínea.
+
+// Hola mundo #00aae4
+// Para empezar a escribir JavaScript, abra la Consola Web en modo multilínea y escriba su primer código JavaScript "Hola mundo":
+
+function saludarme(miNombre) {
+  alert(`Hola, ${miNombre}`);
+}
+
+saludarme("Jhon Doe");
+
+// Pulsa Cmd+Enter o Ctrl+Enter (o haz clic en el botón Ejecutar) para ver cómo se desarrolla en tu navegador.
+
+// En las siguientes páginas, esta guía te introducirá en la sintaxis y las características del lenguaje JavaScript, para que puedas escribir aplicaciones más complejas.
+
+// Pero por ahora, recuerda incluir siempre la función (function(){"use strict"; antes de tu código, y añade })(); al final de tu código. Los artículos sobre el modo estricto y IIFE explican lo que hacen, pero por ahora se puede pensar que hacen lo siguiente
+
+// Evitar la semántica en JavaScript que hace tropezar a los principiantes.
+// Evitar que los fragmentos de código ejecutados en la consola interactúen entre sí (por ejemplo, que algo creado en una ejecución de consola se utilice en otra ejecución de consola).
