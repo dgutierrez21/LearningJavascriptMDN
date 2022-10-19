@@ -209,3 +209,40 @@ var miVar2 = "Mi valor";
 console.log(x4); // ReferenceError
 
 const x4 = 3;
+
+// Elevación de funciones #00aae4
+// Las funciones se elevan si se definen mediante declaraciones de función, pero no se elevan si se definen mediante expresiones de función.
+
+// El siguiente ejemplo muestra cómo, debido a la elevación de funciones, la función foo puede ser llamada incluso antes de ser definida - porque la función foo está definida usando una declaración de función.
+
+foo("Este mensaje se esta ejecuntado desde una declaración de función"); // funciona correctamente
+
+// declaración de función
+
+function foo(msj) {
+  console.log(msj);
+}
+
+foo2("Este mensaje se esta ejecuntado desde una expresión de función"); // Uncaught ReferenceError: Cannot access 'foo2' before initialization"
+
+// expresión de función
+
+let foo2 = function (msj) {
+  console.log(msj);
+};
+
+// En el siguiente ejemplo, el nombre de la variable baz es elevado - debido a la elevación de variables - pero debido a que una función es asignada a baz usando una expresión de función en lugar de que baz sea definida con una declaración de función, la función no puede ser llamada antes de ser definida, porque no está elevada.
+
+// Así, la llamada a baz() de abajo lanza un TypeError con "baz no es una función", porque la función asignada a baz no está elevada - mientras que la llamada a console.log(baz) no lanza un ReferenceError sino que registra undefined, porque la variable baz está elevada aunque la función asignada a ella no lo esté. (Pero el valor de baz es indefinido, ya que todavía no se le ha asignado nada).
+
+// No lanza ReferenceError
+console.log(baz); // undefined
+
+// Lanza 'TypeError: baz no es una función'
+baz();
+
+// expresión de función
+
+var baz = function () {
+  console.log("bar2");
+};
