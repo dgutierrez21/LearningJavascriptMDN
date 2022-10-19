@@ -363,3 +363,13 @@ console.log("1.1" + "1.1"); // 1.11.1
 console.log(+"1.1" + +"1.1"); // 2.2
 
 // Nota: los paréntesis se añaden por claridad, no son necesarios.
+
+// Literales #008000
+// Los literales representan valores en JavaScript. Son valores fijos -no variables- que se proporcionan literalmente en el script. Esta sección describe los siguientes tipos de literales:
+
+// Literales de matrices
+// Literales booleanos
+// Literales numéricos
+// Literales de objeto
+// Literales RegExp
+// Literales de cadena
