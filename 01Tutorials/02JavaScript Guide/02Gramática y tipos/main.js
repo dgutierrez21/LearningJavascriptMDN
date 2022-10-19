@@ -26,3 +26,25 @@ console.log(früh);
 // Sin embargo, se considera una buena práctica escribir siempre un punto y coma después de una sentencia, incluso cuando no es estrictamente necesario. Esta práctica reduce las posibilidades de que se introduzcan errores en el código.
 
 // El texto fuente del script de JavaScript se escanea de izquierda a derecha, y se convierte en una secuencia de elementos de entrada que son tokens, caracteres de control, terminadores de línea, comentarios o espacios en blanco. (Los espacios, los tabuladores y los caracteres de nueva línea se consideran espacios en blanco).
+
+// Comentarios #008000
+// La sintaxis de los comentarios es la misma que en C++ y en muchos otros lenguajes:
+
+// un comentario de una línea
+
+/* esto es un comentario más largo,
+    un comentario de varias líneas
+ */
+
+//     No se pueden anidar comentarios en bloque. Esto sucede a menudo cuando se incluye accidentalmente una secuencia */ en el comentario, que terminará el comentario.
+
+// /* Sin embargo, no puede anidar comentarios */ SyntaxError */
+// En este caso, debe romper el patrón */. Por ejemplo, insertando una barra invertida:
+
+// /* Puede /* anidar comentarios *\/ escapando de las barras inclinadas */
+
+// Los comentarios se comportan como espacios en blanco, y se descartan durante la ejecución del script.
+
+// Nota: También puede ver un tercer tipo de sintaxis de comentario al principio de algunos archivos JavaScript, que se parece a esto: #!/usr/bin/env node.
+
+// Esto se denomina sintaxis de comentario hashbang, y es un comentario especial que se utiliza para especificar la ruta de acceso a un motor JavaScript concreto que debe ejecutar el script. Ver Comentarios Hashbang para más detalles.
