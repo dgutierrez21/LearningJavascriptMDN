@@ -34,3 +34,17 @@
 // Diferencias entre Javascript y java #008000
 
 // // ver imagen...
+
+// JavaScript y la especificación ECMAScript #008000
+// JavaScript está estandarizado en Ecma International, la asociación europea para la estandarización de los sistemas de información y comunicación (ECMA era antes un acrónimo de la Asociación Europea de Fabricantes de Ordenadores) para ofrecer un lenguaje de programación estandarizado e internacional basado en JavaScript. Esta versión estandarizada de JavaScript, llamada ECMAScript, se comporta de la misma manera en todas las aplicaciones que soportan el estándar. Las empresas pueden utilizar el lenguaje estándar abierto para desarrollar su implementación de JavaScript. El estándar ECMAScript está documentado en la especificación ECMA-262.
+
+// El estándar ECMA-262 también está aprobado por la ISO (Organización Internacional de Normalización) como ISO-16262. También puedes encontrar la especificación en el sitio web de Ecma International. La especificación ECMAScript no describe el Modelo de Objetos del Documento (DOM), que está estandarizado por el World Wide Web Consortium (W3C) y/o WHATWG (Web Hypertext Application Technology Working Group). El DOM define la forma en que los objetos del documento HTML se exponen a su script. Para conocer mejor las diferentes tecnologías que se utilizan al programar con JavaScript, consulte el artículo Visión general de las tecnologías de JavaScript.
+
+// La documentación de JavaScript frente a la especificación ECMAScript #00aae4
+// La especificación ECMAScript es un conjunto de requisitos para implementar ECMAScript. Es útil si quieres implementar características del lenguaje que cumplen con los estándares en tu implementación o motor de ECMAScript (como SpiderMonkey en Firefox, o V8 en Chrome).
+
+// El documento de ECMAScript no pretende ayudar a los programadores de scripts. Utilice la documentación de JavaScript para obtener información al escribir scripts.
+
+// La especificación ECMAScript utiliza una terminología y una sintaxis que pueden resultar desconocidas para un programador de JavaScript. Aunque la descripción del lenguaje puede ser diferente en ECMAScript, el lenguaje en sí sigue siendo el mismo. JavaScript es compatible con todas las funciones descritas en la especificación ECMAScript.
+
+// La documentación de JavaScript describe aspectos del lenguaje que son apropiados para un programador de JavaScript.
