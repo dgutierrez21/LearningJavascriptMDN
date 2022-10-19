@@ -386,3 +386,42 @@ console.log(cafes); // (3) ["Americano", "Expresso", "Cappuccino"]
 // Si se crea una matriz utilizando un literal en un script de nivel superior, JavaScript interpreta la matriz cada vez que evalúa la expresión que contiene el literal de la matriz. Además, un literal utilizado en una función se crea cada vez que se llama a la función.
 
 // Nota: Los literales de matriz crean objetos de matriz. Consulte Array y colecciones indexadas para obtener más información sobre los objetos Array.
+
+// Comas adicionales en literales de matrices #00aae4
+// Si pones dos comas seguidas en un literal de matriz, la matriz deja un espacio vacío para el elemento no especificado. El siguiente ejemplo crea el array fish:
+
+const pescado = ["león", , "Angel"];
+
+// Cuando registre esta matriz, verá:
+
+console.log(pescado); // (3)[("león", empty, "Angel")];
+
+// Tenga en cuenta que el segundo elemento es "vacío", que no es exactamente lo mismo que el valor indefinido real. Cuando se utilizan métodos de recorrido de arrays como Array.prototype.map, se omiten los espacios vacíos. Sin embargo, el acceso al índice pescado[1] sigue devolviendo undefined.
+
+// Si se incluye una coma al final de la lista de elementos, la coma se ignora.
+
+// En el siguiente ejemplo, la longitud de la matriz es tres. No existe miLista[3]. Todas las demás comas en la lista indican un nuevo elemento.
+
+const miLista = ["Casa", , "Escuela"];
+
+console.log(miLista); // (3) ['Casa', empty, 'Escuela']
+
+// En el siguiente ejemplo, la longitud del array es cuatro, y faltan miLista[0] y miLista[2].
+
+const miLista2 = [, "casa", , "escuela"];
+
+// En el siguiente ejemplo, la longitud de la matriz es cuatro, y faltan miLista[1] y miLista[3]. Sólo se ignora la última coma.
+
+const miLista3 = ["casa", , "escuela", ,];
+
+// Nota: Las comas al final ayudan a mantener limpios los diffs de git cuando tienes un array de varias líneas, porque añadir un elemento al final sólo añade una línea, pero no modifica la línea anterior.
+
+const miLista4 = ["casa", "escuela" + "hospital"];
+
+// Comprender el comportamiento de las comas extra es importante para entender JavaScript como lenguaje.
+
+// Sin embargo, cuando escriba su propio código, debe declarar explícitamente los elementos que faltan como indefinidos, o al menos insertar un comentario para resaltar su ausencia. Hacer esto aumenta la claridad y la capacidad de mantenimiento de su código.
+
+const miLista5 = ["casa" /* empty */, , "escuela" /* empty */, ,];
+
+console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
