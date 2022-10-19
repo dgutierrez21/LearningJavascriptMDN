@@ -246,3 +246,10 @@ baz();
 var baz = function () {
   console.log("bar2");
 };
+
+// Variables globales #00aae4
+// Las variables globales son, de hecho, propiedades del objeto global.
+
+// En las páginas web, el objeto global es la ventana, por lo que puedes establecer y acceder a las variables globales utilizando la sintaxis window.variable.
+
+// En consecuencia, puedes acceder a las variables globales declaradas en una ventana o marco desde otra ventana o marco especificando el nombre de la ventana o marco. Por ejemplo, si en un documento se declara una variable llamada número de teléfono, puedes referirte a esta variable desde un iframe como parent.phoneNumber.
