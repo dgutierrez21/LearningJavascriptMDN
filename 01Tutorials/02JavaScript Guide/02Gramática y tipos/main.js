@@ -425,3 +425,11 @@ const miLista4 = ["casa", "escuela" + "hospital"];
 const miLista5 = ["casa" /* empty */, , "escuela" /* empty */, ,];
 
 console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
+
+// Literales booleanos #00aae4
+// El tipo booleano tiene dos valores literales: verdadero y falso.
+
+// Nota: No confunda los valores booleanos primitivos true y false con los valores true y false del objeto booleano.
+
+// El objeto booleano es una envoltura del tipo de datos booleano primitivo. Vea Boolean para más información.
+
