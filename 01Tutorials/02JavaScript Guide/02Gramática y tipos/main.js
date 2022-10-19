@@ -480,3 +480,56 @@ console.log(miLista5); // (4) ['casa', empty, 'escuela', empty]
 // .123456789
 // 3.1E+12
 // .1e-23
+
+// Literales de objeto #00aae4
+// Un literal de objeto es una lista de cero o más pares de nombres de propiedades y valores asociados de un objeto, encerrados entre llaves ({}).
+
+// Advertencia: No utilice un literal de objeto al principio de una sentencia. Esto conducirá a un error (o no se comportará como usted espera), porque el { será interpretado como el comienzo de un bloque. #FF0000
+
+// El siguiente es un ejemplo de un literal de objeto. El primer elemento del objeto coche define una propiedad, myCar, y le asigna una nueva cadena, "Saturn"; al segundo elemento, la propiedad getCar, se le asigna inmediatamente el resultado de la invocación de la función (carTypes("Honda")); el tercer elemento, la propiedad special, utiliza una variable existente (sales).
+
+const ventas = "Toyota";
+
+function tiposCarros(nombre) {
+  return nombre === "Honda" ? nombre : `Lo siento, no vendemos ${nombre}`;
+}
+
+const carro = {
+  miCarro: "Saturno",
+  conseguirCarro: tiposCarros("Honda"),
+  especial: ventas,
+};
+
+console.log(carro.miCarro); // Saturno
+console.log(carro.conseguirCarro); // Honda
+console.log(carro.especial); // Toyota
+
+// Además, puede utilizar un literal numérico o de cadena para el nombre de una propiedad o anidar un objeto dentro de otro. El siguiente ejemplo utiliza estas opciones.
+
+const carro2 = {
+  muchosCarros: {
+    a: "Saab",
+    b: "Jeep",
+  },
+  7: "Mazda",
+};
+
+console.log(carro2.muchosCarros.b); // Jeep
+console.log(carro2[7]); // Mazda
+
+// Los nombres de las propiedades de los objetos pueden ser cualquier cadena, incluida la cadena vacía. Si el nombre de la propiedad no es un identificador o número válido de JavaScript, debe ir entre comillas.
+
+// Los nombres de propiedades que no son identificadores válidos no pueden ser accedidos como una propiedad de punto (.).
+
+const nombresDePropiedadesInusuales = {
+  "": "Una cadena vacía",
+  "!": "Bang!",
+};
+
+console.log(nombresDePropiedadesInusuales.""); // SyntaxError: Unexpected string
+console.log(nombresDePropiedadesInusuales.!); // SyntaxError: Unexpected token 
+
+// En su lugar, se debe acceder a ellos con la notación de corchetes ([]).
+
+console.log(nombresDePropiedadesInusuales[""]); // Una cadena vacia
+console.log(nombresDePropiedadesInusuales["!"]); //  Bang!
