@@ -329,3 +329,17 @@ respuesta = "Gracias por todo el pescado";
 console.log(respuesta); // Gracias por todo el pescado
 
 // Dado que JavaScript es de tipificación dinámica, esta asignación no provoca un mensaje de error.
+
+// Números y el operador " + " #00aae4
+// En las expresiones que incluyen valores numéricos y de cadena con el operador +, JavaScript convierte los valores numéricos en cadenas. Por ejemplo, considere las siguientes declaraciones:
+
+let x5 = "La respuesta es " + 40; // "La respuesta es 40"
+
+let y5 = 40 + "es la respuesta:"; // "40 es la respuesta"
+
+let z = "40" + 7; // "407"
+
+// Con todos los demás operadores, JavaScript no convierte los valores numéricos en cadenas. Por ejemplo:
+
+console.log("37" - 7); // 30
+console.log("10" * 2); // 20
