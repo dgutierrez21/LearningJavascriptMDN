@@ -533,3 +533,21 @@ console.log(nombresDePropiedadesInusuales.!); // SyntaxError: Unexpected token
 
 console.log(nombresDePropiedadesInusuales[""]); // Una cadena vacia
 console.log(nombresDePropiedadesInusuales["!"]); //  Bang!
+
+// Literales de objeto mejorados #00aae4
+// Los literales de objeto admiten una serie de sintaxis abreviadas que incluyen la fijación del prototipo en la construcción, la abreviación de las asignaciones foo: foo, la definición de métodos, la realización de superllamadas y el cálculo de los nombres de las propiedades con expresiones.
+
+// En conjunto, estas sintaxis acercan las declaraciones de objetos a las declaraciones de clases y permiten que el diseño basado en objetos se beneficie de algunas de las mismas ventajas.
+
+const obj = {
+  __proto__: theProtoObj,
+    // Abreviatura de 'handler: handler'
+    handler,
+    // metodos
+    toString() {
+      // super llamadas
+      return "d " + super.toString();
+    },
+      // Nombres de propiedades computados (dinámicos)
+      ["prop_" + (() => 42)()]: 42,
+}
