@@ -551,3 +551,8 @@ const obj = {
       // Nombres de propiedades computados (dinámicos)
       ["prop_" + (() => 42)()]: 42,
 }
+
+// Literales RegExp #00aae4
+// Un literal regex (que se define en detalle más adelante) es un patrón encerrado entre barras. El siguiente es un ejemplo de un literal regex.
+
+const re = /ab+c/;
