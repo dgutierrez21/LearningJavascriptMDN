@@ -556,3 +556,92 @@ const obj = {
 // Un literal regex (que se define en detalle más adelante) es un patrón encerrado entre barras. El siguiente es un ejemplo de un literal regex.
 
 const re = /ab+c/;
+
+// Literales de cadena #00aae4
+// Un literal de cadena son cero o más caracteres encerrados entre comillas dobles (") o simples ('). Una cadena debe estar delimitada por comillas del mismo tipo (es decir, tanto comillas simples como comillas dobles).
+
+// Los siguientes son ejemplos de literales de cadena:
+
+console.log('foo');
+console.log("bar");
+console.log('1234');
+console.log('una linea \n en otra linea');
+console.log("Jhon's cat");
+
+// Debe usar literales de cadena a menos que necesite específicamente usar un objeto String. Vea String para más detalles sobre los objetos String.
+
+// Puede llamar a cualquiera de los métodos del objeto String sobre un valor literal de cadena. JavaScript convierte automáticamente el literal de cadena en un objeto String temporal, llama al método y luego descarta el objeto String temporal. También se puede utilizar la propiedad length con un literal de cadena:
+
+// Imprimirá el número de símbolos en la cadena incluyendo los espacios en blanco.
+
+console.log("John's cat".length); // en este caso es 10
+
+// También hay literales de plantilla. Los literales de las plantillas se encierran con el carácter de la palomita (`) (acento grave) en lugar de las comillas dobles o simples.
+
+// Los literales de plantilla proporcionan azúcar sintáctico para la construcción de cadenas. (Esto es similar a las características de interpolación de cadenas en Perl, Python y otros).
+
+// Creación de cadenas literales básicas
+console.log(`En JavaScript '\n' es un salto de línea.`);
+
+// Cadenas multilíneas
+console.log(`En JavaScript, las cadenas de plantilla pueden recorrer
+ en varias líneas, pero las cadenas con comillas dobles y simples no pueden.`);
+
+// Interpolación de cadenas
+const nombre = "Bob", tiempo = "hoy";
+console.log(`Hola ${nombre}, ¿cómo estás el día de ${tiempo}?`);
+
+// Las plantillas etiquetadas son una sintaxis compacta para especificar un literal de plantilla junto con una llamada a una función "tag" para analizarlo. Una plantilla etiquetada es simplemente una forma más sucinta y semántica de invocar una función que procesa una cadena y un conjunto de valores relevantes. El nombre de la función de etiqueta de la plantilla precede al literal de la plantilla - como en el siguiente ejemplo, donde la función de etiqueta de la plantilla se llama print. La función print interpolará los argumentos y serializará cualquier objeto o matriz que pueda aparecer, evitando el molesto [objeto Object].
+
+const formatoArg = (arg) => {
+  if (Array.isArray(arg)) {
+        // Imprimir una lista con viñetas
+
+        return arg.map((parte) => `- ${parte}`).join("\n");
+  }
+
+  if (arg.toString === Object.prototype.toString) {
+      // Este objeto será serializado a "[objeto objeto]".
+    // Vamos a imprimir algo más bonito.
+
+    return JSON.stringify(arg);
+  }
+
+  return arg;
+}
+
+const print = (segmentos, ...args) => {
+    // Para cualquier literal de plantilla bien formado, siempre habrá N argumentos y
+  // (N+1) segmentos de cadena.
+
+  let mensaje = segmentos[0];
+  segmentos.slice(1).forEach((segmento, index) => {
+    mensaje += formatoArg(args[index]) + segmento;
+  });
+
+  console.log(mensaje);
+}
+
+const todos = [
+    "Aprender JavaScript",
+  "Aprender las APIs de la web",
+  "Montar mi sitio web",
+  "¡Ganar!",
+]
+
+const progreso = {javascript: 20,html: 50,css: 10}
+
+print`Tengo que hacer:
+${todos}
+Mi progreso actual es: ${progreso}
+`;
+
+// Dado que los literales de plantilla etiquetados son sólo azúcar de las llamadas de función, puede reescribir lo anterior como una llamada de función equivalente:
+
+print(["Tengo que hacer:\n", "\nMi progreso actual es: ", "\n"], todos, progreso);
+
+// Esto puede recordar a la interpolación del estilo console.log:
+
+console.log("Tengo que hacer:\n%o\nMi progreso actual es: %o\n", todos, progreso);
+
+// Puede ver cómo la plantilla etiquetada se lee de forma más natural que una función "formateadora" tradicional, en la que las variables y la propia plantilla tienen que declararse por separado.
