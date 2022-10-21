@@ -668,3 +668,27 @@ console.log("Una linea \n Otra linea");
 // \xXX El carácter con la codificación Latin-1 especificado por los dos dígitos hexadecimales XX entre 00 y FF. Por ejemplo, \xA9 es la secuencia hexadecimal para el símbolo de copyright.
 // \uXXXX El carácter Unicode especificado por los cuatro dígitos hexadecimales XXXX. Por ejemplo, \u00A9 es la secuencia Unicode para el símbolo de copyright. Consulte las secuencias de escape de Unicode.
 // \u{XXXXX} Escapes de puntos de código Unicode. Por ejemplo, \u{2F804} es lo mismo que los escapes Unicode simples \uD87E\uDC04.
+
+// Escapar caracteres #00aae4
+// En el caso de los caracteres que no aparecen en la tabla, se ignora la barra invertida que los precede, pero este uso está obsoleto y debe evitarse.
+
+// Puede insertar una comilla dentro de una cadena precediéndola de una barra invertida. Esto se conoce como escape de la comilla. Por ejemplo:
+
+const nota = "Esta es una \"nota\"";
+
+console.log(nota); // Esta es una "nota" 
+
+// Para incluir una barra invertida literal dentro de una cadena, debe escapar el carácter de la barra invertida. Por ejemplo, para asignar la ruta del archivo c:\temp a una cadena, utilice lo siguiente:
+
+const ruta = "c:\\temp";
+
+console.log(ruta); // c:\temp 
+
+// También puede escapar de los saltos de línea precediéndolos de una barra invertida. Tanto la barra invertida como el salto de línea se eliminan del valor de la cadena.
+
+const cadena = "Esta cadena \
+se rompe \
+en varias \
+lineas."
+
+console.log(cadena); // Esta cadena se rompe en varias lineas.
