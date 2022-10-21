@@ -645,3 +645,26 @@ print(["Tengo que hacer:\n", "\nMi progreso actual es: ", "\n"], todos, progreso
 console.log("Tengo que hacer:\n%o\nMi progreso actual es: %o\n", todos, progreso);
 
 // Puede ver cómo la plantilla etiquetada se lee de forma más natural que una función "formateadora" tradicional, en la que las variables y la propia plantilla tienen que declararse por separado.
+
+// Uso de caracteres especiales en las cadenas #00aae4
+// Además de los caracteres ordinarios, también puede incluir caracteres especiales en las cadenas, como se muestra en el siguiente ejemplo.
+
+console.log("Una linea \n Otra linea");
+
+// La siguiente tabla enumera los caracteres especiales que se pueden utilizar en las cadenas de JavaScript.
+
+// Carácter Significado
+// \0 Byte nulo
+// \b Retroceso
+// \f Alimentación de formularios
+// \n Nueva línea
+// \r Retorno de carro
+// \t Tabulador
+// \v Tabulador vertical
+// \' Apóstrofe o comilla simple
+// \"	Comillas dobles
+// \\ Carácter de barra invertida
+// \XXX El carácter con la codificación Latin-1 especificado por hasta tres dígitos octales XXX entre 0 y 377. Por ejemplo, \251 es la secuencia octal para el símbolo de copyright.
+// \xXX El carácter con la codificación Latin-1 especificado por los dos dígitos hexadecimales XX entre 00 y FF. Por ejemplo, \xA9 es la secuencia hexadecimal para el símbolo de copyright.
+// \uXXXX El carácter Unicode especificado por los cuatro dígitos hexadecimales XXXX. Por ejemplo, \u00A9 es la secuencia Unicode para el símbolo de copyright. Consulte las secuencias de escape de Unicode.
+// \u{XXXXX} Escapes de puntos de código Unicode. Por ejemplo, \u{2F804} es lo mismo que los escapes Unicode simples \uD87E\uDC04.
