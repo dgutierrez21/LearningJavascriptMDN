@@ -61,7 +61,10 @@ function cuantos(seleccionarObjeto) {
   return numeroSeleccionado;
 }
 
-const btn = addEventListener("click", () => {
+const btn = document.querySelector(".ejemplo1 button");
+
+btn.addEventListener("click", () => {
   const tiposMusica = document.querySelector("#tiposMusica");
+  console.log(tiposMusica);
   console.log(`Has seleccionado ${cuantos(tiposMusica)} opción(es).`);
 });
