@@ -346,3 +346,26 @@ function f() {
 }
 
 console.log(f()); // 0, 1, 3, false
+
+// La sobreescritura de los valores de retorno por el bloque finally también se aplica a las excepciones lanzadas o relanzadas dentro del bloque catch:
+
+function f2() {
+  try {
+    throw "Bogus";
+  } catch (error) {
+    console.log('atrapado interiormente "falso"');
+    throw error; // esta sentencia throw se suspende hasta que se haya completado el bloque finally
+  } finally {
+    return false; // sobrescribe el "lanzamiento" anterior
+  }
+  // Ahora se ejecuta "return false"
+}
+
+try {
+  console.log(f2());
+  // ¡esto nunca se alcanza!
+  // mientras f() se ejecuta, el bloque `finally` devuelve false,
+  // lo que sobrescribe el `throw` dentro del `catch` anterior
+} catch (error) {
+  console.log('atrapado en el exterior "falso"');
+}
