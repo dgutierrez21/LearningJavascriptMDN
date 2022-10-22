@@ -189,3 +189,160 @@ switch (tipoDeFruta) {
 }
 
 console.log("¿Hay algo más que desee?");
+
+// Declaraciones de manejo de excepciones #008000
+// Puedes lanzar excepciones usando la sentencia throw y manejarlas usando las sentencias try...catch.
+
+// sentencia throw
+
+// sentencia try...catch
+
+// Tipos de excepción #00aae4
+// En JavaScript se puede lanzar casi cualquier objeto. Sin embargo, no todos los objetos lanzados son iguales. Aunque es común lanzar números o cadenas como errores, a menudo es más efectivo utilizar uno de los tipos de excepción creados específicamente para este propósito:
+
+// ---Las excepciones de ECMAScript
+
+// ---DOMException y DOMError
+
+// sentencia throw #00aae4
+
+// Utilice la sentencia throw para lanzar una excepción. Una sentencia throw especifica el valor a lanzar:
+
+// throw expression;
+
+// Puede lanzar cualquier expresión, no sólo expresiones de un tipo específico. El siguiente código lanza varias excepciones de diferentes tipos:
+
+// throw "Error2"; // tipo cadena
+
+// throw 42; // tipo numero
+
+// throw true; //tipo bo0leano
+
+// throw {
+//   toString() {
+//     return "Soy un objeto";
+//   },
+// };
+
+// Sentencia try...catch #00aae4
+// La sentencia try...catch marca un bloque de sentencias a probar, y especifica una o más respuestas en caso de que se lance una excepción. Si se lanza una excepción, la sentencia try...catch la atrapa.
+
+// La sentencia try...catch consiste en un bloque try, que contiene una o más sentencias, y un bloque catch, que contiene sentencias que especifican qué hacer si se lanza una excepción en el bloque try.
+
+// En otras palabras, quieres que el bloque try tenga éxito, pero si no lo tiene, quieres que el control pase al bloque catch. Si cualquier sentencia dentro del bloque try (o en una función llamada desde el bloque try) lanza una excepción, el control pasa inmediatamente al bloque catch. Si no se lanza ninguna excepción en el bloque try, se salta el bloque catch. El bloque finally se ejecuta después de la ejecución de los bloques try y catch, pero antes de las sentencias que siguen a la sentencia try...catch.
+
+// El siguiente ejemplo utiliza una sentencia try...catch. El ejemplo llama a una función que recupera un nombre de mes de una matriz basada en el valor pasado a la función. Si el valor no se corresponde con un número de mes (1-12), se lanza una excepción con el valor 'InvalidMonthNo' y las sentencias del bloque catch establecen la variable monthName como 'unknown'.
+
+function conseguirNombreMes(mo) {
+  mo--; // Ajustar el número de mes para el índice de la matriz (de modo que 0 = enero, 11 = diciembre)
+
+  const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+
+  if (meses[mo]) {
+    return meses[mo];
+  } else {
+    throw new Error("MesInvalido"); //  aquí se utiliza la palabra clave throw
+  }
+}
+
+function registrarMiError(err) {
+  console.error(err);
+}
+
+const miMes = 14;
+
+let nombreMes;
+
+try {
+  //  declaraciones para try
+  nombreMes = conseguirNombreMes(miMes); // la función podría lanzar una excepción
+
+  console.log(`El mes de su cumpleaños es ${nombreMes}`);
+} catch (e) {
+  nombreMes = "desconocido";
+
+  registrarMiError(e); // pasar el objeto de excepción al manejador de errores (es decir, su propia función)
+  console.log(`El mes de su cumpleaños es ${nombreMes}`);
+}
+
+// El bloque catch #00aae4
+// Puedes utilizar un bloque catch para manejar todas las excepciones que se generen en el bloque try.
+
+// catch (catchID) {
+//   declaraciones
+// }
+
+// El bloque catch especifica un identificador (catchID en la sintaxis anterior) que contiene el valor especificado por la sentencia throw. Puedes utilizar este identificador para obtener información sobre la excepción lanzada.
+
+// JavaScript crea este identificador cuando se introduce el bloque catch. El identificador dura sólo la duración del bloque catch. Una vez que el bloque catch termina de ejecutarse, el identificador deja de existir.
+
+// Por ejemplo, el siguiente código lanza una excepción. Cuando se produce la excepción, el control se transfiere al bloque catch.
+
+function registrarMiError2(e) {
+  console.error(e);
+}
+
+try {
+  throw "miExcepción"; // generates an exception
+} catch (err) {
+  // declaraciones para manejar cualquier excepción
+  registrarMiError2(err); // pasar el objeto de excepción al manejador de errores
+}
+
+// Nota: Cuando se registran errores en la consola dentro de un bloque catch, se recomienda utilizar console.error() en lugar de console.log() para la depuración. Este formatea el mensaje como un error, y lo añade a la lista de mensajes de error generados por la página.
+
+// El bloque finally #00aae4
+// El bloque finally contiene sentencias que se ejecutan después de la ejecución de los bloques try y catch. Además, el bloque finally se ejecuta antes del código que sigue a la sentencia try...catch...finally.
+
+// También es importante tener en cuenta que el bloque finally se ejecutará tanto si se lanza una excepción como si no. Sin embargo, si se lanza una excepción, las sentencias del bloque finally se ejecutan incluso si ningún bloque catch maneja la excepción lanzada.
+
+// Puedes usar el bloque finally para hacer que tu script falle con gracia cuando se produce una excepción. Por ejemplo, puedes necesitar liberar un recurso que tu script ha atado.
+
+// El siguiente ejemplo abre un archivo y luego ejecuta sentencias que utilizan el archivo. (Si se lanza una excepción mientras el archivo está abierto, el bloque finally cierra el archivo antes de que el script falle. El uso de finally aquí asegura que el archivo nunca se deja abierto, incluso si se produce un error.
+
+/*
+
+openMyFile();
+try {
+  writeMyFile(theData); // Esto puede arrojar un error
+} catch (e) {
+  handleError(e); // Si se produce un error, se gestiona
+} finally {
+  closeMyFile(); // Cerrar siempre el recurso
+}
+
+*/
+
+// Si el bloque finally devuelve un valor, este valor se convierte en el valor de retorno de toda la producción try...catch...finally, independientemente de cualquier sentencia return en los bloques try y catch:
+
+function f() {
+  try {
+    console.log(0);
+    throw "Bogus";
+  } catch (error) {
+    console.log(1);
+    return true; // esta declaración de retorno se suspende hasta que se complete el bloque finally
+    console.log(2); // no localizable
+  } finally {
+    console.log(3);
+    return false; // sobrescribe el anterior "return"
+    console.log(4); // no localizable
+  }
+  // Ahora se ejecuta "return false"
+  console.log(5); // no localizable
+}
+
+console.log(f()); // 0, 1, 3, false
