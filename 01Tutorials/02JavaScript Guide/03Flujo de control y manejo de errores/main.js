@@ -369,3 +369,13 @@ try {
 } catch (error) {
   console.log('atrapado en el exterior "falso"');
 }
+
+// Anidación de sentencias try...catch #00aae4
+// Puede anidar una o más sentencias try...catch.
+
+// Si un bloque try interno no tiene un bloque catch correspondiente
+
+// 1. debe contener un bloque finally, y
+// 2. el bloque catch de la sentencia try...catch adjunta se comprueba para ver si coincide.
+
+// Para más información, véase bloques try anidados en la página de referencia de try...catch.
