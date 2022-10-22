@@ -379,3 +379,28 @@ try {
 // 2. el bloque catch de la sentencia try...catch adjunta se comprueba para ver si coincide.
 
 // Para más información, véase bloques try anidados en la página de referencia de try...catch.
+
+// Utilización de objetos de error #00aae4
+// Dependiendo del tipo de error, puede utilizar las propiedades name y message para obtener un mensaje más refinado.
+
+// La propiedad name proporciona la clase general de Error (como DOMException o Error), mientras que message generalmente proporciona un mensaje más sucinto que el que se obtendría convirtiendo el objeto de error en una cadena.
+
+// Si está lanzando sus propias excepciones, para aprovechar estas propiedades (como si su bloque catch no discrimina entre sus propias excepciones y las del sistema), puede utilizar el constructor Error.
+
+// Por ejemplo:
+
+function hacerAlgoPropensoAErrores() {
+  if (nuestroCódigoHaceUnError()) {
+    throw new Error("El mensaje");
+  } else {
+    hacerAlgoParaObtenerUnErrorDeJavascript();
+  }
+}
+
+try {
+  hacerAlgoPropensoAErrores();
+} catch (e) {
+  // Ahora, en realidad usamos `console.error()
+  console.error(e.name); // registro de "error"
+  console.error(e.message); // registra "El mensaje", o un mensaje de error de JavaScript
+}
