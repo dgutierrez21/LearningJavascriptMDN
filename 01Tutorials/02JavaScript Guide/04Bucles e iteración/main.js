@@ -216,3 +216,59 @@ etiquetaCancelarBucles: while (true) {
     }
   }
 }
+
+// sentencia continue #008000
+// La sentencia continue puede utilizarse para reiniciar una sentencia while, do-while, for o label.
+
+// Cuando se utiliza continue sin una etiqueta, termina la iteración actual de la sentencia while, do-while o for más interna y continúa la ejecución del bucle con la siguiente iteración. A diferencia de la sentencia break, continue no termina la ejecución del bucle por completo. En un bucle while, salta de nuevo a la condición. En un bucle for, salta a la expresión de incremento.
+// Cuando se utiliza continue con una etiqueta, se aplica a la sentencia de bucle identificada con esa etiqueta.
+// La sintaxis de la sentencia continue es la siguiente
+
+// continue;
+// continue label;
+
+// Ejemplo 1
+// El siguiente ejemplo muestra un bucle while con una sentencia continue que se ejecuta cuando el valor de i es 3. Así, n toma los valores 1, 3, 7 y 12.
+
+let i = 0,
+  h = 0;
+
+while (i < 5) {
+  i++;
+
+  if (i === 3) {
+    continue;
+  }
+
+  h += i;
+  console.log(h); // //1,3,7,12
+}
+
+// Si comentas el continue;, el bucle se ejecutaría hasta el final y verías 1,3,6,10,15.
+
+// Ejemplo 2
+// Una sentencia etiquetada como comprobardyj contiene una sentencia etiquetada como comprobarj. Si se encuentra continue, el programa termina la iteración actual de comprobarj y comienza la siguiente iteración. Cada vez que se encuentra continue, comprobarj se reitera hasta que su condición devuelva false. Cuando se devuelve false, el resto de la sentencia comprobardyj se completa, y comprobardyj se reitera hasta que su condición devuelva false. Cuando se devuelve false, el programa continúa en la sentencia que sigue a comprobardyj.
+
+// Si continue tuviera la etiqueta comprobardyj, el programa continuaría en la parte superior de la sentencia comprobardyj.
+
+let d = 0,
+  j = 10;
+
+comprobardyj: while (d < 4) {
+  console.log(d);
+  d += 1;
+
+  comprobarj: while (j > 4) {
+    console.log(j);
+    j -= 1;
+
+    if (j % 2 === 0) {
+      continue comprobarj;
+    }
+
+    console.log(j, " es extraño.");
+  }
+
+  console.log("d = ", d);
+  console.log("j = ", j);
+}
