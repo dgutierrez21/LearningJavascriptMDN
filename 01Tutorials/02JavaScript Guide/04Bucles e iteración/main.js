@@ -146,3 +146,25 @@ while (true) {
 }
 
 */
+
+// sentencia labeled #008000
+// Una etiqueta proporciona a una sentencia un identificador que le permite referirse a ella en otra parte de su programa. Por ejemplo, puede utilizar una etiqueta para identificar un bucle, y luego utilizar las sentencias break o continue para indicar si el programa debe interrumpir el bucle o continuar su ejecución.
+
+// La sintaxis de la sentencia label tiene el siguiente aspecto
+
+// label:
+//   sentencia
+
+// El valor de label puede ser cualquier identificador de JavaScript que no sea una palabra reservada. La sentencia que se identifica con una etiqueta puede ser cualquier sentencia.
+
+// Ejemplo
+// En este ejemplo, la etiqueta markLoop identifica un bucle while.
+
+/*
+
+markLoop:
+while (theMark) {
+  doSomething();
+}
+
+*/
