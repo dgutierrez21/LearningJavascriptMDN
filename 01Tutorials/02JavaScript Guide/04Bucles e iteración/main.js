@@ -99,3 +99,50 @@ let z2 = 10;
 do {
   console.log(z2);
 } while (z2 < 5);
+
+// sentencia while #008000
+// Una sentencia while ejecuta sus sentencias mientras una condición especificada se evalúe como verdadera. Una sentencia while tiene el siguiente aspecto
+
+// while (condición)
+//   sentencia
+
+// Si la condición se vuelve falsa, la sentencia dentro del bucle deja de ejecutarse y el control pasa a la sentencia que sigue al bucle.
+
+// La prueba de la condición ocurre antes de que se ejecute la sentencia en el bucle. Si la condición vuelve a ser verdadera, la sentencia se ejecuta y la condición se comprueba de nuevo. Si la condición es falsa, la ejecución se detiene y el control pasa a la sentencia que sigue al while.
+
+// Para ejecutar varias sentencias, utilice una sentencia de bloque ({ }) para agruparlas.
+
+// Ejemplo 1
+// El siguiente bucle while itera mientras n sea menor que 3:
+
+let n = 0,
+  x2 = 0;
+
+while (n < 3) {
+  n++;
+
+  console.log(`${n} + ${x2} = ${n + x2}`);
+  x2 += n;
+}
+
+console.log(`El resultado es: ${x2}`);
+
+// En cada iteración, el bucle incrementa n y añade ese valor a x. Por tanto, x y n toman los siguientes valores:
+
+// Después de la primera pasada: n = 1 y x = 1
+// Después de la segunda pasada: n = 2 y x = 3
+// Después de la tercera pasada: n = 3 y x = 6
+// Después de completar la tercera pasada, la condición n < 3 ya no es verdadera, por lo que el bucle termina.
+
+// Ejemplo 2
+
+// Evite los bucles infinitos. Asegúrate de que la condición de un bucle se convierta en falsa, de lo contrario, el bucle nunca terminará. Las sentencias en el siguiente bucle while se ejecutan para siempre porque la condición nunca se vuelve falsa:
+
+/*
+
+// ¡Los bucles infinitos son malos!
+while (true) {
+  console.log('Hello, world!');
+}
+
+*/
