@@ -168,3 +168,51 @@ while (theMark) {
 }
 
 */
+
+// sentencia break #008000
+// Utilice la sentencia break para terminar un bucle, un switch o junto con una sentencia labeled.
+
+// Cuando se utiliza break sin una etiqueta, termina el bucle while, do-while, for o switch más interno inmediatamente y transfiere el control a la siguiente sentencia.
+// Cuando se utiliza break con una etiqueta, termina la sentencia etiquetada especificada.
+// La sintaxis de la sentencia break es la siguiente
+
+// break;
+// break label;
+
+// La primera forma de la sintaxis termina el bucle o conmutador más interno.
+
+// La segunda forma de la sintaxis termina la sentencia etiquetada adjunta especificada.
+
+// Ejemplo 1
+// El siguiente ejemplo itera a través de los elementos de un array hasta encontrar el índice de un elemento cuyo valor es theValue:
+
+const array = ["234", 45, "ElValor", "Pollo"];
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] === "ElValor") {
+    break;
+  }
+  console.log(array[i]);
+}
+
+// Ejemplo 2: Romper con una etiqueta(label)
+
+let x3 = 0;
+let z3 = 0;
+
+etiquetaCancelarBucles: while (true) {
+  console.log(`Otro bucle: `, x3);
+  x3 += 1;
+  z3 = 1;
+
+  while (true) {
+    console.log(`bucle interior: `, z3);
+    z3 += 1;
+
+    if (z3 === 10 && x3 === 10) {
+      break etiquetaCancelarBucles;
+    } else if (z3 === 10) {
+      break;
+    }
+  }
+}
