@@ -68,3 +68,34 @@ btn.addEventListener("click", () => {
   console.log(tiposMusica);
   console.log(`Has seleccionado ${cuantos(tiposMusica)} opción(es).`);
 });
+
+// Sentencia do...while #008000
+// La sentencia do...while se repite hasta que una condición especificada se evalúa como falsa.
+
+// Una sentencia do...while tiene el siguiente aspecto:
+
+// do
+//   declaración
+// while (condición);
+
+// La sentencia do siempre se ejecuta una vez antes de comprobar la condición. (Para ejecutar varias sentencias, utilice una sentencia de bloque ({ }) para agruparlas).
+
+// Si la condición es verdadera, la sentencia se ejecuta de nuevo. Al final de cada ejecución, se comprueba la condición. Cuando la condición es falsa, la ejecución se detiene y el control pasa a la sentencia siguiente a do...while.
+
+// Ejemplo
+// En el siguiente ejemplo, el bucle do itera al menos una vez y se reitera hasta que i ya no es menor que 5.
+
+let z = 0;
+
+do {
+  z += 1;
+  console.log(z);
+} while (z < 5);
+
+// ejemplo 2
+
+let z2 = 10;
+
+do {
+  console.log(z2);
+} while (z2 < 5);
