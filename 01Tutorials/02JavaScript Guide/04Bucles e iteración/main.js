@@ -272,3 +272,40 @@ comprobardyj: while (d < 4) {
   console.log("d = ", d);
   console.log("j = ", j);
 }
+
+// Sentencia for...in #008000
+// La sentencia for...in itera una variable especificada sobre todas las propiedades enumerables de un objeto. Para cada propiedad distinta, JavaScript ejecuta las sentencias especificadas. Una sentencia for...in tiene el siguiente aspecto
+
+// for (variable in objeto)
+//   sentencia
+
+// Ejemplo
+// La siguiente función toma como argumento un objeto y su nombre. A continuación, itera sobre todas las propiedades del objeto y devuelve una cadena que enumera los nombres de las propiedades y sus valores.
+
+const persona = {
+  nombre: "Jhon",
+  apellido: "Smith",
+  edad: 34,
+};
+
+function dumpProps(obj, nombreObj) {
+  let resultado;
+
+  for (const i in obj) {
+    resultado = `${nombreObj}.${i} = ${obj[i]}`;
+    console.log(resultado);
+  }
+}
+
+dumpProps(persona, "persona");
+
+// Resultado
+
+// persona.nombre = Jhon
+// main.js:296 persona.apellido = Smith
+// main.js:296 persona.edad = 34
+
+// Arrays #00aae4
+// Aunque puede ser tentador usar esto como una forma de iterar sobre los elementos del Array, la sentencia for...in devolverá el nombre de sus propiedades definidas por el usuario además de los índices numéricos.
+
+// Por lo tanto, es mejor utilizar un bucle for tradicional con un índice numérico cuando se itera sobre arrays, porque la sentencia for...in itera sobre las propiedades definidas por el usuario además de los elementos del array, si se modifica el objeto Array (como añadir propiedades o métodos personalizados).
