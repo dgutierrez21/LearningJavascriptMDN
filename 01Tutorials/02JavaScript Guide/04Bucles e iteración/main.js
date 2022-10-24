@@ -309,3 +309,33 @@ dumpProps(persona, "persona");
 // Aunque puede ser tentador usar esto como una forma de iterar sobre los elementos del Array, la sentencia for...in devolverá el nombre de sus propiedades definidas por el usuario además de los índices numéricos.
 
 // Por lo tanto, es mejor utilizar un bucle for tradicional con un índice numérico cuando se itera sobre arrays, porque la sentencia for...in itera sobre las propiedades definidas por el usuario además de los elementos del array, si se modifica el objeto Array (como añadir propiedades o métodos personalizados).
+
+// Sentencia for...of #008000
+// La sentencia for...of crea un bucle que itera sobre objetos iterables (incluyendo Array, Map, Set, objeto de argumentos, etc.), invocando un gancho de iteración personalizado con sentencias a ejecutar para el valor de cada propiedad distinta.
+
+// for (variable of objeto)
+//   sentencia
+
+// El siguiente ejemplo muestra la diferencia entre un bucle for...of y un bucle for...in. Mientras que for...in itera sobre los nombres de las propiedades, for...of itera sobre los valores de las propiedades: #FF0000
+
+const numeros = [3, 7, 13];
+
+let misNumeros = "| ";
+
+for (const numero of numeros) {
+  misNumeros += numero + " | ";
+  console.log(numero);
+}
+
+console.log(misNumeros);
+
+console.log("*****************");
+
+let indiceNumeros = "| ";
+
+for (const numero in numeros) {
+  indiceNumeros += numero + " | ";
+  console.log(numero);
+}
+
+console.log(indiceNumeros);
