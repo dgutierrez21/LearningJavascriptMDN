@@ -66,3 +66,62 @@ console.log(array[1]); // 65;
 miFuncion2(array);
 
 console.log(array[1]); // 30
+
+// Expresiones de función #008000
+// Mientras que la declaración de función anterior es sintácticamente una declaración, las funciones también pueden crearse mediante una expresión de función.
+
+// Una función de este tipo puede ser anónima; no es necesario que tenga un nombre. Por ejemplo, la función cuadrado podría haberse definido como
+
+const ExCuadrado = function (numero) {
+  return numero * numero;
+};
+
+const x2 = ExCuadrado(10);
+
+console.log(x2); // 100
+
+// Sin embargo, se puede proporcionar un nombre con una expresión de función. Proporcionar un nombre permite que la función se refiera a sí misma, y también hace más fácil identificar la función en las trazas de pila de un depurador:
+
+const factorial = function fac(num) {
+  return num < 2 ? 1 : num * fac(num - 1);
+};
+
+console.log(factorial(5));
+
+// Las expresiones de función son convenientes cuando se pasa una función como argumento a otra función. El siguiente ejemplo muestra una función map que debe recibir una función como primer argumento y un array como segundo argumento:
+
+function map(fun, arr) {
+  const resultado = new Array(arr.length);
+
+  for (let i = 0; i < arr.length; i++) {
+    resultado[i] = fun(arr[i]);
+  }
+
+  return resultado;
+}
+
+// En el siguiente código, la función recibe una función definida por una expresión de función y la ejecuta para cada elemento del array recibido como segundo argumento:
+
+const f = function (x) {
+  return x * x * x;
+};
+
+const numeros = [1, 2, 3, 5];
+
+const cubo = map(f, numeros);
+
+console.log(cubo);
+
+// En JavaScript, una función puede definirse en base a una condición. Por ejemplo, la siguiente definición de función define myFunc sólo si num es igual a 0:
+
+let miFunc, num;
+
+if (num === 0) {
+  miFunc = function (elObjeto) {
+    elObjeto.marca = "Toyota";
+  };
+}
+
+// Además de definir funciones como las descritas aquí, también puedes utilizar el constructor Function para crear funciones a partir de una cadena en tiempo de ejecución, de forma similar a eval().
+
+// Un método es una función que es una propiedad de un objeto. Lea más sobre los objetos y los métodos en Trabajar con objetos.
