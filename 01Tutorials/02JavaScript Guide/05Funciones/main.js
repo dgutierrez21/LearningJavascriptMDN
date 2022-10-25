@@ -383,3 +383,44 @@ console.log(resultadoCl01);
 // Observa cómo se preserva x cuando se devuelve interior. Un cierre debe preservar los argumentos y variables en todos los ámbitos a los que hace referencia. Como cada llamada proporciona argumentos potencialmente diferentes, se crea un nuevo cierre para cada llamada a exterior. La memoria puede ser liberada sólo cuando el interior devuelto ya no es accesible.
 
 // Esto no es diferente de almacenar referencias en otros objetos, pero a menudo es menos obvio porque uno no establece las referencias directamente y no puede inspeccionarlas.
+
+// Funciones anidadas por múltiplos #008000
+// Las funciones pueden estar anidadas de forma múltiple. Por ejemplo:
+
+// ---Una función (A) contiene una función (B), que a su vez contiene una función (C).
+
+// ---Ambas funciones, B y C, forman aquí cierres. Por lo tanto, B puede acceder a A, y C puede acceder a B.
+
+// ---Además, como C puede acceder a B, que a su vez puede acceder a A, C también puede acceder a A.
+
+// Así, los cierres pueden contener múltiples ámbitos; contienen recursivamente el ámbito de las funciones que lo contienen. Esto se llama encadenamiento de ámbitos. (La razón por la que se llama "encadenamiento" se explica más adelante).
+
+// Considere el siguiente ejemplo:
+
+function A(x) {
+  function B(y) {
+    function C(z) {
+      console.log(x + y + z);
+    }
+
+    C(3);
+  }
+
+  B(2);
+}
+
+A(1);
+
+//  logs 6 (1 + 2 + 3)
+
+// En este ejemplo, C accede a la y de B y a la x de A.
+
+// Esto puede hacerse porque
+
+// 1. B forma un cierre que incluye a A (es decir, B puede acceder a los argumentos y variables de A).
+
+// 2. C forma un cierre que incluye a B.
+
+// 3. Como el cierre de C incluye a B y el cierre de B incluye a A, entonces el cierre de C también incluye a A. Esto significa que C puede acceder tanto a los argumentos como a las variables de B y A. En otras palabras, C encadena los ámbitos de B y A, en ese orden.
+
+// Sin embargo, lo contrario no es cierto. A no puede acceder a C, porque A no puede acceder a ningún argumento o variable de B, del que C es una variable. Por lo tanto, C sigue siendo privado sólo para B.
