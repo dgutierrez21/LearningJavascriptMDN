@@ -424,3 +424,20 @@ A(1);
 // 3. Como el cierre de C incluye a B y el cierre de B incluye a A, entonces el cierre de C también incluye a A. Esto significa que C puede acceder tanto a los argumentos como a las variables de B y A. En otras palabras, C encadena los ámbitos de B y A, en ese orden.
 
 // Sin embargo, lo contrario no es cierto. A no puede acceder a C, porque A no puede acceder a ningún argumento o variable de B, del que C es una variable. Por lo tanto, C sigue siendo privado sólo para B.
+
+// Conflictos de nombres #008000
+// Cuando dos argumentos o variables en los ámbitos de un cierre tienen el mismo nombre, existe un conflicto de nombres. Los ámbitos más anidados tienen prioridad. Así, el ámbito más interno tiene la mayor precedencia, mientras que el ámbito más externo tiene la menor. Esta es la cadena de ámbitos. El primero en la cadena es el ámbito más interno, y el último es el ámbito más externo. Considere lo siguiente:
+
+function exterior2() {
+  const x = 5;
+
+  function interior(x) {
+    return x * 2;
+  }
+
+  return interior;
+}
+
+console.log(exterior2()(10)); // devuelve 20 en lugar de 10
+
+// El conflicto de nombres se produce en la sentencia return x * 2 y es entre el parámetro x de interior y la variable x de exterior. La cadena de alcance aquí es {interior, exterior, objeto global}. Por lo tanto, la x de interior tiene prioridad sobre la x de exterior, y se devuelve 20 (la x de interior) en lugar de 10 (la x de exterior).
