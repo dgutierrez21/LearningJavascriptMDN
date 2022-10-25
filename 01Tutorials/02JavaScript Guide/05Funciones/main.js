@@ -378,3 +378,8 @@ console.log(resultadoCl);
 const resultadoCl01 = exterior(3)(5); // devuelve 8
 
 console.log(resultadoCl01);
+
+// Preservación de las variables #008000
+// Observa cómo se preserva x cuando se devuelve interior. Un cierre debe preservar los argumentos y variables en todos los ámbitos a los que hace referencia. Como cada llamada proporciona argumentos potencialmente diferentes, se crea un nuevo cierre para cada llamada a exterior. La memoria puede ser liberada sólo cuando el interior devuelto ya no es accesible.
+
+// Esto no es diferente de almacenar referencias en otros objetos, pero a menudo es menos obvio porque uno no establece las referencias directamente y no puede inspeccionarlas.
