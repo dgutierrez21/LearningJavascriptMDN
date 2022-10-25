@@ -228,3 +228,104 @@ function obtenerPuntuacion() {
 const resultadoOP = obtenerPuntuacion(); // Devuelve "Aonghus marcó 5"
 
 console.log(resultadoOP);
+
+// Alcance y pila de funciones #008000
+
+// Recursión #00aae4
+// Una función puede referirse y llamarse a sí misma. Una función puede referirse a sí misma de tres maneras:
+
+// 1. El nombre de la función
+
+// 2. arguments.callee
+
+// 3. Una variable de alcance que hace referencia a la función
+
+// Por ejemplo, considere la siguiente definición de función:
+
+const foo = function bar() {
+  // las declaraciones van aquí
+};
+
+// Dentro del cuerpo de la función, todo lo siguiente es equivalente:
+
+// 1. bar()
+
+// 2. arguments.callee()
+
+// 3. foo()
+
+// Una función que se llama a sí misma se denomina función recursiva. En cierto modo, la recursión es análoga a un bucle. Ambas ejecutan el mismo código varias veces, y ambas requieren una condición (para evitar un bucle infinito, o mejor dicho, una recursión infinita en este caso).
+
+// Por ejemplo, considere el siguiente bucle:
+
+let x3 = 0;
+
+// "x < 10" es la condición del bucle
+while (x < 10) {
+  // hacer cosas
+  x++;
+}
+
+// Se puede convertir en una declaración de función recursiva, seguida de una llamada a esa función:
+
+let resultadoBucle = "";
+
+function bucle(x) {
+  // "x >= 10" es la condición de salida (equivalente a "!(x < 10)")
+
+  if (x === 11) {
+    console.log(resultadoBucle);
+    return console.log("El bucle ha terminado");
+  } else if (x >= 10) {
+    return console.log("Ingrese un número menor a 10");
+  }
+
+  // hacer cosas
+  resultadoBucle += `| ${x} |`;
+
+  bucle(x + 1); // La llamada recursiva
+}
+
+bucle(1);
+
+// Sin embargo, algunos algoritmos no pueden ser simples bucles iterativos. Por ejemplo, obtener todos los nodos de una estructura de árbol (como el DOM) es más fácil a través de la recursión:
+
+function caminarArbol(nodo) {
+  if (nodo === null) {
+    return;
+  }
+
+  // hacer algo con el nodo
+  for (let i = 0; i < nodo.childNodes.length; i++) {
+    caminarArbol(nodo.childNodes[i]);
+  }
+}
+
+// En comparación con el bucle de función, aquí cada llamada recursiva hace muchas llamadas recursivas.
+
+// Es posible convertir cualquier algoritmo recursivo en uno no recursivo, pero la lógica suele ser mucho más compleja, y hacerlo requiere el uso de una pila.
+
+// De hecho, la propia recursión utiliza una pila: la pila de funciones. El comportamiento de la pila se puede ver en el siguiente ejemplo:
+
+function foo2(i) {
+  if (i < 0) {
+    return;
+  }
+
+  console.log(`inicio: ${i}`);
+  foo2(i - 1);
+  console.log(`fin: ${i}`);
+}
+
+foo2(3);
+
+// // Salida:
+
+// // inicio: 3
+// // inicio: 2
+// // inicio: 1
+// // inicio: 0
+// // fin: 0
+// // fin: 1
+// // fin: 2
+// // fin: 3
