@@ -190,3 +190,41 @@ console.log(e);
 // Hay otras formas de llamar a las funciones. A menudo hay casos en los que se necesita llamar a una función de forma dinámica, o el número de argumentos de una función varía, o en los que el contexto de la llamada a la función debe establecerse en un objeto específico determinado en tiempo de ejecución.
 
 // Resulta que las funciones son en sí mismas objetos, y a su vez, estos objetos tienen métodos. (Véase el objeto Function.) Los métodos call() y apply() pueden utilizarse para lograr este objetivo.
+
+// Ámbito(Scope) de la función #008000
+// Las variables definidas dentro de una función no pueden ser accedidas desde ningún lugar fuera de la función, porque la variable está definida sólo en el ámbito de la función. Sin embargo, una función puede acceder a todas las variables y funciones definidas dentro del ámbito en el que está definida.
+
+// En otras palabras, una función definida en el ámbito global puede acceder a todas las variables definidas en el ámbito global. Una función definida dentro de otra función también puede acceder a todas las variables definidas en su función padre, y a cualquier otra variable a la que la función padre tenga acceso.
+
+// // Las siguientes variables están definidas en el ámbito global
+
+const num1 = 20;
+const num2 = 3;
+const nombre = "Aonghus";
+
+// // Esta función se define en el ámbito global
+
+function multiplicar() {
+  return num1 * num2;
+}
+
+const resultado = multiplicar(); // devuleve 60
+
+console.log(resultado);
+
+// // Un ejemplo de función anidada
+
+function obtenerPuntuacion() {
+  const num1 = 2,
+    num2 = 3;
+
+  function aniadir() {
+    return `${nombre} marcó ${num1 + num2}`;
+  }
+
+  return aniadir();
+}
+
+const resultadoOP = obtenerPuntuacion(); // Devuelve "Aonghus marcó 5"
+
+console.log(resultadoOP);
