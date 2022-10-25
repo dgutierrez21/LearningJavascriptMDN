@@ -125,3 +125,68 @@ if (num === 0) {
 // Además de definir funciones como las descritas aquí, también puedes utilizar el constructor Function para crear funciones a partir de una cadena en tiempo de ejecución, de forma similar a eval().
 
 // Un método es una función que es una propiedad de un objeto. Lea más sobre los objetos y los métodos en Trabajar con objetos.
+
+// Llamada a funciones #008000
+// Definir una función no la ejecuta. Al definirla se nombra la función y se especifica lo que debe hacerse cuando se llama a la función.
+
+// La llamada a la función ejecuta realmente las acciones especificadas con los parámetros indicados. Por ejemplo, si defines la función cuadrado, podrías llamarla de la siguiente manera
+
+let resultadoCuadrado = cuadradro(3);
+
+console.log(resultadoCuadrado);
+
+// La sentencia anterior llama a la función con un argumento de 3. La función ejecuta sus sentencias y devuelve el valor 9.
+
+// Las funciones deben estar en el ámbito cuando son llamadas, pero la declaración de la función puede ser elevada (aparecer debajo de la llamada en el código), como en este ejemplo:
+
+console.log(cuadrado2(6));
+
+function cuadrado2(num) {
+  return num * num;
+}
+
+// El ámbito de una función es la función en la que se declara (o todo el programa, si se declara en el nivel superior).
+
+// Nota: Esto sólo funciona cuando se define la función utilizando la sintaxis anterior (es decir, función funcNombre(){}). El código siguiente no funcionará.
+
+/*
+
+console.log(cuadrado3(6)); // Uncaught ReferenceError: Cannot access 'cuadrado3' before initialization
+
+const cuadrado3 = function (num) {
+  return num * num;
+};
+
+*/
+
+// Esto significa que la elevación de funciones sólo funciona con declaraciones de funciones, no con expresiones de funciones.
+
+// Los argumentos de una función no se limitan a cadenas y números. Se pueden pasar objetos enteros a una función. La función showProps() (definida en Working with objects) es un ejemplo de función que toma un objeto como argumento.
+
+// Una función puede llamarse a sí misma. Por ejemplo, aquí hay una función que calcula factoriales recursivamente:
+
+function factorial2(numero) {
+  if (numero === 0 || numero === 1) {
+    return 1;
+  } else {
+    return numero * factorial2(numero - 1);
+  }
+}
+
+// Entonces podrías calcular los factoriales de 1 a 5 de la siguiente manera:
+
+const a = factorial2(1);
+const b = factorial2(2);
+const c = factorial2(3);
+const d = factorial2(4);
+const e = factorial2(5);
+
+console.log(a);
+console.log(b);
+console.log(c);
+console.log(d);
+console.log(e);
+
+// Hay otras formas de llamar a las funciones. A menudo hay casos en los que se necesita llamar a una función de forma dinámica, o el número de argumentos de una función varía, o en los que el contexto de la llamada a la función debe establecerse en un objeto específico determinado en tiempo de ejecución.
+
+// Resulta que las funciones son en sí mismas objetos, y a su vez, estos objetos tienen métodos. (Véase el objeto Function.) Los métodos call() y apply() pueden utilizarse para lograr este objetivo.
