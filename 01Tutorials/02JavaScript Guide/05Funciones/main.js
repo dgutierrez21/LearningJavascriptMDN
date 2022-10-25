@@ -329,3 +329,52 @@ foo2(3);
 // // fin: 1
 // // fin: 2
 // // fin: 3
+
+// Funciones anidadas y cierres #008000
+// Se puede anidar una función dentro de otra función. La función anidada (interna) es privada para la función que la contiene (externa).
+
+// También forma un cierre. Un cierre es una expresión (más comúnmente, una función) que puede tener variables libres junto con un entorno que vincula esas variables (que "cierra" la expresión).
+
+// Dado que una función anidada es un cierre, esto significa que una función anidada puede "heredar" los argumentos y variables de su función contenedora. En otras palabras, la función interna contiene el ámbito de la función externa.
+
+// En resumen:
+
+// ---Sólo se puede acceder a la función interna desde las sentencias de la función externa.
+
+// ---La función interna forma un cierre: la función interna puede utilizar los argumentos y variables de la función externa, mientras que la función externa no puede utilizar los argumentos y variables de la función interna.
+
+// El siguiente ejemplo muestra funciones anidadas:
+
+function aniadirCuadrado(a, b) {
+  function cuadrado(x) {
+    return x * x;
+  }
+
+  return cuadrado(a) + cuadrado(b);
+}
+
+const a2 = aniadirCuadrado(2, 3); // devuelve 13
+const b2 = aniadirCuadrado(3, 4); // devuelve 25
+const c2 = aniadirCuadrado(4, 5); // devuelve 25
+
+// Dado que la función interna forma un cierre, puedes llamar a la función externa y especificar los argumentos tanto de la función externa como de la interna:
+
+function exterior(x) {
+  function interior(y) {
+    return x + y;
+  }
+
+  return interior;
+}
+
+const fnInterior = exterior(3); // // Piensa en ello como: dame una función que sume 3 a lo que le des
+
+console.log(fnInterior);
+
+const resultadoCl = fnInterior(5); // devuelve 8
+
+console.log(resultadoCl);
+
+const resultadoCl01 = exterior(3)(5); // devuelve 8
+
+console.log(resultadoCl01);
