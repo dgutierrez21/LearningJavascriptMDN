@@ -686,3 +686,39 @@ function Persona3() {
 }
 
 const p1 = new Persona3();
+
+// Funciones predefinidas #008000
+// JavaScript tiene varias funciones integradas de alto nivel:
+
+// eval()
+// El método eval() evalúa el código JavaScript representado como una cadena.
+
+// isFinite()
+// La función global isFinite() determina si el valor pasado es un número finito. Si es necesario, el parámetro se convierte primero en un número.
+
+// isNaN()
+// La función isNaN() determina si un valor es NaN o no. Nota: la coerción dentro de la función isNaN tiene reglas interesantes; puede ser que quiera usar Number.isNaN() para determinar si el valor es No-Un-Número.
+
+// parseFloat()
+// La función parseFloat() analiza un argumento de cadena y devuelve un número en coma flotante.
+
+// parseInt()
+// La función parseInt() analiza un argumento de cadena y devuelve un número entero del radix especificado (la base en los sistemas numéricos matemáticos).
+
+// decodeURI()
+// La función decodeURI() descodifica un Identificador de Recursos Uniformes (URI) previamente creado por encodeURI o por una rutina similar.
+
+// decodeURIComponent()
+// El método decodeURIComponent() descodifica un componente de Identificador de Recursos Uniformes (URI) previamente creado por encodeURIComponent o por una rutina similar.
+
+// encodeURI()
+// El método encodeURI() codifica un Identificador Uniforme de Recursos (URI) sustituyendo cada instancia de ciertos caracteres por una, dos, tres o cuatro secuencias de escape que representan la codificación UTF-8 del carácter (sólo habrá cuatro secuencias de escape para los caracteres compuestos por dos caracteres "sustitutos").
+
+// encodeURIComponent()
+// El método encodeURIComponent() codifica un componente del Identificador de Recursos Uniformes (URI) sustituyendo cada instancia de ciertos caracteres por una, dos, tres o cuatro secuencias de escape que representan la codificación UTF-8 del carácter (sólo habrá cuatro secuencias de escape para los caracteres compuestos por dos caracteres "sustitutos").
+
+// escape()
+// El método obsoleto escape() calcula una nueva cadena en la que ciertos caracteres han sido sustituidos por una secuencia de escape hexadecimal. Utilice en su lugar encodeURI o encodeURIComponent.
+
+// unescape()
+// El método obsoleto unescape() calcula una nueva cadena en la que las secuencias de escape hexadecimales se sustituyen por el carácter que representa. Las secuencias de escape pueden ser introducidas por una función como escape. Dado que unescape() está obsoleto, utilice en su lugar decodeURI() o decodeURIComponent.
