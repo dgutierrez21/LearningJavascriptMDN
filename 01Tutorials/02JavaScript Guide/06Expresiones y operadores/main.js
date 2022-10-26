@@ -68,3 +68,33 @@ console.log(`x = ${x} | y = ${y}`);
 // Asignación lógica AND x &&= f() | x && (x = f())
 // Asignación lógica OR x ||= f() --- x || (x = f())
 // Asignación lógica nula x ??= f() | x ?? (x = f())
+
+// Asignación a propiedades #008000
+// Si una expresión se evalúa a un objeto, entonces el lado izquierdo de una expresión de asignación puede hacer asignaciones a propiedades de esa expresión. Por ejemplo
+
+const obj = {};
+
+obj.x = 3;
+
+console.log(obj.x); // imprime 3
+console.log(obj); // imprime el objeto
+
+const key = "y";
+
+obj[key] = 23;
+
+console.log(obj[key]); // imprime 23
+console.log(obj); // imprime {x: 3, y: 23}
+
+// Si una expresión no se evalúa a un objeto, las asignaciones a las propiedades de esa expresión no se asignan:
+
+const valor = 0;
+
+valor.x = 3;
+
+console.log(valor.x); // Imprime undefined
+console.log(valor); // imprimer 0;
+
+// En modo estricto, el código anterior lanza, porque no se pueden asignar propiedades a primitivas.
+
+// Es un error asignar valores a propiedades no modificables o a propiedades de una expresión sin propiedades (null o undefined).
