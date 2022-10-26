@@ -212,3 +212,28 @@ console.log(x4);
 // Ese resultado 2, a su vez, también se asigna a y.
 
 // La expresión de asignación y = x = f() ha terminado de evaluarse; su resultado es el nuevo valor de y - que resulta ser 2. x e y se asignan a 2, y la consola ha impreso "¡F!".
+
+// Ejemplo de evaluación 2 #00aae4
+// y = [ f(), x = g() ] también se evalúa de izquierda a derecha:
+
+// La expresión de asignación y = [ f(), x = g() ] comienza a evaluarse.
+
+// La y de la izquierda de esta asignación se evalúa en una referencia a la variable llamada y.
+
+// El literal interno de la matriz [ f(), x = g() ] comienza a evaluarse.
+
+// La llamada a la función f() imprime "F!" en la consola y luego se evalúa al número 2.
+
+// La expresión de asignación x = g() comienza a evaluarse.
+// La x en el lado izquierdo de esta asignación se evalúa como una referencia a la variable llamada x.
+
+// La llamada a la función g() imprime "¡G!" en la consola y luego se evalúa al número 3.
+
+// El resultado 3 de g() se asigna a x.
+
+// La expresión de asignación x = g() ha terminado de evaluarse; su resultado es el nuevo valor de x, que es 3. Ese resultado 3 se convierte en el siguiente elemento del literal del array interno (después del 2 de f()).
+// El literal de matriz interna [ f(), x = g() ] ha terminado de evaluarse; su resultado es una matriz con dos valores: [ 2, 3 ].
+
+// Ese array [ 2, 3 ] se asigna ahora a y.
+
+// La expresión de asignación y = [ f(), x = g() ] ha terminado de evaluarse; su resultado es el nuevo valor de y - que resulta ser [ 2, 3 ]. x está ahora asignado a 3, y está ahora asignado a [ 2, 3 ], y la consola ha impreso "¡F!" y luego "¡G!".
