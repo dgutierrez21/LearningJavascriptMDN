@@ -536,3 +536,43 @@ const createPet = function (name) {  // The outer function defines a variable ca
 }
 
 */
+
+// Uso del objeto arguments #008000
+// Los argumentos de una función se mantienen en un objeto tipo array. Dentro de una función, se pueden direccionar los argumentos que se le pasan de la siguiente manera
+
+// arguments[i]
+
+// donde i es el número ordinal del argumento, empezando por 0. Así, el primer argumento pasado a una función sería arguments[0]. El número total de argumentos se indica con arguments.length.
+
+// Utilizando el objeto arguments, se puede llamar a una función con más argumentos de los que está formalmente declarado que acepta. Esto suele ser útil si no se sabe de antemano cuántos argumentos se pasarán a la función. Puede utilizar arguments.length para determinar el número de argumentos que realmente se pasarán a la función, y luego acceder a cada argumento utilizando el objeto arguments.
+
+// Por ejemplo, considere una función que concatena varias cadenas. El único argumento formal de la función es una cadena que especifica los caracteres que separan los elementos a concatenar. La función se define de la siguiente manera:
+
+function myConcatenacion(separador) {
+  let resultado = ""; // inicializar la lista
+  // iterar a través de los argumentos
+
+  for (let i = 1; i < arguments.length; i++) {
+    if (i === arguments.length - 1) {
+      resultado += arguments[i];
+    } else {
+      resultado += arguments[i] + separador;
+    }
+  }
+
+  return resultado;
+}
+
+// Puedes pasar cualquier número de argumentos a esta función, y ésta concatena cada argumento en una cadena "lista":
+
+// // devuelve "rojo, naranja, azul, "
+
+console.log(myConcatenacion(": ", "Rojo", "Naranja", "Azul", "Celeste"));
+
+// // devuelve "elefante; jirafa; león; guepardo; "
+
+console.log(myConcatenacion(", ", "Elefante", "Girafa", "Leon", "Leopardo"));
+
+// Nota: La variable de los argumentos es "similar a un array", pero no es un array. Es similar a un array porque tiene un índice numerado y una propiedad de longitud. Sin embargo, no posee todos los métodos de manipulación de arrays.
+
+// Consulte el objeto Function en la referencia de JavaScript para obtener más información.
