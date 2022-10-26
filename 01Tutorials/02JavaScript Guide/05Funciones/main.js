@@ -441,3 +441,98 @@ function exterior2() {
 console.log(exterior2()(10)); // devuelve 20 en lugar de 10
 
 // El conflicto de nombres se produce en la sentencia return x * 2 y es entre el parámetro x de interior y la variable x de exterior. La cadena de alcance aquí es {interior, exterior, objeto global}. Por lo tanto, la x de interior tiene prioridad sobre la x de exterior, y se devuelve 20 (la x de interior) en lugar de 10 (la x de exterior).
+
+// Cierres ( Closures ) #008000
+// Los cierres son una de las características más potentes de JavaScript. JavaScript permite el anidamiento de funciones y otorga a la función interna acceso completo a todas las variables y funciones definidas dentro de la función externa (y a todas las demás variables y funciones a las que la función externa tiene acceso).
+
+// Sin embargo, la función externa no tiene acceso a las variables y funciones definidas dentro de la función interna. Esto proporciona una especie de encapsulación para las variables de la función interna.
+
+// Además, como la función interna tiene acceso al ámbito de la función externa, las variables y funciones definidas en la función externa vivirán más tiempo que la duración de la ejecución de la función externa, si la función interna consigue sobrevivir más allá de la vida de la función externa. Un cierre se crea cuando la función interna se pone de alguna manera a disposición de cualquier ámbito fuera de la función externa.
+
+const mascota = function (nombre) {
+  // La función externa define una variable llamada "nombre"
+
+  const obtenerNombre = function () {
+    // La función interna tiene acceso a la variable "nombre" de la función externa
+
+    return nombre;
+  };
+
+  return obtenerNombre; // Devuelve la función interna, exponiéndola así a los ámbitos externos
+};
+
+const miMascota = mascota("Vivie");
+
+console.log(miMascota()); // devuelve "Vivie"
+
+// Puede ser mucho más complejo que el código anterior. Se puede devolver un objeto que contenga métodos para manipular las variables internas de la función externa.
+
+const crearMascota = function (nombreMascota) {
+  let sexoMascota;
+
+  const objMascota = {
+    // setNombre(nuevoNombre) es equivalente a setNombre: function (nuevoNombre)
+    // en este contexto
+
+    setNombre(nuevoNombreMascota) {
+      nombreMascota = nuevoNombreMascota;
+    },
+
+    getNombre() {
+      return nombreMascota;
+    },
+
+    getSexo() {
+      return sexoMascota;
+    },
+
+    setSexo(nuevoSexoMascota) {
+      if (
+        typeof nuevoSexoMascota === "string" &&
+        (nuevoSexoMascota.toLowerCase() === "masculino" ||
+          nuevoSexoMascota.toLowerCase() === "femenino")
+      ) {
+        sexoMascota = nuevoSexoMascota;
+      }
+    },
+  };
+
+  return objMascota;
+};
+
+const nuevaMascota = crearMascota("Lola");
+console.log(nuevaMascota.getNombre());
+
+nuevaMascota.setNombre("Oliver");
+nuevaMascota.setSexo("Masculino");
+
+console.log(nuevaMascota.getNombre());
+console.log(nuevaMascota.getSexo());
+
+// En el código anterior, la variable nombre de la función externa es accesible a las funciones internas, y no hay otra forma de acceder a las variables internas que a través de las funciones internas. Las variables internas de las funciones internas actúan como almacenes seguros para los argumentos y variables externas. Contienen datos "persistentes" y "encapsulados" para que las funciones internas trabajen con ellos. Las funciones ni siquiera tienen que ser asignadas a una variable, o tener un nombre.
+
+const getCodigo = (function () {
+  const apiCodigo = "392823"; // Un código que no queremos que los forasteros puedan modificar...
+
+  return function () {
+    return apiCodigo;
+  };
+})();
+
+console.log(getCodigo());
+
+// Nota: ¡Hay una serie de trampas a las que hay que prestar atención cuando se utilizan cierres!
+
+// Si una función cerrada define una variable con el mismo nombre que una variable en el ámbito externo, entonces no hay manera de referirse a la variable en el ámbito externo de nuevo. (La variable de ámbito interno "anula" a la externa, hasta que el programa salga del ámbito interno. Se puede considerar como un conflicto de nombres).
+
+/*
+
+const createPet = function (name) {  // The outer function defines a variable called "name".
+  return {
+    setName(name) {    // The enclosed function also defines a variable called "name".
+      name = name;               // How do we access the "name" defined by the outer function?
+    }
+  }
+}
+
+*/
