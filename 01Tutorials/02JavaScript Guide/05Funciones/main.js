@@ -576,3 +576,44 @@ console.log(myConcatenacion(", ", "Elefante", "Girafa", "Leon", "Leopardo"));
 // Nota: La variable de los argumentos es "similar a un array", pero no es un array. Es similar a un array porque tiene un índice numerado y una propiedad de longitud. Sin embargo, no posee todos los métodos de manipulación de arrays.
 
 // Consulte el objeto Function en la referencia de JavaScript para obtener más información.
+
+// Parámetros de las funciones #008000
+// Existen dos tipos especiales de sintaxis de parámetros: los parámetros por defecto y los parámetros de reposo.
+
+// Parámetros por defecto #00aae4
+// En JavaScript, los parámetros de las funciones tienen por defecto un valor indefinido. Sin embargo, en algunas situaciones puede ser útil establecer un valor por defecto diferente. Esto es exactamente lo que hacen los parámetros por defecto.
+
+// En el pasado, la estrategia general para establecer parámetros por defecto consistía en comprobar los valores de los parámetros en el cuerpo de la función y asignarles un valor si no estaban definidos.
+
+// En el siguiente ejemplo, si no se proporciona ningún valor para b, su valor sería indefinido al evaluar a*b, y una llamada a multiplicar normalmente habría devuelto NaN. Sin embargo, esto se evita con la segunda línea de este ejemplo:
+
+function multiplicar2(a, b) {
+  b = typeof b !== "undefined" ? b : 2;
+
+  return a * b;
+}
+
+console.log(multiplicar2(5));
+
+// Con los parámetros por defecto, ya no es necesaria la comprobación manual en el cuerpo de la función. Puedes poner 1 como valor por defecto para b en la cabeza de la función:
+
+function multiplicar3(a, b = 2) {
+  return a * b;
+}
+
+console.log(multiplicar3(5));
+
+// Para más detalles, vea los parámetros por defecto en la referencia.
+
+// Parámetros de reposo ( Rest ) #00aae4
+// La sintaxis de los parámetros de reposo nos permite representar un número indefinido de argumentos como un array.
+
+// En el siguiente ejemplo, la función multiplicar utiliza los parámetros de reposo para recoger los argumentos desde el segundo hasta el final. A continuación, la función los multiplica por el primer argumento.
+
+function multiplicar4(multiplicador, ...losArgumentos) {
+  return losArgumentos.map((x) => multiplicador * x);
+}
+
+const arr = multiplicar4(2, 1, 2, 3);
+
+console.log(arr);
