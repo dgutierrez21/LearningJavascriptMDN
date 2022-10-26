@@ -114,3 +114,81 @@ const [uno1, dos2, tres3] = foo;
 
 console.log(uno);
 console.log(uno1);
+
+// Evaluación y anidamiento #008000
+// En general, las asignaciones se utilizan dentro de una declaración de variable (es decir, con const, let o var) o como declaraciones independientes).
+
+function f() {
+  return 456;
+}
+
+function g() {
+  return 987;
+}
+
+// // Declara una variable x y la inicializa con el resultado de f().
+// // El resultado de la expresión de asignación x = f() se descarta.
+let x1 = f();
+
+x1 = g(); // Reasigna la variable x al resultado de g().
+
+console.log(x1);
+
+// Sin embargo, al igual que otras expresiones, las expresiones de asignación como x = f() se evalúan en un valor de resultado. Aunque este valor resultante normalmente no se utiliza, puede ser utilizado por otra expresión.
+
+// Encadenar asignaciones o anidarlas en otras expresiones puede dar lugar a un comportamiento sorprendente. Por esta razón, algunas guías de estilo de JavaScript desaconsejan encadenar o anidar asignaciones). No obstante, el encadenamiento y la anidación de asignaciones pueden producirse en ocasiones, por lo que es importante saber cómo funcionan.
+
+// Al encadenar o anidar una expresión de asignación, su resultado puede ser asignado a otra variable. Se puede registrar, se puede poner dentro de un literal de matriz o de una llamada a una función, etc.
+
+let x3;
+const y3 = (x3 = f()); // O de forma equivalente: const y = x = f();
+
+console.log(y3);
+console.log((x3 = f())); //  // Registra el valor de retorno de la asignación x = f().
+
+//  // Registra el valor de retorno directamente.
+
+// // Una expresión de asignación puede ser anidada en cualquier lugar
+// // donde generalmente se permiten las expresiones,
+// // como los elementos de los literales de los arrays o como los argumentos de las llamadas a funciones.
+
+console.log([0, (x3 = f()), 0]);
+console.log(f(0, (x3 = f()), 0));
+
+// El resultado de la evaluación coincide con la expresión a la derecha del signo = en la columna "Significado" de la tabla anterior. Esto significa que x = f() se evalúa en cualquier resultado de f(), x += f() se evalúa en la suma resultante x + f(), x **= f() se evalúa en la potencia resultante x ** y, y así sucesivamente.
+
+// En el caso de las asignaciones lógicas, x &&= f(), x ||= f(), y x ??= f(), el valor de retorno es el de la operación lógica sin la asignación, por lo que x && f(), x || f(), y x ?? f(), respectivamente.
+
+// Cuando se encadenan estas expresiones sin paréntesis u otros operadores de agrupación como los literales de matrices, las expresiones de asignación se agrupan de derecha a izquierda (son asociativas de derecha), pero se evalúan de izquierda a derecha.
+
+// Tenga en cuenta que, para todos los operadores de asignación que no sean el propio =, los valores resultantes se basan siempre en los valores de los operandos antes de la operación.
+
+// Por ejemplo, supongamos que se han declarado las siguientes funciones f y g y las variables x e y:
+
+function f1() {
+  console.log("F1");
+
+  return 5;
+}
+
+function g1() {
+  console.log("G1");
+
+  return 10;
+}
+
+let x4, y4;
+
+// Considera estos tres ejemplos:
+
+y4 = x4 = f1();
+
+console.log(y4);
+
+y4 = [f1(), (x4 = g1())];
+
+console.log(y4);
+
+x4[f1()] = g1();
+
+console.log(x4);
