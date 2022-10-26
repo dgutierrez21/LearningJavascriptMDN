@@ -617,3 +617,72 @@ function multiplicar4(multiplicador, ...losArgumentos) {
 const arr = multiplicar4(2, 1, 2, 3);
 
 console.log(arr);
+
+// Funciones de flecha #008000
+// Una expresión de función de flecha (también llamada flecha gorda para distinguirla de una hipotética sintaxis -> en el futuro JavaScript) tiene una sintaxis más corta en comparación con las expresiones de función y no tiene su propio this, argumentos, super, o new.target. Las funciones flecha son siempre anónimas.
+
+// Dos factores influyeron en la introducción de las funciones de flecha: las funciones más cortas y la no vinculación de this.  #FF0000
+
+// Funciones más cortas #00aae4
+// En algunos patrones funcionales, las funciones más cortas son bienvenidas. Compara:
+
+const arrA = ["Boro", "Carbono", "Nitrógeno", "Oxigeno"];
+
+// Expresión de función
+const a3 = arrA.map(function (s) {
+  return s.length;
+});
+
+console.log(a3);
+
+// Función de flecha
+const a4 = arrA.map((s) => s.length);
+
+console.log(a4);
+
+// No separar this #00aae4
+// Hasta las funciones de flecha, cada nueva función definía su propio valor de this (un nuevo objeto en el caso de un constructor, undefined en las llamadas a funciones de modo estricto, el objeto base si la función se llama como un "método de objeto", etc.). Esto resultó ser menos que ideal con un estilo de programación orientado a objetos.
+
+function Persona() {
+  // El constructor de Persona() define a `this` como a sí mismo.
+  this.edad = 0;
+
+  setInterval(function crecer() {
+    // En modo no estricto, la función crecer() define `this`
+    // como el objeto global, que es diferente del `this
+    // definido por el constructor Person().
+    this.edad++;
+  }, 1000);
+}
+
+const p = new Persona();
+
+// En ECMAScript 3/5, este problema se solucionó asignando el valor de this a una variable que podía cerrarse por encima.
+
+function Persona2() {
+  const self = this;
+  // Algunos eligen "this" en lugar de "self".
+  // Elige uno y sé coherente.
+
+  self.edad = 0;
+
+  setInterval(function crecer() {
+    // La llamada de retorno se refiere a la variable `self` de la cual
+    // el valor es el objeto esperado.
+    self.edad++;
+  }, 1000);
+}
+
+// Alternativamente, se podría crear una función vinculada para que el valor apropiado de this se pasara a la función growUp().
+
+// Una función de flecha no tiene su propio this; se utiliza el valor de this del contexto de ejecución que la rodea. Así, en el siguiente código, el this dentro de la función que se pasa a setInterval tiene el mismo valor que el this en la función que lo rodea:
+
+function Persona3() {
+  this.edad = 0;
+
+  setInterval(() => {
+    this.edad++; // // `this` se refiere correctamente al objeto persona3
+  }, 1000);
+}
+
+const p1 = new Persona3();
