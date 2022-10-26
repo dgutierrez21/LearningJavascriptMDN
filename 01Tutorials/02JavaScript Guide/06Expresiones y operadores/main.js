@@ -45,3 +45,26 @@ console.log(`x = ${x} | y = ${y}`);
 // operando operador
 
 // Por ejemplo, x++ o ++x. La forma del operador operando se llama operador unario prefijo, y la forma del operador operando se llama operador unario postfijo. ++ y -- son los únicos operadores postfijos en JavaScript - todos los demás operadores, como !, typeof, etc. son prefijos.
+
+// Operadores de asignación #008000
+// Un operador de asignación asigna un valor a su operando izquierdo en función del valor de su operando derecho. El operador de asignación simple es igual (=), que asigna el valor de su operando derecho a su operando izquierdo. Es decir, x = f() es una expresión de asignación que asigna el valor de f() a x.
+
+// También hay operadores de asignación compuestos que son una abreviatura de las operaciones que se enumeran en la siguiente tabla:
+
+// Nombre Operador | abreviado | Significado
+// Asignación x = f() | x = f()
+// Asignación de suma x += f() | x = x + f()
+// Asignación de sustracción x -= f() | x = x - f()
+// Asignación de multiplicación x *= f() | x = x * f()
+// Asignación de división x /= f() | x = x / f()
+// Asignación del resto x %= f() | x = x % f()
+// Asignación de exponenciación x **= f() | x = x ** f()
+// Asignación de desplazamiento a la izquierda x <<= f() | x = x << f()
+// Asignación de desplazamiento a la derecha x >>= f() | x = x >> f()
+// Asignación de desplazamiento a la derecha sin signo x >>>= f() | x = x >>> f()
+// Asignación AND a nivel de bits x &= f() | x = x & f()
+// Asignación Bitwise XOR x ^= f() | x = x ^ f()
+// Asignación Bitwise OR x |= f() --- x = x | f()
+// Asignación lógica AND x &&= f() | x && (x = f())
+// Asignación lógica OR x ||= f() --- x || (x = f())
+// Asignación lógica nula x ??= f() | x ?? (x = f())
