@@ -192,3 +192,23 @@ console.log(y4);
 x4[f1()] = g1();
 
 console.log(x4);
+
+// Ejemplo de evaluación 1 #00aae4
+// y = x = f() es equivalente a y = (x = f()), porque el operador de asignación = es asociativo a la derecha. Sin embargo, se evalúa de izquierda a derecha:
+
+// La expresión de asignación y = x = f() comienza a evaluarse.
+
+// La y en el lado izquierdo de esta asignación se evalúa como una referencia a la variable llamada y.
+
+// La expresión de asignación x = f() comienza a evaluarse.
+
+// La x en el lado izquierdo de esta asignación se evalúa como una referencia a la variable llamada x.
+
+// La llamada a la función f() imprime "¡F!" en la consola y luego se evalúa al número 2.
+
+// Ese resultado 2 de f() se asigna a x.
+
+// La expresión de asignación x = f() ha terminado de evaluarse; su resultado es el nuevo valor de x, que es 2.
+// Ese resultado 2, a su vez, también se asigna a y.
+
+// La expresión de asignación y = x = f() ha terminado de evaluarse; su resultado es el nuevo valor de y - que resulta ser 2. x e y se asignan a 2, y la consola ha impreso "¡F!".
