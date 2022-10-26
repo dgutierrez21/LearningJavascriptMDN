@@ -98,3 +98,19 @@ console.log(valor); // imprimer 0;
 // En modo estricto, el código anterior lanza, porque no se pueden asignar propiedades a primitivas.
 
 // Es un error asignar valores a propiedades no modificables o a propiedades de una expresión sin propiedades (null o undefined).
+
+// Desestructuración #008000
+// Para asignaciones más complejas, la sintaxis de asignación de desestructuración es una expresión de JavaScript que permite extraer datos de matrices u objetos utilizando una sintaxis que refleja la construcción de literales de matrices y objetos.
+
+const foo = ["Uno", "Dos", "Tres"];
+
+// sin desestructuración
+const uno = foo[0];
+const dos = foo[1];
+const tres = foo[2];
+
+// con desestruturación
+const [uno1, dos2, tres3] = foo;
+
+console.log(uno);
+console.log(uno1);
