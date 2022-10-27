@@ -237,3 +237,22 @@ console.log(x4);
 // Ese array [ 2, 3 ] se asigna ahora a y.
 
 // La expresión de asignación y = [ f(), x = g() ] ha terminado de evaluarse; su resultado es el nuevo valor de y - que resulta ser [ 2, 3 ]. x está ahora asignado a 3, y está ahora asignado a [ 2, 3 ], y la consola ha impreso "¡F!" y luego "¡G!".
+
+// Ejemplo de evaluación 3 #00aae4
+// x[f()] = g() también se evalúa de izquierda a derecha. (Este ejemplo asume que x ya está asignada a algún objeto. Para más información sobre los objetos, lee Trabajar con objetos).
+
+// La expresión de asignación x[f()] = g() comienza a evaluarse.
+
+// El acceso a la propiedad x[f()] a la izquierda de esta asignación comienza a evaluarse.
+
+// La x en este acceso de propiedad se evalúa en una referencia a la variable llamada x.
+
+// Entonces la llamada a la función f() imprime "¡F!" en la consola y luego se evalúa al número 2.
+
+// El acceso a la propiedad x[f()] en esta asignación ha terminado de evaluarse; su resultado es una referencia a la propiedad variable: x[2].
+
+// Entonces la llamada a la función g() imprime "¡G!" en la consola y luego se evalúa al número 3.
+
+// Ese 3 se asigna ahora a x[2]. (Este paso sólo tendrá éxito si x se asigna a un objeto).
+
+// La expresión de asignación x[f()] = g() ha terminado de evaluarse; su resultado es el nuevo valor de x[2] - que resulta ser 3. x[2] está ahora asignado a 3, y la consola ha impreso "¡F!" y luego "¡G!".
