@@ -317,3 +317,49 @@ console.log(1 / 2 === 1.0 / 2.0); // true
 // Los operadores de desplazamiento se enumeran en la siguiente tabla.
 
 // ver imagen...
+
+// Operadores lógicos #008000
+// Los operadores lógicos se utilizan normalmente con valores booleanos (lógicos); cuando lo hacen, devuelven un valor booleano. Sin embargo, los operadores && y || devuelven en realidad el valor de uno de los operandos especificados, por lo que si estos operadores se utilizan con valores no booleanos, pueden devolver un valor no booleano. Los operadores lógicos se describen en la siguiente tabla.
+
+// ver imagen...
+
+// Ejemplos de expresiones que se pueden convertir en falsas son las que se evalúan como null, 0, NaN, la cadena vacía (""), o undefined.
+
+// El siguiente código muestra ejemplos del operador && (AND lógico).
+
+console.log(true && true); // devuelve true
+console.log(true && false); // devuelce false
+console.log(false && true); // devuelve false
+console.log(false && 3 === 4); // devuelve false
+
+console.log("Gato" && "Perro"); // Perro
+console.log(3 === 4 && "Gato"); // false
+console.log("Gato" && false); // false
+
+// El siguiente código muestra ejemplos del operador || (OR lógico).
+
+console.log(true || true); // devuelve true
+console.log(false || true); // devuelve true
+console.log(true || false); // true
+console.log(false || 3 === 4); // false
+
+console.log("Gato" || "Perro"); // Gato
+console.log(false || "Gato"); // Gato
+console.log("Gato" || false); // Gato
+
+// El siguiente código muestra ejemplos del operador ! (lógico NOT).
+
+console.log(!true); // false
+console.log(!false); // true
+console.log(!"Cat"); // false
+
+// Evaluación en cortocircuito #00aae4
+// A medida que las expresiones lógicas se evalúan de izquierda a derecha, se comprueba su posible evaluación en "cortocircuito" mediante las siguientes reglas:
+
+// false && "cualquier cosa" es un cortocircuito evaluado a false.
+
+// true || "cualquier cosa" se evalúa en cortocircuito a true.
+
+// Las reglas de la lógica garantizan que estas evaluaciones son siempre correctas. Tenga en cuenta que la parte de "cualquier cosa" de las expresiones anteriores no se evalúa, por lo que cualquier efecto secundario de hacerlo no tiene efecto.
+
+// Tenga en cuenta que para el segundo caso, en el código moderno puede utilizar el operador de coalescencia Nullish (??) que funciona como ||, pero sólo devuelve la segunda expresión, cuando la primera es "nullish", es decir, nula o indefinida. Por lo tanto, es la mejor alternativa para proporcionar valores por defecto, cuando valores como '' o 0 son valores válidos para la primera expresión, también.
