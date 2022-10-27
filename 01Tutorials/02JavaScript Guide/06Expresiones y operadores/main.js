@@ -273,3 +273,13 @@ const var1 = 3;
 const var2 = 4;
 
 // ver imagen...
+
+// Operadores aritméticos #008000
+// Un operador aritmético toma valores numéricos (ya sean literales o variables) como operandos y devuelve un único valor numérico. Los operadores aritméticos estándar son la suma (+), la resta (-), la multiplicación (*) y la división (/). Estos operadores funcionan como lo hacen en la mayoría de los lenguajes de programación cuando se utilizan con números de punto flotante (en particular, tenga en cuenta que la división por cero produce Infinito). Por ejemplo
+
+console.log(1 / 2); // 0.5
+console.log(1 / 2 === 1.0 / 2.0); // true
+
+// Además de las operaciones aritméticas estándar (+, -, *, /), JavaScript proporciona los operadores aritméticos que aparecen en la siguiente tabla:
+
+// ver imagen...
