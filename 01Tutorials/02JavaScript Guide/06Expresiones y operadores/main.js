@@ -256,3 +256,12 @@ console.log(x4);
 // Ese 3 se asigna ahora a x[2]. (Este paso sólo tendrá éxito si x se asigna a un objeto).
 
 // La expresión de asignación x[f()] = g() ha terminado de evaluarse; su resultado es el nuevo valor de x[2] - que resulta ser 3. x[2] está ahora asignado a 3, y la consola ha impreso "¡F!" y luego "¡G!".
+
+// Evite las cadenas de asignaciones #FF0000
+// Encadenar asignaciones o anidarlas en otras expresiones puede dar lugar a un comportamiento sorprendente. Por esta razón, se desaconseja encadenar asignaciones en la misma sentencia).
+
+// En particular, poner una cadena de variables en una sentencia const, let o var a menudo no funciona. Sólo se declararía la variable más externa/izquierda; otras variables dentro de la cadena de asignación no son declaradas por la sentencia const/let/var. Por ejemplo
+
+// const z = y = x = f();
+
+// Esta sentencia aparentemente declara las variables x, y y z. Sin embargo, en realidad sólo declara la variable z. y y x son referencias inválidas a variables inexistentes (en modo estricto) o, peor aún, crearían implícitamente variables globales para x e y en modo descuidado.
