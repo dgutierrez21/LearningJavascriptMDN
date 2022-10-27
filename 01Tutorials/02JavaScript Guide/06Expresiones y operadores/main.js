@@ -283,3 +283,37 @@ console.log(1 / 2 === 1.0 / 2.0); // true
 // Además de las operaciones aritméticas estándar (+, -, *, /), JavaScript proporciona los operadores aritméticos que aparecen en la siguiente tabla:
 
 // ver imagen...
+
+// Operadores a nivel de bits #008000
+// Un operador a nivel de bits trata sus operandos como un conjunto de 32 bits (ceros y unos), en lugar de como números decimales, hexadecimales u octales. Por ejemplo, el número decimal nueve tiene una representación binaria de 1001. Los operadores "bitwise" realizan sus operaciones sobre dichas representaciones binarias, pero devuelven valores numéricos estándar de JavaScript.
+
+// La siguiente tabla resume los operadores bitwise de JavaScript.
+
+// ver imagen...
+
+// Operadores lógicos a nivel de bits #00aae4
+// Conceptualmente, los operadores lógicos a nivel de bits funcionan como sigue:
+
+// Los operandos se convierten en enteros de treinta y dos bits y se expresan mediante una serie de bits (ceros y unos). Los números con más de 32 bits descartan sus bits más significativos. Por ejemplo, el siguiente número entero con más de 32 bits se convertirá en un entero de 32 bits:
+
+// Antes: 1110 0110 1111 1010 0000 0000 0000 0110 0000 0001
+
+// Después: 1010 0000 0000 0000 0110 0000 0000 0001
+
+// Cada bit del primer operando se empareja con el bit correspondiente del segundo operando: el primer bit con el primer bit, el segundo bit con el segundo bit, y así sucesivamente.
+// El operador se aplica a cada par de bits, y el resultado se construye a nivel de bits.
+
+// Por ejemplo, la representación binaria de nueve es 1001, y la representación binaria de quince es 1111. Por lo tanto, cuando se aplican los operadores a nivel de bits a estos valores, los resultados son los siguientes:
+
+// ver imagen...
+
+// Tenga en cuenta que los 32 bits se invierten utilizando el operador NOT bit a bit, y que los valores con el bit más significativo (más a la izquierda) establecido en 1 representan números negativos (representación del complemento de dos). ~x evalúa con el mismo valor que --x - 1.
+
+// Operadores de desplazamiento a nivel de bits #00aae4
+// Los operadores de desplazamiento a nivel de bit toman dos operandos: el primero es una cantidad que se va a desplazar, y el segundo especifica el número de posiciones de bit en las que se va a desplazar el primer operando. El sentido de la operación de desplazamiento está controlado por el operador utilizado.
+
+// Los operadores de desplazamiento convierten sus operandos en enteros de treinta y dos bits y devuelven un resultado de tipo Number o BigInt: concretamente, si el tipo del operando izquierdo es BigInt, devuelven BigInt; en caso contrario, devuelven Number.
+
+// Los operadores de desplazamiento se enumeran en la siguiente tabla.
+
+// ver imagen...
