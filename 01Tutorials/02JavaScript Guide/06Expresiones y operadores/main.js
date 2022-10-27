@@ -265,3 +265,11 @@ console.log(x4);
 // const z = y = x = f();
 
 // Esta sentencia aparentemente declara las variables x, y y z. Sin embargo, en realidad sólo declara la variable z. y y x son referencias inválidas a variables inexistentes (en modo estricto) o, peor aún, crearían implícitamente variables globales para x e y en modo descuidado.
+
+// Operadores de comparación #008000
+// Un operador de comparación compara sus operandos y devuelve un valor lógico en función de si la comparación es verdadera. Los operandos pueden ser valores numéricos, de cadena, lógicos o de objeto. Las cadenas se comparan basándose en el ordenamiento lexicográfico estándar, utilizando valores Unicode. En la mayoría de los casos, si los dos operandos no son del mismo tipo, JavaScript intenta convertirlos a un tipo apropiado para la comparación. Este comportamiento generalmente resulta en la comparación de los operandos numéricamente. Las únicas excepciones a la conversión de tipos en las comparaciones son los operadores === y !==, que realizan comparaciones estrictas de igualdad y desigualdad. Estos operadores no intentan convertir los operandos a tipos compatibles antes de comprobar la igualdad. La siguiente tabla describe los operadores de comparación en términos de este código de ejemplo:
+
+const var1 = 3;
+const var2 = 4;
+
+// ver imagen...
