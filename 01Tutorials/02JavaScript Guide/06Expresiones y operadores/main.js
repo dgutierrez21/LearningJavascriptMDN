@@ -402,3 +402,29 @@ console.log(b3);
 
 console.log(1n > 2); // false
 console.log(3 > 2n); // true
+
+// Operadores de cadena #008000
+// Además de los operadores de comparación, que pueden utilizarse en valores de cadena, el operador de concatenación (+) concatena dos valores de cadena, devolviendo otra cadena que es la unión de las dos cadenas operativas.
+
+// Por ejemplo,
+
+console.log("Mi " + "Cadena");
+
+console.log("Hola " + "Mundo.");
+
+// El operador abreviado de asignación += también puede utilizarse para concatenar cadenas.
+
+// Por ejemplo,
+
+let alfabeto = 27;
+
+let miCadena = "Alfa";
+
+if (alfabeto === 27) {
+  miCadena += "beto"; // evalúa a "alphabet" y asigna este valor a mystring.
+  console.log(miCadena);
+} else {
+  console.log(
+    "El valor introducido no es el alfabeto o el alfabeto no esta completo."
+  );
+}
