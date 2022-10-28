@@ -458,3 +458,104 @@ const a5 = [x5, x5, x5, x5, x5];
 for (let i = 0, j = 9; i <= j; i++, j--) {
   console.log(`a5[${i}][${j}]= ${a5[i][j]}`);
 }
+
+// Operadores unarios #008000
+// Una operación unaria es una operación con un solo operando.
+
+// delete #00aae4
+// El operador delete borra la propiedad de un objeto. La sintaxis es
+
+// delete objeto.propiedad;
+// delete objeto[propertyKey];
+// delete objectName[index];
+
+// donde objeto es el nombre de un objeto, propiedad es una propiedad existente, y propertyKey es una cadena o símbolo que hace referencia a una propiedad existente.
+
+// Si el operador delete tiene éxito, elimina la propiedad del objeto. Si se intenta acceder a ella después, el resultado será indefinido. El operador delete devuelve true si la operación es posible; devuelve false si la operación no es posible.
+
+console.log(delete Math.PI); // devuelve false (no se pueden borrar propiedades no configurables)
+
+const miObj = {
+  h: 4,
+};
+
+console.log(miObj.h); // 4
+
+console.log(delete miObj.h); // devuelve true (puede eliminar las propiedades definidas por el usuario)
+
+console.log(miObj.h); // undefined
+
+// Eliminación de elementos de arrays #00aae4
+// Como los arrays son sólo objetos, es técnicamente posible borrar elementos de ellos. Sin embargo, esto se considera una mala práctica, intenta evitarlo. Cuando borras una propiedad de un array, la longitud del array no se ve afectada y los demás elementos no se reindexan. Para lograr ese comportamiento, es mucho mejor sobrescribir el elemento con el valor indefinido.
+
+let arr = [0, 1, 2, 3];
+
+console.log(arr);
+
+arr = undefined;
+
+console.log(arr);
+
+// Para manipular realmente el array, utiliza los distintos métodos de array como splice.
+
+// typeof #00aae4
+// El operador typeof se utiliza en cualquiera de las siguientes formas:
+
+//  typeof operando
+
+// El operador typeof devuelve una cadena que indica el tipo del operando no evaluado. operando es la cadena, variable, palabra clave u objeto cuyo tipo debe devolverse. Los paréntesis son opcionales.
+
+// Suponga que define las siguientes variables:
+
+const myFun = new Function("5 + 2");
+const forma = "redondo";
+const tamanio = 1;
+const foo2 = ["Manzana", "Mango", "Naranja"];
+const hoy = new Date();
+
+// El operador typeof devuelve los siguientes resultados para estas variables:
+
+console.log(typeof myFun);
+console.log(typeof forma);
+console.log(typeof tamanio);
+console.log(typeof foo2);
+console.log(typeof hoy);
+
+// Para las palabras clave true y null, el operador typeof devuelve los siguientes resultados:
+
+console.log(typeof true); // booleano
+console.log(typeof null); // objeto
+
+// Para un número o una cadena, el operador typeof devuelve los siguientes resultados:
+
+console.log(typeof 60); // devuelve "número"
+console.log(typeof "Hola Mundo"); // devuelve "cadena"
+
+// Para los valores de las propiedades, el operador typeof devuelve el tipo de valor que contiene la propiedad:
+
+console.log(typeof document.lastModified); // devuelve "cadena"
+console.log(typeof window.length); // devuelve "número"
+console.log(typeof Math.LN2); // devuelve "número"
+
+// En el caso de los métodos y las funciones, el operador typeof devuelve los siguientes resultados
+
+console.log(typeof blur); // devuelve "función"
+console.log(typeof eval); // devuelve "función"
+console.log(typeof parseInt); // devuelve "función"
+console.log(typeof forma.split); // devuelve "función"
+
+// Para los objetos predefinidos, el operador typeof devuelve los siguientes resultados
+
+console.log(typeof Date); // devuelve "función"
+console.log(typeof Function); // devuelve "función".
+console.log(typeof Math); // devuelve "objeto"
+console.log(typeof Option); // devuelve "función"
+console.log(typeof String); // devuelve "función".
+
+// void #00aae4
+// El operador void se utiliza en cualquiera de las siguientes formas:
+
+// void (expresión)
+// void expresión
+
+// El operador void especifica una expresión para ser evaluada sin devolver un valor. expression es una expresión de JavaScript para evaluar. Los paréntesis que rodean la expresión son opcionales, pero es un buen estilo utilizarlos.
