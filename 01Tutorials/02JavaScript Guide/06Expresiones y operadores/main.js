@@ -363,3 +363,42 @@ console.log(!"Cat"); // false
 // Las reglas de la lógica garantizan que estas evaluaciones son siempre correctas. Tenga en cuenta que la parte de "cualquier cosa" de las expresiones anteriores no se evalúa, por lo que cualquier efecto secundario de hacerlo no tiene efecto.
 
 // Tenga en cuenta que para el segundo caso, en el código moderno puede utilizar el operador de coalescencia Nullish (??) que funciona como ||, pero sólo devuelve la segunda expresión, cuando la primera es "nullish", es decir, nula o indefinida. Por lo tanto, es la mejor alternativa para proporcionar valores por defecto, cuando valores como '' o 0 son valores válidos para la primera expresión, también.
+
+// Operadores BigInt #008000
+// La mayoría de los operadores que se pueden utilizar entre números también se pueden utilizar entre valores BigInt.
+
+// // Suma de BigInt
+const a = 1n + 2n; // 3n
+
+console.log(a);
+
+// // La división con BigInts redondea hacia cero
+const b = 1n / 2n; // 0n
+
+console.log(b);
+
+// Las operaciones bit a bit con BigInts no truncan ningún lado
+const c = 40000000000000000n >> 2n; // 10000000000000000n
+
+console.log(c);
+
+// Una excepción es el desplazamiento a la derecha sin signo (>>>), que no está definido para los valores BigInt. Esto se debe a que un BigInt no tiene un ancho fijo, por lo que técnicamente no tiene un "bit más alto".
+
+// const d = 8n >>> 2n; // TypeError: Los BigInts no tienen desplazamiento a la derecha sin signo, utilice >> en su lugar
+
+// Los BigInts y los números no son mutuamente reemplazables - no puedes mezclarlos en los cálculos. #FF0000
+
+// const a2 = 1n + 2; // TypeError: No se puede mezclar BigInt y otros tipos
+
+// Esto se debe a que BigInt no es ni un subconjunto ni un superconjunto de los números. Los BigInt tienen mayor precisión que los números al representar enteros grandes, pero no pueden representar decimales, por lo que la conversión implícita en cualquiera de los dos lados podría perder precisión. Utilice la conversión explícita para indicar si desea que la operación sea una operación numérica o una BigInt.
+
+const a3 = Number(1n) + 2; // 3
+console.log(a3);
+
+const b3 = 1n + BigInt(2); // 3n
+console.log(b3);
+
+// Puedes comparar BigInts con números.
+
+console.log(1n > 2); // false
+console.log(3 > 2n); // true
