@@ -445,3 +445,16 @@ const estado = edad > 17 ? "Es una persona adulta" : "Es una persona menor";
 console.log(estado);
 
 // Esta sentencia asigna el valor "Es una persona adulta" a la variable estado si la edad es mayor a 17 años. En caso contrario, asigna el valor "Es una persona menor" a la variable estado.
+
+// Operador coma #008000
+// El operador coma (,) evalúa ambos operandos y devuelve el valor del último operando. Este operador se utiliza principalmente dentro de un bucle for, para permitir que se actualicen múltiples variables cada vez que se pasa por el bucle. Se considera de mal estilo utilizarlo en otros lugares, cuando no es necesario. A menudo se pueden y deben utilizar dos sentencias separadas en su lugar.
+
+// Por ejemplo, si a4 es un array de 2 dimensiones con 10 elementos en un lado, el siguiente código utiliza el operador coma para actualizar dos variables a la vez. El código imprime los valores de los elementos diagonales del array:
+
+const x5 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const a5 = [x5, x5, x5, x5, x5];
+
+for (let i = 0, j = 9; i <= j; i++, j--) {
+  console.log(`a5[${i}][${j}]= ${a5[i][j]}`);
+}
