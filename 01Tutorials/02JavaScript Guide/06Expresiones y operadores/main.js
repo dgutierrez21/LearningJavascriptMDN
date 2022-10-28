@@ -428,3 +428,20 @@ if (alfabeto === 27) {
     "El valor introducido no es el alfabeto o el alfabeto no esta completo."
   );
 }
+
+// Operador condicional (ternario) #008000
+// El operador condicional es el único operador de JavaScript que toma tres operandos. El operador puede tener uno de dos valores en función de una condición. La sintaxis es
+
+// condición ? val1 : val2
+
+// Si la condición es verdadera, el operador tiene el valor de val1. En caso contrario, tiene el valor de val2. Puede utilizar el operador condicional en cualquier lugar en el que utilice un operador estándar.
+
+// Por ejemplo
+
+let edad = 18;
+
+const estado = edad > 17 ? "Es una persona adulta" : "Es una persona menor";
+
+console.log(estado);
+
+// Esta sentencia asigna el valor "Es una persona adulta" a la variable estado si la edad es mayor a 17 años. En caso contrario, asigna el valor "Es una persona menor" a la variable estado.
