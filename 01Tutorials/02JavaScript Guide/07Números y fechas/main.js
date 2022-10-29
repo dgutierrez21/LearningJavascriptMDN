@@ -71,3 +71,18 @@
 // El prototipo Number proporciona métodos para recuperar información de objetos Number en varios formatos. En la tabla siguiente se resumen los métodos de Number.prototype.
 
 // ver imagen...
+
+// Objeto Math #008000
+// El objeto Math incorporado tiene propiedades y métodos para las constantes y funciones matemáticas. Por ejemplo, la propiedad PI del objeto Math tiene el valor de pi (3.141...), que se utilizaría en una aplicación como
+
+console.log(Math.PI);
+
+// Del mismo modo, las funciones matemáticas estándar son métodos de Math. Estas incluyen funciones trigonométricas, logarítmicas, exponenciales y otras. Por ejemplo, si quieres usar la función trigonométrica seno, escribirías
+
+// Math.sin(1.56)
+
+// Tenga en cuenta que todos los métodos trigonométricos de Math toman argumentos en radianes.
+
+// La siguiente tabla resume los métodos del objeto Math.
+
+// ver imagen...
