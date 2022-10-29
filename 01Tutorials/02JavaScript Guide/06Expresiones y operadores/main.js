@@ -616,3 +616,58 @@ if (elDia instanceof Date) {
 } else {
   console.log("El objeto elDia NO es de tipo Date");
 }
+
+// Expresiones básicas #008000
+// Todos los operadores operan finalmente sobre una o varias expresiones básicas. Estas expresiones básicas incluyen los identificadores y los literales, pero también existen otros tipos. A continuación se presentan brevemente, y su semántica se describe en detalle en sus respectivas secciones de referencia.
+
+// this #00aae4
+// Utilice la palabra clave this para referirse al objeto actual. En general, esto se refiere al objeto que llama en un método. Utilícela con el punto o con la notación de corchetes:
+
+// this['nombre de la propiedad']
+// this.propertyName
+
+// Supongamos que una función llamada validar valida la propiedad valor de un objeto, dado el objeto y los valores alto y bajo:
+
+function validar(obj, valBajo, valAlto) {
+  if (obj.value < valBajo || obj.value > valAlto) {
+    console.log("Valor inválido");
+  } else {
+    console.log("El valor es válido.");
+  }
+}
+
+// Podrías llamar a validar en el manejador del evento onChange de cada elemento del formulario, usando esto para pasarlo al elemento del formulario, como en el siguiente ejemplo:
+
+// ver html...
+
+// Operador de agrupación #00aae4
+// El operador de agrupación ( ) controla la precedencia de la evaluación en las expresiones. Por ejemplo, puedes anular primero la multiplicación y la división, y luego la suma y la resta para evaluar primero la suma.
+
+const a6 = 1,
+  b6 = 2,
+  c6 = 3;
+
+// // precedencia por defecto
+console.log(a6 + b6 * c6); // 7
+
+// // se evalúa por defecto así
+// a6 + (b6 * c6) // 7
+
+// // ahora anulando la precedencia
+// // suma antes que multiplicación
+
+console.log((a6 + b6) * c6); // 9
+
+// // lo que equivale a
+// a6 * c6 + b6 * c6 // 9
+
+// new #00aae4
+// Puedes utilizar el operador new para crear una instancia de un tipo de objeto definido por el usuario o de uno de los tipos de objeto incorporados. Utilice new de la siguiente manera:
+
+// const objectName = new objectType(param1, param2, /* ..., */ paramN);
+
+// super #00aae4
+// La palabra clave super se utiliza para llamar a funciones del padre de un objeto. Es útil con las clases para llamar al constructor padre, por ejemplo.
+
+// super([arguments]);  // llama al constructor padre.
+// super.functionOnParent([arguments]);
