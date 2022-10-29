@@ -86,3 +86,34 @@ console.log(Math.PI);
 // La siguiente tabla resume los métodos del objeto Math.
 
 // ver imagen...
+
+// BigInts #008000
+// Un defecto de los valores numéricos es que sólo tienen 64 bits. En la práctica, debido al uso de la codificación IEEE 754, no pueden representar con precisión ningún entero mayor que Number.MAX_SAFE_INTEGER (que es 253 - 1). Para resolver la necesidad de codificar datos binarios y para interoperar con otros lenguajes que ofrecen enteros anchos como i64 (enteros de 64 bits) e i128 (enteros de 128 bits), JavaScript también ofrece otro tipo de datos para representar enteros arbitrariamente grandes: BigInt.
+
+// Un BigInt puede definirse como un literal entero con el sufijo n:
+
+// const b1 = 123n;
+// // Puede ser arbitrariamente grande.
+// const b2 = -1234567890987654321n;
+
+// Los BigInts también pueden construirse a partir de valores numéricos o de cadenas de caracteres utilizando el constructor BigInt.
+
+// const b1 = BigInt(123);
+// // El uso de una cadena evita la pérdida de precisión, ya que los números largos
+// // los literales largos no representan lo que parecen.
+// const b2 = BigInt("-1234567890987654321");
+
+// Conceptualmente, un BigInt es sólo una secuencia de bits arbitrariamente larga que codifica un número entero. Puede realizar con seguridad cualquier operación aritmética sin perder precisión o desbordarse.
+
+// const integer = 12 ** 34; // 4.9222352429520264e+36; sólo tiene una precisión limitada
+// const bigint = 12n ** 34n; // 4922235242952026704037113243122008064n
+
+// En comparación con los números, los valores BigInt ofrecen una mayor precisión a la hora de representar enteros grandes; sin embargo, no pueden representar números de punto flotante. Por ejemplo, la división se redondearía a cero:
+
+// const bigintDiv = 5n / 2n; // 2n, porque no hay 2.5 en BigInt
+
+// Las funciones matemáticas no se pueden utilizar en valores BigInt. Hay una propuesta abierta para sobrecargar ciertas funciones matemáticas como Math.max() para permitir valores BigInt.
+
+// La elección entre BigInt y number depende de su caso de uso y del rango de su entrada. La precisión de los números ya debería ser capaz de acomodarse a la mayoría de las tareas cotidianas, y los BigInt son más adecuados para manejar datos binarios.
+
+// Lea más sobre lo que puede hacer con los valores BigInt en la sección Expresiones y Operadores, o en la referencia BigInt.
