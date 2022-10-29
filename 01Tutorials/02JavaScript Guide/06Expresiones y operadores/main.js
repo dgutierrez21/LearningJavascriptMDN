@@ -559,3 +559,60 @@ console.log(typeof String); // devuelve "función".
 // void expresión
 
 // El operador void especifica una expresión para ser evaluada sin devolver un valor. expression es una expresión de JavaScript para evaluar. Los paréntesis que rodean la expresión son opcionales, pero es un buen estilo utilizarlos.
+
+// Operadores relacionales #008000
+// Un operador relacional compara sus operandos y devuelve un valor booleano en función de si la comparación es verdadera.
+
+// in #00aae4
+// El operador in devuelve un valor verdadero si la propiedad especificada se encuentra en el objeto especificado. La sintaxis es
+
+// propNameOrNumber in objectName
+
+// donde propNameOrNumber es una expresión de cadena, numérica o de símbolo que representa un nombre de propiedad o un índice de matriz, y objectName es el nombre de un objeto.
+
+// Los siguientes ejemplos muestran algunos usos del operador in.
+
+const arbol = ["Mango", "Manzanas", "Naranjas"];
+
+console.log(0 in arbol); // true
+console.log(3 in arbol); // false
+
+console.log("Pera" in arbol); // devuelve false (debe especificar el número de índice, no el valor en ese índice)
+
+console.log("length" in arbol); // // devuelve true (la length es una propiedad del Array)
+
+console.log("PI" in Math); // true
+
+const miCadena2 = new String("coral");
+console.log("length" in miCadena2); // return true
+
+// Objeto personalizado
+
+const miCarro = {
+  marca: "Honda",
+  modelo: "Accord",
+  anio: "1998",
+};
+
+console.log("marca" in miCarro);
+console.log("Kilometros" in miCarro);
+console.log("anio" in miCarro);
+
+// instanceof #00aae4
+// El operador instanceof devuelve true si el objeto especificado es del tipo de objeto especificado. La sintaxis es
+
+// objectName instanceof objectType
+
+// donde objectName es el nombre del objeto a comparar con objectType, y objectType es un tipo de objeto, como Date o Array.
+
+// Utilice instanceof cuando necesite confirmar el tipo de un objeto en tiempo de ejecución. Por ejemplo, cuando se capturan excepciones, se puede pasar a un código de gestión de excepciones diferente dependiendo del tipo de excepción lanzada.
+
+// Por ejemplo, el siguiente código utiliza instanceof para determinar si theDay es un objeto Date. Como theDay es un objeto Date, las sentencias de la sentencia if se ejecutan.
+
+const elDia = new Date(1995, 7, 4);
+
+if (elDia instanceof Date) {
+  console.log("El objeto elDia es de tipo Date");
+} else {
+  console.log("El objeto elDia NO es de tipo Date");
+}
