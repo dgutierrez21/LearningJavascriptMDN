@@ -52,3 +52,22 @@
 // 1E3 // 1000
 // 2e6 // 2000000
 // 0.1e2 // 10
+
+// Objeto Number #008000
+// El objeto Número incorporado tiene propiedades para las constantes numéricas, como el valor máximo, el no-número y el infinito. No se pueden cambiar los valores de estas propiedades y se utilizan de la siguiente manera
+
+// const biggestNum = Number.MAX_VALUE;
+// const smallestNum = Number.MIN_VALUE;
+// const infiniteNum = Number.POSITIVE_INFINITY;
+// const negInfiniteNum = Number.NEGATIVE_INFINITY;
+// const notANum = Número.NaN;
+
+// Siempre se hace referencia a una propiedad del objeto Number predefinido como se muestra arriba, y no como una propiedad de un objeto Number creado por usted.
+
+// La siguiente tabla resume las propiedades del objeto Number.
+
+// ver imagen...
+
+// El prototipo Number proporciona métodos para recuperar información de objetos Number en varios formatos. En la tabla siguiente se resumen los métodos de Number.prototype.
+
+// ver imagen...
