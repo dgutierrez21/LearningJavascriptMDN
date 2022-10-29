@@ -117,3 +117,119 @@ console.log(Math.PI);
 // La elección entre BigInt y number depende de su caso de uso y del rango de su entrada. La precisión de los números ya debería ser capaz de acomodarse a la mayoría de las tareas cotidianas, y los BigInt son más adecuados para manejar datos binarios.
 
 // Lea más sobre lo que puede hacer con los valores BigInt en la sección Expresiones y Operadores, o en la referencia BigInt.
+
+// Objeto Date ( fecha ) #008000
+// JavaScript no tiene un tipo de datos de fecha. Sin embargo, puedes utilizar el objeto Date y sus métodos para trabajar con fechas y horas en tus aplicaciones. El objeto Date tiene un gran número de métodos para establecer, obtener y manipular fechas. No tiene propiedades.
+
+// JavaScript maneja las fechas de forma similar a Java. Los dos lenguajes tienen muchos de los mismos métodos de fecha, y ambos lenguajes almacenan las fechas como el número de milisegundos desde el 1 de enero de 1970, 00:00:00, siendo un Timestamp de Unix el número de segundos desde el 1 de enero de 1970, 00:00:00.
+
+// El rango del objeto Fecha es de -100.000.000 de días a 100.000.000 de días con respecto al 1 de enero de 1970 UTC.
+
+// Para crear un objeto Fecha
+
+// const dateObjectName = new Date([parámetros]);
+
+// donde dateObjectName es el nombre del objeto Date que se está creando; puede ser un objeto nuevo o una propiedad de un objeto existente.
+
+// Al llamar a Date sin la palabra clave new, se obtiene una cadena que representa la fecha y la hora actuales.
+
+console.log(Date());
+
+// Los parámetros de la sintaxis anterior pueden ser cualquiera de los siguientes
+
+// Nada: crea la fecha y hora de hoy. Por ejemplo, today = new Date();.
+
+// Una cadena que represente una fecha de la siguiente forma "Mes día, año horas:minutos:segundos". Por ejemplo, déjese Xmas95 = new Date("25 de diciembre de 1995 13:30:00"). Si se omiten las horas, los minutos o los segundos, el valor se pondrá a cero.
+
+// Un conjunto de valores enteros para el año, el mes y el día. Por ejemplo, deje Xmas95 = new Date(1995, 11, 25).
+
+// Un conjunto de valores enteros para el año, el mes, el día, la hora, los minutos y los segundos. Por ejemplo, déjese Xmas95 = new Date(1995, 11, 25, 9, 30, 0);.
+
+// Métodos del objeto Date #00aae4
+// Los métodos del objeto Date para el manejo de fechas y horas se dividen en estas amplias categorías:
+
+// 1. Métodos "set", para establecer los valores de fecha y hora en los objetos Date.
+
+// 2. Métodos "get", para obtener los valores de fecha y hora de los objetos Date.
+
+// 3. Métodos "to", para devolver valores de cadena de los objetos Date.
+
+// 4. Los métodos "parse" y "UTC", para analizar las cadenas de caracteres de los objetos Date.
+
+// Con los métodos "get" y "set" se pueden obtener y establecer segundos, minutos, horas, día del mes, día de la semana, meses y años por separado. Hay un método getDay que devuelve el día de la semana, pero no hay un método setDay correspondiente, porque el día de la semana se establece automáticamente. Estos métodos utilizan números enteros para representar estos valores de la siguiente manera:
+
+// Segundos y minutos: 0 a 59
+// Horas: 0 a 23
+// Día: 0 (domingo) a 6 (sábado)
+// Fecha: 1 a 31 (día del mes)
+// Meses: 0 (enero) a 11 (diciembre)
+// Año: años desde 1900
+
+// Por ejemplo, suponga que define la siguiente fecha
+
+const Xmas95 = new Date("December 25, 1995");
+
+// Entonces Xmas95.getMonth() devuelve 11, y Xmas95.getFullYear() devuelve 1995.
+
+console.log(Xmas95.getFullYear()); // 1995
+console.log(Xmas95.getMonth()); // 11
+
+// Los métodos getTime y setTime son útiles para comparar fechas. El método getTime devuelve el número de milisegundos desde el 1 de enero de 1970, 00:00:00 para un objeto Date.
+
+// Por ejemplo, el siguiente código muestra el número de días que quedan en el año actual:
+
+const hoy = new Date();
+
+const finDeAnio = new Date(1995, 11, 31, 23, 59, 59, 999); //  // Fijar el día y el mes
+
+finDeAnio.setFullYear(hoy.getFullYear()); // Fijar el año a este año
+
+const msPorAnio = 24 * 60 * 60 * 1000; // Número de milisegundos por día
+
+let diasQueQuedan = (finDeAnio.getTime() - hoy.getTime()) / msPorAnio;
+
+diasQueQuedan = Math.round(diasQueQuedan); //devuelve los días que quedan en el año
+
+console.log(diasQueQuedan);
+
+// Este ejemplo crea un objeto Date llamado today que contiene la fecha de hoy. A continuación, crea un objeto Date llamado endYear y establece el año como el año actual. Luego, utilizando el número de milisegundos por día, calcula el número de días entre hoy y fin de año, utilizando getTime y redondeando a un número entero de días.
+
+// El método parse es útil para asignar valores de cadenas de fechas a objetos Date existentes. Por ejemplo, el siguiente código utiliza parse y setTime para asignar un valor de fecha al objeto ipoDate:
+
+const ipoFecha = new Date();
+ipoFecha.setTime(Date.parse("Aug 9, 1995"));
+
+console.log(ipoFecha);
+
+// Ejemplo #00aae4
+
+// En el siguiente ejemplo, la función JSClock() devuelve la hora en el formato de un reloj digital.
+
+function JSReloj() {
+  const tiempo = new Date(),
+    hora = tiempo.getHours(),
+    minuto = tiempo.getMinutes(),
+    segundo = tiempo.getSeconds();
+
+  let temp = String(hora % 12);
+
+  if (hora === 0) {
+    temp = "12";
+  }
+
+  temp += (minuto < 10 ? ":0" : ":") + minuto;
+  temp += (segundo < 10 ? ":0" : ":") + segundo;
+  temp += hora >= 12 ? "P.M" : "A.M";
+
+  return temp;
+}
+
+console.log(JSReloj());
+
+// La función JSClock crea primero un nuevo objeto Date llamado time; como no se dan argumentos, time se crea con la fecha y hora actuales. Luego, las llamadas a los métodos getHours, getMinutes y getSeconds asignan el valor de la hora, los minutos y los segundos actuales.
+
+// Las siguientes cuatro sentencias construyen un valor de cadena basado en la hora. La primera sentencia crea una variable temp, asignándole un valor mediante una expresión condicional; si la hora es mayor que 12, (hora - 12), si no, hora, a menos que la hora sea 0, en cuyo caso se convierte en 12.
+
+// La siguiente sentencia añade un valor de minuto a temp. Si el valor de los minutos es inferior a 10, la expresión condicional añade una cadena con un cero precedente; en caso contrario, añade una cadena con dos puntos de demarcación. A continuación, una expresión añade un valor de segundos a temp de la misma manera.
+
+// Por último, una expresión condicional añade "P.M." a temp si la hora es 12 o superior; en caso contrario, añade "A.M." a temp.
