@@ -192,3 +192,51 @@ console.log(str.match(re4)); // ["fee ", "fi ", "fo "]
 // El carácter - se interpreta de forma diferente dentro de las clases de caracteres. En particular, para las expresiones regulares Unicode, - se interpreta como un literal - (y no como parte de un rango) sólo si aparece al principio o al final de la clase de caracteres. Por ejemplo, /[\w-:]/ es una expresión regular válida que coincide con un carácter de palabra, un - o :, pero /[\w-:]/u es una expresión regular inválida, ya que \w a : no es un rango de caracteres bien definido.
 
 // Las expresiones regulares Unicode también tienen un comportamiento de ejecución diferente. RegExp.prototype.unicode contiene más explicaciones sobre esto.
+
+// Ejemplos #008000
+// Nota: También hay varios ejemplos disponibles en:
+
+// Las páginas de referencia para exec(), test(), match(), matchAll(), search(), replace(), split().
+// Los artículos de la guía: clases de caracteres, aserciones, grupos y retro-referencias, cuantificadores, escapes de propiedades Unicode
+
+// Uso de caracteres especiales para verificar la entrada #00aae4
+// En el siguiente ejemplo, se espera que el usuario introduzca un número de teléfono. Cuando el usuario pulsa el botón "Check", el script comprueba la validez del número. Si el número es válido (coincide con la secuencia de caracteres especificada por la expresión regular), el script muestra un mensaje de agradecimiento al usuario y confirma el número. Si el número no es válido, el script informa al usuario de que el número de teléfono no es válido.
+
+// La expresión regular busca
+
+// el comienzo de la línea de datos: ^
+
+// seguido de tres caracteres numéricos \d{3} O | un paréntesis izquierdo \(, seguido de tres caracteres numéricos \d{3}, seguido de un paréntesis cerrado \), en un grupo no capturado (?:)
+
+// seguido de un guión, una barra inclinada o un punto decimal en un grupo de captura ()
+
+// seguido de tres dígitos \d{3}
+
+// seguido de la coincidencia recordada en el (primer) grupo de captura \1
+
+// seguido de cuatro dígitos \d{4}
+
+// seguido del final de la línea de datos: $
+
+// ver html...
+
+const form = document.querySelector("#form"),
+  input = document.querySelector("#telefono"),
+  salida = document.querySelector("#salida");
+
+const re5 = /^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$/;
+
+function pruebaInformación(entradaTelefono) {
+  const bien = re5.exec(entradaTelefono.value);
+
+  console.log(bien);
+
+  salida.textContent = bien
+    ? `Gracias, su numero de telefono es ${bien[0]}`
+    : `${entradaTelefono.value} no es un número de teléfono con código de área! `;
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  pruebaInformación(input);
+});
