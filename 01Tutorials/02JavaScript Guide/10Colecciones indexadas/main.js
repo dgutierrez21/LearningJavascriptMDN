@@ -76,3 +76,25 @@ const arr3 = Array(42);
 const arr5 = Array.of(9.5); // arr5 contiene un solo elemento 9.5
 
 console.log(arr5);
+
+// Referirse a los elementos del array #008000
+// Dado que los elementos son también propiedades, puedes acceder a ellos utilizando los accesores de propiedades. Supongamos que defines el siguiente array:
+
+const miArray = ["Viento", "Lluvia", "Fuego"];
+
+// Puedes referirte al primer elemento del array como miArray[0], al segundo elemento del array como miArray[1], etc... El índice de los elementos empieza por cero.
+
+console.log(miArray[0]); // Viento
+console.log(miArray[1]);
+console.log(miArray[2]);
+console.log(miArray[3]); // undefined
+
+// Ejemplo 2
+
+for (let i = 0; i < miArray.length; i++) {
+  console.log(miArray[i]);
+}
+
+// Nota: También puedes utilizar accesos a propiedades para acceder a otras propiedades del array, como con un objeto.
+
+console.log(miArray["length"]); // 3
