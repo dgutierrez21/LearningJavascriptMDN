@@ -103,3 +103,40 @@ console.log(concat.replace("Mundo", "Fred"));
 const concat2 = concat + " | ";
 
 console.log(`La siguiente cadena se repite 5 veces: ${concat2.repeat(5)}`);
+
+// Literales de plantilla multilínea #008000
+// Los literales de plantilla son literales de cadena que permiten expresiones incrustadas. Con ellos se pueden utilizar cadenas multilíneas y funciones de interpolación de cadenas.
+
+// Los literales de plantillas van acompañados del carácter "back-tick" (` `) (acento grave) en lugar de comillas dobles o simples. Los literales de las plantillas pueden contener marcadores de posición. Éstos se indican con el signo del dólar y las llaves (${expresión}).
+
+// Líneas múltiples #00aae4
+// Cualquier carácter de nueva línea que se inserte en la fuente forma parte del literal de plantilla. Utilizando cadenas normales, tendría que utilizar la siguiente sintaxis para obtener cadenas multilínea:
+
+console.log("Cadena de texto 1\n\
+Cadena de texto 2");
+// // "cadena texto línea 1
+// // cadena texto línea 2"
+
+// Para conseguir el mismo efecto con cadenas de varias líneas, ahora puedes escribir
+
+console.log(`Cadena de texto 1
+cadena de text0 2`);
+// // "cadena texto línea 1
+// // cadena texto línea 2"
+
+// Expresiones incrustadas #00aae4
+// Para incrustar expresiones dentro de cadenas normales, se utilizaría la siguiente sintaxis:
+
+const cinco = 5;
+const diez = 10;
+console.log(
+  "Quince es " + (cinco + diez) + " y no " + (2 * cinco + diez) + "."
+);
+// // "Quince es 15 y no 20".
+
+// Ahora, con los literales de plantilla, puedes hacer uso del azúcar sintáctico haciendo sustituciones como esta más legibles:
+
+console.log(`Quince es ${diez + cinco} y no ${2 * cinco + diez}.`);
+// // "Quince es 15 y no 20".
+
+// Para más información, lea sobre los literales de plantilla en la referencia de JavaScript.
