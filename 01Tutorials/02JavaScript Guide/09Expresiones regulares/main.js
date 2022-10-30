@@ -77,3 +77,118 @@ function escapeRegExp(cadena) {
 
 // Uso de paréntesis #00aae4
 // Los paréntesis alrededor de cualquier parte del patrón de expresión regular hacen que se recuerde esa parte de la subcadena coincidente. Una vez recordada, la subcadena puede ser recuperada para otros usos. Vea Grupos y referencias anteriores para más detalles.
+
+// Uso de expresiones regulares en JavaScript #008000
+// Las expresiones regulares se utilizan con los métodos RegExp test() y exec() y con los métodos String match(), replace(), search() y split().
+
+// ver imagen...
+
+// Cuando quiera saber si un patrón se encuentra en una cadena, utilice los métodos test() o search(); para obtener más información (pero una ejecución más lenta) utilice los métodos exec() o match(). Si utiliza exec() o match() y si la coincidencia tiene éxito, estos métodos devuelven un array y actualizan las propiedades del objeto de expresión regular asociado y también del objeto de expresión regular predefinido, RegExp. Si la coincidencia falla, el método exec() devuelve null (que coacciona a false).
+
+// En el siguiente ejemplo, el script utiliza el método exec() para encontrar una coincidencia en una cadena.
+
+const miRe = /d(b+)d/g;
+
+const miArray = miRe.exec("cdbbdbsbz");
+
+console.log(miArray);
+
+// Si no necesitas acceder a las propiedades de la expresión regular, una forma alternativa de crear miMatriz es con este script
+
+const miArray2 = /d(b+)d/g.exec("cdbbdbsbz");
+
+console.log(miArray2);
+
+// (Vea Uso de la bandera de búsqueda global con exec() para más información sobre los diferentes comportamientos).
+
+// Si quiere construir la expresión regular a partir de una cadena, otra alternativa es este script
+
+const miRe2 = new RegExp("d(b+)d", "g"),
+  miArray3 = miRe2.exec("cdbbdbsbz");
+
+console.log(miArray3);
+
+// Con estos scripts, la coincidencia tiene éxito y devuelve el array y actualiza las propiedades que se muestran en la siguiente tabla.
+
+// ver imagen...
+
+// Como se muestra en la segunda forma de este ejemplo, puede utilizar una expresión regular creada con un inicializador de objetos sin asignarla a una variable. Sin embargo, si lo hace, cada ocurrencia es una nueva expresión regular. Por esta razón, si utiliza esta forma sin asignarla a una variable, no podrá acceder posteriormente a las propiedades de esa expresión regular. Por ejemplo, suponga que tiene este script
+
+const miRe3 = /d(b+)d/g;
+const myArray3 = miRe3.exec("cdbbdbsbz");
+console.log(`El valor de lastIndex es ${miRe3.lastIndex}`);
+
+// // "El valor de lastIndex es 5"
+
+// Sin embargo, si tienes este script
+
+const myArray4 = /d(b+)d/g.exec("cdbbdbsbz");
+console.log(`El valor de lastIndex es ${/d(b+)d/g.lastIndex}`);
+
+// // "El valor de lastIndex es 0"
+
+// Las apariciones de /d(b+)d/g en las dos sentencias son objetos de expresión regular diferentes y por lo tanto tienen valores diferentes para su propiedad lastIndex. Si necesita acceder a las propiedades de una expresión regular creada con un inicializador de objetos, debe asignarla primero a una variable.
+
+// Búsqueda avanzada con banderas #00aae4
+// Las expresiones regulares tienen banderas opcionales que permiten funcionalidades como la búsqueda global y la búsqueda sin distinción de mayúsculas y minúsculas. Estos indicadores pueden utilizarse por separado o juntos en cualquier orden, y se incluyen como parte de la expresión regular.
+
+// ver imagen...
+
+// Para incluir una bandera con la expresión regular, utilice esta sintaxis
+
+// const re = /patrón/banderas;
+
+// const re = new RegExp('patrón', 'banderas');
+
+// Tenga en cuenta que las banderas son una parte integral de una expresión regular. No se pueden añadir o eliminar posteriormente.
+
+// Por ejemplo, re = /\w+\s/g crea una expresión regular que busca uno o más caracteres seguidos de un espacio, y busca esta combinación en toda la cadena.
+
+const re2 = /\w+\s/g;
+const str = "fee fi fo fum";
+const miArray4 = str.match(re2);
+console.log(miArray4);
+
+// // ["fee ", "fi ", "fo "]
+
+// Podrías reemplazar la línea
+
+// const re = /\w+\s/g;
+
+// por:
+
+const re3 = new RegExp("w+\\s", "g");
+
+// La bandera m se utiliza para especificar que una cadena de entrada multilínea debe ser tratada como varias líneas. Si se utiliza la bandera m, ^ y $ coinciden con el inicio o el final de cualquier línea dentro de la cadena de entrada en lugar del inicio o el final de toda la cadena.
+
+// Uso del indicador de búsqueda global con exec() #00aae4
+// El método RegExp.prototype.exec() con la bandera g devuelve cada coincidencia y su posición de forma iterativa.
+
+const str2 = "fee fi fo fum";
+const re4 = /\w+\s/g;
+
+console.log(re4.exec(str2)); // ["fee ", index: 0, input: "fee fi fo fum"]
+console.log(re4.exec(str2)); // ["fi ", index: 4, input: "fee fi fo fum"]
+console.log(re4.exec(str2)); // ["fo ", index: 7, input: "fee fi fo fum"]
+console.log(re4.exec(str2)); // null
+
+// En cambio, el método String.prototype.match() devuelve todas las coincidencias a la vez, pero sin su posición.
+
+console.log(str.match(re4)); // ["fee ", "fi ", "fo "]
+
+// Uso de expresiones regulares unicode #00aae4
+// La bandera "u" se utiliza para crear expresiones regulares "unicode"; es decir, expresiones regulares que admiten coincidencias con texto unicode. Esto se consigue principalmente mediante el uso de escapes de propiedades Unicode, que sólo son compatibles con las expresiones regulares "unicode".
+
+// Por ejemplo, la siguiente expresión regular podría utilizarse para comparar con una "palabra" unicode arbitraria:
+
+// /\p{L}*/u
+
+// Hay otras diferencias entre las expresiones regulares unicode y no unicode que hay que tener en cuenta:
+
+// Las expresiones regulares Unicode no admiten los llamados "escapes de identidad"; es decir, patrones en los que no se necesita una barra invertida de escape y que se ignoran de hecho. Por ejemplo, /\a/ es una expresión regular válida que coincide con la letra 'a', pero /\a/u no lo es.
+
+// Las llaves deben escaparse cuando no se utilizan como cuantificadores. Por ejemplo, /{/ es una expresión regular válida que coincide con la llave '{', pero /{/u no lo es.
+
+// El carácter - se interpreta de forma diferente dentro de las clases de caracteres. En particular, para las expresiones regulares Unicode, - se interpreta como un literal - (y no como parte de un rango) sólo si aparece al principio o al final de la clase de caracteres. Por ejemplo, /[\w-:]/ es una expresión regular válida que coincide con un carácter de palabra, un - o :, pero /[\w-:]/u es una expresión regular inválida, ya que \w a : no es un rango de caracteres bien definido.
+
+// Las expresiones regulares Unicode también tienen un comportamiento de ejecución diferente. RegExp.prototype.unicode contiene más explicaciones sobre esto.
