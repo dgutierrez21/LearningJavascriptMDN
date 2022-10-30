@@ -240,3 +240,29 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   pruebaInformación(input);
 });
+
+// Herramientas para RegExp #008000
+
+// RegExr
+
+// https://regexr.com/
+
+// Una herramienta en línea para aprender, construir y probar expresiones regulares.
+
+// Probador Regex
+
+// https://regex101.com/
+
+// Un generador / depurador de regex en línea
+
+// Tutorial interactivo de Regex
+
+// https://regexlearn.com/
+
+// Un tutorial interactivo en línea, Cheatsheet, & Playground.
+
+// Visualizador Regex
+
+// https://extendsclass.com/regex-tester.html
+
+// Un probador de regex visual en línea.
