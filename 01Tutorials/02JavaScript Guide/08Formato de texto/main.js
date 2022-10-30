@@ -140,3 +140,67 @@ console.log(`Quince es ${diez + cinco} y no ${2 * cinco + diez}.`);
 // // "Quince es 15 y no 20".
 
 // Para más información, lea sobre los literales de plantilla en la referencia de JavaScript.
+
+// Internacionalización #008000
+// El objeto Intl es el espacio de nombres para la API de internacionalización de ECMAScript, que proporciona una comparación de cadenas sensible al idioma, un formato numérico y un formato de fecha y hora. Los constructores de los objetos Intl.Collator, Intl.NumberFormat e Intl.DateTimeFormat son propiedades del objeto Intl.
+
+// Formato de fecha y hora #00aae4
+// El objeto Intl.DateTimeFormat es útil para formatear la fecha y la hora. A continuación, se formatea una fecha para el inglés que se utiliza en Estados Unidos. (El resultado es diferente en otra zona horaria).
+
+// // 17 de julio de 2014 00:00:00 UTC:
+const julio172014 = new Date("2014-07-17");
+
+const opciones = {
+  anio: "2 dígitos",
+  mes: "2 dígitos",
+  día: "2 dígitos",
+  hora: "2 dígitos",
+  minuto: "2 dígitos",
+  nombreZonaHoraría: "corto",
+};
+const fechaHoraAmericana = new Intl.DateTimeFormat("en-US", opciones).format;
+
+// // La zona horaria local varía en función de su configuración
+
+// // En CEST, registros: 17/07/14, 02:00 AM GMT+2
+// // En PDT, registros: 16/07/14, 05:00 PM GMT-7
+
+console.log(fechaHoraAmericana(julio172014));
+
+// Formato de números #00aae4
+// El objeto Intl.NumberFormat es útil para dar formato a los números, por ejemplo a las monedas.
+
+const precioGasolina = new Intl.NumberFormat("en-US", {
+  estilo: "moneda",
+  moneda: "USD",
+  digitosFraccionMinima: 3,
+});
+
+console.log();
+
+// Intercalación #00aae4
+// El objeto Intl.Collator es útil para comparar y ordenar cadenas.
+
+// Por ejemplo, en realidad hay dos órdenes de ordenación diferentes en alemán, agenda y diccionario. La ordenación de la guía telefónica enfatiza el sonido, y es como si "ä", "ö", etc. se expandieran a "ae", "oe", etc. antes de la ordenación.
+
+const nombres = ["Hochberg", "Hönigswald", "Holzman"];
+
+const guiaTelefonicaAlemana = new Intl.Collator("de-DE-u-co-phonebk");
+
+// como si se tratara de ordenar ["Hochberg", "Hoenigswald", "Holzman"]:
+
+console.log(nombres.sort(guiaTelefonicaAlemana.compare).join(", "));
+
+// registro "Hochberg, Hönigswald, Holzman"
+
+// Algunas palabras alemanas se conjugan con diéresis adicionales, por lo que en los diccionarios es sensato ordenar ignorando las diéresis (excepto cuando se trata de ordenar palabras que sólo se diferencian por las diéresis: schon antes de schön).
+
+const diccionarioAleman = new Intl.Collator("de-DE-u-co-dict");
+
+// como si se tratara de ordenar ["Hochberg", "Honigswald", "Holzman"]:
+
+console.log(nombres.sort(diccionarioAleman.compare).join(", "));
+
+// registro "Hochberg, Holzman, Hönigswald"
+
+// Para obtener más información sobre la API Intl, consulte también Introducción a la API de internacionalización de JavaScript.
