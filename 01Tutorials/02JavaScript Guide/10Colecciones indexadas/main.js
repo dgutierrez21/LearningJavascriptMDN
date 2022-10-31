@@ -98,3 +98,106 @@ for (let i = 0; i < miArray.length; i++) {
 // Nota: También puedes utilizar accesos a propiedades para acceder a otras propiedades del array, como con un objeto.
 
 console.log(miArray["length"]); // 3
+
+// Rellenar una matriz #008000
+// Puedes rellenar un array asignando valores a sus elementos. Por ejemplo:
+
+const empleados = [];
+empleados[0] = "Casey Jones";
+empleados[1] = "Phil Lesh";
+empleados[2] = "August West";
+
+console.log(empleados);
+
+// Nota: Si se proporciona un valor no entero al operador de matriz en el código anterior, se creará una propiedad en el objeto que representa la matriz, en lugar de un elemento de la misma.
+
+const arr6 = [];
+arr6[3.4] = "Naranjas";
+
+console.log(arr6.length);
+console.log(arr6);
+console.log(Object.hasOwn(arr6, 3.4)); // true
+
+// También puedes rellenar un array cuando lo creas:
+
+const miVar = "Mundo";
+
+const miMatriz = new Array("Hola", miVar, 3.14159);
+
+console.log(miMatriz);
+
+// O
+
+const miMatriz2 = ["Mango", "Manzana", "Naranja"];
+
+console.log(miMatriz2);
+
+// Entender la longitud #00aae4
+// A nivel de implementación, las matrices de JavaScript almacenan sus elementos como propiedades de objetos estándar, utilizando el índice de la matriz como nombre de la propiedad.
+
+// La propiedad length es especial. Su valor es siempre un número entero positivo mayor que el índice del último elemento, si existe. (En el ejemplo siguiente, 'Dusty' está indexado en 30, por lo que cats.length devuelve 30 + 1). #FF0000
+
+// Recuerde que los índices de las matrices de JavaScript se basan en 0: empiezan en 0, no en 1. Esto significa que la propiedad length será uno más que el índice más alto almacenado en el array: #FF0000
+
+const gatos = [];
+gatos[30] = ["Dusty"];
+console.log(gatos.length); // 31
+
+// También puedes asignar a la propiedad length.
+
+// Si escribes un valor más corto que el número de elementos almacenados, se trunca el array. Escribir 0 lo vacía por completo:
+
+const gatos2 = ["Dusty", "Misty", "Twiggy"];
+console.log(gatos2.length); // 3
+
+gatos2.length = 2;
+console.log(gatos2); // registra "Dusty, Misty" - Twiggy ha sido eliminado
+
+gatos2.length = 0;
+console.log(gatos2); // registra []; la matriz de gatos está vacía
+
+gatos2.length = 3;
+console.log(gatos2); // logs [ <3 elementos vacíos> ]
+
+// Iterar sobre arrays #00aae4
+// Una operación común es iterar sobre los valores de un array, procesando cada uno de ellos de alguna manera. La forma más sencilla de hacerlo es la siguiente:
+
+const colores = ["Rojo", "Azul", "Verde"];
+
+for (let i = 0; i < colores.length; i++) {
+  console.log(`El elemento ${i + 1} es: ${colores[i]}`);
+}
+
+// Si sabes que ninguno de los elementos de tu matriz se evalúa como falso en un contexto booleano -si tu matriz consiste sólo en nodos DOM, por ejemplo- puedes usar un lenguaje más eficiente:
+
+const divs = document.getElementsByTagName("div");
+
+for (let i = 0, div; (div = divs[i]); i++) {
+  /* Procesar div de alguna manera */
+}
+
+// Esto evita la sobrecarga de comprobar la longitud del array, y asegura que la variable div se reasigna al elemento actual cada vez que se pasa por el bucle para mayor comodidad.
+
+// El método forEach() proporciona otra forma de iterar sobre un array:
+
+const colores2 = ["Celeste", "Negro", "Blanco"];
+
+colores2.forEach((color) => console.log(color));
+
+// La función pasada a forEach se ejecuta una vez por cada elemento del array, con el elemento del array pasado como argumento de la función. Los valores no asignados no se iteran en un bucle forEach.
+
+// Tenga en cuenta que los elementos de un array que se omiten cuando se define el array no se enumeran cuando se itera por forEach, pero se enumeran cuando se ha asignado manualmente undefined al elemento:
+
+const matrizDispersa = ["Cuarto", "Primero", "Octavo"];
+
+matrizDispersa.forEach((Elemento) => {
+  console.log(Elemento);
+});
+
+const matrizOrdenada = ["Primero", "Segundo", "Tercero"];
+
+matrizOrdenada.forEach((elemnto) => {
+  console.log(elemnto);
+});
+
+// Dado que los elementos de las matrices de JavaScript se guardan como propiedades estándar de los objetos, no es aconsejable iterar a través de las matrices de JavaScript utilizando bucles for...in, porque los elementos normales y todas las propiedades enumerables serán listadas. #FF0000
