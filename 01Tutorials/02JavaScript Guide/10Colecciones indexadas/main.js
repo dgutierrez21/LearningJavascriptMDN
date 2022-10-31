@@ -244,3 +244,129 @@ const ultimo = miMatriz6.pop();
 console.log(miMatriz6); // (2) ['1', '2']
 
 console.log(ultimo); // 3
+
+// El método shift() elimina el primer elemento de una matriz y devuelve ese elemento.
+
+const miMatriz7 = ["1", "2", "3"];
+
+const primero = miMatriz7.shift();
+
+console.log(miMatriz7);
+
+console.log(primero); // 1
+
+// // miMatriz es ahora ["2", "3"], primero es "1"
+
+// El método unshift() añade uno o más elementos al frente de un array y devuelve la nueva longitud del array.
+
+const miMatriz8 = ["1", "2", "3"];
+
+const arrUnshift = miMatriz8.unshift("4", "5");
+
+console.log(miMatriz8);
+
+// // miMatriz se convierte en ["4", "5", "1", "2", "3"]
+
+console.log(arrUnshift); // 5
+
+// El método slice() extrae una sección de un array y devuelve un nuevo array.
+
+const miMatriz9 = ["a", "b", "c", "d", "e"];
+
+const arrSlice = miMatriz9.slice(1, 4); // comienza en el índice 1 y extrae todos los elementos hasta el índice 3, devolviendo ["b", "c", "d"]
+
+console.log(arrSlice);
+
+// El método at() devuelve el elemento en el índice especificado en el array, o indefinido si el índice está fuera de rango. Se utiliza sobre todo para los índices negativos que acceden a los elementos desde el final de la matriz.
+
+const miMatriz10 = ["a", "b", "c", "d", "e"];
+
+const arrAt = miMatriz10.at(-2); // "d", el penúltimo elemento de myArray
+
+console.log(arrAt); // d
+
+// El método splice() elimina elementos de una matriz y (opcionalmente) los reemplaza. Devuelve los elementos que se han eliminado de la matriz.
+
+const miMatriz11 = ["1", "2", "3", "4", "5"];
+
+const arrSplice = miMatriz11.splice(1, 3, "a", "b", "c", "d");
+
+console.log(miMatriz11); // (6) ['1', 'a', 'b', 'c', 'd', '5']
+
+console.log(arrSplice); // (3) ['2', '3', '4']
+
+// // Este código comenzó en el índice uno (o donde estaba el "2"),
+// // eliminó 3 elementos allí, y luego insertó todos los elementos consecutivos
+// // elementos consecutivos en su lugar.
+
+// El método reverse() transpone los elementos de un array, en su lugar: el primer elemento del array se convierte en el último y el último en el primero. Devuelve una referencia al array.
+
+const miMatriz12 = ["1", "2", "3"];
+
+const arrReverse = miMatriz12.reverse();
+
+// // transpone el array para que miArray = ["3", "2", "1"]
+
+console.log(miMatriz12);
+
+console.log(arrReverse);
+
+// El método flat() devuelve un nuevo array con todos los elementos del subarray concatenados en él recursivamente hasta la profundidad especificada.
+
+let miMatriz13 = [1, 2, [3, 4]];
+console.log(miMatriz13);
+
+miMatriz13 = miMatriz13.flat();
+console.log(miMatriz13);
+
+// // miMatriz es ahora [1, 2, 3, 4], ya que la submatriz [3, 4] está aplanada
+
+// El método sort() ordena los elementos de un array en su lugar(https://en.wikipedia.org/wiki/In-place_algorithm), y devuelve una referencia al array.
+
+const miMatriz14 = ["A", "Z", "Viento", "Lluvia", "Fuego"];
+
+console.log(miMatriz14);
+
+miMatriz14.sort();
+
+console.log(miMatriz14);
+
+// // ordena el array de forma que miMatriz = ["A", Fuego", "Lluvia", "Viento", "Z"]
+
+// sort() también puede tomar una función de devolución de llamada para determinar cómo se comparan los elementos del array.
+
+// El método sort (y otros más abajo) que toman una llamada de retorno se conocen como métodos iterativos, porque iteran sobre todo el array de alguna manera. Cada uno toma un segundo argumento opcional llamado thisObject. Si se proporciona, thisObject se convierte en el valor de la palabra clave this dentro del cuerpo de la función callback. Si no se proporciona, al igual que en otros casos en los que se invoca una función fuera de un contexto de objeto explícito, esto se referirá al objeto global (ventana) cuando se utilice la función de flecha como devolución de llamada, o indefinido cuando se utilice la función normal como devolución de llamada.
+
+// La función callback es llamada con dos argumentos, que son elementos del array.
+
+// La función siguiente compara dos valores y devuelve uno de los tres valores:
+
+// Por ejemplo, lo siguiente ordenará por la última letra de una cadena:
+
+const miMatriz15 = ["a", "z", "Viento", "Lluvia", "Fuego"];
+console.log(miMatriz15);
+
+const ordenarUltimaLetra = (a, b) => {
+  if (a[a.length - 1] < b[b.length - 1]) {
+    return -1;
+  }
+
+  if (a[a.length - 1] > b[b.length - 1]) {
+    return 1;
+  }
+
+  if (a[a.length - 1] === b[b.length - 1]) {
+    return 0;
+  }
+};
+
+miMatriz15.sort(ordenarUltimaLetra);
+console.log(miMatriz15);
+
+// // ordena el array de forma que miMatriz = (5) ['a', 'Lluvia', 'Viento', 'Fuego', 'z']
+
+// si a es menor que b según el sistema de ordenación, devuelve -1 (o cualquier número negativo)
+
+// si a es mayor que b según el sistema de ordenación, devuelve 1 (o cualquier número positivo)
+
+// si a y b se consideran equivalentes, devuelve 0.
