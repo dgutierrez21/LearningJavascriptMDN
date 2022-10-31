@@ -343,6 +343,18 @@ console.log(miMatriz14);
 
 // Por ejemplo, lo siguiente ordenará por la última letra de una cadena:
 
+// Definición y uso
+//  sort() clasifica los elementos de una matriz.
+
+//  sort() sobrescribe la matriz original.
+
+//  sort() clasifica los elementos como cadenas en orden alfabético y ascendente.
+
+// compareFn(a, b) valor de retorno |	ordenar orden
+// > 0 |	ordenar a después b
+// < 0 |	ordenar a antes b
+// = = = 0 |	mantener el orden original de a y b
+
 const miMatriz15 = ["a", "z", "Viento", "Lluvia", "Fuego"];
 console.log(miMatriz15);
 
@@ -362,6 +374,22 @@ const ordenarUltimaLetra = (a, b) => {
 
 miMatriz15.sort(ordenarUltimaLetra);
 console.log(miMatriz15);
+
+// 1. a("a") < b("z") = -1 == ordena a antes de b === ["a", "z", "Viento", "Lluvia", "Fuego"]
+
+// 2. a("z") > b("Viento(o)") = 1 == ordena a despues que b === ["a", "Viento", "z", "Lluvia", "Fuego"]
+
+// 3. a("a") < b("viento(o)") = -1 == ordena a antes de b === ["a", "Viento", "z", "Lluvia", "Fuego"]
+
+// 4. a("z") > b("Lluvia(a)") = 1 == ordena a despues de b === ["a", "Viento", "Lluvia", "z", "Fuego"]
+
+// 5. a("Viento(o)") > b("Lluvia") = 1 == ordena a despues de b === ["a", "Lluvia", "Viento", "z", "Fuego"]
+
+// 6. a("a") === b("Lluvia(a)") = 0 == mantener el orden en el que se encuentran === ["a", "Lluvia", "Viento", "z", "Fuego"]
+
+// 7. a("z") > b("Fuego(o)") = 1 == ordena a despues de b === ["a", "Lluvia", "Viento", "Fuego", "z"]
+
+// 8. a("viento(o)") === b("Fuego(o)") = 0 == mantener el orden en el que se encuentran === ["a", "Lluvia", "Viento", "Fuego", "z"]
 
 // // ordena el array de forma que miMatriz = (5) ['a', 'Lluvia', 'Viento', 'Fuego', 'z']
 
