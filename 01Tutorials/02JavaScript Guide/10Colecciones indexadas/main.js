@@ -201,3 +201,46 @@ matrizOrdenada.forEach((elemnto) => {
 });
 
 // Dado que los elementos de las matrices de JavaScript se guardan como propiedades estándar de los objetos, no es aconsejable iterar a través de las matrices de JavaScript utilizando bucles for...in, porque los elementos normales y todas las propiedades enumerables serán listadas. #FF0000
+
+// Métodos de la matriz #008000
+// El objeto Array tiene los siguientes métodos:
+
+// El método concat() une dos o más arrays y devuelve un nuevo array.
+
+let miMatriz3 = ["1", "2", "3"];
+
+miMatriz3 = miMatriz3.concat("a", "b", "c");
+
+console.log(miMatriz3); // (6) ['1', '2', '3', 'a', 'b', 'c']
+
+// El método join() une todos los elementos de un array en una cadena.
+
+const miMatriz4 = ["Viento", "Lluvia", "Fuego"];
+
+const lista = miMatriz4.join(" - ");
+
+console.log(lista); // Viento - Lluvia - Fuego
+
+// El método push() añade uno o más elementos al final de una matriz y devuelve la longitud resultante de la misma.
+
+const miMatriz5 = ["1", "2"];
+
+arrpush = miMatriz5.push("3");
+
+console.log(miMatriz5); // (3) ['1', '2', '3']
+
+console.log(arrpush); // 3
+
+// El método pop() elimina el último elemento de un array y devuelve ese elemento.
+
+// const miMatriz = ['1', '2', '3'];
+// const last = myArray.pop();
+// // miMatriz es ahora ["1", "2"], último = "3"
+
+const miMatriz6 = ["1", "2", "3"];
+
+const ultimo = miMatriz6.pop();
+
+console.log(miMatriz6); // (2) ['1', '2']
+
+console.log(ultimo); // 3
