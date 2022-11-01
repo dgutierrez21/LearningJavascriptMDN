@@ -703,3 +703,16 @@ console.log(miMatriz32);
 // Fila 1: [1, 0] [1, 1] [1, 2] [1, 3]
 // Fila 2: [2, 0] [2, 1] [2, 2] [2, 3]
 // Fila 3: [3, 0] [3, 1] [3, 2] [3, 3]
+
+// Uso de arrays para almacenar otras propiedades #008000
+// Las matrices también se pueden utilizar como los objetos, para almacenar información relacionada.
+
+const miMatriz33 = [1, 2, 3];
+
+miMatriz33.propiedad = "Valor";
+
+console.log(miMatriz33.propiedad); // Valor
+
+console.log(miMatriz33) // (3) [1, 2, 3, propiedad: 'Valor']
+
+// Por ejemplo, cuando un array es el resultado de una coincidencia entre una expresión regular y una cadena, el array devuelve propiedades y elementos que proporcionan información sobre la coincidencia. Un array es el valor de retorno de RegExp.prototype.exec(), String.prototype.match() y String.prototype.split(). Para obtener información sobre el uso de arrays con expresiones regulares, consulte Expresiones regulares.
