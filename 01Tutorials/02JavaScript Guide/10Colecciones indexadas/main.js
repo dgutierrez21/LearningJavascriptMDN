@@ -514,3 +514,82 @@ const arrFindLastIndex = miMatriz25.findLastIndex(
 );
 
 console.log(arrFindLastIndex); // 5
+
+// El método every() devuelve true si el callback devuelve true para cada elemento del array.
+
+function esUnNumero(valor) {
+  return typeof valor === "number";
+}
+
+const miMatriz26 = [1, 2, 3],
+  arrEvery = miMatriz26.every(esUnNumero);
+
+console.log(arrEvery); // true
+
+const miMatriz27 = ["a", 5, "b"];
+
+const arrEvery2 = miMatriz27.every(esUnNumero);
+
+console.log(arrEvery2); // false
+
+// El método some() devuelve true si el callback devuelve true para al menos un elemento del array.
+
+const arrSome = miMatriz27.some(esUnNumero);
+
+console.log(arrSome); // true
+
+const miMatriz28 = ["a", "b", "c"];
+
+const arrSome2 = miMatriz28.some(esUnNumero);
+
+console.log(arrSome2); // false
+
+// El método reduce() aplica callback(accumulator, currentValue, currentIndex, array) para cada valor del array con el fin de reducir la lista de elementos a un único valor. La función reduce devuelve el valor final devuelto por la función callback.
+
+// Si se especifica initialValue, se llama a la función callback con initialValue como primer parámetro y el valor del primer elemento del array como segundo parámetro.
+
+// Si no se especifica initialValue, los dos primeros valores de parámetro de la devolución de llamada serán el primer y segundo elemento del array. En cada llamada posterior, el valor del primer parámetro será el que devolvió la llamada anterior, y el valor del segundo parámetro será el siguiente valor del array.
+
+// Si la devolución de llamada necesita acceder al índice del elemento que se está procesando, o acceder a todo el array, están disponibles como parámetros opcionales.
+
+const miMatriz29 = [10, 20, 30];
+
+const total = miMatriz29.reduce(
+  (acumulador, valorActual) => acumulador + valorActual,
+  0
+);
+
+console.log(total); // 60
+
+// ejemplo 2
+
+const miMatriz30 = [0, 1, 2, 3, 4];
+
+const arrReduce = miMatriz30.reduce(
+  (valorAnterior, valorActual, indice, array) => {
+    console.log({ valorAnterior, valorActual });
+    return valorAnterior + valorActual;
+  }
+);
+
+console.log(arrReduce);
+
+// ejemplo 3
+
+const miMatriz31 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+const valorInicial = 0;
+
+const sumaConElInicial = miMatriz31.reduce((valorAnterior, valorActual) => {
+  console.log({ valorAnterior, valorActual });
+  return valorAnterior + valorActual;
+}, valorInicial);
+
+console.log(sumaConElInicial); // 10
+
+// Nota: Hay pocas veces que se deba utilizar un reduce, si se puede evitar usar un reduce es mejor. Fuentes: https://youtu.be/S1ZXSoAxEBg #FF0000
+
+// El método reduceRight() funciona como reduce(), pero empieza por el último elemento.
+
+// reduce y reduceDerecha son los menos obvios de los métodos iterativos de array. Deben usarse para algoritmos que combinan dos valores recursivamente para reducir una secuencia a un solo valor.
