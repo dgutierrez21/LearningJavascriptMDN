@@ -713,6 +713,31 @@ miMatriz33.propiedad = "Valor";
 
 console.log(miMatriz33.propiedad); // Valor
 
-console.log(miMatriz33) // (3) [1, 2, 3, propiedad: 'Valor']
+console.log(miMatriz33); // (3) [1, 2, 3, propiedad: 'Valor']
 
 // Por ejemplo, cuando un array es el resultado de una coincidencia entre una expresión regular y una cadena, el array devuelve propiedades y elementos que proporcionan información sobre la coincidencia. Un array es el valor de retorno de RegExp.prototype.exec(), String.prototype.match() y String.prototype.split(). Para obtener información sobre el uso de arrays con expresiones regulares, consulte Expresiones regulares.
+
+// Trabajar con objetos tipo array #008000
+// Algunos objetos de JavaScript, como el NodeList devuelto por document.getElementsByTagName() o el objeto arguments disponible dentro del cuerpo de una función, parecen y se comportan como arrays en la superficie pero no comparten todos sus métodos. El objeto arguments proporciona un atributo de longitud pero no implementa métodos de array como forEach().
+
+// Los métodos de los arrays no se pueden llamar directamente a los objetos tipo array.
+
+function printArguments() {
+  arguments.forEach((item) => {
+    // TypeError: arguments.forEach no es una función
+    console.log(item);
+  });
+}
+// Pero puedes llamarlos indirectamente usando Function.prototype.call().
+
+function printArguments() {
+  Array.prototype.forEach.call(arguments, (item) => {
+    console.log(item);
+  });
+}
+
+// Los métodos del prototipo de arrays también pueden utilizarse sobre cadenas, ya que proporcionan un acceso secuencial a sus caracteres de forma similar a los arrays:
+
+Array.prototype.forEach.call("una cadena", (chr) => {
+  console.log(chr);
+});
