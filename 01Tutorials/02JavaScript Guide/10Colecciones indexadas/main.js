@@ -741,3 +741,20 @@ function printArguments() {
 Array.prototype.forEach.call("una cadena", (chr) => {
   console.log(chr);
 });
+
+// Arreglos tipificados #008000
+// Las matrices tipificadas de JavaScript son objetos similares a las matrices y proporcionan un mecanismo para acceder a los datos binarios en bruto. Como ya sabes, los objetos Array crecen y se reducen dinámicamente y pueden tener cualquier valor de JavaScript. Los motores de JavaScript realizan optimizaciones para que estos arrays sean rápidos. Sin embargo, a medida que las aplicaciones web se vuelven más y más potentes, añadiendo características como la manipulación de audio y vídeo, el acceso a datos brutos mediante WebSockets, etc., ha quedado claro que hay veces en las que sería útil que el código JavaScript pudiera manipular rápida y fácilmente datos binarios brutos en arrays tipados.
+
+// Los objetos array tipificados comparten muchos de los mismos métodos que los arrays con una semántica similar. Sin embargo, no son conceptualmente arrays y no tienen todos los métodos de los arrays.
+
+// Buffers y vistas: arquitectura de arrays tipificados #00aae4
+// Para conseguir la máxima flexibilidad y eficiencia, los arrays tipados de JavaScript dividen la implementación en buffers y vistas. Un buffer (implementado por el objeto ArrayBuffer) es un objeto que representa un trozo de datos; no tiene ningún formato y no ofrece ningún mecanismo para acceder a su contenido. Para acceder a la memoria contenida en un buffer, es necesario utilizar una vista. Una vista proporciona un contexto -es decir, un tipo de datos, un desplazamiento inicial y un número de elementos- que convierte los datos en un array tipado real.
+
+// Un diagrama que muestra cómo diferentes matrices tipificadas pueden ser vistas del mismo buffer subyacente. Cada uno tiene un número de elementos y una anchura diferentes.
+// ArrayBuffer
+// El ArrayBuffer es un tipo de datos que se utiliza para representar un buffer de datos binarios genérico de longitud fija. No se puede manipular directamente el contenido de un ArrayBuffer; en su lugar, se crea una vista de matriz tipificada o una DataView que representa el buffer en un formato específico, y se utiliza para leer y escribir el contenido del buffer.
+
+// Vistas de matrices tipificadas
+// Las vistas de matrices tipificadas tienen nombres autodescriptivos y proporcionan vistas para todos los tipos numéricos habituales como Int8, Uint32, Float64, etc. Hay una vista especial de matrices tipificadas, Uint8ClampedArray, que sujeta los valores entre 0 y 255. Esto es útil para el procesamiento de datos de Canvas, por ejemplo.
+
+// Para más información, consulte las matrices tipadas de JavaScript y la documentación de referencia de los diferentes objetos TypedArray.
