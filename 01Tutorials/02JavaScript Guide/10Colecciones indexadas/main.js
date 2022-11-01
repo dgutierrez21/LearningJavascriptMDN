@@ -679,3 +679,27 @@ for (const prop in propagarObjeto) {
 }
 
 // Para ver una lista completa de cómo se comportan los métodos de los arrays con arrays dispersos, consulte la página de referencia de Array.
+
+// Matrices multidimensionales #008000
+// Los arrays pueden ser anidados, lo que significa que un array puede contener otro array como elemento. Utilizando esta característica de los arrays de JavaScript, se pueden crear arrays multidimensionales.
+
+// El siguiente código crea un array bidimensional.
+
+const miMatriz32 = new Array(4);
+
+for (let i = 0; i < 4; i++) {
+  miMatriz32[i] = new Array(4);
+
+  for (let j = 0; j < 4; j++) {
+    miMatriz32[i][j] = `[${i}, ${j}]`;
+  }
+}
+
+console.log(miMatriz32);
+
+// Este ejemplo crea un array con las siguientes filas:
+
+// Fila 0: [0, 0] [0, 1] [0, 2] [0, 3]
+// Fila 1: [1, 0] [1, 1] [1, 2] [1, 3]
+// Fila 2: [2, 0] [2, 1] [2, 2] [2, 3]
+// Fila 3: [3, 0] [3, 1] [3, 2] [3, 3]
