@@ -398,3 +398,119 @@ console.log(miMatriz15);
 // si a es mayor que b según el sistema de ordenación, devuelve 1 (o cualquier número positivo)
 
 // si a y b se consideran equivalentes, devuelve 0.
+
+// El método indexOf() busca en el array el elemento de búsqueda y devuelve el índice de la primera coincidencia.
+
+// Parámetros
+// searchElement
+// Elemento que se va a ubicar en la matriz.
+
+// fromIndex Opcional
+// Índice en el que se va a iniciar la búsqueda. Si el índice es mayor o igual que la longitud de la matriz, se devuelve -1, lo que significa que no se buscará la matriz. Si el valor de índice proporcionado es un número negativo, se toma como el desplazamiento desde el final de la matriz. Nota: si el índice proporcionado es negativo, la matriz se sigue buscando de adelante hacia atrás. Si el índice proporcionado es 0, se buscará en toda la matriz. Valor predeterminado: 0 (se busca en toda la matriz).
+
+// Valor devuelto
+// El primer índice del elemento en la matriz; -1 si no se encuentra.
+
+const miMatriz16 = ["a", "b", "a", "b", "a", "b"];
+
+console.log(miMatriz16.indexOf("b")); // 1
+
+// // Ahora inténtalo de nuevo, empezando por la última coincidencia
+
+console.log(miMatriz16.indexOf("b", 2)); // 3
+
+console.log(miMatriz16.indexOf("b", -1)); // 5
+console.log(miMatriz16.indexOf("z")); // -1, porque no se encontró 'z'
+
+// El método lastIndexOf() funciona como indexOf, pero empieza por el final y busca hacia atrás.
+
+const miMatriz17 = ["a", "b", "c", "d", "a", "b"];
+
+console.log(miMatriz17.lastIndexOf("b")); // 5
+
+// // Ahora inténtalo de nuevo, empezando desde antes de la última coincidencia
+
+console.log(miMatriz17.lastIndexOf("b", 4)); // 1
+console.log(miMatriz17.lastIndexOf("z")); // -1
+
+// El método forEach() ejecuta el callback en cada elemento del array y devuelve undefined.
+
+const miMatriz18 = ["a", "b", "c"];
+
+const arrForEach = miMatriz18.forEach((elemento) => {
+  console.log(elemento);
+});
+
+console.log(arrForEach); // undefined
+
+// // Registros:
+// // a
+// // b
+// // c
+
+// El método map() crea una nueva matriz rellenada con los resultados de llamar a una función proporcionada en cada elemento de la matriz de llamada.
+
+const miMatriz19 = ["a", "b", "c"];
+
+const arrMap = miMatriz19.map((elemento) => elemento.toUpperCase());
+
+console.log(arrMap);
+
+// ['A', 'B', 'C']
+
+// El método flatMap() ejecuta map() seguido de un flat() de profundidad 1.
+
+const miMatriz20 = ["a", "b", "c"];
+
+const arrFlatMap = miMatriz20.flatMap((elemento) => [
+  elemento.toUpperCase(),
+  elemento.toLowerCase(),
+]);
+
+console.log(arrFlatMap); // ['A', 'a', 'B', 'b', 'C', 'c']
+
+// El método filter() devuelve un nuevo array que contiene los elementos para los que la llamada de retorno devolvió true.
+
+const miMatriz21 = ["a", 10, "b", 20, "c", 30];
+
+const arrFilter = miMatriz21.filter((elemento) => typeof elemento === "number");
+
+console.log(arrFilter); // [10, 20, 30]
+
+// El método find() devuelve el primer elemento cuya devolución de llamada haya sido verdadera.
+
+const miMatriz22 = ["a", 10, "b", 20, "c", 30];
+
+const arrFind = miMatriz22.find((elemento) => typeof elemento === "number");
+
+console.log(arrFind); // 10
+
+// El método findLast() devuelve el último elemento cuya devolución de llamada haya sido verdadera.
+
+const miMatriz23 = ["a", 10, "b", 20, "c", 30];
+
+const arrFindLast = miMatriz23.findLast(
+  (elemento) => typeof elemento === "number"
+);
+
+console.log(arrFindLast); // 30
+
+// El método findIndex() devuelve el índice del primer elemento para el que la devolución de llamada devolvió true.
+
+const miMatriz24 = ["a", 10, "b", 20, "c", 30];
+
+const arrFindIndex = miMatriz24.findIndex(
+  (elemento) => typeof elemento === "number"
+);
+
+console.log(arrFindIndex); // 1
+
+// El método findLastIndex() devuelve el índice del último elemento para el que la devolución de llamada devolvió true.
+
+const miMatriz25 = ["a", 10, "b", 20, "c", 30];
+
+const arrFindLastIndex = miMatriz25.findLastIndex(
+  (elemento) => typeof elemento === "number"
+);
+
+console.log(arrFindLastIndex); // 5
