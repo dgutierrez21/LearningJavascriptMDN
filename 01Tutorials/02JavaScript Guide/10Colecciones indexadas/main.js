@@ -593,3 +593,89 @@ console.log(sumaConElInicial); // 10
 // El método reduceRight() funciona como reduce(), pero empieza por el último elemento.
 
 // reduce y reduceDerecha son los menos obvios de los métodos iterativos de array. Deben usarse para algoritmos que combinan dos valores recursivamente para reducir una secuencia a un solo valor.
+
+// Matrices dispersas #008000
+// Las matrices pueden contener "ranuras vacías", que no son lo mismo que las ranuras rellenas con el valor indefinido. Las ranuras vacías se pueden crear de una de las siguientes maneras:
+
+// // Constructor de arrays:
+const arrVacio = new Array(5); // [ <5 elementos vacíos> ]
+
+console.log(arrVacio);
+
+// // Comas consecutivas en el literal del array:
+const arrVacio2 = [1, 2, , , 5]; // [ 1, 2, <2 elementos vacíos>, 5 ]
+
+console.log(arrVacio2);
+
+// // Establecer directamente una ranura con índice mayor que array.length:
+const arrVacio3 = [1, 2];
+arrVacio3[4] = 5; // [ 1, 2, <2 elementos vacíos>, 5 ]
+
+console.log(arrVacio3);
+
+// // Alargando un array estableciendo directamente .length:
+const arrVacio4 = [1, 2];
+arrVacio4.length = 5; // [ 1, 2, <3 elementos vacíos> ]
+
+console.log(arrVacio4);
+
+// // Borrando un elemento:
+const arrVacio5 = [1, 2, 3, 4, 5];
+delete arrVacio5[2]; // [ 1, 2, <1 elemento vacío>, 4, 5 ]
+
+console.log(arrVacio5);
+
+// En algunas operaciones, los espacios vacíos se comportan como si estuvieran llenos de indefinidos.
+
+const arrVacio6 = [1, 2, , , 5]; // Crear un array disperso
+
+// // Acceso indexado
+console.log(arrVacio6[2]); // indefinido
+
+for (const elemento of arrVacio6) {
+  console.log(elemento);
+}
+
+// // Logs: 1 2 undefined undefined 5
+
+// // Repartición
+const otroArr = [...arrVacio6]; // "another" es [ 1, 2, undefined, undefined, 5 ]
+
+console.log(otroArr);
+
+// Pero en otros (sobre todo en los métodos de iteración de arrays), se saltan las ranuras vacías.
+
+const mapeado = arrVacio6.map((elemento) => elemento + 1); // [ 2, 3, <2 elementos vacíos>, 6 ]
+
+console.log(mapeado); // (5) [2, 3, empty × 2, 6]
+
+arrVacio6.forEach((e) => console.log(e)); // 1 2 5
+const filtrar = arrVacio6.filter(() => true); // [ 1, 2, 5 ]
+console.log(filtrar);
+
+const tieneFalso = arrVacio6.some((k) => !k); // false
+console.log(tieneFalso);
+
+// // Enumeración de propiedades
+const claves = Object.keys(arrVacio6); // [ '0', '1', '4' ]
+console.log(claves);
+
+for (const clave of claves) {
+  console.log(clave);
+}
+
+// // Registra: '0' '1' '4'
+
+console.log("*************************");
+
+// // La propagación en un objeto utiliza la enumeración de propiedades, no el iterador del array
+
+const propagarObjeto = { ...arrVacio6 }; // { '0': 1, '1': 2, '4': 5 }
+
+console.log(propagarObjeto);
+
+for (const prop in propagarObjeto) {
+  console.log(`${prop}: ${propagarObjeto[prop]}`);
+}
+
+// Para ver una lista completa de cómo se comportan los métodos de los arrays con arrays dispersos, consulte la página de referencia de Array.
