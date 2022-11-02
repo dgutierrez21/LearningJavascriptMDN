@@ -76,4 +76,65 @@ Publico.prototype.method = function () {
   //   // ...
 };
 
-module.exports = Publico;
+// module.exports = Publico;
+
+// Sets #008000
+// Objetos de conjunto
+// Los objetos Set son colecciones de valores. Se pueden iterar sus elementos en orden de inserción. Un valor en un Set sólo puede aparecer una vez; es único en la colección del Set.
+
+// El siguiente código muestra algunas operaciones básicas con un Set. Consulta también la página de referencia de Set para ver más ejemplos y la API completa.
+
+const miSet = new Set();
+
+miSet.add(1);
+miSet.add("Algún Texto");
+miSet.add("foo");
+console.log(miSet);
+
+console.log(miSet.has(1)); // true
+miSet.delete("foo");
+
+console.log(miSet);
+console.log(miSet.size); // 2
+
+for (const elemento of miSet) {
+  console.log(elemento);
+}
+
+// // 1
+// // "algún texto"
+
+// Conversión entre Array y Set #00aae4
+// Puedes crear un Array a partir de un Set usando Array.from o la sintaxis spread. Además, el constructor de Set acepta un Array para convertirlo en la otra dirección.
+
+// Nota: Los objetos Set almacenan valores únicos, por lo que cualquier elemento duplicado de un Array se elimina al convertirlo.
+
+const miSet2 = new Set([1, 2, 3, 4]);
+
+const miArray = [...miSet2];
+console.log(miArray);
+
+// Comparación de matrices y conjuntos #00aae4
+// Tradicionalmente, un conjunto de elementos se ha almacenado en arrays en JavaScript en muchas situaciones. El objeto Set, sin embargo, tiene algunas ventajas:
+
+// Eliminar elementos de Array por su valor (arr.splice(arr.indexOf(val), 1)) es muy lento.
+
+// Los objetos Set te permiten borrar elementos por su valor. Con un array, tendrías que empalmar basándote en el índice de un elemento.
+
+// El valor NaN no se puede encontrar con indexOf en un array.
+
+// Los objetos Set almacenan valores únicos. No tienes que hacer un seguimiento manual de los duplicados.
+
+// Objeto WeakSet #00aae4
+
+// Los objetos WeakSet son colecciones de objetos. Un objeto del WeakSet sólo puede aparecer una vez. Es único en la colección del WeakSet, y los objetos no son enumerables.
+
+// Las principales diferencias con el objeto Set son:
+
+// A diferencia de los Sets, los WeakSets son colecciones de objetos solamente, y no de valores arbitrarios de cualquier tipo.
+
+// El WeakSet es débil: Las referencias a los objetos de la colección se mantienen de forma débil. Si no hay ninguna otra referencia a un objeto almacenado en el WeakSet, pueden ser recolectados por la basura. Esto también significa que no hay una lista de objetos actuales almacenados en la colección.
+
+// Los WeakSets no son enumerables.
+
+// Los casos de uso de los objetos WeakSet son limitados. No tienen fugas de memoria, por lo que puede ser seguro utilizar elementos del DOM como clave y marcarlos con fines de seguimiento, por ejemplo.
