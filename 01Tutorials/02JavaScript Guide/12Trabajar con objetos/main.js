@@ -350,3 +350,8 @@ animal1.mostrarTipoAnimal(); // Logs: Invertebrado
 const pez = Object.create(Animal);
 pez.tipo = "Peces";
 pez.mostrarTipoAnimal(); // peces
+
+// Herencia #008000
+// // Todos los objetos en JavaScript heredan de al menos otro objeto. El objeto del que se hereda se conoce como prototipo, y las propiedades heredadas pueden encontrarse en el objeto prototipo del constructor. Consulte Herencia y la cadena de prototipos para obtener más información.
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
