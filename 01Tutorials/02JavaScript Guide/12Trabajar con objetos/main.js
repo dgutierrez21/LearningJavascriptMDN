@@ -140,3 +140,55 @@ mostrarPropiedades(miCarro2, "micarro2");
 // micarro2.anioDeLanzamiento = 2017;
 // micarro2.color = Rojo;
 // micarro2.segundoColor = Amarillo;
+
+// Enumerar las propiedades de un objeto #008000
+// Hay tres formas nativas de enumerar/recorrer las propiedades de un objeto:
+
+// bucles for...in. Este método recorre todas las propiedades de cadena enumerables de un objeto, así como su cadena de prototipos. #FF0000
+
+// Object.keys(miObj). Este método devuelve un array con sólo los nombres de las propiedades de cadena propias enumerables ("keys") del objeto miObj, pero no los de la cadena de prototipos.
+
+console.log(Object.keys(miCarro2)); // (5) ['marca', 'modelo', 'anioDeLanzamiento', 'color', 'segundoColor']
+
+// Object.getOwnPropertyNames(myObj). Este método devuelve un array que contiene todos los nombres de las propiedades de cadena propias del objeto miObj, independientemente de si son enumerables o no.
+
+console.log(Object.getOwnPropertyNames(miCarro2)); // (5) ['marca', 'modelo', 'anioDeLanzamiento', 'color', 'segundoColor']
+
+// No hay una forma nativa de enumerar las propiedades "ocultas" (propiedades en la cadena de prototipos que no son accesibles a través del objeto, porque otra propiedad tiene el mismo nombre antes en la cadena de prototipos). Sin embargo, esto se puede lograr con la siguiente función:
+
+function listaDeTodasLasPropiedades(miObj) {
+  let objAInspeccionar = miObj,
+    resultado = [];
+
+  while (objAInspeccionar !== null) {
+    resultado = resultado.concat(Object.getOwnPropertyNames(objAInspeccionar));
+
+    objAInspeccionar = Object.getPrototypeOf(objAInspeccionar);
+  }
+
+  return resultado;
+}
+
+console.log(listaDeTodasLasPropiedades(miCarro2));
+
+// salida:
+
+[
+  "marca",
+  "modelo",
+  "anioDeLanzamiento",
+  "color",
+  "segundoColor",
+  "constructor",
+  "__defineGetter__",
+  "__defineSetter__",
+  "hasOwnProperty",
+  "__lookupGetter__",
+  "__lookupSetter__",
+  "isPrototypeOf",
+  "propertyIsEnumerable",
+  "toString",
+  "valueOf",
+  "__proto__",
+  "toLocaleString",
+];
