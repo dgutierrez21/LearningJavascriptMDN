@@ -192,3 +192,161 @@ console.log(listaDeTodasLasPropiedades(miCarro2));
   "__proto__",
   "toLocaleString",
 ];
+
+// Creación de nuevos objetos #008000
+// JavaScript dispone de una serie de objetos predefinidos. Además, puedes crear tus propios objetos. Puedes crear un objeto utilizando un inicializador de objetos. Alternativamente, puedes crear primero una función constructora y luego instanciar un objeto invocando esa función junto con el operador new.
+
+// Uso de inicializadores de objetos #00aae4
+// El uso de inicializadores de objetos se denomina a veces creación de objetos con notación literal. "Inicializador de objetos" es coherente con la terminología utilizada por C++.
+
+// La sintaxis para un objeto que utiliza un inicializador de objetos es
+
+const objeto = {
+  propiedad1: "Valor1", // el nombre de la propiedad puede ser un identificador
+  2: "valor2", // o un número
+  "propiedad n": "valor3", // o una cadena
+};
+console.log(objeto);
+console.log(objeto.propiedad1);
+console.log(objeto[2]);
+console.log(objeto["propiedad n"]);
+
+// donde obj es el nombre del nuevo objeto, cada nombre de propiedad antes de los dos puntos es un identificador (ya sea un nombre, un número o una cadena literal), y cada valorN es una expresión cuyo valor se asigna al nombre de la propiedad. El obj y la asignación son opcionales; si no necesita referirse a este objeto en otra parte, no necesita asignarlo a una variable. (Tenga en cuenta que puede ser necesario envolver el literal del objeto entre paréntesis si el objeto aparece donde se espera una expresión, para que no se confunda el literal con una sentencia de bloque).
+
+// Los inicializadores de objetos son expresiones, y cada inicializador de objetos da lugar a la creación de un nuevo objeto cada vez que se ejecuta la sentencia en la que aparece. Los inicializadores de objetos idénticos crean objetos distintos que no se compararán entre sí como iguales. Los objetos se crean como si se hiciera una llamada a new Object(); es decir, los objetos creados a partir de expresiones literales de objeto son instancias de Object.
+
+// La siguiente sentencia crea un objeto y lo asigna a la variable x si y sólo si la expresión cond es verdadera:
+
+let x;
+
+if (10 > 5) {
+  x = { saludar: "Hola" };
+}
+
+console.log(x);
+console.log(x.saludar);
+
+// El siguiente ejemplo crea miHonda con tres propiedades. Observa que la propiedad motor también es un objeto con sus propias propiedades.
+
+const miHonda = {
+  color: "Rojo",
+  ruedas: 4,
+  motor: {
+    cilindros: 4,
+    tamanio: 2.2,
+  },
+};
+
+console.log(miHonda);
+console.log(miHonda.motor);
+console.log(miHonda.motor.cilindros);
+console.log(miHonda.motor.tamanio);
+
+// const myHonda = {color: 'rojo', ruedas: 4, motor: {cilindros: 4, tamaño: 2.2}};
+
+// También puedes utilizar inicializadores de objetos para crear arrays. Vea los literales de los arrays.
+
+// Utilizar una función constructora #00aae4
+// Alternativamente, puedes crear un objeto con estos dos pasos:
+
+// 1. Definir el tipo de objeto escribiendo una función constructora. Hay una fuerte convención, con buena razón, de usar una letra inicial mayúscula.
+
+// 2. Crear una instancia del objeto con new.
+
+// Para definir un tipo de objeto, cree una función para el tipo de objeto que especifique su nombre, propiedades y métodos. Por ejemplo, suponga que quiere crear un tipo de objeto para los coches. Quieres que este tipo de objeto se llame Car, y quieres que tenga propiedades para la marca, el modelo y el año. Para ello, escribirías la siguiente función:
+
+function Carro(marca, modelo, anio) {
+  this.marca = marca;
+  this.modelo = modelo;
+  this.anio = anio;
+}
+
+// Fíjate en el uso de this para asignar valores a las propiedades del objeto en función de los valores pasados a la función.
+
+// Ahora puedes crear un objeto llamado miCoche de la siguiente manera:
+
+const miCarro3 = new Carro("Audi", "R8", 2007);
+
+// Esta sentencia crea miCoche y le asigna los valores especificados para sus propiedades. Así, el valor de myCar.make es la cadena "Eagle", myCar.model es la cadena 'Talon TSi', myCar.year es el entero 1993, y así sucesivamente. El orden de los argumentos y parámetros debe ser el mismo.
+
+console.log(miCarro3);
+console.log(miCarro3.marca);
+console.log(miCarro3.modelo);
+console.log(miCarro3.anio);
+
+// Puedes crear cualquier número de objetos Coche mediante llamadas a new. Por ejemplo
+
+const miNuevoCarro = new Carro("Nissan", "500ZX", 1992);
+const miNuevoCarro2 = new Carro("Mclaren", "720s", 1992);
+
+console.log(miNuevoCarro.marca);
+console.log(miNuevoCarro2.marca);
+
+// Un objeto puede tener una propiedad que es a su vez otro objeto. Por ejemplo, supongamos que se define un objeto llamado Persona de la siguiente manera
+
+function Persona(nombre, edad, estatura) {
+  this.nombre = nombre;
+  this.edad = edad;
+  this.estatura = estatura;
+}
+
+// y luego instanciar dos nuevos objetos Persona como a continuación
+
+const maria = new Persona("María lopez", 33, 1.75);
+const mario = new Persona("Mario Fallas", 33, 1.75);
+
+console.log(maria.estatura);
+
+// A continuación, puedes reescribir la definición de Car para incluir una propiedad owner que tome un objeto Persona, como sigue
+
+function Carro(marca, modelo, anio, propietario) {
+  this.marca = marca;
+  this.modelo = modelo;
+  this.anio = anio;
+  this.propietario = propietario;
+}
+
+// Para instanciar los nuevos objetos, se utiliza lo siguiente
+
+const carro1 = new Carro("Eagle", "Talon TSI", 1993, maria);
+const carro2 = new Carro("Nissan", "300ZX", 1992, mario);
+
+// Observa que en lugar de pasar una cadena literal o un valor entero al crear los nuevos objetos, las sentencias anteriores pasan los objetos maria y mario como argumentos para los propietarios. Entonces, si quieres averiguar el nombre del propietario de car2, puedes acceder a la siguiente propiedad
+
+console.log(carro2);
+console.log(carro2.propietario.nombre); // Mario Fallas
+
+console.log(carro1);
+console.log(carro1.propietario.nombre); // María Lopez
+
+// Ten en cuenta que siempre puedes añadir una propiedad a un objeto previamente definido. Por ejemplo, la sentencia
+
+carro1.color = "Negro";
+
+console.log(carro1.color); // negro
+
+// añade una propiedad color a car1, y le asigna un valor de 'negro'. Sin embargo, esto no afecta a ningún otro objeto. Para añadir la nueva propiedad a todos los objetos del mismo tipo, hay que añadir la propiedad a la definición del tipo de objeto Car.
+
+// Utilizando el método Object.create #00aae4
+// Los objetos también pueden ser creados usando el método Object.create(). Este método puede ser muy útil, ya que permite elegir el objeto prototipo del objeto que se quiere crear, sin tener que definir una función constructora.
+
+// // Propiedades de los animales y encapsulación de métodos
+
+const Animal = {
+  tipo: "Invertebrado", // Valor por defecto de las propiedades
+
+  // Método que mostrará el tipo de Animal
+  mostrarTipoAnimal() {
+    console.log(this.tipo);
+  },
+};
+
+// // Crear un nuevo tipo de animal llamado animal1
+const animal1 = Object.create(Animal);
+animal1.mostrarTipoAnimal(); // Logs: Invertebrado
+
+// // Crear un nuevo tipo de animal llamado pez
+
+const pez = Object.create(Animal);
+pez.tipo = "Peces";
+pez.mostrarTipoAnimal(); // peces
