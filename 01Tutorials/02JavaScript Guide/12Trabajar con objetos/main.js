@@ -362,3 +362,12 @@ pez.mostrarTipoAnimal(); // peces
 // Esta restricción se aplica cuando se crea un objeto y sus propiedades con una función constructora (como hicimos anteriormente con el tipo de objeto Coche) y cuando se definen propiedades individuales explícitamente (por ejemplo, miCoche.color = 'rojo'). Si se define inicialmente una propiedad del objeto con un índice, como miCoche[5] = '25 mpg', posteriormente se hace referencia a la propiedad sólo como miCoche[5].
 
 // La excepción a esta regla son los objetos tipo array reflejados desde HTML, como el objeto tipo array document.forms. Siempre puedes referirte a los objetos de estos objetos tipo array por su número ordinal (basado en el lugar donde aparecen en el documento) o por su nombre (si está definido). Por ejemplo, si la segunda etiqueta <form> de un documento tiene un atributo name="myForm", puedes referirte al formulario como document.forms[1] o document.forms['myForm'] o document.forms.myForm.
+
+// Definir propiedades para un tipo de objeto #008000
+// Puede añadir una propiedad a un tipo de objeto previamente definido utilizando la propiedad prototipo. Esto define una propiedad que es compartida por todos los objetos del tipo especificado, en lugar de por una sola instancia del objeto. El siguiente código añade una propiedad color a todos los objetos del tipo Coche, y luego asigna un valor a la propiedad color del objeto coche1.
+
+Carro.prototype.color = null;
+
+console.log(carro2.color);
+
+// Consulta la cadena de Herencia_y_el_prototipo para más información. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
