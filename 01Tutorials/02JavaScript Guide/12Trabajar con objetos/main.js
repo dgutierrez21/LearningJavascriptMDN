@@ -355,3 +355,10 @@ pez.mostrarTipoAnimal(); // peces
 // // Todos los objetos en JavaScript heredan de al menos otro objeto. El objeto del que se hereda se conoce como prototipo, y las propiedades heredadas pueden encontrarse en el objeto prototipo del constructor. Consulte Herencia y la cadena de prototipos para obtener más información.
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+
+// Indización de las propiedades de los objetos #008000
+// Puedes referirte a una propiedad de un objeto por su nombre o por su índice ordinal. Si defines inicialmente una propiedad por su nombre, siempre debes referirte a ella por su nombre, y si defines inicialmente una propiedad por un índice, siempre debes referirte a ella por su índice.
+
+// Esta restricción se aplica cuando se crea un objeto y sus propiedades con una función constructora (como hicimos anteriormente con el tipo de objeto Coche) y cuando se definen propiedades individuales explícitamente (por ejemplo, miCoche.color = 'rojo'). Si se define inicialmente una propiedad del objeto con un índice, como miCoche[5] = '25 mpg', posteriormente se hace referencia a la propiedad sólo como miCoche[5].
+
+// La excepción a esta regla son los objetos tipo array reflejados desde HTML, como el objeto tipo array document.forms. Siempre puedes referirte a los objetos de estos objetos tipo array por su número ordinal (basado en el lugar donde aparecen en el documento) o por su nombre (si está definido). Por ejemplo, si la segunda etiqueta <form> de un documento tiene un atributo name="myForm", puedes referirte al formulario como document.forms[1] o document.forms['myForm'] o document.forms.myForm.
