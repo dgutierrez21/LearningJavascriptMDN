@@ -138,3 +138,12 @@ console.log(miArray);
 // Los WeakSets no son enumerables.
 
 // Los casos de uso de los objetos WeakSet son limitados. No tienen fugas de memoria, por lo que puede ser seguro utilizar elementos del DOM como clave y marcarlos con fines de seguimiento, por ejemplo.
+
+// Igualdad de claves y valores de Map y Set #008000
+// Tanto la igualdad de clave de los objetos Map como la igualdad de valor de los objetos Set se basan en el algoritmo SameValueZero":
+
+// La igualdad funciona como el operador de comparación de identidades ===.
+
+// -0 y +0 se consideran iguales.
+
+// NaN se considera igual a sí mismo (al contrario que ===).
