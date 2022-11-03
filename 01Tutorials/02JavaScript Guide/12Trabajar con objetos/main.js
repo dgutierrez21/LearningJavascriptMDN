@@ -428,3 +428,40 @@ function Carro(marca, modelo, anio, propietario) {
 
 carro2.mostrarCarro();
 carro1.mostrarCarro();
+
+// Uso de this para referencias a objetos #008000
+// JavaScript tiene una palabra clave especial, this, que se puede utilizar dentro de un método para hacer referencia al objeto actual. Por ejemplo, suponga que tiene dos objetos, Gerente y Pasante. Cada objeto tiene su propio nombre, edad y trabajo. En la función sayHi(), nota que hay this.name. Cuando se agrega a los 2 objetos se puede llamar e imprime el 'Hola, Mi nombre es' y luego agrega el valor del nombre de ese objeto específico. Como se muestra a continuación.
+
+const Gerente = {
+  nombre: "Carlos",
+  edad: 27,
+  trabajo: "Ingeniero de Software",
+};
+
+const Pasante = {
+  nombre: "Karina",
+  edad: 21,
+  trabajo: "Practicante De Ingeniería de Software",
+};
+
+function saludar() {
+  console.log(`Hola, me llamo ${this.nombre} y soy ${this.trabajo}`);
+}
+
+// // añadir la función sayHi a ambos objetos
+
+Gerente.saludar = saludar;
+Pasante.saludar = saludar;
+
+Gerente.saludar(); // Intern.sayHi(); // Hola, me llamo Carlos...
+Pasante.saludar(); // Hola, me llamo Karina...
+
+// El this hace referencia al objeto en el que se encuentra. Puedes crear una nueva función llamada howOldAmI() que registra una frase diciendo la edad de la persona.
+
+function CuantosAniosTengo() {
+  console.log(`Soy ${this.nombre} y tengo ${this.edad} años.`);
+}
+
+Gerente.CuantosAniosTengo = CuantosAniosTengo;
+
+Gerente.CuantosAniosTengo();
