@@ -537,3 +537,20 @@ console.log(objetoGyS.a); // 5
 console.log(objetoGyS.b); // 6
 
 // Cuál de las dos formas elegir depende de tu estilo de programación y de la tarea que tengas entre manos. Si ya optas por el inicializador de objetos al definir un prototipo, probablemente la mayoría de las veces elegirás la primera forma. Esta forma es más compacta y natural. Sin embargo, si necesitas añadir getters y setters más tarde - porque no has escrito el prototipo o el objeto en particular - entonces la segunda forma es la única posible. La segunda forma probablemente representa mejor la naturaleza dinámica de JavaScript - pero puede hacer que el código sea difícil de leer y entender.
+
+// Borrar propiedades #008000
+// Puedes eliminar una propiedad no heredada utilizando el operador delete. El siguiente código muestra cómo eliminar una propiedad.
+
+// // Crea un nuevo objeto, myobj, con dos propiedades, a y b.
+
+const objecto3 = new Object();
+objecto3.a = 5;
+objecto3.b = 10;
+
+console.log(objecto3);
+
+// // Elimina la propiedad a, dejando a miobj con sólo la propiedad b.
+
+delete objecto3.a;
+console.log("a" in objecto3); // false
+console.log("b" in objecto3); // true
