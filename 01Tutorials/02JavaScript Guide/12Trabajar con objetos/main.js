@@ -427,3 +427,4 @@ function Carro(marca, modelo, anio, propietario) {
 // Entonces puedes llamar al método displayCar para cada uno de los objetos de la siguiente manera
 
 carro2.mostrarCarro();
+carro1.mostrarCarro();
