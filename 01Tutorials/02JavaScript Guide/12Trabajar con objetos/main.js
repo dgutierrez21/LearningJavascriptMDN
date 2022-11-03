@@ -465,3 +465,75 @@ function CuantosAniosTengo() {
 Gerente.CuantosAniosTengo = CuantosAniosTengo;
 
 Gerente.CuantosAniosTengo();
+
+// Definición de getters y setters #008000
+// Un getter es un método que obtiene el valor de una propiedad específica. Un setter es un método que establece el valor de una propiedad específica. Se pueden definir getters y setters en cualquier objeto central predefinido o en un objeto definido por el usuario que admita la adición de nuevas propiedades.
+
+// Los getters y setters pueden ser
+
+// definidos mediante inicializadores de objetos, o
+
+// añadirse posteriormente a cualquier objeto en cualquier momento utilizando un método de adición de getters o setters.
+
+// Cuando se definen getters y setters usando inicializadores de objetos, todo lo que necesitas hacer es prefijar un método getter con get y un método setter con set. Por supuesto, el método getter no debe esperar ningún parámetro, mientras que el método setter espera exactamente un parámetro (el nuevo valor a establecer). Por ejemplo
+
+const objGyS = {
+  a: 7,
+  get b() {
+    return this.a + 1;
+  },
+
+  set c(x) {
+    this.a = x / 2;
+  },
+};
+
+console.log(objGyS);
+
+console.log(objGyS.a); // 7
+
+console.log(objGyS.b); // 8, devuelto por el método get b()
+
+objGyS.c = 50; // Llama al método set c(x)
+
+console.log(objGyS.a); // 25
+
+// Las propiedades del objeto myObj son
+
+// myObj.a - un número
+
+// myObj.b - un getter que devuelve myObj.a más 1
+
+// myObj.c - un setter que establece el valor de myObj.a a la mitad del valor de myObj.c
+
+// Tenga en cuenta que los nombres de las funciones de los getters y setters definidos en un literal de objeto utilizando "[gs]et property()" no son los nombres de los getters en sí, aunque la sintaxis [gs]et propertyName(){ } pueda inducirle a pensar lo contrario.
+
+// Los getters y setters también pueden ser añadidos a un objeto en cualquier momento después de su creación utilizando el método Object.defineProperties(). El primer parámetro de este método es el objeto sobre el que se quiere definir el getter o setter. El segundo parámetro es un objeto cuyos nombres de propiedades son los nombres del getter o setter, y cuyos valores de propiedades son objetos para definir las funciones del getter o setter. A continuación se muestra un ejemplo que define el mismo getter y setter utilizado en el ejemplo anterior:
+
+const objetoGyS = {
+  a: 0,
+};
+
+Object.defineProperties(objetoGyS, {
+  b: {
+    get() {
+      return this.a + 1;
+    },
+  },
+
+  c: {
+    set(x) {
+      this.a = x / 2;
+    },
+  },
+});
+
+console.log(objetoGyS.b); // Ejecuta el getter, que devuelve a + 1 o 6
+
+objetoGyS.c = 10; // Ejecuta el setter, que asigna 10 / 2 (5) a la propiedad 'a'
+
+console.log(objetoGyS.a); // 5
+
+console.log(objetoGyS.b); // 6
+
+// Cuál de las dos formas elegir depende de tu estilo de programación y de la tarea que tengas entre manos. Si ya optas por el inicializador de objetos al definir un prototipo, probablemente la mayoría de las veces elegirás la primera forma. Esta forma es más compacta y natural. Sin embargo, si necesitas añadir getters y setters más tarde - porque no has escrito el prototipo o el objeto en particular - entonces la segunda forma es la única posible. La segunda forma probablemente representa mejor la naturaleza dinámica de JavaScript - pero puede hacer que el código sea difícil de leer y entender.
