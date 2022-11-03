@@ -7,3 +7,32 @@
 // En este tutorial jugaremos con el modelo de clases bien abstracto, y discutiremos la semántica que ofrecen las clases. Si quieres profundizar en el sistema de prototipos subyacente, puedes leer la guía Herencia y la cadena de prototipos.
 
 // Este capítulo asume que ya estás algo familiarizado con JavaScript y que has usado objetos ordinarios.
+
+// Visión general de las clases #008000
+// Si tienes algo de experiencia práctica con JavaScript, o has seguido la guía, probablemente ya hayas utilizado las clases, aunque no hayas creado ninguna. Por ejemplo, esto puede parecerte familiar:
+
+const diaGrande = new Date(2019, 6, 19);
+
+console.log(diaGrande.toLocaleDateString());
+
+if (diaGrande.getTime() < Date.now()) {
+  console.log("Érase una vez...");
+}
+
+// En la primera línea, creamos una instancia de la clase Date, y la llamamos bigDay. En la segunda línea, llamamos a un método toLocaleDateString() en la instancia de bigDay, que devuelve una cadena. Luego, comparamos dos números: uno devuelto por el método getTime(), y el otro llamado directamente desde la propia clase Date, como Date.now().
+
+// Date es una clase integrada de JavaScript. De este ejemplo, podemos obtener algunas ideas básicas de lo que hacen las clases:
+
+// ---Las clases crean objetos a través del operador new.
+
+// ---Cada objeto tiene algunas propiedades (datos o métodos) añadidas por la clase.
+
+// ---La clase almacena algunas propiedades (datos o métodos) en sí misma, que suelen utilizarse para interactuar con las instancias.
+
+// Esto corresponde a las tres características clave de las clases:
+
+// ---Constructor;
+
+// ---Métodos de instancia y campos de instancia;
+
+// ---Métodos estáticos y campos estáticos.
