@@ -554,3 +554,40 @@ console.log(objecto3);
 delete objecto3.a;
 console.log("a" in objecto3); // false
 console.log("b" in objecto3); // true
+
+// Comparación de objetos #008000
+// En JavaScript, los objetos son un tipo de referencia. Dos objetos distintos nunca son iguales, aunque tengan las mismas propiedades. Sólo la comparación de la misma referencia a un objeto con ella misma produce un resultado verdadero.
+
+// Dos variables, dos objetos distintos con las mismas propiedades
+
+const fruta = {
+    nombre: "Manzana",
+  },
+  darFruta = {
+    nombre: "Manzana",
+  };
+
+console.log(fruta == darFruta); // false
+console.log(fruta === darFruta); // false
+
+// *************************************
+
+// Dos variables, un solo objeto
+const fruta2 = {
+  nombre: "Manzana",
+};
+const darFruta2 = fruta2; // Asigna la referencia del objeto fruta2 a darFruta2
+
+// Aquí fruta2 y darFruta2 apuntan al mismo objeto
+console.log(fruta2 == darFruta2); // devuelve true
+console.log(fruta2 === darFruta2); // devuelve true
+
+fruta2.nombre = "Uva";
+console.log(darFruta2);
+
+// Salida:
+
+// { nombre: "uva" }; no { nombre: "manzana" }
+
+// Para más información sobre los operadores de comparación, véase operadores de igualdad.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#equality_operators
