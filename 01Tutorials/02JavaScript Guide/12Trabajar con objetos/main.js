@@ -371,3 +371,59 @@ Carro.prototype.color = null;
 console.log(carro2.color);
 
 // Consulta la cadena de Herencia_y_el_prototipo para más información. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+
+// Definición de métodos #008000
+// Un método es una función asociada a un objeto o, dicho de otro modo, un método es una propiedad de un objeto que es una función. Los métodos se definen de la misma manera que las funciones normales, excepto que tienen que ser asignados como propiedad de un objeto. Véase también las definiciones de métodos para más detalles. Un ejemplo es
+
+// nombredelobjeto.nombredelmétodo = nombredelafunción;
+
+const objeto2 = {
+  metodo: function (parametro) {
+    // hacer algo
+    console.log("log desde metodo");
+  },
+
+  //   este trabajo también
+  otroMetodo(parametro) {
+    // hacer otra cosa
+    console.log("log desde otro metodo");
+  },
+};
+
+// donde objectName es un objeto existente, methodName es el nombre que se le asigna al método, y functionName es el nombre de la función.
+
+// Entonces puedes llamar al método en el contexto del objeto de la siguiente manera:
+
+objeto2.metodo();
+
+// Puedes definir métodos para un tipo de objeto incluyendo una definición de método en la función constructora del objeto. Podrías definir una función que formateara y mostrara las propiedades de los objetos Coche previamente definidos; por ejemplo
+
+function bonitaImpresion(mostrarCadena) {
+  console.log(mostrarCadena);
+}
+
+function mostrarCarro() {
+  const resultado = `Un hermoso ${this.marca} ${this.modelo} ${this.anio}`;
+
+  bonitaImpresion(resultado);
+}
+
+// donde prettyPrint es una función para mostrar una regla horizontal y una cadena. Fíjate en el uso de this para referirse al objeto al que pertenece el método.
+
+// Puedes hacer que esta función sea un método de Car añadiendo la sentencia
+
+// this.displayCar = displayCar;
+
+// a la definición del objeto. Así, la definición completa de Car sería ahora como
+
+function Carro(marca, modelo, anio, propietario) {
+  this.marca = marca;
+  this.modelo = modelo;
+  this.anio = anio;
+  this.propietario = propietario;
+  this.mostrarCarro = mostrarCarro;
+}
+
+// Entonces puedes llamar al método displayCar para cada uno de los objetos de la siguiente manera
+
+carro2.mostrarCarro();
