@@ -36,3 +36,101 @@ if (diaGrande.getTime() < Date.now()) {
 // ---Métodos de instancia y campos de instancia;
 
 // ---Métodos estáticos y campos estáticos.
+
+// Declarar una clase #008000
+// Las clases suelen crearse con declaraciones de clase.
+
+class miClase {
+  // cuerpo de la clase
+}
+
+// Dentro del cuerpo de una clase, hay una serie de características disponibles.
+
+class miClase2 {
+  // constructor
+  constructor() {
+    // cuerpo del constructor
+  }
+  //   // Campo de instancia
+  miCampo = "foo";
+  //   // Método de instancia
+  miMetodo() {
+    // cuerpo del método
+  }
+
+  // campo estatico
+
+  static miCampoEstatico = "bar";
+
+  // método estatico
+
+  static miMetodoEstatico() {
+    // cuerpo del método
+  }
+
+  // bloque estatico
+
+  static {
+    //     // Código de inicialización estático
+  }
+
+  //   // Los campos, métodos, campos estáticos y métodos estáticos tienen
+  //   // formas "privadas
+
+  #miCampoPrivado = "bar";
+}
+
+// Si vienes de un mundo pre-ES6, puede que estés más familiarizado con el uso de funciones como constructores. El patrón anterior se traduciría aproximadamente a lo siguiente con constructores de funciones:
+
+// function MyClass() {
+//   this.myField = "foo";
+//   // Cuerpo del constructor
+// }
+// MyClass.myStaticField = "bar";
+// MyClass.myStaticMethod = function () {
+//   // cuerpo de myStaticMethod
+// };
+// MyClass.prototype.myMethod = function () {
+//   // cuerpo de miMétodo
+// };
+
+// (function () {
+//   // Código estático de inicialización
+// })();
+
+// Nota: Los campos y métodos privados son nuevas características en las clases que no tienen un equivalente trivial en los constructores de funciones.
+
+// Construir una clase #00aae4
+// Una vez declarada una clase, se pueden crear instancias de la misma mediante el operador new.
+
+const miInstancia = new miClase2();
+console.log(miInstancia.miCampo); // foo
+miInstancia.miMetodo();
+
+// Los constructores de funciones típicos pueden tanto construirse con new como llamarse sin new. Sin embargo, si se intenta "llamar" a una clase sin new se producirá un error.
+
+// const myInstance = MyClass(); // TypeError: El constructor de clase MyClass no puede ser invocado sin 'new'
+
+// Elevación de la declaración de clase #00aae4
+// A diferencia de las declaraciones de funciones, las declaraciones de clases no se elevan (o, en algunas interpretaciones, se elevan pero con la restricción de la zona muerta temporal), lo que significa que no se puede utilizar una clase antes de declararla.
+
+// new MiClaseHosting(); // ReferenceError: No se puede acceder a 'MiClaseHosting' antes de la inicialización
+
+class MiClaseHosting {}
+
+// Este comportamiento es similar al de las variables declaradas con let y const.
+
+// Expresiones de clase #00aae4
+// Al igual que las funciones, las declaraciones de clase también tienen sus contrapartes de expresión.
+
+const miClase3 = class {
+  // cuerpo de la clase...
+};
+
+// Las expresiones de clase también pueden tener nombres. El nombre de la expresión sólo es visible para el cuerpo de la clase.
+
+const miClase4 = class MiClaseDeNombreMasLargo {
+  // Cuerpo de la clase. Aquí MyClass y MyClassLongerName apuntan a la misma clase.
+};
+
+// new MiClaseDeNombreMasLargo(); // ReferenceError: MyClassLongerName is not defined
