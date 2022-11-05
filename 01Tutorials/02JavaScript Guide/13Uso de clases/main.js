@@ -455,3 +455,26 @@ rojo13.rojo = 0;
 console.log(rojo13.rojo); // 255
 
 // En modo estricto, la línea red.red = 0 lanzará un error de tipo "No se puede establecer la propiedad red de #<Color> que sólo tiene un getter". En modo no estricto, la asignación se ignora silenciosamente.
+
+// Campos públicos #008000
+// Los campos privados también tienen sus homólogos públicos, que permiten que cada instancia tenga una propiedad. Los campos suelen estar diseñados para ser independientes de los parámetros del constructor.
+
+class MiClase6 {
+  numeroDeLaSuerte = Math.floor(Math.random() * 11);
+}
+
+const miClaseVar = new MiClase6();
+
+console.log(miClaseVar.numeroDeLaSuerte);
+
+// Los campos públicos son casi equivalentes a asignar una propiedad a "this". Por ejemplo, el ejemplo anterior también se puede convertir en
+
+class miClase7 {
+  constructor() {
+    this.numeroDeLaSuerte = Math.floor(Math.random() * 100);
+  }
+}
+
+const varClase = new miClase7();
+
+console.log(varClase.numeroDeLaSuerte);
