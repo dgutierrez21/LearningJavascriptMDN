@@ -304,3 +304,110 @@ const rojo7 = new Color7(255, 0, 0);
 console.log(rojo7.valores[0]); // 0; Ya no es 255, porque el valor H del rojo puro es 0
 
 // El usuario asume que "valores" significa que el valor RGB se derrumba de repente, y puede hacer que su lógica se rompa. Por lo tanto, si eres un implementador de una clase, querrás ocultar la estructura de datos interna de tu instancia a tu usuario, tanto para mantener la API limpia como para evitar que el código del usuario se rompa cuando hagas algunas "refactorizaciones inofensivas". En las clases, esto se hace mediante campos privados.
+
+// Un campo privado es un identificador prefijado con # (el símbolo del hash). El hash es una parte integral del nombre del campo. Para referirse a un campo privado en cualquier parte de la clase, hay que declararlo en el cuerpo de la clase. Aparte de esto, un campo privado es prácticamente equivalente a una propiedad normal.
+
+class Color8 {
+  // Declarar: cada instancia de Color tiene un campo
+  #valores;
+
+  constructor(r, g, b) {
+    this.#valores = [r, g, b];
+  }
+
+  obtenerRojo() {
+    return this.#valores[0];
+  }
+
+  establecerRojo(valor) {
+    this.#valores[0] = valor;
+  }
+}
+
+const rojo8 = new Color8(255, 0, 0);
+
+console.log(rojo8.obtenerRojo()); // 255
+
+// Acceder a campos privados fuera de la clase es un error de sintaxis temprano. El lenguaje puede protegerse de esto porque #privateField es una sintaxis especial, por lo que puede hacer un análisis estático y encontrar todo el uso de los campos privados incluso antes de evaluar el código.
+
+// console.log(rojo8.#valores); // SyntaxError: El campo privado '#valores' debe ser declarado en una clase adjunta
+
+// Los campos privados en JavaScript son privados duros: si la clase no implementa métodos que expongan estos campos privados, no hay absolutamente ningún mecanismo para recuperarlos desde fuera de la clase. Esto significa que puedes hacer cualquier refactorización a los campos privados de tu clase, siempre y cuando el comportamiento de los métodos expuestos siga siendo el mismo.
+
+// Después de haber hecho privado el campo "valores", podemos añadir algo más de lógica en los métodos getRed y setRed, en lugar de hacerlos simples métodos de paso. Por ejemplo, podemos añadir una comprobación en setRed para ver si es un valor R válido: #FF0000
+
+class Color9 {
+  #valores;
+
+  constructor(r, g, b) {
+    this.#valores = [r, g, b];
+  }
+
+  obtenerRojo() {
+    return this.#valores[0];
+  }
+
+  establecerRojo(valor) {
+    if (valor < 0 || valor > 255) {
+      throw new RangeError("Valor R no válido.");
+    }
+
+    this.#valores[0] = valor;
+  }
+}
+
+const rojo9 = new Color9(255, 0, 0);
+
+// rojo9.establecerRojo(300); // RangeError: Valor R no válido
+
+console.log(rojo9.obtenerRojo());
+
+// Si dejamos la propiedad "valores" expuesta, nuestros usuarios pueden eludir fácilmente esa comprobación asignando a values[0] directamente, y crear colores no válidos. Pero con una API bien encapsulada, podemos hacer que nuestro código sea más robusto y evitar errores lógicos posteriores. #FF0000
+
+// Un método de una clase puede leer los campos privados de otras instancias, siempre que pertenezcan a la misma clase.
+
+class Color10 {
+  #valores;
+
+  constructor(r, g, b) {
+    this.#valores = [r, g, b];
+  }
+
+  rojoDiferente(otroColor) {
+    if (!(#valores in otroColor)) {
+      throw new TypeError("Se espera una instancia de color");
+    }
+    // No es necesario acceder a #valores desde esto:
+    // puede acceder a los campos privados de otras instancias pertenecientes
+    // a la misma clase.
+
+    return this.#valores[0] - otroColor.#valores[0];
+  }
+}
+
+const rojo10 = new Color10(255, 0, 0);
+
+const crimson = new Color10(220, 20, 60);
+
+console.log(rojo10.rojoDiferente(crimson)); // 35
+
+// Sin embargo, si otroColor no es una instancia de Color, los #valores no existirán. (Incluso si otra clase tiene un campo privado #values de nombre idéntico, no se refiere a lo mismo y no se puede acceder a él aquí). Para comprobar de antemano si el campo existe, podemos utilizar una comprobación in
+
+// ver linea 377
+
+// Nota: Ten en cuenta que el # es una sintaxis de identificador especial, y no puedes usar el nombre del campo como si fuera una cadena. "#valores" en otroColor buscaría un nombre de propiedad llamado literalmente "#valores", en lugar de un campo privado.
+
+// Los métodos también pueden ser privados.
+
+class Color11 {
+  #valores;
+
+  constructor(r, g, b) {
+    this.#miMetodoPrivado();
+    this.#valores = [r, g, b];
+  }
+
+  #miMetodoPrivado() {
+    //...
+  }
+}
