@@ -200,3 +200,63 @@ class miClase5 {
 }
 
 console.log(new miClase5().miCampo); // undefined
+
+// Métodos de instancia #008000
+// Si una clase sólo tiene un constructor, no es muy diferente de una función de fábrica createX que sólo crea objetos simples. Sin embargo, el poder de las clases es que pueden ser utilizadas como "plantillas" que asignan automáticamente métodos a las instancias.
+
+// Por ejemplo, para las instancias de Date, puedes utilizar un rango de métodos para obtener diferente información de un único valor de fecha, como el año, el mes, el día de la semana, etc. También puedes establecer esos valores a través de las contrapartes de setX como setFullYear.
+
+// Para nuestra propia clase Color, podemos añadir un método llamado getRed que devuelve el valor rojo del color.
+
+class Color3 {
+  constructor(r, g, b) {
+    this.valores = [r, g, b];
+  }
+
+  obtenerRojo() {
+    return this.valores[0];
+  }
+}
+
+const colorRojo = new Color3(255, 0, 0);
+
+console.log(colorRojo.obtenerRojo()); // 255
+
+// Sin métodos, puedes tener la tentación de definir la función dentro del constructor:
+
+class Color4 {
+  constructor(r, g, b) {
+    this.values = [r, g, b];
+    this.getRed = function () {
+      return this.values[0];
+    };
+  }
+}
+
+// Esto también funciona. Sin embargo, un problema es que esto crea una nueva función cada vez que se crea una instancia de Color, ¡incluso cuando todas hacen lo mismo!
+
+console.log(new Color4().getRed === new Color4().getRed); // false
+
+// Por el contrario, si se utiliza un método, éste será compartido entre todas las instancias. Una función puede ser compartida entre todas las instancias, pero aún así su comportamiento difiere cuando diferentes instancias la llaman, porque el valor de esta es diferente. Si tienes curiosidad por saber dónde se almacena este método - está definido en el prototipo de todas las instancias, o Color.prototype, que se explica con más detalle en Herencia y la cadena de prototipos.
+
+// Del mismo modo, podemos crear un nuevo método llamado setRed, que establece el valor rojo del color.
+
+class Color5 {
+  constructor(r, g, b) {
+    this.valores = [r, g, b];
+  }
+
+  obtenerRojo() {
+    return this.valores[0];
+  }
+
+  establecerRojo(valor) {
+    this.valores = valor;
+  }
+}
+
+const rojo3 = new Color5(255, 0, 0);
+
+rojo3.establecerRojo(0);
+
+console.log(rojo3.obtenerRojo()); // 0; por supuesto, ¡debería llamarse "negro" a estas alturas!
