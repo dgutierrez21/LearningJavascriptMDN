@@ -411,3 +411,47 @@ class Color11 {
     //...
   }
 }
+
+// Los campos accesorios #008000
+// color.getRed() y color.setRed() nos permiten leer y escribir en el valor rojo de un color. Si vienes de lenguajes como Java, estarás muy familiarizado con este patrón. Sin embargo, utilizar métodos para acceder simplemente a una propiedad sigue siendo poco ergonómico en JavaScript. Los campos de acceso nos permiten manipular algo como si fuera una "propiedad real".
+
+class Color12 {
+  constructor(r, g, b) {
+    this.valores = [r, g, b];
+  }
+
+  get rojo() {
+    return this.valores[0];
+  }
+
+  set rojo(valor) {
+    this.valores[0] = valor;
+  }
+}
+
+const rojo12 = new Color12(255, 0, 0);
+rojo12.rojo = 0;
+
+console.log(rojo12.rojo); // 0
+
+// Parece que el objeto tiene una propiedad llamada red - pero en realidad, ¡no existe tal propiedad en la instancia! Sólo hay dos métodos, pero llevan el prefijo get y set, lo que permite manipularlos como si fueran propiedades.
+
+// Si un campo sólo tiene un getter pero no un setter, será efectivamente de sólo lectura.
+
+class Color13 {
+  constructor(r, g, b) {
+    this.valores = [r, g, b];
+  }
+
+  get rojo() {
+    return this.valores[0];
+  }
+}
+
+const rojo13 = new Color13(255, 0, 0);
+
+rojo13.rojo = 0;
+
+console.log(rojo13.rojo); // 255
+
+// En modo estricto, la línea red.red = 0 lanzará un error de tipo "No se puede establecer la propiedad red de #<Color> que sólo tiene un getter". En modo no estricto, la asignación se ignora silenciosamente.
