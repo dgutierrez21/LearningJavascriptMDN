@@ -478,3 +478,44 @@ class miClase7 {
 const varClase = new miClase7();
 
 console.log(varClase.numeroDeLaSuerte);
+
+// Propiedades estáticas #008000
+// Con el ejemplo de Date, también hemos encontrado el método Date.now(), que devuelve la fecha actual. Este método no pertenece a ninguna instancia de Date, sino a la propia clase. Sin embargo, se ha puesto en la clase Date en lugar de exponerlo como una función global DateNow(), porque es más útil cuando se trata de instancias de fecha.
+
+// Nota: Prefijar los métodos de utilidad con lo que tratan se llama "namespacing" y se considera una buena práctica. Por ejemplo, además del antiguo método parseInt() sin prefijo, JavaScript también añadió posteriormente el método Number.parseInt() con prefijo para indicar que es para tratar con números.
+
+// Las propiedades estáticas son un grupo de características de la clase que se definen en la propia clase, en lugar de en las instancias individuales de la clase. Estas características incluyen:
+
+// Métodos estáticos
+// Campos estáticos
+// Los getters y setters estáticos
+
+// Todo tiene también contrapartidas privadas. Por ejemplo, para nuestra clase Color, podemos crear un método estático que compruebe si un triplete dado es un valor RGB válido:
+
+class Color14 {
+  static esValido(r, g, b) {
+    return r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255;
+  }
+}
+
+console.log(Color14.esValido(255, 0, 0)); // true
+console.log(Color14.esValido(430, -5, 380)); // false
+
+// Las propiedades estáticas son muy similares a sus homólogas de instancia, excepto que:
+
+// Llevan el prefijo static, y
+// No son accesibles desde las instancias.
+
+console.log(new Color14(0, 0, 0).esValido); // undefined
+
+// También hay una construcción especial llamada bloque de inicialización estática, que es un bloque de código que se ejecuta cuando la clase se carga por primera vez.
+
+class miClase15 {
+  static {
+    miClase15.miPropiedadStatica = "fooo";
+  }
+}
+
+console.log(miClase15.miPropiedadStatica); // 'foo'
+
+// Los bloques de inicialización estáticos son casi equivalentes a la ejecución inmediata de algún código tras la declaración de una clase. La única diferencia es que tienen acceso a las propiedades privadas estáticas.
