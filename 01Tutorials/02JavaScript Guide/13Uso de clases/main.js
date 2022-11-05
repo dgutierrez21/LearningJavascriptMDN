@@ -260,3 +260,47 @@ const rojo3 = new Color5(255, 0, 0);
 rojo3.establecerRojo(0);
 
 console.log(rojo3.obtenerRojo()); // 0; por supuesto, ¡debería llamarse "negro" a estas alturas!
+
+// Campos privados #008000
+// Te preguntarás: ¿por qué queremos tomarnos la molestia de utilizar los métodos getRed y setRed, cuando podemos acceder directamente al array de valores en la instancia?
+
+class Color6 {
+  constructor(r, g, b) {
+    this.valores = [r, g, b];
+  }
+}
+
+const rojo6 = new Color6(255, 0, 0);
+rojo6.valores[0] = 0;
+
+console.log(rojo6.valores[0]); // 0
+
+// Hay una filosofía en la programación orientada a objetos llamada "encapsulación". Esto significa que no debes acceder a la implementación subyacente de un objeto, sino que debes utilizar métodos bien abstraídos para interactuar con él. Por ejemplo, si de repente decidimos representar los colores como HSL en lugar de
+
+function rgbAhsl(rojo) {
+  if (rojo[0] === 255) {
+    rojo[0] = 0;
+  }
+  return rojo;
+}
+
+class Color7 {
+  constructor(r, g, b) {
+    // ¡valores es ahora un array HSL!
+    this.valores = rgbAhsl([r, g, b]);
+  }
+
+  obtenerRojo() {
+    return this.valores[0];
+  }
+
+  establecerRojo(valor) {
+    this.valores[0] = valor;
+  }
+}
+
+const rojo7 = new Color7(255, 0, 0);
+
+console.log(rojo7.valores[0]); // 0; Ya no es 255, porque el valor H del rojo puro es 0
+
+// El usuario asume que "valores" significa que el valor RGB se derrumba de repente, y puede hacer que su lógica se rompa. Por lo tanto, si eres un implementador de una clase, querrás ocultar la estructura de datos interna de tu instancia a tu usuario, tanto para mantener la API limpia como para evitar que el código del usuario se rompa cuando hagas algunas "refactorizaciones inofensivas". En las clases, esto se hace mediante campos privados.
