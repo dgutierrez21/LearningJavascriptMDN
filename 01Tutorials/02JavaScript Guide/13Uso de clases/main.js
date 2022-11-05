@@ -134,3 +134,69 @@ const miClase4 = class MiClaseDeNombreMasLargo {
 };
 
 // new MiClaseDeNombreMasLargo(); // ReferenceError: MyClassLongerName is not defined
+
+// Constructor #008000
+// Tal vez el trabajo más importante de una clase es actuar como una "fábrica" de objetos. Por ejemplo, cuando usamos el constructor de Date, esperamos que nos dé un nuevo objeto que represente los datos de la fecha que le pasamos - que luego podemos manipular con otros métodos que la instancia expone. En las clases, la creación de la instancia la realiza el constructor.
+
+// Como ejemplo, crearíamos una clase llamada Color, que representa un color específico. Los usuarios crean colores pasando un triplete RGB.
+
+class Color {
+  constructor(r, g, b) {
+    // Asigna los valores RGB como una propiedad de `this`.
+    this.valores = [r, g, b];
+  }
+}
+
+// Abre el devtools de tu navegador, pega el código anterior en la consola, y luego crea una instancia:
+
+const rojo = new Color(255, 0, 0);
+
+console.log(rojo);
+console.log(rojo.valores);
+
+// Deberías ver una salida como esta
+
+// Objeto { valores: (3) [...] }
+//   valores: Array(3) [ 255, 0, 0 ]
+
+// Has creado con éxito una instancia de Color, y la instancia tiene una propiedad values, que es un array de los valores RGB que has pasado. Esto es más o menos equivalente a lo siguiente:
+
+function crearColor(r, g, b) {
+  return {
+    valores: [r, g, b],
+  };
+}
+
+// La sintaxis del constructor es exactamente la misma que la de una función normal - lo que significa que puedes usar otras sintaxis, como parámetros de reposo:
+
+class Color2 {
+  constructor(...valores) {
+    this.valores = valores;
+  }
+}
+
+const nuevoColor = new Color2(255, 0, 0);
+
+console.log(nuevoColor);
+console.log(nuevoColor.valores);
+// // Crea una instancia con la misma forma que la anterior.
+
+// Cada vez que se llama a new, se crea una instancia diferente.
+
+const rojo1 = new Color2(255, 0, 0);
+const rojo2 = new Color2(255, 0, 0);
+
+console.log(rojo1 === rojo2); // false
+
+// Dentro de un constructor de clase, el valor de this apunta a la instancia recién creada. Puedes asignarle propiedades, o leer las propiedades existentes (especialmente los métodos - que cubriremos a continuación).
+
+// El valor de this será devuelto automáticamente como resultado de new. Se aconseja no devolver ningún valor desde el constructor - porque si devuelve un valor no primitivo, se convertirá en el valor de la expresión new, y el valor de this se elimina. (Puedes leer más sobre lo que hace new en su descripción).
+
+class miClase5 {
+  constructor() {
+    this.miCampo = "foo";
+    return {};
+  }
+}
+
+console.log(new miClase5().miCampo); // undefined
