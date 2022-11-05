@@ -519,3 +519,71 @@ class miClase15 {
 console.log(miClase15.miPropiedadStatica); // 'foo'
 
 // Los bloques de inicialización estáticos son casi equivalentes a la ejecución inmediata de algún código tras la declaración de una clase. La única diferencia es que tienen acceso a las propiedades privadas estáticas.
+
+// Extends y herencia #008000
+// Una característica clave que aportan las clases (además de la encapsulación ergonómica con campos privados) es la herencia, que significa que un objeto puede "tomar prestada" una gran parte de los comportamientos de otro objeto, al tiempo que anula o mejora ciertas partes con su propia lógica.
+
+// Por ejemplo, supongamos que nuestra clase Color necesita ahora soportar la transparencia. Podemos estar tentados a añadir un nuevo campo que indique su transparencia:
+
+class Color15 {
+  #valores;
+
+  constructor(r, g, b, a = 1) {
+    this.#valores = [r, g, b, a];
+  }
+
+  get alfa() {
+    return this.#valores[3];
+  }
+
+  set alfa(valor) {
+    if (valor > 0 || valor > 1) {
+      throw new RangeError("El valor alfa debe estar entre 0 y 1");
+    }
+
+    this.#valores[3] = valor;
+  }
+}
+
+const colorTPT = new Color15();
+
+console.log(colorTPT.alfa); // 1
+
+// colorTPT.alfa = 2; // ncaught RangeError: El valor alfa debe estar entre 0 y 1
+
+// Sin embargo, esto significa que todas las instancias -incluso la gran mayoría que no son transparentes (las que tienen un valor alfa de 1)- tendrán que tener el valor alfa extra, lo cual no es muy elegante. Además, si las funciones siguen creciendo, nuestra clase Color se hinchará mucho y será difícil de mantener.
+
+// En cambio, en la programación orientada a objetos, crearíamos una clase derivada. La clase derivada tiene acceso a todas las propiedades públicas de la clase padre. En JavaScript, las clases derivadas se declaran con una cláusula extends, que indica la clase de la que se extiende.
+
+class colorConAlfa extends Color13 {
+  #alfa;
+
+  constructor(r, g, b, a) {
+    super(r, g, b);
+    this.#alfa = a;
+  }
+
+  get alfa() {
+    return this.#alfa;
+  }
+
+  set alfa(valor) {
+    if (valor < 0 || valor > 1) {
+      throw new RangeError("El valor alfa debe estar entre 0 y 1");
+    }
+
+    this.#alfa = valor;
+  }
+}
+
+const colorAlfa = new colorConAlfa(255, 0, 0, 0.5);
+
+console.log(colorAlfa.alfa); // 0.5
+
+// Hay algunas cosas que han llamado inmediatamente la atención. La primera es que en el constructor, estamos llamando a super(r, g, b). Es un requisito del lenguaje llamar a super() antes de acceder a "this". La llamada a super() llama al constructor de la clase padre para inicializar "this" - aquí es más o menos equivalente a esto = new Color(r, g, b). Puedes tener código antes de super(), pero no puedes acceder a this antes de super() - el lenguaje te impide acceder al this no inicializado.
+
+// Después de que la clase padre haya terminado de modificar "this", la clase derivada puede hacer su propia lógica. Aquí añadimos un campo privado llamado #alpha, y también proporcionamos un par de getter/setters para interactuar con ellos.
+
+// Una clase derivada hereda todos los métodos de su padre. Por ejemplo, aunque ColorWithAlpha no declara un accesorio get red() en sí mismo, puedes acceder al rojo porque este comportamiento está especificado por la clase padre:
+
+console.log(colorAlfa.rojo); // 255
