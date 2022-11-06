@@ -671,3 +671,59 @@ const nuevoColor2 = new ColorConAlfa2(255, 0, 0, 0.5);
 console.log(nuevoColor2 instanceof Color16); // true
 
 console.log(nuevoColor2 instanceof ColorConAlfa2); // true
+
+// ¿Por qué las clases? #008000
+// La guía ha sido pragmática hasta ahora: nos centramos en cómo se pueden utilizar las clases, pero hay una pregunta sin respuesta: ¿por qué se utiliza una clase? La respuesta es: depende.
+
+// Las clases introducen un paradigma, o una forma de organizar tu código. Las clases son la base de la programación orientada a objetos, que se basa en conceptos como la herencia y el polimorfismo (especialmente el polimorfismo de subtipo). Sin embargo, muchas personas están filosóficamente en contra de ciertas prácticas de POO y no utilizan las clases como resultado.
+
+// Por ejemplo, una cosa que hace que los objetos Date sean infames es que son mutables.
+
+function incrementarDia(fecha) {
+  return fecha.setDate(fecha.getDate() + 1);
+}
+
+const fecha = new Date("2019 06 19");
+console.log(fecha);
+const nuevoDia = incrementarDia(fecha);
+console.log(nuevoDia);
+
+// // La fecha antigua también se modifica
+console.log(fecha); // 2019 06 20
+
+// La mutabilidad y el estado interno son aspectos importantes de la programación orientada a objetos, pero a menudo hacen que el código sea difícil de razonar - porque cualquier operación aparentemente inocente puede tener efectos secundarios inesperados y cambiar el comportamiento en otras partes del programa.
+
+// Para reutilizar el código, solemos recurrir a la extensión de clases, lo que puede crear grandes jerarquías de patrones de herencia.
+
+// Un típico árbol de herencia OOP, con cinco clases y tres niveles
+
+// Sin embargo, a menudo es difícil describir la herencia de forma limpia cuando una clase sólo puede extender otra clase. A menudo, queremos el comportamiento de múltiples clases. En Java, esto se hace a través de interfaces; en JavaScript, se puede hacer a través de mixins. Pero al final del día, todavía no es muy conveniente.
+
+// En el lado positivo, las clases son una forma muy poderosa de organizar nuestro código en un nivel superior. Por ejemplo, sin la clase Color, podríamos necesitar crear una docena de funciones de utilidad:
+
+function isRed(color) {
+  return color.red === 255;
+}
+function isValidColor(color) {
+  return (
+    color.red >= 0 &&
+    color.red <= 255 &&
+    color.green >= 0 &&
+    color.green <= 255 &&
+    color.blue >= 0 &&
+    color.blue <= 255
+  );
+}
+// ...
+
+// Pero con las clases, podemos agruparlas todas bajo el espacio de nombres Color, lo que mejora la legibilidad. Además, la introducción de campos privados nos permite ocultar ciertos datos a los usuarios posteriores, creando una API limpia.
+
+// En general, deberías considerar el uso de clases cuando quieras crear objetos que almacenen sus propios datos internos y expongan mucho comportamiento. Tomemos como ejemplo las clases incorporadas de JavaScript:
+
+// Las clases Map y Set almacenan una colección de elementos y permiten acceder a ellos por clave utilizando get(), set(), has(), etc.
+
+// La clase Date almacena una fecha como una marca de tiempo Unix (un número) y permite formatear, actualizar y leer componentes de fecha individuales.
+
+// La clase Error almacena información sobre una excepción particular, incluyendo el mensaje de error, el seguimiento de la pila, la causa, etc. Es una de las pocas clases que vienen con una rica estructura de herencia: hay múltiples clases incorporadas como TypeError y ReferenceError que extienden Error. En el caso de los errores, esta herencia permite refinar la semántica de los errores: cada clase de error representa un tipo específico de error, que puede comprobarse fácilmente con instanceof.
+
+// JavaScript ofrece el mecanismo para organizar su código de una manera canónica orientada a objetos, pero si se utiliza y cómo se utiliza depende totalmente del criterio del programador.
