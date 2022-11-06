@@ -587,3 +587,87 @@ console.log(colorAlfa.alfa); // 0.5
 // Una clase derivada hereda todos los métodos de su padre. Por ejemplo, aunque ColorWithAlpha no declara un accesorio get red() en sí mismo, puedes acceder al rojo porque este comportamiento está especificado por la clase padre:
 
 console.log(colorAlfa.rojo); // 255
+
+// Las clases derivadas también pueden anular los métodos de la clase padre. Por ejemplo, todas las clases heredan implícitamente la clase Object, que define algunos métodos básicos como toString(). Sin embargo, el método base toString() es notoriamente inútil, porque imprime [objeto Object] en la mayoría de los casos:
+
+console.log(rojo13.toString()); // [object Object]
+
+// En su lugar, nuestra clase puede anularlo para imprimir los valores RGB del color:
+
+class Color16 {
+  #valores;
+
+  constructor(r, g, b) {
+    this.#valores = [r, g, b];
+  }
+
+  get valores() {
+    return this.#valores;
+  }
+
+  toString() {
+    return this.#valores.join(", ");
+  }
+}
+
+console.log(new Color16(255, 0, 0).valores); // (3) [255, 0, 0]
+
+console.log(new Color16(255, 0, 0).toString()); // 255, 0, 0
+
+// Dentro de las clases derivadas, puedes acceder a los métodos de la clase padre utilizando super. Esto permite construir métodos de mejora y evitar la duplicación de código.
+
+class ColorConAlfa2 extends Color16 {
+  #alfa;
+
+  constructor(r, g, b, a) {
+    super(r, g, b);
+    this.#alfa = a;
+  }
+
+  toString() {
+    // Llama a toString() de la clase padre y construye sobre el valor de retorno
+
+    return `${super.toString()} || ${this.#alfa}`;
+  }
+}
+
+console.log(new ColorConAlfa2(255, 0, 0, 0.5).toString()); // '255, 0, 0, 0.5'
+
+// Cuando usas extends, los métodos estáticos también heredan entre sí, por lo que también puedes anularlos o mejorarlos.
+
+class ColorConAlfa3 extends Color14 {
+  //...
+
+  static esValido(r, g, b, a) {
+    // Llama a isValid() de la clase padre y construye sobre el valor de retorno
+
+    return super.esValido(r, g, b, a) && a >= 0 && a <= 1;
+  }
+}
+console.log(ColorConAlfa3.esValido(255, 0, 0, -1)); // false
+
+console.log(ColorConAlfa3.esValido(255, 0, -5, 0.5)); // false
+
+console.log(ColorConAlfa3.esValido(255, 0, 0, 0.9)); // true
+
+// Las clases derivadas no tienen acceso a los campos privados de la clase padre - este es otro aspecto clave para que los campos privados de JavaScript sean "hard private". Los campos privados se limitan al cuerpo de la clase y no dan acceso a ningún código externo. #FF0000
+
+/*
+
+class ClaseDerivada extends ColorConAlfa2 {
+  log() {
+    console.log(this.#alfa); // SyntaxError: El campo privado '#valores' debe ser declarado en una clase que lo encierre
+  }
+}
+
+*/
+
+// Una clase sólo puede extender de una clase. Esto evita problemas en la herencia múltiple como el problema del diamante ( https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem ). Sin embargo, debido a la naturaleza dinámica de JavaScript, todavía es posible lograr el efecto de la herencia múltiple a través de la composición de clases y los mixins.
+
+// Las instancias de las clases derivadas son también instancias de la clase base.
+
+const nuevoColor2 = new ColorConAlfa2(255, 0, 0, 0.5);
+
+console.log(nuevoColor2 instanceof Color16); // true
+
+console.log(nuevoColor2 instanceof ColorConAlfa2); // true
