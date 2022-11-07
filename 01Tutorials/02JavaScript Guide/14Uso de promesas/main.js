@@ -48,3 +48,147 @@ crearArchivoDeAudioAsinc(
 // Se pueden añadir múltiples retrollamadas llamando a then() varias veces. Serán invocadas una tras otra, en el orden en que fueron insertadas.
 
 // Una de las cosas buenas de usar promesas es el encadenamiento.
+
+// Encadenamiento #008000
+// Una necesidad común es ejecutar dos o más operaciones asíncronas una detrás de otra, donde cada operación subsiguiente comienza cuando la operación anterior tiene éxito, con el resultado del paso anterior. Esto se consigue creando una cadena de promesas.
+
+// Aquí está la magia: la función then() devuelve una nueva promesa, diferente de la original:
+
+/*
+
+const promesa = hacerAlgo();
+const promesa2 = promesa.then(exitoDeDevolucionDellamada, fracasoDeDevolucionDeLlamada)
+
+*/
+
+// o
+
+// const promesa2 = hacerAlgo().then(exitoDeDevolucionDellamada, fracasoDeDevolucionDeLlamada)
+
+// Esta segunda promesa (promise2) representa la finalización no sólo de doSomething(), sino también de la successCallback o failureCallback que le pasaste, que pueden ser otras funciones asíncronas que devuelven una promesa. Cuando este es el caso, cualquier llamada de retorno añadida a promise2 se pone en cola detrás de la promesa devuelta por successCallback o failureCallback.
+
+// Básicamente, cada promesa representa la finalización de otro paso asíncrono en la cadena.
+
+// Antiguamente, hacer varias operaciones asíncronas seguidas llevaba a la clásica pirámide de callbacks de la perdición:
+
+// doSomething(function (result) {
+//   doSomethingElse(result, function (newResult) {
+//     doThirdThing(newResult, function (finalResult) {
+//       console.log(`Obtuve el resultado final: ${finalResult}`);
+//     }, failureCallback);
+//   }, failureCallback);
+// }, failureCallback);
+
+// *********************************************+
+
+// Con las funciones modernas, adjuntamos nuestras callbacks a las promesas devueltas, formando una cadena de promesas:
+
+// doSomething()
+//   .then(function (resultado) {
+//     return doSomethingElse(resultado);
+//   })
+//   .then(function (nuevoResultado) {
+//     return doThirdThing(newResult);
+//   })
+//   .then(function (resultado final) {
+//     console.log(`Obtuvo el resultado final: ${finalResult}`);
+//   })
+//   .catch(failureCallback);
+
+// Los argumentos de then son opcionales, y catch(failureCallback) es la abreviatura de then(null, failureCallback). Puedes ver esto expresado con funciones de flecha en su lugar:
+
+// doSomething()
+//   .then((resultado) => doSomethingElse(resultado))
+//   .then((nuevoResultado) => doThirdThing(nuevoResultado))
+//   .then((resultado final) => {
+//     console.log(`Obtuve el resultado final: ${finalResult}`);
+//   })
+//   .catch(failureCallback);
+
+// Importante: Devuelve siempre los resultados, de lo contrario las devoluciones de llamada no capturarán el resultado de una promesa anterior (con funciones de flecha, () => x es la abreviatura de () => { return x; }). Si el manejador anterior inició una promesa pero no la devolvió, ya no hay forma de rastrear su liquidación, y se dice que la promesa está "flotando".
+
+// doSomething()
+//   .then((url) => {
+//     // Me olvidé de devolver esto
+//     fetch(url);
+//   })
+//   .then((resultado) => {
+//     // el resultado es indefinido, porque no se devuelve nada del
+//     // el manejador anterior.
+//     // No hay forma de saber el valor de retorno de la llamada a fetch()
+//     // de la llamada a fetch(), o si tuvo éxito.
+//   });
+
+// Esto puede ser peor si tiene condiciones de carrera - si la promesa del último manejador no es devuelta, el siguiente manejador será llamado antes de tiempo, y cualquier valor que lea puede estar incompleto.
+
+// const listOfIngredients = [];
+
+// hacerAlgo()
+//   .then((url) => {
+//     // Me olvidé de devolver esto
+//     fetch(url)
+//       .then((res) => res.json())
+//       .then((datos) => {
+//         listOfIngredients.push(data);
+//       });
+//   })
+//   .then(() => {
+//     console.log(listOfIngredients);
+//     // Siempre [], porque la solicitud de obtención aún no se ha completado.
+//   });
+
+// Por lo tanto, como regla general, siempre que su operación encuentre una promesa, devuélvala y difiera su manejo al siguiente manejador then.
+
+// const listOfIngredients = [];
+
+// hacerAlgo()
+//   .then((url) =>
+//     fetch(url)
+//       .then((res) => res.json())
+//       .then((datos) => {
+//         listOfIngredients.push(data);
+//       })
+//   )
+//   .then(() => {
+//     console.log(listOfIngredients);
+//   });
+
+// // O
+
+// hacerAlgo()
+//   .then((url) => fetch(url))
+//   .then((res) => res.json())
+//   .then((datos) => {
+//     listOfIngredients.push(data);
+//   })
+//   .then(() => {
+//     console.log(listOfIngredients);
+//   });
+
+// Encadenamiento después de catch #00aae4
+// Es posible encadenar después de un fallo, es decir, un catch, lo que es útil para realizar nuevas acciones incluso después de que una acción haya fallado en la cadena. Lee el siguiente ejemplo:
+
+new Promise((resolver, rechazar) => {
+  console.log("Inicial");
+
+  resolver();
+})
+  .then(() => {
+    throw new Error("Algo falló");
+
+    console.log("Hacer esto");
+  })
+  .catch(() => {
+    console.error("Hacer eso");
+  })
+  .then(() => {
+    console.log("Hacer esto, sin importar lo que haya pasado antes");
+  });
+
+// Esto producirá el siguiente texto:
+
+// Inicial
+// Hacer eso
+// Hacer esto, sin importar lo que haya pasado antes
+
+// Nota: El texto "Hacer esto" no se muestra porque el error "Algo falló" provocó un rechazo.
