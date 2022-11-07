@@ -192,3 +192,40 @@ new Promise((resolver, rechazar) => {
 // Hacer esto, sin importar lo que haya pasado antes
 
 // Nota: El texto "Hacer esto" no se muestra porque el error "Algo falló" provocó un rechazo.
+
+// Propagación de errores #008000
+// Puede que recuerdes haber visto antes failureCallback tres veces en la pirámide de la perdición, en comparación con sólo una vez al final de la cadena de promesas:
+
+// doSomething()
+//   .then((resultado) => doSomethingElse(resultado))
+//   .then((nuevoResultado) => hacerAlgoMás(nuevoResultado))
+//   .then((resultadofinal) => console.log(`Obtuvo el resultado final: ${resultadofinal}`)
+//   .catch(failureCallback);
+
+// Si hay una excepción, el navegador buscará en la cadena los manejadores .catch() o onRejected. Esto es muy parecido a cómo funciona el código síncrono:
+
+// try {
+//   const result = syncDoSomething();
+//   const newResult = syncDoSomethingElse(result);
+//   const FinalResult = syncDoThirdThing(newResult);
+//   console.log(`Obtuve el resultado final: ${finalResult}`);
+// } catch (error) {
+//   failureCallback(error);
+// }
+
+// Esta simetría con el código asíncrono culmina en la sintaxis async/await
+
+// async function foo() {
+//   try {
+//     const result = await doSomething();
+//     const newResult = await doSomethingElse(result);
+//     const finalResult = await doThirdThing(newResult);
+//     console.log(`Obtuvo el resultado final: ${finalResult}`);
+//   } catch (error) {
+//     failureCallback(error);
+//   }
+// }
+
+// Se basa en las promesas, por ejemplo, doSomething() es la misma función que antes. Puedes leer más sobre la sintaxis aquí.
+
+// Las promesas resuelven un defecto fundamental de la pirámide de devoluciones de llamada de la fatalidad, al capturar todos los errores, incluso las excepciones lanzadas y los errores de programación. Esto es esencial para la composición funcional de las operaciones asíncronas.
