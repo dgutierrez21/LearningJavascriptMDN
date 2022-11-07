@@ -275,3 +275,50 @@ esperar(10 * 1000)
   .catch(fracasoDeDevolucionDeLlamada);
 
 // Básicamente, el constructor de la promesa toma una función ejecutora que nos permite resolver o rechazar una promesa manualmente. Como setTimeout() no falla realmente, en este caso omitimos reject.
+
+// Composición #008000
+// Promise.resolve() y Promise.reject() son atajos para crear manualmente una promesa ya resuelta o rechazada respectivamente. Esto puede ser útil en ocasiones.
+
+// Promise.all() y Promise.race() son dos herramientas de composición para ejecutar operaciones asíncronas en paralelo.
+
+// Podemos iniciar operaciones en paralelo y esperar a que todas terminen así
+
+// Promise.all([func1(), func2(), func3()]).then(([resultado1, resultado2, resultado3]) => {
+//   /* utilizar resultado1, resultado2 y resultado3 */
+// });
+
+// Es importante tener en cuenta que si una de las promesas del array rechaza, Promise.all() lanzará el error y abortará las demás operaciones. Esto puede causar un estado o comportamiento inesperado. Promise.allSettled() es otra herramienta de composición que asegura que todas las operaciones están completas antes de resolver.#FF0000
+
+// La composición secuencial es posible utilizando algo de JavaScript inteligente:
+
+// [func1, func2, func3]
+//   .reduce((p, f) => p.then(f), Promise.resolve())
+//   .then((resultado3) => {
+//     /* usar resultado3 */
+//   });
+
+// Básicamente, reducimos un array de funciones asíncronas a una cadena de promesas. El código anterior es equivalente a
+
+// Promise.resolve()
+//   .then(func1)
+//   .then(func2)
+//   .then(func3)
+//   .then((resultado3) => { /* usar resultado3 */ });
+
+// Esto se puede convertir en una función compuesta reutilizable, lo cual es común en la programación funcional:
+
+// const applyAsync = (acc, val) => acc.then(val);
+// const composeAsync = (...funcs) => (x) => funcs.reduce(applyAsync, Promise.resolve(x));
+
+// La función composeAsync() aceptará cualquier número de funciones como argumentos, y devolverá una nueva función que acepta un valor inicial que se pasará a través del pipeline de composición:
+
+// const transformData = composeAsync(func1, func2, func3);
+// const result3 = transformData(data);
+
+// La composición secuencial también puede hacerse de forma más sucinta con async/await:
+
+// dejar que result;
+// for (const f of [func1, func2, func3]) {
+//   result = await f(result);
+// }
+// /* utilizar el último resultado (es decir, el resultado3) */
