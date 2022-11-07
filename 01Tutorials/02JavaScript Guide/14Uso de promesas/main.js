@@ -33,7 +33,18 @@ crearArchivoDeAudioAsinc(
   crearArchivoDeAudioAsinc(configuracionAudio).then(
   exitoDeDevolucionDellamada,
   fracasoDeDevolucionDeLlamada);
-  
+
  */
 
 // Esta convención tiene varias ventajas. Vamos a explorar cada una de ellas.
+
+// Garantías #008000
+// A diferencia de las antiguas devoluciones de llamada pasadas, una promesa viene con algunas garantías:
+
+// Las devoluciones de llamada añadidas con then() nunca serán invocadas antes de la finalización de la ejecución actual del bucle de eventos de JavaScript.
+
+// Estas devoluciones de llamada serán invocadas incluso si fueron añadidas después del éxito o fracaso de la operación asíncrona que la promesa representa.
+
+// Se pueden añadir múltiples retrollamadas llamando a then() varias veces. Serán invocadas una tras otra, en el orden en que fueron insertadas.
+
+// Una de las cosas buenas de usar promesas es el encadenamiento.
