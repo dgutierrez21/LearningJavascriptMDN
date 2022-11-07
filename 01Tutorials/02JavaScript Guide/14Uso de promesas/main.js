@@ -229,3 +229,27 @@ new Promise((resolver, rechazar) => {
 // Se basa en las promesas, por ejemplo, doSomething() es la misma función que antes. Puedes leer más sobre la sintaxis aquí.
 
 // Las promesas resuelven un defecto fundamental de la pirámide de devoluciones de llamada de la fatalidad, al capturar todos los errores, incluso las excepciones lanzadas y los errores de programación. Esto es esencial para la composición funcional de las operaciones asíncronas.
+
+// Eventos de rechazo de promesas #008000
+// Cada vez que se rechaza una promesa, se envía uno de los dos eventos al ámbito global (generalmente, se trata de la ventana o, si se utiliza en un web worker, del Worker o de otra interfaz basada en el worker). Los dos eventos son
+
+// rejectionhandled
+// Enviado cuando una promesa es rechazada, después de que ese rechazo haya sido manejado por la función reject del ejecutor.
+
+// unhandledrejection
+// Se envía cuando una promesa es rechazada pero no hay ningún controlador de rechazo disponible.
+
+// En ambos casos, el evento (de tipo PromiseRejectionEvent) tiene como miembros una propiedad promise que indica la promesa que ha sido rechazada, y una propiedad reason que proporciona el motivo por el que la promesa ha sido rechazada.
+
+// Esto hace posible ofrecer un manejo de errores para las promesas, así como ayudar a depurar los problemas con su manejo de promesas. Estos manejadores son globales por contexto, por lo que todos los errores irán a los mismos manejadores de eventos, independientemente de la fuente.
+
+// Un caso de especial utilidad: al escribir código para Node.js, es común que los módulos que incluyas en tu proyecto puedan tener promesas rechazadas no manejadas, registradas en la consola por el tiempo de ejecución de Node.js. Puedes capturarlas para analizarlas y manejarlas en tu código -o simplemente para evitar que se desordenen en tu salida- añadiendo un manejador para el evento Node.js unhandledRejection (fíjate en la diferencia de mayúsculas en el nombre), así
+
+// process.on("unhandledRejection", (reason, promise) => {
+//   /* Puedes empezar aquí añadiendo código para examinar la
+//    * valores "promise" y "reason". */
+// });
+
+// En el caso de Node.js, para evitar que el error se registre en la consola (la acción por defecto que se produciría en caso contrario), basta con añadir ese listener process.on(); no es necesario un método equivalente al preventDefault() del navegador.
+
+// Sin embargo, si añades ese listener process.on pero no tienes también código dentro de él para manejar las promesas rechazadas, simplemente se tirarán al suelo y serán ignoradas silenciosamente. Así que lo ideal es añadir código dentro de ese listener para examinar cada promesa rechazada y asegurarse de que no ha sido causada por un error de código real.
