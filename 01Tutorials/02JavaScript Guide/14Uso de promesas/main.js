@@ -253,3 +253,25 @@ new Promise((resolver, rechazar) => {
 // En el caso de Node.js, para evitar que el error se registre en la consola (la acción por defecto que se produciría en caso contrario), basta con añadir ese listener process.on(); no es necesario un método equivalente al preventDefault() del navegador.
 
 // Sin embargo, si añades ese listener process.on pero no tienes también código dentro de él para manejar las promesas rechazadas, simplemente se tirarán al suelo y serán ignoradas silenciosamente. Así que lo ideal es añadir código dentro de ese listener para examinar cada promesa rechazada y asegurarse de que no ha sido causada por un error de código real.
+
+// Creación de una Promise en torno a una antigua API de devolución de llamada #008000
+// Se puede crear una Promise desde cero utilizando su constructor. Esto debería ser necesario sólo para envolver antiguas APIs.
+
+// En un mundo ideal, todas las funciones asíncronas ya devolverían promesas. Desgraciadamente, algunas APIs todavía esperan que las devoluciones de llamada de éxito y/o fracaso se pasen de la forma antigua. El ejemplo más obvio es la función setTimeout():
+
+// setTimeout(() => saySomething("10 seconds passed"), 10 * 1000);
+
+// Mezclar callbacks de estilo antiguo y promesas es problemático. Si saySomething() falla o contiene un error de programación, nada lo detecta. setTimeout es el culpable de esto.
+
+// Por suerte podemos envolver setTimeout en una promesa. La mejor práctica es envolver las funciones problemáticas al nivel más bajo posible, y luego no volver a llamarlas directamente:
+
+const esperar = (ms) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+
+esperar(10 * 1000)
+  .then(() => digaAlgo("10 segundos"))
+  .catch(fracasoDeDevolucionDeLlamada);
+
+// Básicamente, el constructor de la promesa toma una función ejecutora que nos permite resolver o rechazar una promesa manualmente. Como setTimeout() no falla realmente, en este caso omitimos reject.
