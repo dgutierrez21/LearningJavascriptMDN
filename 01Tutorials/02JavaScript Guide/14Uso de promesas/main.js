@@ -322,3 +322,5 @@ esperar(10 * 1000)
 //   result = await f(result);
 // }
 // /* utilizar el último resultado (es decir, el resultado3) */
+
+// Sin embargo, antes de componer promesas secuencialmente, considera si es realmente necesario - siempre es mejor ejecutar promesas en paralelo para que no se bloqueen innecesariamente unas a otras, a menos que la ejecución de una promesa dependa del resultado de otra.
