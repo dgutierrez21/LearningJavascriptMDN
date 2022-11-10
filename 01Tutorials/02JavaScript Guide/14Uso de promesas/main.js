@@ -324,3 +324,79 @@ esperar(10 * 1000)
 // /* utilizar el último resultado (es decir, el resultado3) */
 
 // Sin embargo, antes de componer promesas secuencialmente, considera si es realmente necesario - siempre es mejor ejecutar promesas en paralelo para que no se bloqueen innecesariamente unas a otras, a menos que la ejecución de una promesa dependa del resultado de otra.
+
+// Temporización #008000
+// Por último, veremos los detalles más técnicos, sobre cuándo se llaman las llamadas de retorno registradas.
+
+// Garantías
+// En la API basada en callbacks, cuándo y cómo se llama al callback depende del implementador de la API. Por ejemplo, la llamada de retorno puede ser llamada de forma sincrónica o asincrónica:
+
+// function doSomething(callback) {
+//   si (Math.random() > 0.5) {
+//     callback();
+//   } else {
+//     setTimeout(() => callback(), 1000);
+//   }
+// }
+
+// Esto lleva al estado de Zalgo, porque hace que los efectos secundarios sean difíciles de analizar:
+
+// let value = 1;
+// doSomething(() => {
+//   valor = 2;
+// });
+// console.log(valor); // ¿1 o 2?
+
+// Por otro lado, las promesas son una forma de inversión de control: el implementador de la API no controla cuándo se llama a la devolución de llamada. En su lugar, el trabajo de mantener la cola de llamadas de retorno y decidir cuándo llamar a las llamadas de retorno se delega en la implementación de la promesa, y tanto el usuario como el desarrollador de la API obtienen automáticamente fuertes garantías semánticas, incluyendo:
+
+// Las devoluciones de llamada añadidas con then() nunca serán invocadas antes de la finalización de la ejecución actual del bucle de eventos de JavaScript.
+
+// Estas devoluciones de llamada se invocarán incluso si se añadieron después del éxito o el fracaso de la operación asíncrona que representa la promesa.
+
+// Se pueden añadir múltiples retrollamadas llamando a then() varias veces. Serán invocadas una tras otra, en el orden en que fueron insertadas.
+
+// Para evitar sorpresas, las funciones pasadas a then() nunca serán llamadas de forma sincrónica, incluso con una promesa ya resuelta:
+
+// Promise.resolve().then(() => console.log(2));
+// console.log(1);
+// // Logs: 1, 2
+
+// En lugar de ejecutarse inmediatamente, la función pasada se pone en una cola de microtareas, lo que significa que se ejecuta más tarde (sólo después de que la función que la creó salga, y cuando la pila de ejecución de JavaScript esté vacía), justo antes de que se devuelva el control al bucle de eventos; es decir, bastante pronto:
+
+// const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// wait(0).then(() => console.log(4));
+// Promise.resolve()
+//   .then() => console.log(2))
+//   .then() => console.log(3));
+// console.log(1); // 1, 2, 3, 4
+
+// Colas de tareas frente a microtareas #00aae4
+// Las devoluciones de llamada de Promise se manejan como una microtarea mientras que las devoluciones de llamada de setTimeout() se manejan como colas de tareas.
+
+// const promise = new Promise((resolve, reject) => {
+//   console.log("Promesa callback");
+//   resolve();
+// }).then((resultado) => {
+//   console.log("Promesa callback (.then)");
+// });
+
+// setTimeout(() => {
+//   console.log("ciclo de bucle de eventos: Promesa (cumplida)", promesa);
+// }, 0);
+
+// console.log("Promesa (pendiente)", promesa);
+
+// El código anterior dará como resultado
+
+// Promesa callback
+// Promesa (pendiente) Promesa {<pendiente>}
+// Promesa callback (.then)
+// ciclo de bucle de eventos: Promesa (cumplida) Promesa {<cumplida>}
+
+// Para más detalles, consulta Tareas vs microtareas.
+
+// Cuando las promesas y las tareas chocan #00aae4
+// Si te encuentras con situaciones en las que tienes promesas y tareas (como eventos o devoluciones de llamada) que se disparan en órdenes impredecibles, es posible que te beneficies del uso de una microtarea para comprobar el estado o equilibrar tus promesas cuando éstas se crean condicionalmente.
+
+// Si crees que las microtareas pueden ayudar a resolver este problema, consulta la guía de microtareas para saber más sobre cómo utilizar queueMicrotask() para poner en cola una función como microtarea.
