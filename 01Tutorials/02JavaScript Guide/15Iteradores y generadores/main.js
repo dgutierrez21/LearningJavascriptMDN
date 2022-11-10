@@ -63,3 +63,39 @@ while (!resultado.done) {
 // [5 números devueltos, que tomaron intervalo entre: 0 a 10]
 
 // Nota: No es posible saber reflexivamente si un objeto concreto es un iterador. Si necesita hacerlo, utilice Iterables.
+
+// Funciones generadoras #008000
+// Aunque los iteradores personalizados son una herramienta útil, su creación requiere una programación cuidadosa debido a la necesidad de mantener explícitamente su estado interno. Las funciones generadoras ofrecen una potente alternativa: permiten definir un algoritmo iterativo escribiendo una única función cuya ejecución no es continua. Las funciones generadoras se escriben utilizando la sintaxis function*.
+
+// Cuando se llaman, las funciones generadoras no ejecutan inicialmente su código. En su lugar, devuelven un tipo especial de iterador, llamado Generador. Cuando se consume un valor llamando al "next" método del generador, la función generadora se ejecuta hasta que encuentra la palabra clave yield.
+
+// La función puede ser llamada tantas veces como se desee, y devuelve un nuevo Generador cada vez. Cada generador sólo puede ser iterado una vez.
+
+// Ahora podemos adaptar el ejemplo anterior. El comportamiento de este código es idéntico, pero la implementación es mucho más fácil de escribir y leer.
+
+function* hacerIteradorDeRangoFunc(
+  iniciar = 0,
+  finalizar = Infinity,
+  paso = 1
+) {
+  let contadorIteracion = 0;
+
+  for (let i = iniciar; i < finalizar; i += paso) {
+    contadorIteracion++;
+    yield i;
+  }
+
+  return contadorIteracion;
+}
+
+let resultadoFunc = hacerIteradorDeRangoFunc(1, 10, 2);
+
+console.log(resultadoFunc.next().value);
+
+console.log(resultadoFunc.next().value);
+
+console.log(resultadoFunc.next().value);
+
+console.log(resultadoFunc.next().value);
+
+console.log(resultadoFunc.next().value);
