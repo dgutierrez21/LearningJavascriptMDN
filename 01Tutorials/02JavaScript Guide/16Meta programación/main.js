@@ -39,3 +39,8 @@ console.log(p);
 
 // invariants
 // Las semánticas que permanecen sin cambios al implementar operaciones personalizadas se denominan invariantes. Si se violan las invariantes de un manejador, se lanzará un TypeError.
+
+// Manejadores y trampas #008000
+// La siguiente tabla resume las trampas disponibles para los objetos Proxy. Consulte las páginas de referencia para obtener explicaciones detalladas y ejemplos.
+
+// ver tabla en https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming#handlers_and_traps
