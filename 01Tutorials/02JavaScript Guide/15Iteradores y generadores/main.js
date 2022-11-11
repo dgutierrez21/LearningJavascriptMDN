@@ -188,3 +188,50 @@ console.log(generadora().next());
 
 console.log(a);
 // a
+
+// Generadores avanzados #008000
+// Los generadores calculan sus valores de rendimiento bajo demanda, lo que les permite representar eficientemente secuencias que son caras de calcular (o incluso secuencias infinitas, como se ha demostrado anteriormente).
+
+// El método next() también acepta un valor, que puede utilizarse para modificar el estado interno del generador. Un valor pasado a next() será recibido por yield .
+
+// Nota: Un valor pasado a la primera invocación de next() es siempre ignorado.
+
+// Aquí está el generador fibonacci usando next(x) para reiniciar la secuencia:
+
+function* fibonacci() {
+  let actual = 0,
+    siguiente = 1;
+  while (true) {
+    const restablecer = yield actual;
+    [actual, siguiente] = [siguiente, siguiente + actual];
+
+    if (restablecer) {
+      actual = 0;
+      siguiente = 1;
+    }
+  }
+}
+
+const secuencia = fibonacci();
+
+console.log(secuencia.next());
+
+console.log(secuencia.next().value); // 0
+console.log(secuencia.next().value); // 1
+console.log(secuencia.next().value); // 1
+console.log(secuencia.next().value); // 2
+console.log(secuencia.next().value); // 3
+console.log(secuencia.next().value); // 5
+console.log(secuencia.next().value); // 8
+console.log(secuencia.next(true).value); // 0
+console.log(secuencia.next().value); // 1
+console.log(secuencia.next().value); // 1
+console.log(secuencia.next().value); // 2
+console.log(secuencia.next().value); // 3
+console.log(secuencia.next().value); // 5
+
+// Puedes forzar a un generador a lanzar una excepción llamando a su método throw() y pasándole el valor de la excepción que debe lanzar. Esta excepción será lanzada desde el contexto actual suspendido del generador, como si el yield que está actualmente suspendido fuera en cambio una declaración de valor throw.
+
+// Si la excepción no es capturada desde el generador, se propagará hacia arriba a través de la llamada a throw(), y las siguientes llamadas a next() harán que la propiedad done sea verdadera.
+
+// Los generadores tienen un método return(value) que devuelve el valor dado y termina el propio generador.
