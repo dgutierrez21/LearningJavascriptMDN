@@ -99,3 +99,92 @@ console.log(resultadoFunc.next().value);
 console.log(resultadoFunc.next().value);
 
 console.log(resultadoFunc.next().value);
+
+// Iterables #008000
+// Un objeto es iterable si define su comportamiento de iteración, como por ejemplo qué valores se repiten en una construcción for...of. Algunos tipos incorporados, como Array o Map, tienen un comportamiento de iteración por defecto, mientras que otros tipos (como Object) no.
+
+// Para ser iterable, un objeto debe implementar el método @@iterator. Esto significa que el objeto (o uno de los objetos de su cadena de prototipos) debe tener una propiedad con una clave Symbol.iterator.
+
+// Puede ser posible iterar sobre un iterable más de una vez, o sólo una vez. Depende del programador saber cuál es el caso.
+
+// Los iterables que sólo pueden iterar una vez (como los Generadores) suelen devolver esto desde su método @@iterator, mientras que los iterables que pueden ser iterados muchas veces deben devolver un nuevo iterador en cada invocación de @@iterator.
+
+function* hacerIterador() {
+  yield 1;
+  yield 2;
+}
+
+const iterador = hacerIterador();
+
+for (const elementoIterador of iterador) {
+  console.log(elementoIterador);
+}
+
+// // Este ejemplo nos muestra que generator(iterator) es un objeto iterable
+// // que tiene el método @@iterator que devuelve el it (él mismo),
+// // y en consecuencia, el objeto it puede iterar sólo _una vez_.
+
+// // Si cambiamos su método @@iterator por una función/generador
+// // que devuelva un nuevo objeto iterador/generador, (it)
+// // puede iterar muchas veces
+
+iterador[Symbol.iterator] = function* () {
+  yield 2;
+  yield 1;
+};
+
+for (const elementoIterador of iterador) {
+  console.log(elementoIterador);
+}
+
+// Iterables definidos por el usuario #00aae4
+// Puedes hacer tus propios iterables así
+
+const miIterable = {
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+// Los iterables definidos por el usuario se pueden utilizar en los bucles for...of o en la sintaxis de propagación como es habitual.
+
+for (const valor of miIterable) {
+  console.log(valor);
+}
+
+// 1
+// 2
+// 3
+
+console.log([...miIterable]); // [1, 2, 3]
+
+// Iterables incorporados #00aae4
+// String, Array, TypedArray, Map y Set son todos iterables incorporados, porque todos sus objetos prototipo tienen un método Symbol.iterator.
+
+// Sintaxis que esperan iterables #00aae4
+// Algunas sentencias y expresiones esperan iterables. Por ejemplo: los bucles for-of, yield*.
+
+for (const valor of ["a", "b", "c"]) {
+  console.log(valor);
+}
+
+// "a"
+// "b"
+// "c"
+
+console.log([..."abc"]);
+// ["a", "b", "c"]
+
+function* generadora() {
+  yield* ["a", "b", "c"];
+}
+
+console.log(generadora().next());
+// { value: "a", done: false }
+
+[a, b, c] = new Set(["a", "b", "c"]);
+
+console.log(a);
+// a
