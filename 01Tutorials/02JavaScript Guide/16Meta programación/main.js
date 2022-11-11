@@ -1,3 +1,41 @@
 // Meta programación #ff0
 
 // Los objetos Proxy y Reflect permiten interceptar y definir un comportamiento personalizado para las operaciones fundamentales del lenguaje (por ejemplo, búsqueda de propiedades, asignación, enumeración, invocación de funciones, etc.). Con la ayuda de estos dos objetos se puede programar en el nivel meta de JavaScript.
+
+// Proxies #008000
+// Los objetos proxy permiten interceptar ciertas operaciones e implementar comportamientos personalizados.
+
+// Por ejemplo, obtener una propiedad de un objeto:
+
+const manipulador = {
+  get(objetivo, nombre) {
+    return nombre in objetivo ? objetivo[nombre] : 42;
+  },
+};
+
+const p = new Proxy({}, manipulador);
+
+p.a = 1;
+
+console.log(p.a, p.b);
+
+console.log(p);
+
+// El objeto Proxy define un objetivo (un objeto vacío en este caso) y un objeto handler, en el que se implementa una trampa get. Aquí, un objeto proxy no devolverá undefined al obtener propiedades indefinidas, sino que devolverá el número 42.
+
+// Hay más ejemplos disponibles en la página de referencia de Proxy.
+
+// Terminología #00aae4
+// Los siguientes términos se utilizan cuando se habla de la funcionalidad de los proxies.
+
+// handler
+// Objeto marcador de posición que contiene trampas.
+
+// traps
+// Los métodos que proporcionan acceso a las propiedades. (Esto es análogo al concepto de trampas en los sistemas operativos).
+
+// target
+// Objeto que el proxy virtualiza. A menudo se utiliza como backend de almacenamiento para el proxy. Las invariantes (semántica que permanece sin cambios) relativas a la no extensibilidad del objeto o a las propiedades no configurables se verifican contra el objetivo.
+
+// invariants
+// Las semánticas que permanecen sin cambios al implementar operaciones personalizadas se denominan invariantes. Si se violan las invariantes de un manejador, se lanzará un TypeError.
