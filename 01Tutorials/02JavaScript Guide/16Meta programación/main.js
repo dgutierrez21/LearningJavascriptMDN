@@ -44,3 +44,31 @@ console.log(p);
 // La siguiente tabla resume las trampas disponibles para los objetos Proxy. Consulte las páginas de referencia para obtener explicaciones detalladas y ejemplos.
 
 // ver tabla en https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming#handlers_and_traps
+
+// Proxy revocable #008000
+// El método Proxy.revocable() se utiliza para crear un objeto Proxy revocable. Esto significa que el proxy puede ser revocado a través de la función revoke y apaga el proxy.
+
+// Después, cualquier operación sobre el proxy conduce a un TypeError.
+
+const revocable = Proxy.revocable(
+  {},
+  {
+    get(objetivo, nombre) {
+      return `[[${nombre}]]`;
+    },
+  }
+);
+
+const proxy = revocable.proxy;
+
+console.log(proxy.foo);
+
+revocable.revoke();
+
+// console.log(proxy.foo); // TypeError: No se puede realizar 'get' en un proxy que ha sido revocado
+
+// proxy.foo = 1; // TypeError: No se puede realizar 'set' en un proxy que ha sido revocado
+
+// delete proxy.foo; // TypeError: No se puede realizar 'deleteProperty' en un proxy que ha sido revocado
+
+console.log(typeof proxy); // "objeto", typeof no lanza ninguna trampa
