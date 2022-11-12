@@ -68,3 +68,23 @@
 
 // Algunas herramientas pueden no soportar nunca .mjs.
 // El atributo <script type="module"> se utiliza para denotar cuando se está apuntando a un módulo, como verás a continuación.
+
+// Exportación de las características del módulo #008000
+// Lo primero que hay que hacer para acceder a las características del módulo es exportarlas. Esto se hace utilizando la sentencia export.
+
+// La forma más sencilla de utilizarla es colocarla delante de cualquier elemento que quieras exportar fuera del módulo, por ejemplo
+
+// export const name = 'square';
+
+// export function draw(ctx, length, x, y, color) {
+//   ctx.fillStyle = color;
+//   ctx.fillRect(x, y, length, length);
+
+//   return { longitud, x, y, color };
+// }
+
+// Puedes exportar funciones, var, let, const, y -como veremos más adelante- clases. Tienen que ser elementos de nivel superior; no puedes usar export dentro de una función, por ejemplo.
+
+// Una forma más conveniente de exportar todos los elementos que quieres exportar es utilizar una única sentencia export al final de tu archivo de módulo, seguida de una lista separada por comas de las funciones que quieres exportar envueltas en llaves. Por ejemplo:
+
+// export { name, draw, reportArea, reportPerimeter };
