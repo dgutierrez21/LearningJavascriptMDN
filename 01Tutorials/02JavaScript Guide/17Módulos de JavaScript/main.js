@@ -373,3 +373,45 @@
 // con la siguiente línea única:
 
 // import { Square, Circle, Triangle } from './modules/shapes.js';
+
+// Carga dinámica de módulos #008000
+// Una adición reciente a la funcionalidad de los módulos de JavaScript es la carga dinámica de módulos. Esto permite cargar dinámicamente los módulos sólo cuando se necesitan, en lugar de tener que cargar todo por adelantado. Esto tiene algunas ventajas obvias de rendimiento; sigamos leyendo y veamos cómo funciona.
+
+// Esta nueva funcionalidad te permite llamar a import() como una función, pasándole la ruta del módulo como parámetro. Devuelve una Promesa, que se cumple con un objeto de módulo (ver Creación de un objeto de módulo) dándole acceso a las exportaciones de ese objeto. Por ejemplo
+
+// import('./modules/miMódulo.js')
+//   .then((module) => {
+//     // Haz algo con el módulo.
+//   });
+
+// Veamos un ejemplo. En el directorio dynamic-module-imports tenemos otro ejemplo basado en nuestro ejemplo de clases. Esta vez, sin embargo, no estamos dibujando nada en el lienzo cuando el ejemplo se carga. En su lugar, incluimos tres botones - "Círculo", "Cuadrado" y "Triángulo" - que, al ser pulsados, cargan dinámicamente el módulo requerido y lo utilizan para dibujar la forma asociada.
+
+// En este ejemplo sólo hemos hecho cambios en nuestros archivos index.html y main.js - las exportaciones de módulos siguen siendo las mismas que antes.
+
+// En el archivo main.js hemos tomado una referencia a cada botón utilizando una llamada a document.querySelector(), por ejemplo
+
+// const squareBtn = document.querySelector('.square');
+
+// A continuación, adjuntamos un receptor de eventos a cada botón para que, al pulsarlo, se cargue dinámicamente el módulo correspondiente y se utilice para dibujar la forma:
+
+// squareBtn.addEventListener('click', () => {
+//   import('./modules/square.js').then((Module) => {
+//     const square1 = new Module.Square(myCanvas.ctx, myCanvas.listId, 50, 50, 100, 'blue');
+//     square1.draw();
+//     square1.reportArea();
+//     square1.reportPerimeter();
+//   })
+// });
+
+// Ten en cuenta que, como el cumplimiento de la promesa devuelve un objeto del módulo, la clase se convierte en una subfigura del objeto, por lo que ahora tenemos que acceder al constructor con Module. antepuesto, por ejemplo Module.Square( /* ... */ ).
+
+// Otra ventaja de las importaciones dinámicas es que siempre están disponibles, incluso en entornos de script. Por lo tanto, si tienes una etiqueta <script> en tu HTML que no tiene type="module", todavía puedes reutilizar el código distribuido como módulos importándolo dinámicamente.
+
+// <script>
+//   import("./modules/square.js").then((module) => {
+//     // Haz algo con el módulo.
+//   });
+//   // Otro código que opera en el ámbito global y no está
+//   // listo para ser refactorizado en módulos todavía.
+//   var btn = document.querySelector(".square");
+// </script>
