@@ -198,3 +198,78 @@
 // Hasta ahora, nuestros módulos de dibujo de formas en el lienzo parecen funcionar bien. ¿Pero qué pasa si intentamos añadir un módulo que se ocupe de dibujar otra forma, como un círculo o un triángulo? Estas formas probablemente tendrían también funciones asociadas como draw(), reportArea(), etc.; si intentáramos importar diferentes funciones del mismo nombre en el mismo archivo de módulo de nivel superior, acabaríamos con conflictos y errores.
 
 // Afortunadamente, hay varias maneras de evitar esto. Las veremos en las siguientes secciones.
+
+// Cambiar el nombre de las importaciones y exportaciones #008000
+
+// Dentro de las llaves de tu declaración de importación y exportación, puedes usar la palabra clave as junto con un nuevo nombre de característica, para cambiar el nombre de identificación que usarás para una característica dentro del módulo de nivel superior.
+
+// Así que, por ejemplo, los dos siguientes harían el mismo trabajo, aunque de una manera ligeramente diferente:
+
+// // dentro de module.js
+// export {
+//   function1 as newFunctionName,
+//   function2 as anotherNewFunctionName
+// };
+
+// // dentro de main.js
+// import { nuevoNombreDeLaFunción, otroNuevoNombreDeLaFunción } from './modules/module.js';
+// // dentro de module.js
+// export { función1, función2 };
+
+// // dentro de main.js
+
+// import {
+//   function1 as newFunctionName
+//   function2 as anotherNewFunctionName,
+// } from './modules/module.js';
+
+// Veamos un ejemplo real. En nuestro directorio de renombramiento verás el mismo sistema de módulos que en el ejemplo anterior, excepto que hemos añadido los módulos circle.js y triangle.js para dibujar e informar sobre círculos y triángulos.
+
+// Dentro de cada uno de estos módulos, tenemos funciones con los mismos nombres que se exportan, y por lo tanto cada uno tiene la misma declaración de exportación en la parte inferior:
+
+// export { name, draw, reportArea, reportPerimeter };
+// Al importarlos en main.js, si intentáramos usar
+
+// import { name, draw, reportArea, reportPerimeter } from './modules/square.js';
+// import { name, draw, reportArea, reportPerimeter } from './modules/circle.js';
+// import { name, draw, reportArea, reportPerimeter } from './modules/triangle.js';
+
+// El navegador arrojaría un error como "SyntaxError: redeclaration of import name" (Firefox).
+
+// En su lugar, debemos renombrar las importaciones para que sean únicas:
+
+// import {
+//   name as squareName,
+//   draw as drawSquare,
+//   reportArea as reportSquareArea,
+//   reportPerimeter as reportSquarePerimeter,
+// } de './modules/square.js';
+
+// import {
+//   name as circleName,
+//   draw as drawCircle,
+//   reportArea as reportCircleArea,
+//   reportPerimeter as reportCirclePerimeter,
+// } de './modules/circle.js';
+
+// import {
+//   name as triangleName,
+//   draw as drawTriangle,
+//   reportArea as reportTriangleArea,
+//   reportPerimeter as reportTrianglePerimeter,
+// } de './modules/triangle.js';
+
+// Tenga en cuenta que podría resolver el problema en los archivos del módulo en su lugar, por ejemplo
+
+// // en square.js
+// export {
+//   name como squareName,
+//   draw como drawSquare,
+//   reportArea como reportSquareArea,
+//   reportPerimeter como reportSquarePerimeter,
+// };
+
+// // en main.js
+// import { squareName, drawSquare, reportSquareArea, reportSquarePerimeter } from './modules/square.js';
+
+// Y funcionaría igual. El estilo que utilices depende de ti, sin embargo podría decirse que tiene más sentido dejar el código de tu módulo solo, y hacer los cambios en las importaciones. Esto tiene sentido especialmente cuando se importan módulos de terceros sobre los que no se tiene ningún control.
