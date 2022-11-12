@@ -495,3 +495,13 @@
 
 // La variable globalThis es un objeto global que está disponible en todos los entornos y es útil si quieres leer o crear variables globales dentro de los módulos.
 // Estas prácticas no son exclusivas de los módulos. Aún así, con la tendencia de reutilización de código y modularización, se le anima a hacer su código multiplataforma para que pueda ser disfrutado por tantas personas como sea posible. Los tiempos de ejecución como Node.js también están implementando activamente APIs web cuando es posible para mejorar la interoperabilidad con la web.
+
+// Solución de problemas #008000
+
+// Aquí tienes algunos consejos que pueden ayudarte si tienes problemas para que tus módulos funcionen. No dudes en añadir a la lista si descubres más.
+
+// Ya lo hemos mencionado antes, pero lo reiteramos: los archivos .mjs deben cargarse con un tipo MIME de text/javascript (u otro tipo MIME compatible con JavaScript, pero se recomienda text/javascript), de lo contrario obtendrá un error de comprobación de tipo MIME estricto como "El servidor respondió con un tipo MIME no JavaScript".
+
+// Si intentas cargar el archivo HTML localmente (es decir, con una URL file://), te encontrarás con errores CORS debido a los requisitos de seguridad del módulo JavaScript. Necesitas hacer tus pruebas a través de un servidor. Las páginas de GitHub son ideales, ya que también sirven archivos .mjs con el tipo MIME correcto.
+
+// Dado que .mjs es una extensión de archivo no estándar, algunos sistemas operativos podrían no reconocerla o intentar sustituirla por otra. Por ejemplo, descubrimos que macOS añadía silenciosamente .js al final de los archivos .mjs y luego ocultaba automáticamente la extensión del archivo. Así que todos nuestros archivos aparecían como x.mjs.js. Una vez que desactivamos la ocultación automática de las extensiones de los archivos y lo entrenamos para que aceptara el .mjs, todo fue bien.
