@@ -415,3 +415,49 @@
 //   // listo para ser refactorizado en módulos todavía.
 //   var btn = document.querySelector(".square");
 // </script>
+
+// Espera de alto nivel #008000
+// La espera de alto nivel es una característica disponible dentro de los módulos. Esto significa que se puede utilizar la palabra clave await. Permite que los módulos actúen como grandes funciones asíncronas, lo que significa que el código puede ser evaluado antes de su uso en los módulos padre, pero sin bloquear la carga de los módulos hermanos.
+
+// Veamos un ejemplo. Puedes encontrar todos los archivos y el código descrito en esta sección dentro del directorio top-level-await, que se extiende desde los ejemplos anteriores.
+
+// Primero declararemos nuestra paleta de colores en un archivo colors.json separado:
+
+// {
+//   "amarillo": "#F4D03F",
+//   "verde": "#52BE80",
+//   "azul": "#5499C7",
+//   "rojo": "#CD6155",
+//   "naranja": "#F39C12"
+// }
+
+// Luego crearemos un módulo llamado getColors.js que utiliza una petición fetch para cargar el archivo colors.json y devolver los datos como un objeto.
+
+// // solicitud de obtención
+// const colors = fetch('../data/colors.json')
+//   .then((respuesta) => respuesta.json());
+
+// export default await colors;
+
+// Fíjate en la última línea de exportación.
+
+// Estamos usando la palabra clave await antes de especificar la constante colors para exportar. Esto significa que cualquier otro módulo que lo incluya esperará hasta que colors haya sido descargado y analizado antes de usarlo.
+
+// Vamos a incluir este módulo en nuestro archivo main.js:
+
+// import colors from './modules/getColors.js';
+// import { Canvas } from './modules/canvas.js';
+
+// const circleBtn = document.querySelector('.circle');
+
+// // ...
+
+// Usaremos colores en lugar de las cadenas usadas anteriormente cuando llamemos a nuestras funciones de forma:
+
+// const square1 = new Module.Square(myCanvas.ctx, myCanvas.listId, 50, 50, 100, colors.blue);
+
+// const circle1 = new Module.Circle(myCanvas.ctx, myCanvas.listId, 75, 200, 100, colors.green);
+
+// const triangle1 = new Module.Triangle(myCanvas.ctx, myCanvas.listId, 100, 75, 190, colors.yellow);
+
+// Esto es útil porque el código dentro de main.js no se ejecutará hasta que el código en getColors.js se haya ejecutado. Sin embargo, no bloqueará la carga de otros módulos. Por ejemplo, nuestro módulo canvas.js continuará cargándose mientras se obtiene colors.
