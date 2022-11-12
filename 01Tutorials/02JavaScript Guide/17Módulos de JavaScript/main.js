@@ -88,3 +88,35 @@
 // Una forma más conveniente de exportar todos los elementos que quieres exportar es utilizar una única sentencia export al final de tu archivo de módulo, seguida de una lista separada por comas de las funciones que quieres exportar envueltas en llaves. Por ejemplo:
 
 // export { name, draw, reportArea, reportPerimeter };
+
+// Importación de funciones a su script #008000
+// Una vez que haya exportado algunas funciones de su módulo, deberá importarlas a su script para poder utilizarlas. La forma más sencilla de hacerlo es la siguiente:
+
+// import { name, draw, reportArea, reportPerimeter } from './modules/square.js';
+
+// Utiliza la sentencia import, seguida de una lista separada por comas de las características que quieres importar entre llaves, seguida de la palabra clave from, seguida de la ruta al archivo del módulo - una ruta relativa a la raíz del sitio, que para nuestro ejemplo de módulos básicos sería /js-examples/module-examples/basic-modules.
+
+// Sin embargo, hemos escrito la ruta de una manera un poco diferente - estamos utilizando la sintaxis de punto (.) para significar "la ubicación actual", seguido por la ruta más allá de que el archivo que estamos tratando de encontrar. Esto es mucho mejor que escribir toda la ruta relativa cada vez, ya que es más corto, y hace que la URL sea portátil - el ejemplo seguirá funcionando si lo mueve a una ubicación diferente en la jerarquía del sitio.
+
+// Así, por ejemplo:
+
+// /js-examples/module-examples/basic-modules/modules/square.js
+
+// se convierte en
+
+// ./módulos/cuadrado.js
+
+// Puedes ver estas líneas en acción en main.js.
+
+// Nota: En algunos sistemas de módulos, se puede omitir la extensión del archivo y el encabezamiento /, ./, o ../ (por ejemplo, 'modules/square'). Esto no funciona en el entorno del navegador, ya que puede dar lugar a múltiples viajes de ida y vuelta por la red.
+
+// Una vez que hayas importado las funciones en tu script, puedes utilizarlas como si estuvieran definidas dentro del mismo archivo. Lo siguiente se encuentra en main.js, debajo de las líneas de importación:
+
+// const myCanvas = create('myCanvas', document.body, 480, 320);
+// const reportList = createReportList(myCanvas.id);
+
+// const square1 = draw(myCanvas.ctx, 50, 50, 100, 'blue');
+// reportArea(square1.length, reportList);
+// reportPerimeter(square1.length, reportList);
+
+// Nota: Aunque las características importadas están disponibles en el archivo, son vistas de sólo lectura de la característica que fue exportada. No se puede cambiar la variable que se importó, pero sí se pueden modificar propiedades similares a la const. Además, estas características se importan como enlaces vivos, lo que significa que pueden cambiar de valor aunque no se pueda modificar el enlace, a diferencia de const.
