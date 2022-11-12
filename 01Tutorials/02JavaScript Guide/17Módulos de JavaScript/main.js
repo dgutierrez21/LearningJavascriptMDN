@@ -12,3 +12,10 @@
 // El uso de módulos nativos de JavaScript depende de las sentencias import y export; éstas son soportadas en los navegadores como se muestra en la tabla de compatibilidad de abajo.
 
 // VER TABLA EN https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_compatibility
+
+// Presentación de un ejemplo #008000
+// Para demostrar el uso de los módulos, hemos creado un sencillo conjunto de ejemplos que puedes encontrar en https://github.com/mdn/js-examples/tree/master/module-examples Estos ejemplos demuestran un conjunto simple de módulos que crean un elemento <canvas> en una página web, y luego dibujan (y reportan información sobre) diferentes formas en el lienzo.
+
+// Son bastante triviales, pero se han mantenido deliberadamente simples para demostrar los módulos con claridad.
+
+// Nota: Si quieres descargar los ejemplos y ejecutarlos localmente, tendrás que ejecutarlos a través de un servidor web local.
