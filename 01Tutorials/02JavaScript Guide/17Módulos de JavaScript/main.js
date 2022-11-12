@@ -461,3 +461,37 @@
 // const triangle1 = new Module.Triangle(myCanvas.ctx, myCanvas.listId, 100, 75, 190, colors.yellow);
 
 // Esto es útil porque el código dentro de main.js no se ejecutará hasta que el código en getColors.js se haya ejecutado. Sin embargo, no bloqueará la carga de otros módulos. Por ejemplo, nuestro módulo canvas.js continuará cargándose mientras se obtiene colors.
+
+// Creación de módulos "isomórficos" #008000
+// La introducción de módulos fomenta el ecosistema de JavaScript para distribuir y reutilizar el código de forma modular. Sin embargo, eso no significa necesariamente que un trozo de código JavaScript pueda ejecutarse en todos los entornos. Supongamos que has descubierto un módulo que genera hashes SHA de la contraseña de tu usuario. ¿Puedes usarlo en el front-end del navegador? ¿Puedes usarlo en tu servidor Node.js? La respuesta es: depende.
+
+// Los módulos siguen teniendo acceso a las variables globales, como se ha demostrado anteriormente. Si el módulo hace referencia a globales como window, puede ejecutarse en el navegador, pero arrojará un error en tu servidor Node.js, porque window no está disponible allí. Del mismo modo, si el código requiere acceso a process para ser funcional, sólo puede ser utilizado en Node.js.
+
+// Para maximizar la reutilización de un módulo, a menudo se aconseja hacer que el código sea "isomórfico", es decir, que muestre el mismo comportamiento en todos los tiempos de ejecución. Esto se suele conseguir de tres maneras:
+
+// Separe sus módulos en "núcleo" y "enlace". Para el "núcleo", concéntrese en la lógica pura de JavaScript, como el cálculo del hash, sin ningún acceso al DOM, a la red o al sistema de archivos, y exponga las funciones de utilidad. Para la parte "vinculante", puedes leer y escribir en el contexto global. Por ejemplo, el "browser binding" puede elegir leer el valor desde una caja de entrada, mientras que el "Node binding" puede leerlo desde process.env, pero los valores leídos desde cualquier lugar serán canalizados a la misma función del núcleo y manejados de la misma manera. El núcleo puede ser importado en todos los entornos y utilizado de la misma manera, mientras que sólo la vinculación, que suele ser ligera, necesita ser específica de la plataforma.
+
+// Detectar si un global concreto existe antes de utilizarlo. Por ejemplo, si compruebas que typeof window === "undefined", sabes que probablemente estás en un entorno Node.js, y no debes leer DOM.
+
+// // miModulo.js
+// let password;
+// if (typeof process !== "undefined") {
+//   // Estamos ejecutando en Node.js; léelo desde `process.env`.
+//   password = process.env.PASSWORD;
+// } else if (typeof window !== "undefined") {
+//   // Estamos ejecutando en el navegador; léelo de la caja de entrada
+//   password = document.getElementById('password').value;
+// }
+
+// Esto es preferible si las dos ramas terminan realmente con el mismo comportamiento ("isomorfo"). Si es imposible proporcionar la misma funcionalidad, o si hacerlo implica cargar cantidades significativas de código mientras una gran parte queda sin usar, mejor utilizar diferentes "bindings" en su lugar.
+
+// Utiliza un polyfill para proporcionar una alternativa a las funciones que faltan. Por ejemplo, si quieres utilizar la función fetch, que sólo está soportada en Node.js desde la v18, puedes utilizar una API similar, como la que proporciona node-fetch. Puedes hacerlo de forma condicional a través de importaciones dinámicas:
+// // miModulo.js
+// if (typeof fetch === "undefined") {
+//   // Estamos ejecutando en Node.js; use node-fetch
+//   globalThis.fetch = (await import("node-fetch")).default;
+// }
+// // ...
+
+// La variable globalThis es un objeto global que está disponible en todos los entornos y es útil si quieres leer o crear variables globales dentro de los módulos.
+// Estas prácticas no son exclusivas de los módulos. Aún así, con la tendencia de reutilización de código y modularización, se le anima a hacer su código multiplataforma para que pueda ser disfrutado por tantas personas como sea posible. Los tiempos de ejecución como Node.js también están implementando activamente APIs web cuando es posible para mejorar la interoperabilidad con la web.
