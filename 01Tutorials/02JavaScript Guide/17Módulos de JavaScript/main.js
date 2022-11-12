@@ -193,3 +193,8 @@
 // import {default as randomSquare} from './modules/square.js';
 
 // Nota: La sintaxis para renombrar elementos exportados se explica más adelante en la sección Renombrar importaciones y exportaciones.
+
+// Evitar conflictos de nombres #008000
+// Hasta ahora, nuestros módulos de dibujo de formas en el lienzo parecen funcionar bien. ¿Pero qué pasa si intentamos añadir un módulo que se ocupe de dibujar otra forma, como un círculo o un triángulo? Estas formas probablemente tendrían también funciones asociadas como draw(), reportArea(), etc.; si intentáramos importar diferentes funciones del mismo nombre en el mismo archivo de módulo de nivel superior, acabaríamos con conflictos y errores.
+
+// Afortunadamente, hay varias maneras de evitar esto. Las veremos en las siguientes secciones.
