@@ -273,3 +273,33 @@
 // import { squareName, drawSquare, reportSquareArea, reportSquarePerimeter } from './modules/square.js';
 
 // Y funcionaría igual. El estilo que utilices depende de ti, sin embargo podría decirse que tiene más sentido dejar el código de tu módulo solo, y hacer los cambios en las importaciones. Esto tiene sentido especialmente cuando se importan módulos de terceros sobre los que no se tiene ningún control.
+
+// Creación de un objeto módulo #008000
+// El método anterior funciona bien, pero es un poco complicado y largo. Una solución aún mejor es importar las características de cada módulo dentro de un objeto módulo. La siguiente forma sintáctica lo hace:
+
+// import * as Module from './modules/module.js';
+
+// Esto toma todas las exportaciones disponibles dentro de module.js, y las hace disponibles como miembros de un objeto Module, dándole efectivamente su propio espacio de nombres. Así, por ejemplo
+
+// Module.function1();
+// Module.function2();
+
+// De nuevo, veamos un ejemplo real. Si vas a nuestro directorio module-objects, verás el mismo ejemplo de nuevo, pero reescrito para aprovechar esta nueva sintaxis. En los módulos, las exportaciones están todas en la siguiente forma simple:
+
+// export { name, draw, reportArea, reportPerimeter };
+
+// Por otro lado, las importaciones tienen el siguiente aspecto
+
+// import * as Canvas from './modules/canvas.js';
+
+// import * as Square de './modules/square.js';
+// import * as Circle de './modules/circle.js';
+// import * as Triangle de './modules/triangle.js';
+
+// En cada caso, ahora puedes acceder a las importaciones del módulo bajo el nombre del objeto especificado, por ejemplo
+
+// const square1 = Square.draw(myCanvas.ctx, 50, 50, 100, 'blue');
+// Square.reportArea(square1.length, reportList);
+// Square.reportPerimeter(square1.length, reportList);
+
+// Así que ahora puedes escribir el código igual que antes (siempre que incluyas los nombres de los objetos donde sea necesario), y las importaciones son mucho más ordenadas.
