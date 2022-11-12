@@ -167,3 +167,29 @@
 // document.getElementById("main").innerText = text;
 
 // La página seguiría renderizando Hello, porque las variables globales text y document están disponibles en el módulo. (Observe también en este ejemplo que un módulo no necesita necesariamente una declaración de importación/exportación - lo único que se necesita es que el punto de entrada tenga type="module").
+
+// Exportaciones por defecto versus exportaciones con nombre #008000
+// La funcionalidad que hemos exportado hasta ahora ha estado compuesta por exportaciones con nombre - cada elemento (ya sea una función, const, etc.) ha sido referido por su nombre en la exportación, y ese nombre se ha utilizado para referirse a él en la importación también.
+
+// También hay un tipo de exportación llamado exportación por defecto - esto está diseñado para facilitar que una función por defecto sea proporcionada por un módulo, y también ayuda a los módulos de JavaScript a interoperar con los sistemas de módulos existentes de CommonJS y AMD (como se explica muy bien en ES6 In Depth: Modules de Jason Orendorff; busque "Default exports").
+
+// Veamos un ejemplo para explicar cómo funciona. En nuestro módulo básico square.js podemos encontrar una función llamada randomSquare() que crea un cuadrado con un color, tamaño y posición aleatorios. Queremos exportar esto como nuestro predeterminado, así que al final del archivo escribimos esto:
+
+// export default randomSquare;
+// Fíjate en la falta de llaves.
+
+// En lugar de eso, podríamos añadir export default a la función y definirla como una función anónima, así:
+
+// export default function (ctx) {
+//   // ...
+// }
+
+// En nuestro archivo main.js, importamos la función por defecto usando esta línea:
+
+// import randomSquare from './modules/square.js';
+
+// De nuevo, fíjate en la falta de llaves. Esto se debe a que sólo se permite una exportación por defecto por módulo, y sabemos que es randomSquare. La línea anterior es básicamente una abreviatura de:
+
+// import {default as randomSquare} from './modules/square.js';
+
+// Nota: La sintaxis para renombrar elementos exportados se explica más adelante en la sección Renombrar importaciones y exportaciones.
