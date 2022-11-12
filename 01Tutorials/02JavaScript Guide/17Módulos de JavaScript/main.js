@@ -120,3 +120,20 @@
 // reportPerimeter(square1.length, reportList);
 
 // Nota: Aunque las características importadas están disponibles en el archivo, son vistas de sólo lectura de la característica que fue exportada. No se puede cambiar la variable que se importó, pero sí se pueden modificar propiedades similares a la const. Además, estas características se importan como enlaces vivos, lo que significa que pueden cambiar de valor aunque no se pueda modificar el enlace, a diferencia de const.
+
+// Aplicando el módulo a tu HTML #008000
+// Ahora sólo tenemos que aplicar el módulo main.js a nuestra página HTML. Esto es muy similar a cómo aplicamos un script normal a una página, con algunas diferencias notables.
+
+// En primer lugar, necesitas incluir type="module" en el elemento <script>, para declarar este script como un módulo. Para importar el script main.js, usamos esto:
+
+// <script type="module" src="main.js"></script>
+
+// También puedes incrustar el script del módulo directamente en el archivo HTML colocando el código JavaScript dentro del cuerpo del elemento <script>:
+
+// <script type="module">
+//   /* Código del módulo JavaScript aquí */
+// </script>
+
+// El script en el que importas las características del módulo actúa básicamente como el módulo de nivel superior. Si lo omites, Firefox, por ejemplo, te da un error de "SyntaxError: las declaraciones de importación sólo pueden aparecer en el nivel superior de un módulo". #FF0000
+
+// Sólo puedes utilizar declaraciones import y export dentro de los módulos, no de los scripts normales.
