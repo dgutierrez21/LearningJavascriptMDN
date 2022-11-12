@@ -303,3 +303,33 @@
 // Square.reportPerimeter(square1.length, reportList);
 
 // Así que ahora puedes escribir el código igual que antes (siempre que incluyas los nombres de los objetos donde sea necesario), y las importaciones son mucho más ordenadas.
+
+// Módulos y clases #008000
+// Como ya hemos dicho, también puede exportar e importar clases; esta es otra opción para evitar conflictos en su código, y es especialmente útil si ya tiene su código de módulo escrito en un estilo orientado a objetos.
+
+// Puede ver un ejemplo de nuestro módulo de dibujo de formas reescrito con clases ES en nuestro directorio de clases. Como ejemplo, el archivo square.js ahora contiene toda su funcionalidad en una sola clase:
+
+// class Cuadrado {
+//   constructor(ctx, listId, length, x, y, color) {
+//     // ...
+//   }
+
+//   draw() {
+//     // ...
+//   }
+
+//   // ...
+// }
+// que luego exportamos:
+
+// export { Square };
+
+// En main.js, lo importamos así
+
+// import { Square } from './modules/square.js';
+// Y luego usamos la clase para dibujar nuestro cuadrado:
+
+// const square1 = new Square(myCanvas.ctx, myCanvas.listId, 50, 50, 100, 'blue');
+// square1.draw();
+// square1.reportArea();
+// square1.reportPerimeter();
