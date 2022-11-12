@@ -137,3 +137,33 @@
 // El script en el que importas las características del módulo actúa básicamente como el módulo de nivel superior. Si lo omites, Firefox, por ejemplo, te da un error de "SyntaxError: las declaraciones de importación sólo pueden aparecer en el nivel superior de un módulo". #FF0000
 
 // Sólo puedes utilizar declaraciones import y export dentro de los módulos, no de los scripts normales.
+
+// Otras diferencias entre los módulos y los scripts estándar #008000
+
+// Tienes que prestar atención a las pruebas locales - si intentas cargar el archivo HTML localmente (es decir, con una URL file://), te encontrarás con errores CORS debido a los requisitos de seguridad del módulo JavaScript. Necesitas hacer tus pruebas a través de un servidor.
+// Además, tenga en cuenta que puede obtener un comportamiento diferente de las secciones de script definidas dentro de los módulos en comparación con los scripts estándar. Esto se debe a que los módulos utilizan el modo estricto automáticamente.
+// No hay necesidad de utilizar el atributo defer (ver atributos <script>) cuando se carga un script de módulo; los módulos son diferidos automáticamente.
+// Los módulos sólo se ejecutan una vez, aunque hayan sido referenciados en múltiples etiquetas <script>.
+// Por último, pero no por ello menos importante, dejemos esto claro: las funciones de los módulos se importan en el ámbito de un solo script, no están disponibles en el ámbito global. Por lo tanto, sólo podrás acceder a las funciones importadas en el script en el que se importan, y no podrás acceder a ellas desde la consola de JavaScript, por ejemplo. Seguirá recibiendo los errores de sintaxis mostrados en las DevTools, pero no podrá utilizar algunas de las técnicas de depuración que podría haber esperado utilizar.
+// Las variables definidas por el módulo tienen un ámbito de aplicación en el módulo a menos que se adjunten explícitamente al objeto global. Por otro lado, las variables definidas globalmente están disponibles dentro del módulo. Por ejemplo, dado el siguiente código:
+
+// <!DOCTYPE html>
+// <html lang="es-US">
+//   <head>
+//     <meta charset="UTF-8" />
+//     <title></title>
+//     <link rel="stylesheet" href=" />
+//   </head>
+//   <body>
+//     <div id="main"></div>
+//     <script>
+//       // Una sentencia var crea una variable global.
+//       var text = "Hola";
+//     </script>
+//     <script type="module" src="./render.js"></script>
+//   </body>
+// </html>
+// /* render.js */
+// document.getElementById("main").innerText = text;
+
+// La página seguiría renderizando Hello, porque las variables globales text y document están disponibles en el módulo. (Observe también en este ejemplo que un módulo no necesita necesariamente una declaración de importación/exportación - lo único que se necesita es que el punto de entrada tenga type="module").
