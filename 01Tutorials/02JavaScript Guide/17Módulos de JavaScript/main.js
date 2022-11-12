@@ -333,3 +333,43 @@
 // square1.draw();
 // square1.reportArea();
 // square1.reportPerimeter();
+
+// Agregar módulos #008000
+// Habrá ocasiones en las que querrá agregar módulos juntos. Es posible que tengas varios niveles de dependencias, y que quieras simplificar las cosas, combinando varios submódulos en un módulo padre. Esto es posible utilizando la sintaxis de exportación de las siguientes formas en el módulo padre:
+
+// export * from 'x.js'
+// export { name } from 'x.js'
+
+// Para un ejemplo, vea nuestro directorio de agregación de módulos. En este ejemplo (basado en nuestro ejemplo de clases anteriores) tenemos un módulo extra llamado shapes.js, que agrega toda la funcionalidad de circle.js, square.js y triangle.js juntos. También hemos movido nuestros submódulos dentro de un subdirectorio dentro del directorio de módulos llamado shapes. Así que la estructura del módulo en este ejemplo es
+
+// modules/
+//   canvas.js
+//   shapes.js
+//   shapes/
+//     circle.js
+//     square.js
+//     triángulo.js
+
+// En cada uno de los submódulos, la exportación tiene la misma forma, por ejemplo
+
+// export { Square };
+
+// A continuación viene la parte de agregación. Dentro de shapes.js, incluimos las siguientes líneas:
+
+// export { Square } from './shapes/square.js';
+// export { Triangle } from './shapes/triangle.js';
+// export { Circle } from './shapes/circle.js';
+
+// Esto toma las exportaciones de los submódulos individuales y las hace disponibles desde el módulo shapes.js.
+
+// Nota: Las exportaciones referenciadas en shapes.js básicamente son redirigidas a través del archivo y no existen realmente allí, por lo que no podrás escribir ningún código útil relacionado dentro del mismo archivo.
+
+// Así que ahora en el archivo main.js, podemos acceder a las tres clases del módulo reemplazando
+
+// import { Square } from './modules/square.js';
+// import { Circle } de './modules/circle.js';
+// import { Triangle } from './modules/triangle.js';
+
+// con la siguiente línea única:
+
+// import { Square, Circle, Triangle } from './modules/shapes.js';
