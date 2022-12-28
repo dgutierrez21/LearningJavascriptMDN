@@ -418,3 +418,16 @@ console.log(colores2.indexOf("Negro")); // 2
 // devuelve -1 si no esta presente
 
 console.log(colores2.indexOf("Verde")); // -1
+
+// Comprobar si una matriz contiene un elemento determinado #00aae4
+// En este ejemplo se muestran dos formas de comprobar si la matriz colores contiene ""Banana"" y "Cherry": primero con el método includes()() y, a continuación, con el método indexOf() para probar un valor de índice que no sea -1.
+
+const colores3 = ["Rojo", "Azul", "Negro", "Blanco"];
+
+console.log(colores3.includes("Azul")); // true
+console.log(colores3.includes("Verde")); // false
+
+// Si indexOf() no devuelve -1, el array contiene el elemento dado.
+
+console.log(colores3.indexOf("Verde") !== -1); // false
+console.log(colores3.indexOf("Negro") !== -1); // true
