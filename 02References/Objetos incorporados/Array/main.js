@@ -431,3 +431,10 @@ console.log(colores3.includes("Verde")); // false
 
 console.log(colores3.indexOf("Verde") !== -1); // false
 console.log(colores3.indexOf("Negro") !== -1); // true
+
+// Anexar un elemento a una matriz #00aae4
+// En este ejemplo se utiliza el método push() para anexar una nueva cadena a la matriz colores.
+
+colores3.push("Morado");
+
+console.log(colores3);
