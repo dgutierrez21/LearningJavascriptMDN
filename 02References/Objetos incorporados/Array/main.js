@@ -511,3 +511,22 @@ const elementosEliminados4 = animales4.splice(0, 3);
 console.log(animales4);
 
 console.log(elementosEliminados4);
+
+// Agregar un nuevo primer elemento a una matriz #00aae4
+// En este ejemplo se usa el método unshift() para agregar, en el índice 0, un nuevo elemento a la matriz, convirtiéndolo en el nuevo primer elemento de la matriz.
+
+const animales5 = [
+  "Conejo",
+  "Capibara",
+  "Avestruz",
+  "Serpiente de cascabel",
+  "Chachalaca",
+  "Puma",
+  "Oso polar",
+];
+
+const nuevaLonguitud = animales5.unshift("Jirafa");
+
+console.log(animales5);
+
+console.log(nuevaLonguitud);
