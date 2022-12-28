@@ -468,3 +468,16 @@ const elementosEliminados = animalesArr.splice(inicio);
 console.log(animalesArr);
 
 console.log(elementosEliminados);
+
+// Truncar una matriz hasta sus primeros N elementos #00aae4
+// En este ejemplo se usa el método splice() para truncar fruits hasta sus primeros 2 elementos.
+
+const animales2 =
+  "León Africano · Conejo · Capibara · Avestruz · Serpiente de cascabel · Chachalaca · Puma · Oso polar";
+
+const animalesArr2 = animales2.split(" · ");
+
+const resultadoA2 = animalesArr2.splice(3);
+
+console.log(animalesArr2);
+console.log(resultadoA2);
