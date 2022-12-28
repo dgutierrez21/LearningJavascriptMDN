@@ -198,3 +198,14 @@
 // const a = { length: 0.7 };
 // Array.prototype.push.call(a);
 // console.log(a.length); // 0
+
+// Objetos similares a matrices #008000
+// El término objeto similar a una matriz se refiere a cualquier objeto que no se produzca durante el proceso de conversión de length descrito anteriormente. En la práctica, se espera que dicho objeto tenga realmente una propiedad length y que tenga elementos indexados en el rango de 0 a length - 1. (Si no tiene todos los índices, será funcionalmente equivalente a una matriz dispersa..)
+
+// Muchos objetos DOM son similares a matrices, por ejemplo, NodeList y HTMLCollection. El objeto arguments también es similar a una matriz. Puede llamar a métodos de matriz en ellos incluso si no tienen estos métodos.
+
+// function f() {
+//   console.log(Array.prototype.join.call(arguments, "+"));
+// }
+
+// f("a", "b"); // 'a+b'
