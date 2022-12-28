@@ -100,3 +100,34 @@
 // keys()
 // toLocaleString()
 // values()
+
+// Métodos de copia y métodos de mutación #00aae4
+// Algunos métodos no mutan la matriz existente a la que se llamó al método, sino que devuelven una nueva matriz. Para ello, primero acceden a this.constructor[Symbol.species] para determinar el constructor que se usará para la nueva matriz. La matriz recién construida se rellena con elementos. La copia siempre ocurre superficialmente: el método nunca copia nada más allá de la matriz creada inicialmente. Los elementos de las matrices originales se copian en la nueva matriz de la siguiente manera:
+
+// Objetos: la referencia del objeto se copia en la nueva matriz. Tanto la matriz original como la nueva hacen referencia al mismo objeto. Es decir, si se modifica un objeto al que se hace referencia, los cambios son visibles tanto para las matrices nuevas como para las originales.
+
+// Tipos primitivos como cadenas, números y booleanos (no objetos String, Number y Boolean): sus valores se copian en la nueva matriz.
+// Otros métodos mutan la matriz a la que se llamó al método, en cuyo caso su valor devuelto difiere según el método: a veces una referencia a la misma matriz, a veces la longitud de la nueva matriz.
+
+// Los métodos siguientes crean nuevas matrices con @@species:
+
+// concat()
+// filter()
+// flat()
+// flatMap()
+// map()
+// slice()
+// splice()) (para construir la matriz de elementos eliminados que se devuelve)
+// Tenga en cuenta que group() y @@species groupToMap()group() no utilizan @@species para crear nuevas matrices para cada entrada de grupo, sino que siempre utilizan el constructor Array sin formato. Conceptualmente, tampoco están copiando métodos.
+
+// Los métodos siguientes mutan la matriz original:
+
+// copyWithin()
+// fill()
+// pop()
+// push()
+// reverse()
+// shift()
+// sort()
+// splice()
+// unshift()
