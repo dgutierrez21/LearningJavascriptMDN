@@ -438,3 +438,15 @@ console.log(colores3.indexOf("Negro") !== -1); // true
 colores3.push("Morado");
 
 console.log(colores3);
+
+// Quitar el último elemento de una matriz #00aae4
+// En este ejemplo se utiliza el método pop() para quitar el último elemento de la matriz fruits.
+
+const frutas5 = ["Piña", "Melon", "Banano"];
+
+const elementoElimado = frutas5.pop();
+
+console.log(frutas5);
+console.log(elementoElimado);
+
+// Nota: pop() sólo se puede utilizar para eliminar el último elemento de una matriz. Para quitar varios elementos del final de una matriz, consulte el ejemplo siguiente.
