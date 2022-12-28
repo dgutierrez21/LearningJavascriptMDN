@@ -556,3 +556,15 @@ const elementosEliminados7 = animales7.splice(indexAvestruz, 2);
 
 console.log(animales7);
 console.log(elementosEliminados7);
+
+// Reemplazar varios elementos en un arreglo #00aae4
+// En este ejemplo se utiliza el método splice() para reemplazar los 2 últimos elementos de la matriz fruits por elementos nuevos.
+
+const animales8 = [...animales5];
+
+console.log(animales8);
+
+const elementosEliminados8 = animales8.splice(-2, 2, "Gorila", "Jaguar");
+
+console.log(animales8);
+console.log(elementosEliminados8);
