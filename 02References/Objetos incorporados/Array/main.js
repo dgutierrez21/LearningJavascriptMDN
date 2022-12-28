@@ -386,3 +386,24 @@ const tecladosString = teclados.join(", ");
 
 console.log(tecladosString);
 console.log(tecladosString.length);
+
+// Acceso a un elemento de matriz por su índice #00aae4
+// En este ejemplo se muestra cómo tener acceso a los elementos de la matriz fruits especificando el número de índice de su posición en la matriz.
+
+const colores = ["Rojo", "Azul", "Negro", "Blanco"];
+
+// El índice del primer elemento de un array es siempre 0.
+console.log(colores[0]); // Rojo
+
+// El índice del segundo elemento de un array es siempre 1.
+console.log(colores[1]); // Azul
+
+// El índice del último elemento de un array es siempre uno
+// menos que la longitud del array.
+
+console.log(colores[colores.length - 1]); // Blanco
+
+// Si el índice es mayor que la longitud del array
+// devuelve 'undefined'.
+
+console.log(colores[colores.length]); // undefined
