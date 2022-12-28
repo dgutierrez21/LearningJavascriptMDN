@@ -187,3 +187,14 @@
 //   length: 2,
 // };
 // console.log(Array.prototype.join.call(arrayLike, "+")); // 'a+b
+
+// Normalización de la propiedad length #008000
+// La propiedad length se convierte en un entero y luego se sujeta al rango entre 0 y 253 - 1. NaN se convierte en 0, por lo que incluso cuando length no está presente o no está undefined, se comporta como si tuviera valor 00.
+
+// Array.prototype.flat.call({}); // []
+
+// Algunos métodos de matriz establecen la propiedad length del objeto array. Siempre establecen el valor después de la normalización, por lo que length siempre termina como un número entero.
+
+// const a = { length: 0.7 };
+// Array.prototype.push.call(a);
+// console.log(a.length); // 0
