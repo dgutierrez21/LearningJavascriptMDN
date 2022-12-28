@@ -348,3 +348,27 @@ console.log(frutas[1]); // Pera
 
 // Array.prototype[@@iterator]()
 // Un alias para el método values() de forma predeterminada.
+
+// Ejemplos #008000
+// En esta sección se proporcionan algunos ejemplos de operaciones de matriz comunes en JavaScript.
+
+// Crear una matriz #00aae4
+// En este ejemplo se muestran tres formas de crear una nueva matriz: primero usando la notación literal de matriz, luego usando el constructor Array() y, finalmente, usando String.prototype.split() para construir la matriz a partir de una cadena.Array()
+
+// Matriz de 'frutas2' creada usando notación literal de matriz.
+const frutas2 = ["Banano", "Manzana"];
+
+console.log(frutas2);
+console.log(frutas2.length);
+
+// Matriz 'fruits3' creada usando el constructor Array().
+const frutas3 = new Array("Uva", "Mango");
+console.log(frutas3);
+console.log(frutas3.length);
+
+// Matriz 'fruits4' creada usando String.prototype.split().
+
+const frutas4 = "Naranja, Sandía".split(", ");
+
+console.log(frutas4);
+console.log(frutas4.length);
