@@ -542,3 +542,17 @@ const elementosEliminados6 = animales6.splice(indexPuma, 1);
 
 console.log(animales6);
 console.log(elementosEliminados6);
+
+// Quitar varios elementos por índice #00aae4
+// En este ejemplo se usa el método splice() para quitar las cadenas "Avestruz" y ""Serpiente de cascabel"" de la matriz animales, especificando la posición de índice de "Avestruz" junto con un recuento del número total de elementos que se van a quitar."Banana"
+
+const animales7 = [...animales5];
+console.log(animales7);
+
+const indexAvestruz = animales7.indexOf("Avestruz");
+console.log(indexAvestruz);
+
+const elementosEliminados7 = animales7.splice(indexAvestruz, 2);
+
+console.log(animales7);
+console.log(elementosEliminados7);
