@@ -232,3 +232,7 @@ console.log(frutas[1]); // Pera
 
 // Array.of()
 // Crea una nueva instancia de Array con un número variable de argumentos, independientemente del número o tipo de argumentos.
+
+// Propiedades de instancia #008000
+// Array.prototype.length
+// Refleja el número de elementos de una matriz.
