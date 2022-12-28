@@ -131,3 +131,49 @@
 // sort()
 // splice()
 // unshift()
+
+// Métodos iterativos #00aae4
+// Muchos métodos de matriz toman una función de devolución de llamada como argumento. La función de devolución de llamada se llama secuencialmente y como máximo una vez para cada elemento de la matriz, y el valor devuelto de la función de devolución de llamada se utiliza para determinar el valor devuelto del método. Todos comparten la misma firma:
+
+// method(callbackFn, thisArg)
+// Copiar en el portapapeles
+// Donde callbackFn toma tres argumentos:
+
+// element
+// El elemento actual que se está procesando en la matriz.
+
+// index
+// El índice del elemento actual que se está procesando en la matriz.
+
+// array
+// La matriz a la que se llamó al método.
+
+// Lo que se espera que devuelva callbackFn depende del método de matriz al que se llamó.
+
+// El argumento thisArg (el valor predeterminado es undefined) se usará como el valor this al llamar a callbackFn. El valor this finalmente observable por callbackFn se determina de acuerdo con las reglas habituales: si callbackFn no es estricto, los valores primitivos se envuelven en objetos y undefined/null this sustituye por globalThis.callbackFn El argumento thisArg es irrelevante para cualquier callbackFn definido con una función de flecha, ya que las funciones de flecha no tienen this.
+
+// Todos los métodos iterativos son copiadores y genéricos, aunque se comportan de manera diferente con ranuras vacías.
+
+// Los siguientes métodos son iterativos:
+
+// every()
+// filter()
+// find()
+// findIndex()
+// findLast()
+// findLastIndex()
+// flatMap()
+// forEach()
+// group()
+// groupToMap()
+// map()
+// some()
+
+// En particular, every()(), find(), findIndex(), findLast(), find()findLastIndex()findLast()) y some()findIndex() no siempre invocan callbackFn en cada elemento: detienen la iteración tan pronto como se determina el valor devuelto.
+
+// Hay otros dos métodos que toman una función de devolución de llamada y la ejecutan como máximo una vez para cada elemento de la matriz, pero tienen firmas ligeramente diferentes de los métodos iterativos típicos (por ejemplo, no aceptan thisArg):
+
+// reduce()
+// reduceRight()
+
+// El método sort() también toma una función de devolución de llamada, pero no es un método iterativo. Muta la matriz en contexto, no acepta thisArg y puede invocar la devolución de llamada varias veces en un índice.
