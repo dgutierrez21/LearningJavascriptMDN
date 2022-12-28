@@ -222,3 +222,13 @@ const frutas = new Array("Manzana", "Pera");
 
 console.log(frutas.length); // 2
 console.log(frutas[1]); // Pera
+
+// Métodos estáticos #008000
+// Array.from()
+// Crea una nueva instancia de matriz a partir de un objeto similar a una Array o un objeto iterable.
+
+// Array.isArray()
+// Devuelve true si el argumento es una matriz, o false en caso contrario.
+
+// Array.of()
+// Crea una nueva instancia de Array con un número variable de argumentos, independientemente del número o tipo de argumentos.
