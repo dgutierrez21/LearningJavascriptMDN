@@ -500,3 +500,14 @@ console.log(animales3);
 console.log(eliminadoA3);
 
 // Nota: shift() sólo se puede utilizar para eliminar el primer elemento de una matriz. Para quitar varios elementos del principio de una matriz, consulte el ejemplo siguiente.
+
+// Quitar varios elementos del principio de una matriz #00aae4
+// En este ejemplo se utiliza el método splice() para quitar los 3 primeros elementos de la matriz.
+
+const animales4 = animalesArray;
+
+const elementosEliminados4 = animales4.splice(0, 3);
+
+console.log(animales4);
+
+console.log(elementosEliminados4);
