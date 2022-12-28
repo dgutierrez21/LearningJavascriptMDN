@@ -177,3 +177,13 @@
 // reduceRight()
 
 // El método sort() también toma una función de devolución de llamada, pero no es un método iterativo. Muta la matriz en contexto, no acepta thisArg y puede invocar la devolución de llamada varias veces en un índice.
+
+// Métodos genéricos de matriz #00aae4
+// Los métodos de matriz son siempre genéricos: no acceden a ningún dato interno del objeto de matriz. Solo acceden a los elementos de matriz a través de la propiedad length y los elementos indexados. Esto significa que también se les puede llamar en objetos similares a matrices.
+
+// const arrayLike = {
+//   0: "a",
+//   1: "b",
+//   length: 2,
+// };
+// console.log(Array.prototype.join.call(arrayLike, "+")); // 'a+b
