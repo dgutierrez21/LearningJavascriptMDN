@@ -530,3 +530,15 @@ const nuevaLonguitud = animales5.unshift("Jirafa");
 console.log(animales5);
 
 console.log(nuevaLonguitud);
+
+// Quitar un solo elemento por índice #00aae4
+// En este ejemplo se utiliza el método splice() para quitar la cadena "Puma" de la matriz animales, especificando la posición del índice de ""Puma"
+
+const animales6 = [...animales5];
+
+const indexPuma = animales6.indexOf("Puma");
+
+const elementosEliminados6 = animales6.splice(indexPuma, 1);
+
+console.log(animales6);
+console.log(elementosEliminados6);
