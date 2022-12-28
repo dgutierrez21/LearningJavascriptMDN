@@ -481,3 +481,22 @@ const resultadoA2 = animalesArr2.splice(3);
 
 console.log(animalesArr2);
 console.log(resultadoA2);
+
+// Quitar el primer elemento de una matriz #00aae4
+// En este ejemplo se utiliza el método shift() para quitar el primer elemento de la matriz fruits.
+
+const animalesString =
+  "León Africano · Conejo · Capibara · Avestruz · Serpiente de cascabel · Chachalaca · Puma · Oso polar";
+
+const animalesArray = animalesString.split(" · ");
+
+const animales3 = animalesArray;
+
+console.log(animales3);
+
+const eliminadoA3 = animales3.shift();
+
+console.log(animales3);
+console.log(eliminadoA3);
+
+// Nota: shift() sólo se puede utilizar para eliminar el primer elemento de una matriz. Para quitar varios elementos del principio de una matriz, consulte el ejemplo siguiente.
