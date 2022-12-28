@@ -450,3 +450,21 @@ console.log(frutas5);
 console.log(elementoElimado);
 
 // Nota: pop() sólo se puede utilizar para eliminar el último elemento de una matriz. Para quitar varios elementos del final de una matriz, consulte el ejemplo siguiente.
+
+// Quitar varios elementos del final de una matriz #00aae4
+// En este ejemplo se utiliza el método splice() para quitar los 3 últimos elementos de la matriz fruits.
+
+const animales =
+  "León Africano · Conejo · Capibara · Avestruz · Serpiente de cascabel · Chachalaca · Puma · Oso polar";
+
+const animalesArr = animales.split(" · ");
+
+console.log(animalesArr);
+
+const inicio = -3;
+
+const elementosEliminados = animalesArr.splice(inicio);
+
+console.log(animalesArr);
+
+console.log(elementosEliminados);
