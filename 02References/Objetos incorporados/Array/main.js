@@ -26,3 +26,37 @@
 // console.log(years["2"] !== years["02"]);
 
 // Sólo years['2'] es un índice de matriz real. years['02'] es una propiedad de cadena arbitraria que no se visitará en la iteración de la matriz.
+
+// Relación entre longitud y propiedades numéricas #00aae4
+// La propiedad length y las propiedades numéricas de una matriz JavaScript están conectadas.
+
+// Varios de los métodos de matriz integrados (por ejemplo, join()(), slice()(), indexOf(), etc.) tienen en cuenta el valor de lengthla propiedad length de una matriz cuando se les llama.
+
+// Otros métodos (por ejemplo, push(), splice(), etc.) también dan como resultado actualizaciones de la propiedad length de una matriz. push()
+
+// const fruits = [];
+// fruits.push("banana", "apple", "peach");
+// console.log(fruits.length); // 3
+
+// Al establecer una propiedad en una matriz JavaScript cuando la propiedad es un índice de matriz válido y ese índice está fuera de los límites actuales de la matriz, el motor actualizará lengthla propiedad length de la matriz en consecuencia:
+
+// fruits[5] = "mango";
+// console.log(fruits[5]); // 'mango'
+// console.log(Object.keys(fruits)); // ['0', '1', '2', '5']
+// console.log(fruits.length); // 6
+
+// Aumento de la length.
+
+// fruits.length = 10;
+// console.log(fruits); // ['banana', 'apple', 'peach', empty x 2, 'mango', empty x 4]
+// console.log(Object.keys(fruits)); // ['0', '1', '2', '5']
+// console.log(fruits.length); // 10
+// console.log(fruits[8]); // undefined
+
+// Sin embargo, al disminuir la propiedad length, se eliminan elementos.
+
+// fruits.length = 2;
+// console.log(Object.keys(fruits)); // ['0', '1']
+// console.log(fruits.length); // 2
+
+// Esto se explica con más detalle en la página https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
