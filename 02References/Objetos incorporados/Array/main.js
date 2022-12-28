@@ -209,3 +209,16 @@
 // }
 
 // f("a", "b"); // 'a+b'
+
+// Constructor #008000
+
+// Array()
+
+// Crea un nuevo objeto Array.
+
+// ejemplo
+
+const frutas = new Array("Manzana", "Pera");
+
+console.log(frutas.length); // 2
+console.log(frutas[1]); // Pera
