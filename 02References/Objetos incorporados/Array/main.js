@@ -372,3 +372,17 @@ const frutas4 = "Naranja, Sandía".split(", ");
 
 console.log(frutas4);
 console.log(frutas4.length);
+
+// Crear una cadena a partir de una matriz #00aae4
+// En este ejemplo se utiliza el método join() para crear una cadena a partir de la matriz "mouses".
+
+const teclados = [
+  "Razer Basilisk V3",
+  "Logitech G502 Lightspeed",
+  "Razer DeathAdder V3 Pro",
+];
+
+const tecladosString = teclados.join(", ");
+
+console.log(tecladosString);
+console.log(tecladosString.length);
