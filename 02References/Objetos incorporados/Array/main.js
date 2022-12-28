@@ -407,3 +407,14 @@ console.log(colores[colores.length - 1]); // Blanco
 // devuelve 'undefined'.
 
 console.log(colores[colores.length]); // undefined
+
+// Buscar el índice de un elemento en una matriz #00aae4
+// En este ejemplo se utiliza el método indexOf()() para buscar la posición (índice) de la cadena "Negro" en la matriz de colores2.
+
+const colores2 = ["Rojo", "Azul", "Negro", "Blanco"];
+
+console.log(colores2.indexOf("Negro")); // 2
+
+// devuelve -1 si no esta presente
+
+console.log(colores2.indexOf("Verde")); // -1
