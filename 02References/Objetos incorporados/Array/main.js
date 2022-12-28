@@ -60,3 +60,43 @@
 // console.log(fruits.length); // 2
 
 // Esto se explica con más detalle en la página https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+
+// Métodos de matriz y ranuras vacías #00aae4
+// Las ranuras vacías en matrices dispersas se comportan de manera incoherente entre los métodos de matriz. En general, los métodos más antiguos omitirán las ranuras vacías, mientras que los más nuevos los tratarán como undefined..
+
+// Entre los métodos que iteran a través de varios elementos, los siguientes hacen una comprobación in de acceder al índice y no combinan ranuras vacías con undefined:
+
+// concat()
+// copyWithin()
+// every()
+// filter()
+// flat()
+// flatMap()
+// forEach()
+// indexOf()
+// lastIndexOf()
+// map()
+// reduce()
+// reduceRight()
+// reverse()
+// slice()
+// some()
+// sort()
+// splice()
+// Para saber exactamente cómo tratan las ranuras vacías, consulte la página de cada método.
+
+// Estos métodos tratan las ranuras vacías como si no estuvieran undefined.:
+
+// entries()
+// fill()
+// find()
+// findIndex()
+// findLast()
+// findLastIndex()
+// group() Experimental
+// groupToMap() Experimental
+// includes()
+// join()
+// keys()
+// toLocaleString()
+// values()
