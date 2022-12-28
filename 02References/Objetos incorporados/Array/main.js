@@ -236,3 +236,115 @@ console.log(frutas[1]); // Pera
 // Propiedades de instancia #008000
 // Array.prototype.length
 // Refleja el número de elementos de una matriz.
+
+// Métodos de instancia #008000
+// Array.prototype.at()
+// Devuelve el elemento de matriz en el índice especificado. Acepta enteros negativos, que cuentan hacia atrás desde el último elemento.
+
+// Array.prototype.concat()
+// Devuelve una nueva matriz que es la matriz que realiza la llamada unida con otras matrices y/o valores.
+
+// Array.prototype.copyWithin()
+// Copia una secuencia de elementos de matriz dentro de una matriz.
+
+// Array.prototype.entries()
+// Devuelve un nuevo objeto iterador de matriz que contiene los pares clave/valor para cada índice de una matriz.
+
+// Array.prototype.every()
+// Devuelve true si todos los elementos de la matriz de llamada satisfacen la función de prueba.
+
+// Array.prototype.fill()
+// Rellena todos los elementos de una matriz desde un índice inicial hasta un índice final con un valor estático.
+
+// Array.prototype.filter()
+// Devuelve una nueva matriz que contiene todos los elementos de la matriz de llamada para los que la función de filtrado proporcionada devuelve true.
+
+// Array.prototype.find()
+// Devuelve el valor del primer elemento de la matriz que satisface la función de prueba proporcionada, o undefined si no se encuentra ningún elemento adecuado.
+
+// Array.prototype.findIndex()
+// Devuelve el índice del primer elemento de la matriz que satisface la función de prueba proporcionada, o -1 si no se encontró ningún elemento apropiado.
+
+// Array.prototype.findLast()
+// Devuelve el valor del último elemento de la matriz que satisface la función de prueba proporcionada, o undefined si no se encuentra ningún elemento adecuado.
+
+// Array.prototype.findLastIndex()
+// Devuelve el índice del último elemento de la matriz que satisface la función de prueba proporcionada, o -1 si no se encontró ningún elemento apropiado.
+
+// Array.prototype.flat()
+// Devuelve una nueva matriz con todos los elementos de la submatriz concatenados en ella de forma recursiva hasta la profundidad especificada.
+
+// Array.prototype.flatMap()
+// Devuelve una nueva matriz formada aplicando una función de devolución de llamada determinada a cada elemento de la matriz de llamadas y, a continuación, acoplando el resultado en un nivel.
+
+// Array.prototype.forEach()
+// Llama a una función para cada elemento de la matriz de llamadas.
+
+// Array.prototype.group() Experimental
+// Agrupa los elementos de una matriz en un objeto según las cadenas devueltas por una función de prueba.
+
+// Array.prototype.groupToMap() Experimental
+// Agrupa los elementos de una matriz en un Map según los valores devueltos por una función de prueba.
+
+// Array.prototype.includes()
+// Determina si la matriz de llamadas contiene un valor, devolviendo true o false según corresponda.
+
+// Array.prototype.indexOf()
+// Devuelve el primer índice (mínimo) en el que se puede encontrar un elemento determinado en la matriz de llamadas.
+
+// Array.prototype.join()
+// Une todos los elementos de una matriz en una cadena.
+
+// Array.prototype.keys()
+// Devuelve un nuevo iterador de matriz que contiene las claves de cada índice de la matriz de llamadas.
+
+// Array.prototype.lastIndexOf()
+// Devuelve el último índice (mayor) en el que se puede encontrar un elemento determinado en la matriz de llamadas, o -1 si no se encuentra ninguno.
+
+// Array.prototype.map()
+// Devuelve una nueva matriz que contiene los resultados de invocar una función en cada elemento de la matriz de llamada.
+
+// Array.prototype.pop()
+// Quita el último elemento de una matriz y devuelve ese elemento.
+
+// Array.prototype.push()
+// Agrega uno o más elementos al final de una matriz y devuelve la nueva length de la matriz.
+
+// Array.prototype.reduce()
+// Ejecuta una función de devolución de llamada "reductor" suministrada por el usuario en cada elemento de la matriz (de izquierda a derecha), para reducirla a un solo valor.
+
+// Array.prototype.reduceRight()
+// Ejecuta una función de devolución de llamada "reductor" proporcionada por el usuario en cada elemento de la matriz (de derecha a izquierda), para reducirla a un solo valor.
+
+// Array.prototype.reverse()
+// Invierte el orden de los elementos de una matriz en su lugar. (El primero se convierte en el último, el último se convierte en el primero).
+
+// Array.prototype.shift()
+// Quita el primer elemento de una matriz y devuelve ese elemento.
+
+// Array.prototype.slice()
+// Extrae una sección de la matriz de llamadas y devuelve una nueva matriz.
+
+// Array.prototype.some()
+// Devuelve true si al menos un elemento de la matriz de llamada satisface la función de prueba proporcionada.
+
+// Array.prototype.sort()
+// Ordena los elementos de una matriz en su lugar y devuelve la matriz.
+
+// Array.prototype.splice()
+// Agrega y/o quita elementos de una matriz.
+
+// Array.prototype.toLocaleString()
+// Devuelve una cadena localizada que representa la matriz de llamada y sus elementos. Reemplaza el método Object.prototype.toLocaleString()
+
+// Array.prototype.toString()
+// Devuelve una cadena que representa la matriz de llamada y sus elementos. Reemplaza el método Object.prototype.toString()
+
+// Array.prototype.unshift()
+// Agrega uno o más elementos al frente de una matriz y devuelve la nueva length de la matriz.
+
+// Array.prototype.values()
+// Devuelve un nuevo objeto iterador de matriz que contiene los valores de cada índice de la matriz.
+
+// Array.prototype[@@iterator]()
+// Un alias para el método values() de forma predeterminada.
