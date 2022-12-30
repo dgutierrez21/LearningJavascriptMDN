@@ -652,3 +652,26 @@ carros.unshift("BMW", "Suzuki");
 
 console.log(carros);
 console.log(nuevosCarros);
+
+// Creación de una matriz bidimensional #00aae4
+// A continuación se crea un tablero de ajedrez como una matriz bidimensional de cadenas. El primer movimiento se realiza copiando la ''p' en tablero[6] [4] a board[4][4].board[6][4] La posición anterior en [[6][4] se deja en blanco.
+
+const tablero = [
+  ["R", "N", "B", "Q", "K", "B", "N", "R"],
+  ["P", "P", "P", "P", "P", "P", "P", "P"],
+  [" ", " ", " ", " ", " ", " ", " ", " "],
+  [" ", " ", " ", " ", " ", " ", " ", " "],
+  [" ", " ", " ", " ", " ", " ", " ", " "],
+  [" ", " ", " ", " ", " ", " ", " ", " "],
+  ["p", "p", "p", "p", "p", "p", "p", "p"],
+  ["r", "n", "b", "q", "k", "b", "n", "r"],
+];
+
+console.log(`${tablero.join("\n")}\n\n`);
+
+// Mover Peón de Rey adelante 2
+tablero[4][4] = tablero[6][4];
+
+tablero[6][4] = " ";
+
+console.log(tablero.join("\n"));
