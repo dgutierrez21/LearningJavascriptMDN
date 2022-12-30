@@ -579,3 +579,12 @@ for (const animal of animales9) {
 }
 
 // Pero for...of es solo una de las muchas formas de iterar sobre cualquier matriz; para obtener más formas, vea Bucles e iteración, y consulte la documentación de los métodos every()(), filter()(), flatMap()(), map(), reduce(reduce()(), y vea el siguiente ejemplo, que usa el método forEach()map()reduceRight()).
+
+// Llamar a una función en cada elemento de una matriz #00aae4
+// En este ejemplo se utiliza el método forEach() para llamar a una función en cada elemento de la matriz animales; La función hace que cada elemento se registre en la consola, junto con el número de índice del elemento.
+
+const animales10 = [...animales5];
+
+animales10.forEach((elemento, indice, arreglo) => {
+  console.log(elemento, indice);
+});
