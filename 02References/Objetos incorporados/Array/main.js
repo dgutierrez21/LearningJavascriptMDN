@@ -568,3 +568,14 @@ const elementosEliminados8 = animales8.splice(-2, 2, "Gorila", "Jaguar");
 
 console.log(animales8);
 console.log(elementosEliminados8);
+
+// Iterar sobre una matriz #00aae4
+// En este ejemplo se utiliza un for...of loop para iterar sobre la matriz animales, registrando cada elemento en la consola.
+
+const animales9 = [...animales5];
+
+for (const animal of animales9) {
+  console.log(animal);
+}
+
+// Pero for...of es solo una de las muchas formas de iterar sobre cualquier matriz; para obtener más formas, vea Bucles e iteración, y consulte la documentación de los métodos every()(), filter()(), flatMap()(), map(), reduce(reduce()(), y vea el siguiente ejemplo, que usa el método forEach()map()reduceRight()).
