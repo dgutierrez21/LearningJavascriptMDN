@@ -613,3 +613,42 @@ const combinarFrutas2 = [...fruits, ...moreFruits];
 console.log(combinarFrutas2);
 console.log(fruits);
 console.log(moreFruits);
+
+// Copiar una matriz #00aae4
+// En este ejemplo se muestran tres formas de crear una nueva matriz a partir de la matriz fruits existente: primero mediante la sintaxis de propagación, luego mediante el método from() y, a continuación, mediante el método slice() from()
+
+const fruits2 = ["Strawberry", "Mango"];
+
+// Crear una copia utilizando la sintaxis de propagación.
+const fruitsCopia = [...fruits2];
+
+console.log(fruitsCopia);
+
+// Crea una copia usando el método from().
+const fruitsCopia2 = Array.from(fruits2);
+console.log(fruitsCopia2);
+
+// Crea una copia usando el método slice().
+const fruitsCopia3 = fruits2.slice();
+console.log(fruitsCopia3);
+
+// Todas las operaciones integradas de copia de matrices (sintaxis de propagación, Array.from(), Array.prototype.slice() y Array.from()Array.prototype.concat() crean copias superficialesArray.prototype.slice() Si, en cambio, desea una copia profunda de una matriz, puede usar JSON.stringify() para convertir la matriz en una cadena JSON y, a continuación, JSON.parse() para volver a convertir la cadena en una nueva matriz que sea completamente independiente de la matriz originalJSON.stringify()
+
+const fruitsCopiaProfunda = JSON.parse(JSON.stringify(fruits2));
+
+console.log(fruitsCopiaProfunda);
+
+//#FF0000 Finalmente, es importante comprender que asignar una matriz existente a una nueva variable no crea una copia ni de la matriz ni de sus elementos. En cambio, la nueva variable es solo una referencia, o alias, a la matriz original; Es decir, el nombre de la matriz original y el nuevo nombre de la variable son solo dos nombres para el mismo objeto (y, por lo tanto, siempre se evaluarán como estrictamente equivalentes). Por lo tanto, si realiza algún cambio en el valor de la matriz original o en el valor de la nueva variable, la otra también cambiará:
+
+const carros = ["Audi", "Mclaren", "Maserati"];
+
+const nuevosCarros = carros;
+
+// 'carros' y 'nuevosCarros' son el mismo objeto, estrictamente equivalentes.
+console.log(carros === nuevosCarros); // true
+
+// Cualquier cambio en el array 'carros' cambia también 'nuevosCarros'.
+carros.unshift("BMW", "Suzuki");
+
+console.log(carros);
+console.log(nuevosCarros);
