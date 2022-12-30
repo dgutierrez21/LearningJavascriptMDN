@@ -588,3 +588,28 @@ const animales10 = [...animales5];
 animales10.forEach((elemento, indice, arreglo) => {
   console.log(elemento, indice);
 });
+
+// Combinar varias matrices #00aae4
+// En este ejemplo se utiliza el método concat() y la sintaxis de propagación(...) para combinar la matriz fruits con una matriz moreFruits para producir una nueva matriz combinedFruits. Observe que fruits frutas y moreFruits permanecen sin cambios.
+
+const fruits = ["Apple", "Banana", "Strawberry"];
+const moreFruits = ["Mango", "Cherry"];
+
+const combinarFrutas = fruits.concat(moreFruits);
+
+console.log(combinarFrutas);
+
+// El array 'fruits' permanece inalterado.
+console.log(fruits);
+
+// El array 'moreFruits' tampoco cambia.
+console.log(moreFruits);
+
+// opción 2
+// con la sintaxis de propagación
+
+const combinarFrutas2 = [...fruits, ...moreFruits];
+
+console.log(combinarFrutas2);
+console.log(fruits);
+console.log(moreFruits);
