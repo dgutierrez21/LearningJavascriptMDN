@@ -190,3 +190,7 @@ console.log(cadenaLarga2);
 
 // String.raw()
 // Devuelve una cadena creada a partir de una cadena de plantilla sin formato.
+
+// Propiedades de instancia #008000
+// String.prototype.length
+// Refleja la length de la cadena. Sólo lectura.
