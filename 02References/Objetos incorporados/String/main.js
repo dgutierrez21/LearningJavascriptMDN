@@ -134,3 +134,21 @@ console.log(eval(s2.valueOf())); // devuelve en número 4
 // El uso del operador +: """ + x coacciona su operando a una primitiva en lugar de una cadena y, para algunos objetos, tiene comportamientos completamente diferentes de la coerción de cadena normal.+ Consulte su página de referencia para obtener más detalles.
 
 // Dependiendo de su caso de uso, es posible que desee usar '`${x}` (para imitar el comportamiento incorporado) o String(xString(x)para manejar los valores de los símbolos sin generar un error), pero no debe usar """ + x.
+
+// Secuencias de escape #00aae4
+// Los caracteres especiales se pueden codificar mediante secuencias de escape:
+
+// Secuencia de escape	Punto de código Unicode
+// \0	carácter nulo (U+0000 NULL)
+// \'	comillas simples (U+0027 APOSTROPHE)
+// \"	comillas dobles (U+0022 COMILLAS)
+// \\	barra diagonal inversa (U+005C REVERSE SOLIDUS)
+// \n	newline (U+000A LINE FEED; LF)
+// \r	retorno de carro (U+000D RETORNO DE CARRO; CR)
+// \v	tabulación vertical (tabulación de línea U+000B)
+// \t	(TABULACIÓN DE CARACTERES U+0009)
+// \b	retroceso (U+0008 RETROCESO)
+// \f	alimentación de formulario (U+000C FEED DE FORMULARIO)
+// \uXXXX ... donde XXXX es exactamente 4 dígitos hexadecimales en el rango 0000–FFFF; por ejemplo, \\u000A es lo mismo que \n (AVANCE DE LÍNEA); \u0021 es !	Punto de código Unicode entre UU+0000 y U+FFFF (el plano multilingüe básico Unicode)
+// \u{X}... \u{XXXXXX} ... donde X... XXXXXX es de 1 a 6 dígitos hexadecimales en el rango 0 a 10FFFF; por ejemplo, \\u{A} es lo mismo que \n (AVANCE DE LÍNEA); \u{21} es !	Punto de código Unicode entre U+U+0000U+10FFFF (la totalidad de Unicode)
+// \xXX ... donde XX es exactamente 2 dígitos hexadecimales en el rango 00–FF; por ejemplo, \\x0A es lo mismo que \n (AVANCE DE LÍNEA); \x21 es !	Punto de código Unicode entre U+U+0000 (los bloques Basic Latin y Latin-1 Supplement; equivalente a ISO-8859-1)U+00FF
