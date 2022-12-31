@@ -675,3 +675,21 @@ tablero[4][4] = tablero[6][4];
 tablero[6][4] = " ";
 
 console.log(tablero.join("\n"));
+
+// Creación de una matriz utilizando el resultado de una coincidencia #00aae4
+// El resultado de una coincidencia entre un RegExp y una cadena puede crear una matriz JavaScript que tiene propiedades y elementos que proporcionan información sobre la coincidencia. RegExp.prototype.exec() devuelven dicha matriz String.prototype.match().
+
+// Por ejemplo:
+
+// Empareja una d seguida de una o más b seguidas de una d
+// Recuerda las b coincidentes y la d siguiente
+// Ignorar mayúsculas y minúsculas
+
+const myRe = /d(b+)(d)/i;
+const execResult = myRe.exec("cdbBdbsbz");
+
+console.log(execResult.input); // 'cdbBdbsbz'
+console.log(execResult.index); // 1
+console.log(execResult); // [ "dbBd", "bB", "d" ]
+
+// Para obtener más información sobre el resultado de una coincidencia, consulte las páginas RegExp.prototype.exec()String.prototype.match()
