@@ -21,3 +21,15 @@ const string4 = String("Un objeto cadena");
 
 // Los literales de cadena se pueden especificar usando comillas simples o dobles, que se tratan de manera idéntica, o usando el carácter de marca de retroceso `. Este último formulario especifica un literal de plantilla: con este formulario puede interpolar expresiones.
 
+// Acceso a caracteres #00aae4
+// Hay dos formas de acceder a un carácter individual en una cadena. El primero es el método charAt()
+
+const caracter = "Gato".charAt(1);
+console.log(caracter);
+
+// La otra forma es tratar la cadena como un objeto similar a una matriz, donde los caracteres individuales corresponden a un índice numérico:
+
+const caracter2 = "Gato"[2];
+console.log(caracter2);
+
+// Cuando se utiliza la notación entre corchetes para el acceso a caracteres, intentar eliminar o asignar un valor a estas propiedades no se realizará correctamente. Las propiedades implicadas no son ni escriturables ni configurables. (Consulte Object.defineProperty() para obtener más información.)
