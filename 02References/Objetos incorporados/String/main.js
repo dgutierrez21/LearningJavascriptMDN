@@ -180,3 +180,13 @@ console.log(cadenaLarga2);
 
 // String()
 // Crea un nuevo objeto String. Realiza la conversión de tipos cuando se llama como una función, en lugar de como un constructor, que suele ser más útil.
+
+// Métodos estáticos #008000
+// String.fromCharCode()
+// Devuelve una cadena creada mediante la secuencia especificada de valores Unicode.
+
+// String.fromCodePoint()
+// Devuelve una cadena creada mediante la secuencia especificada de puntos de código.
+
+// String.raw()
+// Devuelve una cadena creada a partir de una cadena de plantilla sin formato.
