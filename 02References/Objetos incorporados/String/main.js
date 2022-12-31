@@ -194,3 +194,107 @@ console.log(cadenaLarga2);
 // Propiedades de instancia #008000
 // String.prototype.length
 // Refleja la length de la cadena. Sólo lectura.
+
+// Métodos de instancia #008000
+// String.prototype.at()
+// Devuelve el carácter (exactamente una unidad de código UTF-16) en el index especificado. Acepta enteros negativos, que cuentan hacia atrás desde el último carácter de cadena.
+
+// String.prototype.charAt()
+// Devuelve el carácter (exactamente una unidad de código UTF-16) en el índice especificadoindex.
+
+// String.prototype.charCodeAt()
+// Devuelve un número que es el valor de la unidad de código UTF-16 en el index.
+
+// String.prototype.codePointAt()
+// Devuelve un número entero no negativo que es el valor de punto de código del punto de código codificado en UTF-16 que comienza en el pos especificado..
+
+// String.prototype.concat()
+// Combina el texto de dos (o más) cadenas y devuelve una nueva cadena.
+
+// String.prototype.includes()
+// Determina si la cadena de llamada contiene searchString.
+
+// String.prototype.endsWith()
+// Determina si una cadena termina con los caracteres de la cadena searchString.
+
+// String.prototype.indexOf()
+// Devuelve el índice dentro del objeto String que llama de la primera aparición de searchValue, o -1 si no se encuentra.
+
+// String.prototype.lastIndexOf()
+// Devuelve el índice dentro del objeto String que realiza la llamada de la última aparición de searchValue, o -1 si no se encuentra.
+
+// String.prototype.localeCompare()
+// Devuelve un número que indica si la cadena de referencia compareString viene antes, después o es equivalente a la cadena especificada en el orden de clasificación.
+
+// String.prototype.match()
+// Se utiliza para hacer coincidir la expresión regular regexp con una cadena.
+
+// String.prototype.matchAll()
+// Devuelve un iterador de todas las coincidencias de regexp.
+
+// String.prototype.normalize()
+// Devuelve el formulario de normalización Unicode del valor de cadena de llamada.
+
+// String.prototype.padEnd()
+// Rellena la cadena actual desde el final con una cadena determinada y devuelve una nueva cadena de la longitud targetLength.
+
+// String.prototype.padStart()
+// Rellena la cadena actual desde el principio con una cadena determinada y devuelve una nueva cadena de la longitud targetLength.
+
+// String.prototype.repeat()
+// Devuelve una cadena que consta de los elementos del objeto repetidos tiempos de count.
+
+// String.prototype.replace()
+// Se utiliza para reemplazar las apariciones de searchFor mediante replaceWith. searchFor puede ser una cadena o una expresión regular, y replaceWith puede ser una cadena o función.
+
+// String.prototype.replaceAll()
+// Se usa para reemplazar todas las apariciones de searchFor usando replaceWith. searchFor puede ser una cadena o una expresión regular, y replaceWith puede ser una cadena o función.
+
+// String.prototype.search()
+// Busque una coincidencia entre una expresión regular regexp y la cadena de llamada.
+
+// String.prototype.slice()
+// Extrae una sección de una cadena y devuelve una nueva.
+
+// String.prototype.split()
+// Devuelve una matriz de cadenas rellenadas dividiendo la cadena de llamada en las apariciones de la subcadena sep.
+
+// String.prototype.startsWith()
+// Determina si la cadena de llamada comienza con los caracteres de string searchString.
+
+// String.prototype.substring()
+// Devuelve una nueva cadena que contiene caracteres de la cadena de llamada desde (o entre) el índice (o índices) especificados.
+
+// String.prototype.toLocaleLowerCase()
+// Los caracteres de una cadena se convierten a minúsculas respetando la configuración regional actual.
+
+// Para la mayoría de los idiomas, esto devolverá lo mismo que toLowerCase().
+
+// String.prototype.toLocaleUpperCase( [locale, ...locales])
+// Los caracteres dentro de una cadena se convierten a mayúsculas respetando la configuración regional actual.
+
+// Para la mayoría de los idiomas, esto devolverá lo mismo que toUpperCase().
+
+// String.prototype.toLowerCase()
+// Devuelve el valor de cadena de llamada convertido a minúsculas.
+
+// String.prototype.toString()
+// Devuelve una cadena que representa el objeto especificado. Reemplaza el método Object.prototype.toString()
+
+// String.prototype.toUpperCase()
+// Devuelve el valor de cadena de llamada convertido a mayúsculas.
+
+// String.prototype.trim()
+// Recorta los espacios en blanco desde el principio y el final de la cadena.
+
+// String.prototype.trimStart()
+// Recorta el espacio en blanco desde el principio de la cadena.
+
+// String.prototype.trimEnd()
+// Recorta el espacio en blanco del extremo de la cadena.
+
+// String.prototype.valueOf()
+// Devuelve el valor primitivo del objeto especificado. Reemplaza el método Object.prototype.valueOf()
+
+// String.prototype[@@iterator]()
+// Devuelve un nuevo objeto iterador que itera sobre los puntos de código de un valor String y devuelve cada punto de código como un valor String.
