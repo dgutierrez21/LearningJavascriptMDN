@@ -152,3 +152,26 @@ console.log(eval(s2.valueOf())); // devuelve en número 4
 // \uXXXX ... donde XXXX es exactamente 4 dígitos hexadecimales en el rango 0000–FFFF; por ejemplo, \\u000A es lo mismo que \n (AVANCE DE LÍNEA); \u0021 es !	Punto de código Unicode entre UU+0000 y U+FFFF (el plano multilingüe básico Unicode)
 // \u{X}... \u{XXXXXX} ... donde X... XXXXXX es de 1 a 6 dígitos hexadecimales en el rango 0 a 10FFFF; por ejemplo, \\u{A} es lo mismo que \n (AVANCE DE LÍNEA); \u{21} es !	Punto de código Unicode entre U+U+0000U+10FFFF (la totalidad de Unicode)
 // \xXX ... donde XX es exactamente 2 dígitos hexadecimales en el rango 00–FF; por ejemplo, \\x0A es lo mismo que \n (AVANCE DE LÍNEA); \x21 es !	Punto de código Unicode entre U+U+0000 (los bloques Basic Latin y Latin-1 Supplement; equivalente a ISO-8859-1)U+00FF
+
+// Cadenas literales largas #00aae4
+// A veces, su código incluirá cadenas que son muy largas. En lugar de tener líneas que continúan sin fin, o se envuelven al capricho de su editor, es posible que desee dividir específicamente la cadena en varias líneas en el código fuente sin afectar el contenido real de la cadena.
+
+// Puede usar el operador + para agregar varias cadenas juntas, como esta:
+
+const cadenaLarga =
+  "Esta es una cadena muy larga que necesita " +
+  "envolverse en varias líneas porque " +
+  "de lo contrario mi código es ilegible";
+
+console.log(cadenaLarga);
+
+// O bien, puede usar el carácter de barra diagonal inversa (\) al final de cada línea para indicar que la cadena continuará en la línea siguiente. Asegúrese de que no haya espacio ni ningún otro carácter después de la barra diagonal inversa (excepto un salto de línea) o como sangría; de lo contrario no funcionará.
+
+const cadenaLarga2 =
+  "Esta es una cadena muy larga que necesita \
+envolver a través de múltiples líneas porque \
+de lo contrario mi código es ilegible";
+
+console.log(cadenaLarga2);
+
+// Ambos métodos anteriores dan como resultado cadenas idénticas.
