@@ -105,3 +105,32 @@ console.log(eval(s2)); // devuelve la cadena "2 + 2"
 // Un objeto String siempre se puede convertir a su homólogo primitivo con el método valueOf()
 
 console.log(eval(s2.valueOf())); // devuelve en número 4
+
+// Coerción de cuerdas #00aae4
+// Muchas operaciones integradas que esperan cadenas primero obligan sus argumentos a cadenas (que es en gran parte la razón por la cual String se comportan de manera similar a las primitivas de cadena). La operación se puede resumir de la siguiente manera:
+
+// Las cadenas se devuelven tal cual.
+
+// undefined se convierte en ""undefined".
+
+// null se convierte en ""null".
+
+// true se convierte en ""true"; false falso se convierte en ""false".
+
+// Los números se convierten con el mismo algoritmo que toString(10).
+
+// Los BigInts se convierten con el mismo algoritmo que toString(10).
+
+// Los símbolos arrojan un TypeError.
+
+// Los objetos se convierten primero en una primitiva llamando a sus métodos [@@toPrimitive]() (con ""string" como sugerencia), toString() y valueOf() en ese orden. La primitiva resultante se convierte en una cadena.
+
+// Hay varias maneras de lograr casi el mismo efecto en JavaScript.
+
+// Literal de plantilla: '`${x}` realiza exactamente los pasos de coerción de cadena explicados anteriormente para la expresión incrustada.
+
+// La función String(String()(x) usa el mismo algoritmo para convertir x, excepto que Symbols no arroja un TypeError, sino que devuelve "Symbol(description)" description es la descripción del Symbol. String(x)
+
+// El uso del operador +: """ + x coacciona su operando a una primitiva en lugar de una cadena y, para algunos objetos, tiene comportamientos completamente diferentes de la coerción de cadena normal.+ Consulte su página de referencia para obtener más detalles.
+
+// Dependiendo de su caso de uso, es posible que desee usar '`${x}` (para imitar el comportamiento incorporado) o String(xString(x)para manejar los valores de los símbolos sin generar un error), pero no debe usar """ + x.
