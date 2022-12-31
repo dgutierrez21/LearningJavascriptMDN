@@ -75,3 +75,33 @@ console.log(sonIguales2("ß", "ss", "de")); // false
 console.log(sonIguales2("ı", "I", "tr")); // true
 
 // El método localeCompare() permite la comparación de cadenas de manera similar a strcmp() permite ordenar cadenas de una manera compatible con la configuración regional.
+
+// cadena primitivas y objetos String #00aae4
+// Tenga en cuenta que JavaScript distingue entre objetos String y valores de cadena primitivos. (Lo mismo ocurre con Boolean y Numbers.)
+
+// Los literales de cadena (indicados entre comillas dobles o simples) y las cadenas devueltas por llamadas de String en un contexto no constructor (es decir, llamadas sin usar la new palabra clave) son cadenas primitivas. En contextos en los que se va a invocar un método en una cadena primitiva o se produce una búsqueda de propiedades, JavaScript ajustará automáticamente la primitiva de cadena y llamará al método o realizará la búsqueda de propiedades en el objeto contenedor.
+
+const strPrim = "foo"; // Un literal es una cadena primitiva
+const strPrim2 = String(1); // Se convierte en la cadena primitiva "1".
+const strPrim3 = String(true); // Se convierte en la cadena primitiva "true".
+const strObj = new String(strPrim); // String con new devuelve un objeto envoltorio de cadena.
+
+console.log(typeof strPrim); // "cadena"
+console.log(typeof strPrim2); // "cadena".
+console.log(typeof strPrim3); // "cadena".
+console.log(typeof strObj); // "objeto".
+
+// Advertencia: Rara vez deberías encontrarte usando String como constructor.
+
+// Las primitivas String y los objetos String también dan resultados diferentes cuando se usa eval(). Las primitivas pasadas a eval se tratan como código fuente; String se tratan como todos los demás objetos, devolviendo el objeto. Por ejemplo:
+
+const s1 = "2 + 2"; // crea una primitiva String
+const s2 = new String("2 + 2"); // crea un objeto String
+console.log(eval(s1)); // devuelve el número 4
+console.log(eval(s2)); // devuelve la cadena "2 + 2"
+
+// Por estas razones, el código puede romperse cuando encuentra objetos String cuando espera una cadena primitiva en su lugar, aunque generalmente, los autores no necesitan preocuparse por la distinción.
+
+// Un objeto String siempre se puede convertir a su homólogo primitivo con el método valueOf()
+
+console.log(eval(s2.valueOf())); // devuelve en número 4
