@@ -175,3 +175,8 @@ de lo contrario mi código es ilegible";
 console.log(cadenaLarga2);
 
 // Ambos métodos anteriores dan como resultado cadenas idénticas.
+
+// Constructor #008000
+
+// String()
+// Crea un nuevo objeto String. Realiza la conversión de tipos cuando se llama como una función, en lugar de como un constructor, que suele ser más útil.
