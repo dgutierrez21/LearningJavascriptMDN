@@ -7,8 +7,6 @@
 // Valor devuelto
 // Una cadena consistente en la unidad de código UTF-16 localizada en la posición especificada. Devuelve undefined si no se puede encontrar el índice dado.
 
-const string = "El zorro marrón rápido salta sobre el perro perezoso";
-
 console.log(
   `Utilizando un índice de 5 el carácter devuelto es ${string.at(5)}`
 );
