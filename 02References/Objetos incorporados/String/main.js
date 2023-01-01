@@ -298,3 +298,19 @@ console.log(cadenaLarga2);
 
 // String.prototype[@@iterator]()
 // Devuelve un nuevo objeto iterador que itera sobre los puntos de código de un valor String y devuelve cada punto de código como un valor String.
+
+// Ejemplos #008000
+// Conversión de cadenas #00aae4
+// Es posible usar String como una alternativa toString() más confiable, ya que funciona cuando se usa en null y undefined.String Por ejemplo:
+
+const varNull = null;
+
+// console.log(varNull.toString()) // TypeError: nullVar is null
+
+console.log(String(varNull));
+
+const varUndefined = undefined;
+
+// console.log(varUndefined.toString()) // TypeError: undefinedVar is undefined
+
+console.log(String(varUndefined));
